@@ -1,0 +1,4 @@
+#RewriteEngine On
+#RewriteCond %{REMOTE_ADDR} !82.3.51.194
+#RewriteCond %{REQUEST_FILENAME} !(offline.php|gif)
+#RewriteRule .* /site/offline.php

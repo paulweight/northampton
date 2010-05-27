@@ -1,0 +1,40 @@
+body { font-size: 84%;}
+
+.row_divider {width:100%;clear:both;margin: 0 0 5px 0; padding:0 5px 0 0; }
+
+#column_nav {width: 220px; }
+#Rightcolumn {width: 170px;}
+#wrapper {width:expression(document.body.clientWidth > 1000? "980px" : "auto");}
+
+#content { width: 100%; padding: 0; margin: 0 0 20px 0;}
+#wrapper div.withWidth {width: 525px; padding: 0 186px 0 0;}
+#wrapper div.full {width: 704px; padding:0; }
+
+#column_nav form h3 {font-size: 1.2em;}
+
+#mast ul#skip li {font-size: .8em;}
+#mast ul#mastNav li a:link, #mast ul#mastNav li a:visited {font-size: 1.5em;}
+#mainNav form {top: 20px;}
+
+#wrapper #mainNav form input.button {width: auto; overflow:visible; font-size: 1.2em; padding: 0 10px 1px 5px;}
+#wrapper #mainNav form input.field {padding: 4px 5px; font-size: 1.2em; border: none; color: #666; float: left;}
+#mainNav ul#mainNavAZ li a, #mainNav ul#mainNavAZ li span { font-size: 1.1em; padding: 10px 0 10px 5px;}
+
+div.contactBox, #content div.displayBoxIn { display: inline-block;}
+
+#mast input.button, .basic_form input.button, #content .xform input.button
+{width: auto;}
+
+#mainHeading {height: 1px; }
+
+h3.downloadNow a:link, h3.downloadNow a:visited, h3.downloadNow a:hover, h3.downloadNow a:active {padding: 0 0 0 25px; background: url(../css_img/arrw_down.gif) no-repeat 0px 4px;}
+
+#content form.newsSelect { clear: both; width: 90%; }
+#wrapper .newsSelect select.select { font-size: 1em; width: 80%; padding: 1px 1px;}
+
+p.rssfeed a:link, p.rssfeed a:visited, p.rssfeed a:hover, p.rssfeed a:active { background: url(../css_img/rss.gif) no-repeat 0 4px; padding: 1px 0 1px 16px; }
+
+p.rssfeed { background: none; }
+
+div.cate_info ul, div.doc_info ul { list-style: none; margin: 10px 0 10px 0; }
+

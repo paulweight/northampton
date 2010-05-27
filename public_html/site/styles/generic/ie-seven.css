@@ -1,0 +1,8 @@
+.row_divider {width:100%;clear:both;margin: 0 0 5px 0; padding:0 5px 0 0; }
+
+#wrapper #mainNav form input.button {width: auto; overflow:visible; font-size: 1.3em; padding: 0 10px 1px 5px;}
+#wrapper #mainNav form input.field {padding: 4px 5px; font-size: 1.3em; border: none; color: #666; float: left;}
+#mainNav ul#mainNavAZ li a, #mainNav ul#mainNavAZ li span { font-size: 1.3em; padding: 10px 0 10px 5px;}
+
+ul.list li { width: auto; }
+

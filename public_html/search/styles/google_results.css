@@ -1,0 +1,94 @@
+#googlerupa_results { clear: both; text-align: left; margin: 0 ;}
+
+/* ########## Fonts and links */
+/* Result Title link */
+#googlerupa_results h2 { margin:0 0 0 40px; padding:0; font-weight: normal;  font-size: 1.4em;}
+#googlerupa_results h2 a:link { color: #003399; text-decoration: underline; }
+#googlerupa_results h2 a:visited { color: #50a; text-decoration: underline;}
+#googlerupa_results h2 a:hover, #googlerupa_results h2 a:active { color: #003399; text-decoration: none;}
+
+.url {color: #080;}
+a.cache:link, a.cache:visited {color: #039; font-weight: normal; text-decoration: none;}
+a.cache:hover, a.cache:active { color: #039; font-weight: normal; text-decoration: none; }
+.first {  font-size: 1.2em; margin-left:10px;}
+#sorting {margin-left:10px;clear:left; }
+#sorting a:active, #sorting a:link, #sorting a:visited, #sorting a:hover { color: #039; text-decoration: unerline; }
+#sorting a:hover { text-decoration: none; }
+
+/* Wraps the actual results */
+.googresult {margin-top:2em; margin-left: 1em; }
+.googresult p {margin:0; margin-left: 40px; padding:0; line-height: 1.2em; word-wrap: break-word}
+
+/* Page navigation */
+#pagenav { text-align: center; margin: 3em 0 3em 0; line-height: 1.5em; font-size: 1.1em;}
+#pagenav a { text-decoration: none; color: #039; }
+.on_page { font-weight: bold; color: #333;}
+
+/* Search results key */
+#searchKey { float: right; width: 26%; padding: 0 0 0 1%; background: #fff; margin-right:1%; word-wrap:break-word; overflow:hidden; }
+#searchKey ul { list-style-type: none; margin: 0; padding: 0;}
+#searchKey li { margin:0; padding: 5px 0;  float: left; width: 100%; }
+#searchKey ul li img { width: 26px; height: 26px; padding-right: 12px; vertical-align: middle;}
+#searchKey h3 { font-weight: normal; padding:.4em 0; margin:0 0 5px 0; font-size: 1.2em; border-bottom:1px solid #ccc;}
+#searchKey a img {padding:none; border:none;text-decoration:none;}
+#searchKey a:hover, #searchKey a:visited, #searchKey a:active, #searchKey a:link { text-decoration: none; color: #444; font-size: 1.2em;}
+
+
+div.full_screen {width:69%; word-wrap:break-word; overflow:hidden;}
+div.half_screen {width:49%; word-wrap:break-word; overflow:hidden;}
+div#google_web {width:49%;float:right;}
+
+/* Key images that appear in search results */
+div.coll_image { float: left; width: 26px; height: 26px; margin: 2px 5px 0 0; }
+.coll_image img { width: 26px; height: 26px; padding-top: 1px;}
+
+/* ONE BOX */
+#onebox_results_page {text-align:left;}
+.oneboxResults { border:2px solid #ddd; width: 96%; padding:1%; margin: 0 0 0 1%;}
+.oneboxResults ul.ldapOneBoxItem {margin:0;padding:0 0 0 45px;list-style:none;background:url(../images/contact.png) no-repeat 5px 5px;}
+.oneboxResults strong { color:#333;}
+
+ul.ldapOneBoxItem_right {width:45%;float:right;margin:0;padding:0;list-style:none;overflow:hidden;word-wrap:break-word;text-align:left;} 
+ul.ldapOneBoxItem_left {width:40%;float:left;text-align:left;}
+
+div.onebox_results_wrap {clear:both;padding:0 0 0 0;}
+div.onebox_results_wrap .oneboxResults {border:none;}
+div.onebox_results_wrap div.schel {margin-bottom:25px;}
+
+/*one box calendar styles */
+div.schel {clear:both;padding: 10px 0 0 45px}
+.oneboxResults div.schel ul{margin:0;padding:0 0 15px 0;float:left;border-left:1px solid #999; }
+#rupa_admin .oneboxResults div.schel ul li{height:16px;width:8px;margin:0;display:block;float:left;padding:0;}
+#rupa_admin .oneboxResults div.schel ul li span {display:none;}
+#rupa_admin .oneboxResults div.schel .Busy {background:#c33;border:1px solid #aaa;border-left:none;}
+#rupa_admin .oneboxResults div.schel .Free {background:#fff;border:1px solid #aaa;border-left:none;}
+#rupa_admin .oneboxResults div.schel .OOF {background:#ccc;border:1px solid #aaa;border-left:none;}
+#rupa_admin .oneboxResults div.schel .Tentative {background:#fc3;border:1px solid #aaa;border-left:none;}
+
+ul.calhour8, ul.calhour20 {background:url(../images/cal_images/8.gif) no-repeat bottom left;}
+ul.calhour9, ul.calhour21 {background:url(../images/cal_images/9.gif) no-repeat bottom left;}
+ul.calhour10, ul.calhour22 {background:url(../images/cal_images/10.gif) no-repeat bottom left;}
+ul.calhour11, ul.calhour23 {background:url(../images/cal_images/11.gif) no-repeat bottom left;}
+ul.calhour12, ul.calhour24 {background:url(../images/cal_images/12.gif) no-repeat bottom left;}
+ul.calhour1, ul.calhour13 {background:url(../images/cal_images/1.gif) no-repeat bottom left;}
+ul.calhour2, ul.calhour14 {background:url(../images/cal_images/2.gif) no-repeat bottom left;}
+ul.calhour3, ul.calhour15 {background:url(../images/cal_images/3.gif) no-repeat bottom left;}
+ul.calhour4, ul.calhour16 {background:url(../images/cal_images/4.gif) no-repeat bottom left;}
+ul.calhour5, ul.calhour17 {background:url(../images/cal_images/5.gif) no-repeat bottom left;}
+ul.calhour6, ul.calhour18  {background:url(../images/cal_images/6.gif) no-repeat bottom left;}
+ul.calhour7, ul.calhour19 {background:url(../images/cal_images/7.gif) no-repeat bottom left;}
+
+/* KEYMATCH */
+.keymatch { margin:0.5% 1% 1.5% 1%; padding: 1em; float:left; clear:left; width:59%; background:#eee; border: 1px solid #ccc; } 
+#searchResults .keymatch h2 { margin:0 0 3px 0; padding: 0; font-size: 1.3em;}
+.keymatch p {margin:0; padding:0; font-size: 1em;}
+
+/* SEARCH WITHIN RESULTS */
+form.search_within_form{text-align:center;}
+form.search_within_form fieldset{border:none;border-top:1px solid #ccc;padding-top:1em;}
+form.search_within_form .keyword_field{width:25%;}
+form.search_within_form label {color:#666;font-size:1.1em;}
+
+/* Tooltips */
+.tooltip{ width: 200px; color:#000; font:lighter 11px/1.3 Arial,sans-serif; text-decoration:none;text-align:center;background:#fff;border:1px solid #ccc;margin-top:5px} 
+.tooltip b.bottom{padding:3px;color: #030;}   
