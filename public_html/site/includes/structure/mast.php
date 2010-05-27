@@ -83,7 +83,7 @@
 			
 	<?php } else { ?>
 	
-		<li><a href="http://<?php print $DOMAIN;?>/site/index.php">Home</a></li><li><a href="http://<?php print $DOMAIN;?>/site/scripts/signin.php">Sign in to your account</a></li><li><a href="http://<?php print $DOMAIN;?>/site/scripts/register.php">Create an account</a></li>
+		<li><a href="http://<?php print $DOMAIN;?>/site/index.php">Home</a></li><li><a href="http://<?php print $DOMAIN;?>/site/scripts/home_info.php?homepageID=172">Your Account</a></li>
 	<?php } ?>
 	</ul>
 	
