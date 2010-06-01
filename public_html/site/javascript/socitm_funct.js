@@ -12,8 +12,7 @@ if (socitm_my_domains_tmp.length > 0) { socitm_my_domains = socitm_my_domains_tm
 var r = Math.floor(Math.random() * (typeof(socitm_ratio) != "undefined" ? socitm_ratio : 5));
 
 if ((document.location.search.indexOf("SocitmForcePop") > -1)||(r == 0) || (getCookie("socitm_include_me") == "true")) {
-    document.write('<script type="text/javascript" src="'+ socitm_protocol +'//socitm.govmetric.com/js/jquery.js"><\/script>');
-    document.write('<script type="text/javascript">$.noConflict(); if (console) { console.log(\'test\'); }<\/script>');
+    document.write('<script type="text/javascript" src="/site/javascript/jquery.js"><\/script>');
     document.write('<script type="text/javascript" src="/site/javascript/socitm_popups.js"><\/script>');
     document.write('<link rel="stylesheet" type="text/css" href="'+ socitm_protocol +'//socitm.govmetric.com/css/socitm.css" />');
     document.write('<style type="text/css">#socitm_info_box { background: #fff url(http://socitm.govmetric.com/images/socitm.gif) no-repeat 1.5em 10px; }</style>');

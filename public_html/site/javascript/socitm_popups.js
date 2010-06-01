@@ -258,6 +258,6 @@ function getPageSize() {
 
 jQuery(document).ready(PageEnter);
 jQuery(document).ready(LinkConvert);
-jQuery(window).bind("unload", SiteExit);
+window.onunload = function () { SiteExit(); }
 
 Page_ShowPopOnExit = true;
