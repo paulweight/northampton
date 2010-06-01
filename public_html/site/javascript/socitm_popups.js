@@ -33,13 +33,13 @@ function PageEnter() {
         if ((document.location.search.indexOf("SocitmForcePop") > -1) || bP || bS) {
             if (socitm_popup.length > 0) {
                 socitmWindow(true);
-                $("#socitm_info_box").html(socitm_popup + blanking + socitm_popup_css);
+                jQuery("#socitm_info_box").html(socitm_popup + blanking + socitm_popup_css);
             } else {
                 var url = socitm_intro_file;
                 var resp = jQuery.get(url, function(data) { 
                     if (data.length > 0) { 
                         socitmWindow(true);
-                        $("#socitm_info_box").html(data + blanking + socitm_popup_css);
+                        jQuery("#socitm_info_box").html(data + blanking + socitm_popup_css);
                     } 
                 });
             }
@@ -85,7 +85,7 @@ function getPopup(sUrl) {
 }
 
 function showHoldingPage() {
-    var height = ($(window).height() < 700) ? 580 : 720;
+    var height = (jQuery(window).height() < 700) ? 580 : 720;
     var bSeenMe = (getCookie("socitm_exclude_me")=="true") || (document.location.search.indexOf("SocitmAlt") > -1);
     var socitm_win = open("http://socitm.govmetric.com/holding.aspx?code=" + socitm_custcode + "&lang_code=" + socitm_language_opt + (bSeenMe?"&alt=true":""), 'socitm_win', 'height=' + height + ',width=650,dependant=1,resizable=1,scrollbars=1,status=0,toolbar=0,location=0');
     if (socitm_win) socitm_win.blur();
@@ -139,21 +139,21 @@ function isMyDomain(href) {
 function socitmWindow(show) {
     if (show) {
         //Stick the snippet at the top of the body (overlay needs to go here).
-        $('body').prepend(SOCITM_SNIPPET);
+        jQuery('body').prepend(SOCITM_SNIPPET);
 
         var arrayPageSize = getPageSize();
-        $('#socitm_overlay').width(arrayPageSize[0]);
-        $('#socitm_overlay').height(arrayPageSize[1]);
+        jQuery('#socitm_overlay').width(arrayPageSize[0]);
+        jQuery('#socitm_overlay').height(arrayPageSize[1]);
 
-        $('#socitm_info_box').css({ position: 'absolute',
-            left: ($(window).width() - $('#socitm_info_box').width()) / 2 + "px",
-            top: ($(window).height() - $('#socitm_info_box').height()) / 2 + "px"
+        jQuery('#socitm_info_box').css({ position: 'absolute',
+            left: (jQuery(window).width() - jQuery('#socitm_info_box').width()) / 2 + "px",
+            top: (jQuery(window).height() - jQuery('#socitm_info_box').height()) / 2 + "px"
         });
 
-        $('#socitm_info_box').fadeIn('slow');
+        jQuery('#socitm_info_box').fadeIn('slow');
     } else {
-        if ($('#socitm_info_box')) $('#socitm_info_box').fadeOut(500);
-        if ($('#socitm_overlay')) $('#socitm_overlay').fadeOut(900);
+        if (jQuery('#socitm_info_box')) jQuery('#socitm_info_box').fadeOut(500);
+        if (jQuery('#socitm_overlay')) jQuery('#socitm_overlay').fadeOut(900);
     }
 }
 
@@ -255,6 +255,21 @@ function getPageSize() {
     arrayPageSize = new Array(pageWidth, pageHeight, windowWidth, windowHeight)
     return arrayPageSize;
 }
+
+function addLoadEvent(func)
+{
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	}
+	else {
+		window.onload = function() {
+			oldonload();
+			func();
+		}
+	}
+}
+
 
 jQuery(document).ready(PageEnter);
 jQuery(document).ready(LinkConvert);
