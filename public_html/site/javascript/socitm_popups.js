@@ -256,21 +256,6 @@ function getPageSize() {
     return arrayPageSize;
 }
 
-function addLoadEvent(func)
-{
-	var oldonload = window.onload;
-	if (typeof window.onload != 'function') {
-		window.onload = func;
-	}
-	else {
-		window.onload = function() {
-			oldonload();
-			func();
-		}
-	}
-}
-
-
 jQuery(document).ready(PageEnter);
 jQuery(document).ready(LinkConvert);
 window.onunload = function () { SiteExit(); }
