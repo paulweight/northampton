@@ -70,9 +70,9 @@
 	
 	else {
 ?>		
-	<h2><?php print htmlentities($job->title);?></h2>
+	<h2><?php print htmlentities($job->title, ENT_QUOTES, 'UTF-8');?></h2>
 	<p class="first">This vacancy is: <?php print $job->getTypeString();?></p>
-	<p class="first">Salary: <?php print htmlentities($job->salary);?></p>
+	<p class="first">Salary: <?php print htmlentities($job->salary, ENT_QUOTES, 'UTF-8');?></p>
 	
 <?php 
 		if ($job->location != "") { 
@@ -82,7 +82,7 @@
 		} 
 ?>	
 	<p class="first">Closing Date: <?php print date("l jS F Y", $job->closingDate);?></p>
-	<p><strong>Description:</strong> <?php print nl2br(htmlentities($job->description));?></p>
+	<p><strong>Description:</strong> <?php print nl2br(htmlentities($job->description, ENT_QUOTES, 'UTF-8'));?></p>
 	
 <?php
 		if (sizeof($downloads) > 0 ) {

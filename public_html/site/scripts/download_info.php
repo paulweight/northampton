@@ -112,14 +112,14 @@
 			$extension = $file->getURLExtension();
 		}
 		
-		$filename = htmlentities($filename);
+		$filename = htmlentities($filename, ENT_QUOTES, 'UTF-8');
 ?>
-		<h2><?php print htmlentities($file->title);?></h2>
+		<h2><?php print htmlentities($file->title, ENT_QUOTES, 'UTF-8');?></h2>
 		<h3 class="downloadNow"><a href="<?php print $filename;?>">Download now</a></h3>
 <?php
 		if (!empty($download->description)) {
 ?>
-		<p class="first"><?php print nl2br(htmlentities($download->description)); ?></p>
+		<p class="first"><?php print nl2br(htmlentities($download->description, ENT_QUOTES, 'UTF-8')); ?></p>
 <?php
 		}
 ?>
@@ -150,7 +150,7 @@
 					$extension = $fileItem->getURLExtension();
 					$path = $fileItem->url;
 				}
-				$fileItem->title = htmlentities($fileItem->title);
+				$fileItem->title = htmlentities($fileItem->title, ENT_QUOTES, 'UTF-8');
 ?>
             <li><a href="<?php print $path;?>"><?php print $fileItem->title;?></a></li>
 <?php

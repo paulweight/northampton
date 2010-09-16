@@ -201,7 +201,7 @@
  	// display the events
 	// if we're displaying a full list then display the interval and start and end dates
 	foreach ($events as $event){
-		$event->title = htmlentities(strip_tags(utf8_decode($event->title)));
+		$event->title = htmlentities(strip_tags(utf8_decode($event->title)), ENT_QUOTES, 'UTF-8');
 		print "<div><h2 class=\"decorative\"><span>$event->title</span></h2>\n";
 		if (($_POST['period'] == 'full') || ($_GET['period'] == 'full') || ($_POST['location'])) {
 			if ($event->startDate == $event->endDate) {
@@ -278,7 +278,7 @@
 				 print "<p><strong>On this date every month</strong></p>\n";
 		}
 						
-		$event->location = htmlentities(strip_tags(utf8_decode($event->location)));
+		$event->location = htmlentities(strip_tags(utf8_decode($event->location)), ENT_QUOTES, 'UTF-8');
 		print "<p><strong>Location: $event->location</strong></p><p>\n";
 	
 		$timeString = "";
@@ -295,12 +295,12 @@
 			print "<p><strong>Time: $timeString</strong></p>\n";
 		}
 		if (!empty($event->cost)) {
-			$event->cost = htmlentities(strip_tags(utf8_decode($event->cost)));
+			$event->cost = htmlentities(strip_tags(utf8_decode($event->cost)), ENT_QUOTES, 'UTF-8');
 			print "<p><strong>Cost: $event->cost</strong></p>";
 		}	
 		if(is_numeric($event->id)) {
 			if (!empty($event->summary)) {
-				$event->summary = htmlentities(strip_tags(utf8_decode($event->summary)));
+				$event->summary = htmlentities(strip_tags(utf8_decode($event->summary)), ENT_QUOTES, 'UTF-8');
 				print "<p class=\"first\">$event->summary</p>\n";
 			}	
 		}
@@ -363,8 +363,8 @@
 			$locations = getLocations();
 			foreach($locations as $location) {
 				if (!empty($location)) {
-					$location = htmlentities($location);
-					$shortlocation = substr(htmlentities($location), 0, 50);
+					$location = htmlentities($location, ENT_QUOTES, 'UTF-8');
+					$shortlocation = substr(htmlentities($location, ENT_QUOTES, 'UTF-8'), 0, 50);
 	?>
 					<option value="<?php print $location; ?>"><?php print $shortlocation; ?></option>
 	<?php

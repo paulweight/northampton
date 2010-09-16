@@ -87,7 +87,7 @@
 			);
 	
 		$lastQuery = stripslashes(urldecode($google_query['q']));
-		$htmlQuery = htmlentities($lastQuery);
+		$htmlQuery = htmlentities($lastQuery, ENT_QUOTES, 'UTF-8');
 
 		$jgr = new JaduGoogleResults();
 		$results = $jgr->retrieveResults(http_build_querystring($google_query));
@@ -170,7 +170,7 @@
 ?>
     			
 		<!-- For the little comments -->
-		<h3>Did you mean <a href="http://<? print $DOMAIN ?>/site/scripts/google_results.php?<?php print $query;?>"><?php print htmlentities(str_replace('<b><i>', '', stripslashes(urldecode($results['GSP']['Spelling']['Suggestion']['!q']))));?></a>?</h3>
+		<h3>Did you mean <a href="http://<? print $DOMAIN ?>/site/scripts/google_results.php?<?php print $query;?>"><?php print htmlentities(str_replace('<b><i>', '', stripslashes(urldecode($results['GSP']['Spelling']['Suggestion']['!q']))), ENT_QUOTES, 'UTF-8');?></a>?</h3>
     			
 <?php
             }
@@ -201,7 +201,7 @@
 							$synonymQuery = http_build_querystring($google_query);
 							$google_query['q'] = $temp;
 ?>
-					 		<a href="http://<?php print $DOMAIN; ?>/site/scripts/google_results.php?<?php print htmlentities($synonymQuery); ?>"><?php print $synonym['!']; ?></a><?php
+					 		<a href="http://<?php print $DOMAIN; ?>/site/scripts/google_results.php?<?php print htmlentities($synonymQuery, ENT_QUOTES, 'UTF-8'); ?>"><?php print $synonym['!']; ?></a><?php
 							if (sizeof($synonyms) > $index++) {
 								print ', ';
 							}
@@ -243,8 +243,8 @@
             foreach ($results['GSP']['GM'] as $km) {
 ?>
 			<div class="search_result">
-				<h3><a href="<?php print htmlentities($km['GL']); ?>"><?php print $km['GD']; ?></a></h3>
-				<p><?php print htmlentities($km['GL']); ?></p>
+				<h3><a href="<?php print htmlentities($km['GL'], ENT_QUOTES, 'UTF-8'); ?>"><?php print $km['GD']; ?></a></h3>
+				<p><?php print htmlentities($km['GL'], ENT_QUOTES, 'UTF-8'); ?></p>
 			</div>
 <?php
             }
@@ -289,7 +289,7 @@
 					$result['T'] = str_replace('| Northampton Borough <b>Council</b>', '', $result['T']);
 					
 					// check cache is available
-					$cacheLink = RUPA_HOME_URL.'scripts/google_cache.php?url='.htmlentities($result['U']).'&CID='.$result['!CID'];
+					$cacheLink = RUPA_HOME_URL.'scripts/google_cache.php?url='.htmlentities($result['U'], ENT_QUOTES, 'UTF-8').'&CID='.$result['!CID'];
 					$cacheLink = str_replace('&', '&amp;', $cacheLink);
 
 ?>

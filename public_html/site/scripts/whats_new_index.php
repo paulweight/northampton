@@ -102,7 +102,7 @@
 		for ($i = 0; $i < MAX_WHATS_NEW; $i++) {
 			$item = $news[$i];
 			if ($item != null) {
-				$item->title = htmlentities($item->title);
+				$item->title = htmlentities($item->title, ENT_QUOTES, 'UTF-8');
 ?>
 			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/news_article.php?newsID=<?php print $item->id;?>"><?php print $item->title;?></a> <span class="small">- <?php print date("jS F y", $item->newsDate);?></span></li>
 <?php
@@ -127,7 +127,7 @@
 			
 			if ($item != null) {
 ?>
-			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print $item->id;?>"><?php print htmlentities($item->title);?></a> <span class="small">- <?php print date("jS F y", $item->creationDate);?></span></li>
+			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print $item->id;?>"><?php print htmlentities($item->title, ENT_QUOTES, 'UTF-8');?></a> <span class="small">- <?php print date("jS F y", $item->creationDate);?></span></li>
 <?php
 			}
 		}
@@ -151,7 +151,7 @@
 			
 			if ($document != null) {
 ?>
-			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/documents_info.php?documentID=<?php print $document->id;?>"><?php print htmlentities($header->title);?></a> <span class="small">- <?php print date("jS F y", $document->enterDate);?></span></li>
+			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/documents_info.php?documentID=<?php print $document->id;?>"><?php print htmlentities($header->title, ENT_QUOTES, 'UTF-8');?></a> <span class="small">- <?php print date("jS F y", $document->enterDate);?></span></li>
 <?php
 			}
 		}
@@ -176,7 +176,7 @@
 			
 			if ($item != null) {
 ?>
-			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/events_info.php?eventID=<?php print $item->id;?>"><?php print htmlentities($item->title);?></a> <span class="small">- <?php print date("jS F y", $item->dateCreated);?></span></li>
+			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/events_info.php?eventID=<?php print $item->id;?>"><?php print htmlentities($item->title, ENT_QUOTES, 'UTF-8');?></a> <span class="small">- <?php print date("jS F y", $item->dateCreated);?></span></li>
 <?php
 			}
 		}
@@ -199,7 +199,7 @@
 	
 			if ($item != null) {
 ?>
-			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/xforms_form.php?formID=<?php print $item->id;?>"><?php print htmlentities($item->title);?></a> <span class="small">- <?php print date("jS F y", $item->enterDate);?></span></li>
+			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/xforms_form.php?formID=<?php print $item->id;?>"><?php print htmlentities($item->title, ENT_QUOTES, 'UTF-8');?></a> <span class="small">- <?php print date("jS F y", $item->enterDate);?></span></li>
 <?php
 			}
 		}

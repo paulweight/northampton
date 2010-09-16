@@ -92,7 +92,7 @@
 ?>
 		<h2>
 			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $topNews->id;?>">
-			<?php print htmlentities($topNews->title);?></a>
+			<?php print htmlentities($topNews->title, ENT_QUOTES, 'UTF-8');?></a>
 		</h2>
 
 <?php 
@@ -123,7 +123,7 @@
 		} 
 	?>
 		<h3>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $newsItem->id;?>"><?php print htmlentities($newsItem->title);?></a>
+			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $newsItem->id;?>"><?php print htmlentities($newsItem->title, ENT_QUOTES, 'UTF-8');?></a>
 		</h3>
 			<p class="date">Published <?php print date("jS F y", $newsItem->newsDate);?> in <a href="http://<?php print $DOMAIN; ?>/site/scripts/news_category.php?categoryID=<?php print $currentCategory->id;?>"><?php print $currentCategory->name ?> news</a></p>
 			<p><?php print str_replace('£', '&pound;', $newsItem->summary);?></p>

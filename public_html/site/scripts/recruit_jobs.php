@@ -60,7 +60,7 @@
 				
 <?php
 					foreach ($jobs as $job) {
-					$job->title = htmlentities($job->title);
+					$job->title = htmlentities($job->title, ENT_QUOTES, 'UTF-8');
 ?>
 				<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/recruit_details.php?id=<?php print $job->id; ?>"><?php print $job->title; ?></a> - <span class="note">Closing date <strong><?php print date("d F Y", $job->closingDate); ?></strong></span></li>							
 <?php

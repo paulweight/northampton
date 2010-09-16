@@ -60,11 +60,11 @@
 <?php
 	$pick = getPickOfWeek();
 	if ($pick->id != null) {
-		$pick->cost = htmlentities(strip_tags(utf8_decode($pick->cost)));
-		$pick->location = htmlentities(strip_tags(utf8_decode($pick->location)));
+		$pick->cost = htmlentities(strip_tags(utf8_decode($pick->cost)), ENT_QUOTES, 'UTF-8');
+		$pick->location = htmlentities(strip_tags(utf8_decode($pick->location)), ENT_QUOTES, 'UTF-8');
 ?>
     
-		<h2><?php print htmlentities($pick->title);?></h2>
+		<h2><?php print htmlentities($pick->title, ENT_QUOTES, 'UTF-8');?></h2>
 <?php		
 			if ($pick->startDate == $pick->endDate) {
 				$date = date("jS M y", $pick->startDate);
@@ -80,7 +80,7 @@
 <?php
    		if (!empty($pick->summary)) {
 ?>
-			<p class="first"><?php print htmlentities($pick->summary);?></p>
+			<p class="first"><?php print htmlentities($pick->summary, ENT_QUOTES, 'UTF-8');?></p>
 			<p><strong>Time: <?php print $pick->startTime;?> - <?php print $pick->endTime;?></strong></p>
 			<p><strong>Location: <?php print $pick->location;?></strong></p>
 <?php
@@ -142,7 +142,7 @@
 			 print " - <strong>$event->endTime</strong>";
 		}
 		print "</p>\n";
-		$event->cost = htmlentities(strip_tags(utf8_decode($event->cost)));
+		$event->cost = htmlentities(strip_tags(utf8_decode($event->cost)), ENT_QUOTES, 'UTF-8');
 		if(trim($event->cost) != '') {
 			print "<p><strong>Cost: $event->cost</strong></p>";
 		}
@@ -178,8 +178,8 @@
 			$locations = getLocations();
 			foreach($locations as $location) {
 				if (!empty($location)) {
-					$location = htmlentities($location);
-					$shortlocation = substr(htmlentities($location), 0, 50);
+					$location = htmlentities($location, ENT_QUOTES, 'UTF-8');
+					$shortlocation = substr(htmlentities($location, ENT_QUOTES, 'UTF-8'), 0, 50);
 	?>
 					<option value="<?php print $location; ?>"><?php print $shortlocation; ?></option>
 	<?php

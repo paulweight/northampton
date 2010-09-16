@@ -96,8 +96,8 @@
 			$allFiles = getAllDownloadFilesForDownload($downloadItem->id);
 
 			if (sizeof($allFiles) > 0) {
-				$downloadItem->title = htmlentities($downloadItem->title);
-				$downloadItem->description = htmlentities($downloadItem->description);
+				$downloadItem->title = htmlentities($downloadItem->title, ENT_QUOTES, 'UTF-8');
+				$downloadItem->description = htmlentities($downloadItem->description, ENT_QUOTES, 'UTF-8');
 ?>
 				<div class="download_box">
 					<h3><?php print $downloadItem->title ;?></h3>
@@ -118,11 +118,11 @@
 						$filename = $fileItem->url;
 						$extension = $fileItem->getURLExtension();
 					}
-					$fileItem->title = htmlentities($fileItem->title);
+					$fileItem->title = htmlentities($fileItem->title, ENT_QUOTES, 'UTF-8');
 ?>
 					<li>
 						<ul>
-							<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print htmlentities($fileItem->id);?>"><?php print $fileItem->title;?></a>
+							<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print htmlentities($fileItem->id, ENT_QUOTES, 'UTF-8');?>"><?php print $fileItem->title;?></a>
 							<img src="http://<?php print $DOMAIN; ?>/site/images/file_type_icons/<?php print $extension;?>.gif" alt="<?php print $extension;?>" />&nbsp;(<?php print $extension;?>)</li>
 							<li>Size: <?php print $fileItem->getHumanReadableSize();?></li>
 							<li>Estimated download time: <?php print $fileItem->getDownloadTime56k();?></li>

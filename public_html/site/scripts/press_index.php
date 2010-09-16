@@ -98,7 +98,7 @@
 	$bespokeCategoryList = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);
 	$currentCategory = $bespokeCategoryList->getCategory($categoryID);	
 ?>
-		<h2><a href="http://<?php print $DOMAIN;?>/site/scripts/press_article.php?pressReleaseID=<?php print $topPressReleases->id;?>"><?php print htmlentities($topPressReleases->title);?></a></h2>
+		<h2><a href="http://<?php print $DOMAIN;?>/site/scripts/press_article.php?pressReleaseID=<?php print $topPressReleases->id;?>"><?php print htmlentities($topPressReleases->title, ENT_QUOTES, 'UTF-8');?></a></h2>
 		<p class="date">Published <?php print date("jS F Y", $topPressReleases->pressDate);?> in <a href="http://<?php print $DOMAIN;?>/site/scripts/press_category.php?categoryID=<?php print $currentCategory->id;?>"><?php print $currentCategory->name; ?></a></p>
 		<p><?php print $topPressReleases->summary;?></p>
 	</div>
@@ -122,7 +122,7 @@
 		</a>
 	<?php } ?>
 		<h3>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/press_article.php?pressReleasesID=<?php print $pressItem->id;?>"><?php print htmlentities($pressItem->title);?></a>
+			<a href="http://<?php print $DOMAIN;?>/site/scripts/press_article.php?pressReleasesID=<?php print $pressItem->id;?>"><?php print htmlentities($pressItem->title, ENT_QUOTES, 'UTF-8');?></a>
 		</h3>
 		<p class="date">Published <?php print date("jS F Y", $pressItem->pressDate);?> in <a href="http://<?php print $DOMAIN;?>/site/scripts/press_category.php?categoryID=<?php print $currentCategory->id;?>"><?php print $currentCategory->name; ?></a></p>
 		<p><?php print $pressItem->summary;?></p>

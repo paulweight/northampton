@@ -97,8 +97,8 @@ if (count($allPodcasts) > 0) {
 	<h2>Available podcasts</h2>
 <?php
 	foreach ($allPodcasts as $podcast) {
-		$podcast->title = htmlentities($podcast->title);
-		$podcast->summary = htmlentities($podcast->summary);
+		$podcast->title = htmlentities($podcast->title, ENT_QUOTES, 'UTF-8');
+		$podcast->summary = htmlentities($podcast->summary, ENT_QUOTES, 'UTF-8');
 ?>
 		<div class="download_box">
 			<h3><a href="http://<?php print $DOMAIN ?>/site/scripts/podcast_info.php?podcastID=<?php print $podcast->id; ?>"><?php print $podcast->title ;?></a></h3>

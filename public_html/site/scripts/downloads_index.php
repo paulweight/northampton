@@ -54,7 +54,7 @@
 				 $extension = $item->getURLExtension();
 			}
 ?>
-			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print $item->id;?>"><?php print htmlentities($item->title);?></a> <img src="http://<?php print $DOMAIN; ?>/site/images/file_type_icons/<?=$extension;?>.gif" alt="<?php print $extension;?>" /> <span class="small">(<?php print $extension;?>)</span></li>
+			<li><a href="http://<?php print $DOMAIN; ?>/site/scripts/download_info.php?fileID=<?php print $item->id;?>"><?php print htmlentities($item->title, ENT_QUOTES, 'UTF-8');?></a> <img src="http://<?php print $DOMAIN; ?>/site/images/file_type_icons/<?=$extension;?>.gif" alt="<?php print $extension;?>" /> <span class="small">(<?php print $extension;?>)</span></li>
 <?php
 		}
 ?>

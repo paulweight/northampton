@@ -99,8 +99,8 @@ if (sizeof($allGalleries) > 0) {
 	<h2>Available galleries</h2>
 <?php
 	foreach ($allGalleries as $gallery) {
-		$gallery->title = htmlentities($gallery->title);
-		$gallery->summary = htmlentities($gallery->summary);
+		$gallery->title = htmlentities($gallery->title, ENT_QUOTES, 'UTF-8');
+		$gallery->summary = htmlentities($gallery->summary, ENT_QUOTES, 'UTF-8');
 ?>
 		<div class="gallery_box">
 <?php
