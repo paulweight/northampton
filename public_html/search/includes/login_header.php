@@ -4,4 +4,7 @@
 	
 	define('RUPA_HOME_URL', PROTOCOL.DOMAIN.'/search/');
 
-?>
+	if (isset($_REQUEST['htmlSafeQuery'])) {
+		$htmlSafeQuery = '';
+	}
+
