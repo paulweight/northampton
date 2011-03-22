@@ -50,7 +50,7 @@
     if (sizeof($commonFAQs) > 0) {
 ?>
 		
-	<h2>Common <abbr title="Frequently asked questions">FAQ's</abbr></h2>
+	<h2>Common <abbr title="Frequently asked questions">FAQs</abbr></h2>
 	
 <?php
 		 foreach ($commonFAQs as $faqItem) {

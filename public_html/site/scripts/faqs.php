@@ -91,7 +91,7 @@
 	if (sizeof($allFAQs) > 0) {
 ?>
 		
-		<h3><?php print $parent->name; ?> <abbr title="Frequently asked questions">FAQ's</abbr></h3>
+		<h3><?php print $parent->name; ?> <abbr title="Frequently asked questions">FAQs</abbr></h3>
 <?php
 		foreach ($allFAQs as $faqItem) {
 ?>

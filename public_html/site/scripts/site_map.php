@@ -195,7 +195,7 @@
 
 		<ul>
 			<li class="noHash"><h2>Frequently Asked Questions</h2></li>
-			<li><a href="http://<?php print $DOMAIN;?>/site/scripts/faqs_index.php">FAQ's by category</a></li>
+			<li><a href="http://<?php print $DOMAIN;?>/site/scripts/faqs_index.php">FAQs by category</a></li>
 			<li><a href="http://<?php print $DOMAIN;?>/site/scripts/faqs_ask.php">Ask a Question</a></li>
 		</ul>
 
