@@ -70,5 +70,5 @@
      		<img src="http://socitm.govmetric.com/imagecounter.aspx?code=263" height="1" width="1" alt="" />
 		</noscript>		
 			
-		<p>Made with <a href="http://validator.w3.org/check?uri=referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/">CSS</a> to <a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><abbr title="Web Accessibility Initiative - Double-A conformance">WAI-AA</abbr></a>. <a href="http://www.fosi.org/icra/"><abbr title="Internet Content Rating Association">ICRA</abbr> rated</a>. Powered by Jadu <a title="External website" href="http://www.jadu.co.uk" >Content Management</a>.</p>
+		<p>Made with <a href="http://validator.w3.org/check?uri=referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/">CSS</a> to <a href="http://www.w3.org/WAI/WCAG1AA-Conformance"><abbr title="Web Accessibility Initiative - Double-A conformance">WAI-AA</abbr></a>. <a href="http://www.fosi.org/icra/"><abbr title="Internet Content Rating Association">ICRA</abbr> rated</a>. Powered by Jadu <a title="External website" href="http://www.jadu.net" >Content Management</a>.</p>
 	</div>
