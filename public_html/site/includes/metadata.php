@@ -3,7 +3,7 @@
 	<!-- general metadata -->
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 	<meta http-equiv="content-language" content="en" />
-	<meta name="generator" content="http://www.jadu.co.uk" />
+	<meta name="generator" content="http://www.jadu.net" />
 	<meta name="robots" content="index,follow" />
 	<meta name="revisit-after" content="2 days" />
 	<meta name="Author-Template" content="Jadu CSS design" />
