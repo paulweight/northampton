@@ -31,19 +31,6 @@
 ?>
 	</div><!-- end of page_wrap -->
 	
-<!-- The LGNL taxonomy -->
-
-<?php if (sizeof($rootCategories) > 0) { ?>
-	<div id="footerLgnl">
-		<h2>Information by category</h2>
-		<ul>
-			<?php foreach ($rootCategories as $category) { ?><li><a href="http://<?php print $DOMAIN;?>/site/scripts/documents.php?categoryID=<?php print $category->id;?>"><?php print $category->name; ?></a></li><?php } ?>
-		</ul>
-	</div>
-<?php } ?>
-
-<!-- End of the taxonomy -->
-
 	<div id="footer">	
 <!-- START Socitm Code -->
 <script type="text/javascript">

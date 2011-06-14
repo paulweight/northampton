@@ -38,7 +38,7 @@
 ?>
 
 	<ul id="mastNav">
-		<li class="contactDetails"><a href="http://<?php print $DOMAIN;?>/site/scripts/documents_info.php?documentID=657&amp;pageNumber=1">Contact details <span>Telephone: <?php print $mastAddress->telephone;?></span></a></li>
+		<li class="contactDetails"><a href="http://<?php print $DOMAIN;?>/site/scripts/documents_info.php?documentID=657&amp;pageNumber=1">Contact Us <span>Telephone: <?php print $mastAddress->telephone;?></span></a></li>
 		<li class="easyRead"><a href="http://<?php print $DOMAIN;?>/site/scripts/user_settings.php">Easy to read? <span>Change text size and colours</span></a></li>
 		<li class="languages"><a title="Help with languages and translation" href="http://<?php print $DOMAIN;?>/languages"><span>Languages</span></a></li>
 	</ul>
