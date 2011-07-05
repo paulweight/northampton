@@ -209,7 +209,6 @@
 			$rssItem->title = encodeXML($news->title);
 			$rssItem->link = 'http://' . $DOMAIN . '/site/scripts/news_article.php?newsID=' . $news->id;
 			$news->summary = str_replace('Õ', "'", $news->summary);
-			$news->summary = str_replace('£', '&#163;', $news->summary);
 			$rssItem->description = encodeXML($news->summary);
 			$rssItem->pubDate = $news->getNewsDateISO8601();
 			$rssChannel->addItem($rssItem);
