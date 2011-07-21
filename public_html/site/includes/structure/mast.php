@@ -17,11 +17,8 @@
 ?>
 <div id="mobile_name"><?php print METADATA_GENERIC_COUNCIL_NAME; ?></div>
 <div id="mast">
-	<ul id="skip">
-		<li><a href="http://<?php print $pageUrl ;?>#content" rel="nofollow">Jump to content</a></li>
-		<li><a href="http://<?php print $pageUrl ;?>#column_nav" rel="nofollow">Jump to navigation</a></li>
-	</ul>
-	
+	<a class="skip" href="http://<?php print $pageUrl ;?>#content" rel="nofollow">Jump to content</a>
+	<a class="skip" href="http://<?php print $pageUrl ;?>#column_nav" rel="nofollow">Jump to navigation</a>
 <?php 
 	if (basename($_SERVER['PHP_SELF']) != 'index.php') {
 ?>
@@ -42,9 +39,9 @@
 		<li class="easyRead"><a href="http://<?php print $DOMAIN;?>/site/scripts/user_settings.php">Easy to read? <span>Change text size and colours</span></a></li>
 		<li class="languages"><a title="Help with languages and translation" href="http://<?php print $DOMAIN;?>/languages"><span>Languages</span></a></li>
 	</ul>
+	<div class="clear"></div>
 </div>
-<br class="clear" />
-<div id="mainNav">
+<div id="mainNav" class="clear" >
 
 	<form action="http://<?php print $DOMAIN;?>/site/scripts/google_results.php" method="get" name="search">
 		<label for="SearchSite">Search this site</label>

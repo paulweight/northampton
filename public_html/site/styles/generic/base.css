@@ -35,7 +35,6 @@ body > html {font-size: 12px;}
 
 #wrapper {margin: 0 auto; width: 83.33em; background: #fff;}
 
-#mast { position: relative; padding: 0; width: 100%;}
 
 #mainNav { clear: both; width: 100%; position: relative; margin-top: 1.8em;}
 
@@ -55,14 +54,17 @@ body > html {font-size: 12px;}
 .hidden, div#mobile_name, #mast .pseudoH1 span, #mast h1 span, #mast ul#mastNav li.languages span, #mainNav form label { margin-left: -200000px; position:absolute; top:-200000px;}
 
 /* ############################################################## MAST */
-#mast ul#skip { margin: .2em 0 .2em 73px; }
-#mast ul#skip li { display: inline; font-size: .9em; border-right: 1px solid #ccc; padding: 0 12px; }
-#mast ul#skip li:last-child {border-right: none; }
 
-#mast ul#skip li a:link, #mast ul#skip li a:visited { color: #999; background: none; }
-#mast ul#skip li a:hover, #mast ul#skip li a:active { color: #000; background: none; text-decoration: underline;border-bottom: none; }
+#mast { position: relative; padding: 0.2em; width: 100%;}
 
-#mast .pseudoH1, #mast h1 { float: left; margin:12px 20px 10px -2px; padding:0; background: url(../css_img/logo.gif) no-repeat -1px top; width: 302px; height: 43px; }
+#mast a.skip { background: #fff; position: absolute; left: -20000px; }
+#mast a.skip:link, 
+#mast a.skip:visited { color: #999; background: none; }
+#mast a.skip:hover, 
+#mast a.skip:active,
+#mast a.skip:focus	{ color: #000; background: none; text-decoration: underline; border-bottom: none; left: 0; }
+
+#mast .pseudoH1, #mast h1 { float: left; margin: 28px 20px 10px -2px; padding:0; background: url(../css_img/logo.gif) no-repeat -1px top; width: 302px; height: 43px; }
 #mast .pseudoH1 a { display: block; width: 302px; height: 43px; padding:0; border: none;}
 
 #mast .pseudoH1 a:link, #mast .pseudoH1 a:visited {background: url(../css_img/logo.gif) no-repeat left top;}
@@ -71,7 +73,6 @@ body > html {font-size: 12px;}
 
 #mast ul#mastNav { position: absolute; top: 6px; left: 320px; overflow: hidden;}
 #mast ul#mastNav li { display: inline; background: url(../css_img/mastpipe.gif) no-repeat left top; padding: 2em 1.8em; float: left; text-transform: uppercase; line-height: 1.3; }
-
 
 #mast ul#mastNav li a:link, #mast ul#mastNav li a:visited { color: #c33; font-size: 1.8em; display: block; background: none;}
 #mast ul#mastNav li a:hover, #mast ul#mastNav li a:active { border-bottom: none; color: #000;}
