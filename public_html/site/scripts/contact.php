@@ -32,7 +32,7 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
         		
-		<p class="first">Contact <?php print METADATA_GENERIC_COUNCIL_NAME;?> directly using the <a href="http://selfserve.northampton.gov.uk/Ef3/webCCCFeedback.xml">feedback form</a> or alternatively, you can contact us using the details below.</p>
+		<p class="first">Contact <?php print METADATA_GENERIC_COUNCIL_NAME;?> directly using the <a href="/feedbackform">feedback form</a> or alternatively, you can contact us using the details below.</p>
 	
 	<div class="contactPage">
 		<ul>
