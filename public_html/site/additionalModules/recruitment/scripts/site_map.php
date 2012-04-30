@@ -11,7 +11,7 @@
 	
 	$address = new Address();
 	
-	$lgcl = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);
+	$lgcl = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 	$allRootCategories = $lgcl->getTopLevelCategories();	
 	
 	//	Documents top level useage	
@@ -47,17 +47,17 @@
 	$breadcrumb = 'sitemap';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html<?php if (TEXT_DIRECTION == 'rtl') print ' dir="rtl"'; ?> xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title><?php print METADATA_GENERIC_COUNCIL_NAME;?> - Site map</title>
+	<title><?php print encodeHtml(METADATA_GENERIC_NAME); ?> - Site map</title>
 	<?php include_once("../includes/stylesheets.php"); ?>
 	<?php include_once("../includes/metadata.php"); ?>
 
-	<meta name="Keywords" content="site map, <?php print METADATA_GENERIC_COUNCIL_KEYWORDS;?>" />
-	<meta name="Description" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> site map" />
+	<meta name="Keywords" content="site map, <?php print encodeHtml(METADATA_GENERIC_KEYWORDS); ?>" />
+	<meta name="Description" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> site map" />
 
-	<meta name="DC.title" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> site map" />
-	<meta name="DC.description" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> site map" />
+	<meta name="DC.title" lang="en" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> site map" />
+	<meta name="DC.description" lang="en" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> site map" />
 
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
@@ -71,20 +71,20 @@
 		<div class="info_left">
 			<h2>About this website</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/about_us.php">Accessibility statement</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/about_us.php">Access keys</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/user_settings.php">Settings for accessibility</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/website_statistics.php">Website statistics</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/whats_new_index.php">What's new</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/terms.php">Terms and disclaimer</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/about_us.php">Accessibility statement</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/about_us.php">Access keys</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/user_settings.php">Settings for accessibility</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/website_statistics.php">Website statistics</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/whats_new_index.php">What's new</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/terms.php">Terms and disclaimer</a></li>
 			</ul>
 		</div>	
 		<div class="info_right">
 			<h2>Contacting us</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/contact.php">Contacting us</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/feedback.php">Feedback form</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/location.php">Location map and directions</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/contact.php">Contacting us</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/feedback.php">Feedback form</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/location.php">Location map and directions</a></li>
 			</ul>
 		</div>					
 		<div class="clear"></div>
@@ -100,7 +100,7 @@
 				$docCatCount = sizeof($rootCategories)-1;
 				foreach ($rootCategories as $index => $rootCat) {
 ?>
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/documents.php?categoryID=<?php print $rootCat->id;?>"><?php print $rootCat->name;?></a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/documents.php?categoryID=<?php print $rootCat->id;?>"><?php print encodeHtml($rootCat->name);?></a></li>
 <?php
 				}
 ?>			
@@ -109,12 +109,12 @@
 		<div class="info_right">
 			<h2>Downloads</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/downloads_index.php">Downloads by category</a></li>				
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/downloads_index.php">Downloads by category</a></li>				
 <?php
 			$downloadCatCount = sizeof($downloadRootCategories);				
 			foreach ($downloadRootCategories as $index => $rootCat) {
 ?>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/downloads.php?categoryID=<?php print $rootCat->id;?>"><?php print $rootCat->name;?> Downloads</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/downloads.php?categoryID=<?php print $rootCat->id;?>"><?php print encodeHtml($rootCat->name);?> Downloads</a></li>
 				
 <?php
 			}
@@ -130,12 +130,12 @@
 		<div class="info_left">
 			<h2>News</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/news_index.php">Latest news</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/view_feeds.php">External news feeds</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/rss_about.php">About RSS feeds</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/poll_results.php">Opinion poll results</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/poll_past_results.php">Past polls</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/whats_new_index.php">What's new on site</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/news_index.php">Latest news</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/view_feeds.php">External news feeds</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/rss_about.php">About RSS feeds</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/poll_results.php">Opinion poll results</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/poll_past_results.php">Past polls</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/whats_new_index.php">What's new on site</a></li>
 			</ul>
 		</div>	
 			<div class="info_right">
@@ -146,7 +146,7 @@
 			foreach (array_keys($newsWithCats) as $index => $topCat) {
 				$cat = $lgcl->getCategory($topCat);
 ?>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/news_category.php?categoryID=<?php print $cat->id;?>"><?php print $cat->name;?> News</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/news_category.php?categoryID=<?php print $cat->id;?>"><?php print encodeHtml($cat->name); ?> News</a></li>
 <?php
 			}
 ?>				
@@ -159,12 +159,12 @@
 		<div class="info_left">
 			<h2>Events</h2>
 			<ul class="list">
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_index.php">Pick of the Week</a></li>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_info.php?period=thisWeek">What's on this week</a></li>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_info.php?period=nextWeek">Next week</a></li>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_info.php?period=thisMonth">This month</a></li>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_info.php?period=nextMonth">Next Month</a></li>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events_info.php?period=full">Full events listings</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_index.php">Pick of the Week</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_info.php?period=thisWeek">What's on this week</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_info.php?period=nextWeek">Next week</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_info.php?period=thisMonth">This month</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_info.php?period=nextMonth">Next Month</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events_info.php?period=full">Full events listings</a></li>
 		   </ul>
 		   </div>
 		<div class="info_right">
@@ -173,7 +173,7 @@
 <?php
 			foreach ($rootEventsCategories as $index => $rootCat) {
 ?>
-			   <li><a href="http://<?php print $DOMAIN;?>/site/scripts/events.php?categoryID=<?php print $rootCat->id;?>"><?php print $rootCat->name; ?> events</a></li>
+			   <li><a href="<?php print getSiteRootURL(); ?>/site/scripts/events.php?categoryID=<?php print $rootCat->id;?>"><?php print encodeHtml($rootCat->name); ?> events</a></li>
 <?php
 				}
 ?>
@@ -187,18 +187,18 @@
 		<div class="info_left">
 			<h2>Other resources</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/xforms_index.php">Online forms</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/links.php">Links and web resources</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/az_home.php">A-Z of services</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/recruit_jobs.php">Job vacancies</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/xforms_index.php">Online forms</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/links.php">Links and web resources</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/az_home.php">A-Z of services</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/recruit_jobs.php">Job vacancies</a></li>
 			</ul>
 		</div>	
 
 		<div class="info_right">
 			<h2>Frequently Asked Questions</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/faqs_index.php">FAQ's by category</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/faqs_ask.php">Ask a Question</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/faqs_index.php">FAQ's by category</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/faqs_ask.php">Ask a Question</a></li>
 			</ul>
 		</div>
 		<div class="clear"></div>
@@ -206,20 +206,20 @@
 
 
 <?php
-		if (!isset($_SESSION['userID'])) {
+		if (!Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
 ?>
 
 		<div class="sitemap">
 			<h2>Registration</h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/register.php">Registration form</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/forgot_password.php">Password reminder</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/register.php">Registration form</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/forgot_password.php">Password reminder</a></li>
 			</ul>
 			<div class="clear"></div>
 		</div>	
 <?php
 		}
-		else if (isset($_SESSION['userID'])) {
+		else if (Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
 ?>
 				
 		<!-- Your Account area -->
@@ -227,18 +227,18 @@
 		<div class="info_left">
 			<h2>Your details</h2>
 				<ul class="list">
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/user_home.php">Your account home</a></li>
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/change_details.php">Change your details</a></li>
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/change_password.php">Change your Password</a></li>
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/forgot_password.php">Password Reminder</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/user_home.php">Your account home</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/change_details.php">Change your details</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/change_password.php">Change your Password</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/forgot_password.php">Password Reminder</a></li>
 				</ul>
 		</div>	
 
 		<div class="info_right">
 		<h2>Your online forms</h2>
 				<ul class="list">
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/user_home.php">Online forms home</a></li>
-					<li><a href="http://<?php print $DOMAIN;?>/site/scripts/user_form_archive.php">Form archive</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/user_home.php">Online forms home</a></li>
+					<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/user_form_archive.php">Form archive</a></li>
 				</ul>
 		</div>	
 		<div class="clear"></div>

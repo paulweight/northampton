@@ -1,6 +1,7 @@
 <?php
-	session_start();
+	include_once("utilities/JaduStatus.php");
 	include_once("egov/JaduXFormsForm.php");
+	include_once("utilities/JaduReadableURLs.php");
 
 	$searchText = trim($_REQUEST['searchText']);
 	$found = false;
@@ -12,17 +13,17 @@
 <?php
 
 		foreach ($xforms as $form) {
-			if (strpos(strtolower($form->title), strtolower($searchText)) !== false) {
+			if (mb_strpos(mb_strtolower($form->title), mb_strtolower($searchText)) !== false) {
 				$found = true;
 ?>
 		<li>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/xforms_form.php?formID=<?php print $form->id;?>" title="<?php print $form->title;?>"><?php print $form->title;?></a> 
+			<a href="<?php print ((defined('SSL_ENABLED') && SSL_ENABLED) ? getSecureSiteRootURL() : getSiteRootURL()) . buildXFormsURL($form->id); ?>"><?php print encodeHtml($form->title); ?></a> 
 <?php
-				if (!isset($_SESSION['userID']) && $form->allowUnregistered == 0) {
+		if (!Jadu_Service_User::getInstance()->isSessionLoggedIn() && $form->allowUnregistered == 0) {
 ?>
-			<img src="/site/images/icon_lock.gif" alt="Padlock graphic" title="You must sign-in to use this form" />
+			<img src="/site/images/icon_lock.gif" alt="Padlock graphic"  />
 <?php
-				}
+		}
 ?>
 		</li>
 <?php
@@ -31,13 +32,11 @@
 		
 		if (!$found) {
 ?>
-		<li>No forms for <?php print $searchText; ?> found</li>
+		<li>No forms for <?php print encodeHtml($searchText); ?> found</li>
 <?php
 		}
 ?>
 	</ul>
 <?php
 	}
-	
-	print '|' . $_REQUEST['seq'];
 ?>

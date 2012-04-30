@@ -7,4 +7,3 @@
 	if (isset($_REQUEST['htmlSafeQuery'])) {
 		$htmlSafeQuery = '';
 	}
-

@@ -1,25 +1,18 @@
 <?php
-	session_start();
-	require_once('JaduConstants.php');
-	require_once('rupa/JaduRupaGoogle.php');
+    require_once('includes/login_header.php');
 	require_once('rupa/JaduRupaSearchLog.php');
-	require_once('rupa/JaduRupaSeasoning.php');
 	require_once('rupa/JaduRupaCollection.php');
 	require_once('rupa/JaduRupaAppliance.php');
     
-    include_once('includes/login_header.php');
 
 	$liveAppliances = getRupaAppliances('live', true, '=');
 	if (empty($liveAppliances)) {
 		header('Location: http://'.DOMAIN.'/search/offline.php');
+		exit;
 	}
 	
-	$defaultStylesheet = getSeasoningStylesheet(RUPA_STYLESHEET);
-
-	$collectionGroups = getAllRupaCollectionGroups();
-
-	define(PAGE_SEARCH_RESULT_COUNT, 10);
-	define(MAXIMUM_NAV_PAGE_COUNT, 10);
+	define('PAGE_SEARCH_RESULT_COUNT', 10);
+	define('MAXIMUM_NAV_PAGE_COUNT', 10);
 
 	if ($frontend == '') {
 		$frontend = 'default_frontend';
@@ -30,9 +23,9 @@
 <html lang="en">
 <head>
 	<title><?php print RUPA_INSTALLATION_NAME; ?> - Advanced Search</title>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-	<link rel="search" type="application/opensearchdescription+xml" href="http://<?php print DOMAIN; ?>/search/openSearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php print $defaultStylesheet->fullWebPath;?>" media="screen" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="search" type="application/opensearchdescription+xml" href="http://<?php print DOMAIN; ?>/search/opensearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php print RUPA_HOME_URL; ?>styles/<?php print encodeHtml(RUPA_STYLESHEET); ?>" media="screen" />
 	<link rel="Shortcut Icon" type="image/x-icon" href="<?php print RUPA_HOME_URL; ?>favicon.ico" />
 	
 	<script src="<?php print RUPA_HOME_URL; ?>javascript/rupa.js" type="text/javascript"></script>	
@@ -80,7 +73,7 @@
 
 					<span>
 						<label for="result_number">Number of results per page:</label>
-						<select class="select_group wide" id="result_number" name="num">
+						<select class="select_group wide" id="result_number" name="numToShow">
 							<option value="10">10 results</option>
 							<option value="20">20 results</option>
 							<option value="30">30 results</option>
@@ -118,7 +111,7 @@
 		<div class="clear"></div>
 </div>
 		<!-- Draw -->	
-		<?php include_once("includes/drawer.php"); ?> 
+		<?php include_once("includes/footer.php"); ?> 
 
 </body>
 </html>

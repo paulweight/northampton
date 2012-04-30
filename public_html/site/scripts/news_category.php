@@ -1,134 +1,72 @@
 <?php
-	include_once("utilities/JaduStatus.php");
-	include_once("JaduStyles.php");
+	require_once("utilities/JaduStatus.php");
+	require_once("JaduStyles.php");
+	require_once("websections/JaduNews.php");
+	require_once("JaduAppliedCategories.php");
+	require_once("websections/JaduFeedManager.php");
 	
-	include_once("websections/JaduNews.php");
-	include_once("JaduAppliedCategories.php");
-	include_once("websections/JaduFeedManager.php");
+	require_once("../includes/lib.php");
 	
-	$skipFirst = false;
-	
-	$lgcl = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);
-	$usedTopLevelCats = createItemIndex(NEWS_CATEGORIES_TABLE, $lgcl);
-	$newsWithCats = sortAndFilterCategorisedNews ($usedTopLevelCats);
-	
-	//	This little lot checks whether the topNews for the category should be the 
-	//	full News top News, or just the first for the category as a whole.
-	$topNews = getTopNews(true, true);
-	if ($topNews == -1) {
-		$topNews = getLastNews(true, true);
-	}
-	
-	if (isset($_GET['categoryID']) && sizeof($newsWithCats[$_GET['categoryID']]) > 0) {
-		$categoryViewing = $lgcl->getCategory($_GET['categoryID']);
+	if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
+		$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
+		$currentCategory = $lgclList->getCategory($_GET['categoryID']);
 		
-		if ($cat->id != $_GET['categoryID']) {
-			$topNews = $newsWithCats[$_GET['categoryID']][0];
-			$skipFirst = true;
+		//check to see if the category exists
+		if ($currentCategory == null) {
+			header("Location: ".getSiteRootURL().buildNewsURL());
+			exit();			
+		}
+		
+		// Category Links
+		$allCategories = $lgclList->getChildCategories($_GET['categoryID']);
+		$categories = filterCategoriesInUse($allCategories, NEWS_APPLIED_CATEGORIES_TABLE, true);	
+		
+		// need to get the top news due to versioning bug
+		// where top story is based on db flag, not versioned flag
+		$tempTopNews = getTopNews(true, true);
+		
+		$allNewsWithCat = getAllNewsWithCategory ($_GET['categoryID'], true, true);
+
+		
+		$dirTree = $lgclList->getFullPath($_GET['categoryID']);	
+		
+		$allNews = Array();
+		foreach($allNewsWithCat as $news) {
+			if ($tempTopNews != null && $news->id == $tempTopNews->id) {
+				$topNews = $news;
+			}
+			else {
+				$allNews[] = $news;
+			}
+		}
+		
+		usort($allNews, 'news_sort');
+		
+		if (!isset($topNews)) {
+			$topNews = $allNews[0];
+			unset($allNews[0]);
 		}
 	}
 	else {
-		header("Location: http://$DOMAIN/site/scripts/news_index.php");
+		header("Location: ".getSiteRootURL().buildNewsURL());
 		exit();
 	}
 
-	$breadcrumb = 'newsCats';
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title><?php print "$currentCategory->name "; ?> news | <?php print METADATA_GENERIC_COUNCIL_NAME;?></title>
-	
-	<?php include_once("../includes/stylesheets.php"); ?>
-	<?php include_once("../includes/metadata.php"); ?>
-
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://<?php print $DOMAIN;?>/site/scripts/rss.php" />
-
-	<meta name="Keywords" content="news, <?php print $currentCategory->name; ?>, <?php print METADATA_GENERIC_COUNCIL_KEYWORDS;?>" />	
-	<meta name="Description" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?>s latest news regarding <?php print $currentCategory->name; ?>" />
-
-	<meta name="DC.title" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> - Latest <?php print "$currentCategory->name "; ?>news" />
-	<meta name="DC.description" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?>s latest news regarding <?php print $categoryViewing->name; ?>" />
-
-	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
-	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
-	
-	<script type="text/javascript" src="site/javascript/global.js"></script>
-</head>
-<body>
-<!-- ########## MAIN STRUCTURE ######### -->
-<?php include("../includes/opening.php"); ?>
-<!-- ########################## -->
-
-<?php
-		if ($topNews == -1) {
-?>
-
-		<h2>Sorry, there is currently no news</h2>
-
-<?php
-		} 
+	// Breadcrumb, H1 and Title
+	$MAST_HEADING = $currentCategory->name .' news';
+	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildNewsURL() .'" >Latest news</a></li>';
+	$levelNo = 1;
+	$count = 0;
+	foreach ($dirTree as $parent) {
+		if ($count < sizeof($dirTree) - 1) {
+			$MAST_BREADCRUMB .= '<li><a href="' . getSiteRootURL() . buildNewsURL($parent->id) .'" >'. encodeHtml($parent->name) .'</a></li>';
+		}
 		else {
-?>
-		<!-- Top story -->
-	<div class="lead">
-<?php 
-			if ($topNews->imageURL != "") {
-?>
-		<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $topNews->id;?>">
-			<img src="http://<?php print $DOMAIN;?>/images/<?php print $topNews->imageURL;?>" alt="<?php print getImageProperty($topNews->imageURL, 'altText'); ?> " class="contentimage" />
-		</a>
-<?php 
-			}
-?>
-		<h2>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $topNews->id;?>" ><?php print $topNews->title;?></a>
-		</h2>
-		<p class="date">Published <?php print date("jS F Y", $topNews->newsDate);?></p>
-		<p><?php print $topNews->summary;?></p>
-	</div>
-	<!-- END top story -->
-	
-
-<?php	
-		foreach ($newsWithCats[$categoryID] as $index => $news) {
-			if ($skipFirst && $index == 0) {
-			}
-			else {
-?>
-
-	<div class="content_box">
-		<h3>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $news->id;?>" ><?php print $news->title;?></a>
-		</h3>
-<?php 
-		if ($news->imageURL != "") { 
-?>
-			<a href="http://<?php print $DOMAIN;?>/site/scripts/news_article.php?newsID=<?php print $news->id;?>" >
-				<img src="http://<?php print $DOMAIN;?>/images/<?php print $news->imageURL;?>" alt="<?php print getImageProperty($news->imageURL, 'altText'); ?>" />
-			</a>
-<?php 
+			$MAST_BREADCRUMB .= '<li><span>'. encodeHtml($parent->name) .'</span></li>';
 		}
-?>
-		<p class="date">Published <?php print date("jS F Y", $news->newsDate);?></p>
-		<p><?php print $news->summary;?></p>
-		<div class="clear"></div>
-	</div>	
-<?php
-			}
-		}
-?>
-
-	<p class="rssfeed"><a href="http://<?php print $DOMAIN;?>/site/scripts/rss.php" target="_blank">News RSS</a></p>
-	<p class="first"><a href="http://<?php print $DOMAIN; ?>/site/scripts/news_archive.php">News archive</a></p>
-
-<?php
+		$count++;
+		$levelNo++;
 	}
+
+	include("news_category.html.php");
 ?>
-
-	<!-- The Contact box -->
-	<?php include("../includes/contactbox.php"); ?>
-	<!-- END of the Contact box -->
-
-<!-- ################ MAIN STRUCTURE ############ -->
-<?php include("../includes/closing.php"); ?>

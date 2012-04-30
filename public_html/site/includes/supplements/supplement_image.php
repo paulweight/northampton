@@ -1,24 +1,21 @@
 <?php
 	if (isset($record)) {
 ?>
-<div class="supplementImage">
-	<img alt="<?php print getImageProperty($record->imageFilename, 'altText'); ?>" src="http://<?php print $DOMAIN . '/images/' . $record->imageFilename; ?>" />
-
+	<div class="supplement">
+		<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($record->imageFilename); ?>" alt="<?php print encodeHtml(getImageProperty($record->imageFilename, 'altText')); ?>"  class="float_left" />
 <?php
 	if ($record->description != '') {
 ?>
-
-	<p><?php print $record->description; ?></p>
-	
+	<p><?php print processEditorContent($record->description); ?></p>
 <?php
 	}
 	if ($record->url != '' && $record->urlText != '') {
 ?>
-	<p><a href="<?php print $record->url; ?>"><?php print $record->urlText; ?></a></p>
+		<p><a href="<?php print encodeHtml($record->url); ?>"><?php print encodeHtml($record->urlText); ?></a></p>
 <?php
 	}
 ?>
-</div>
+	</div>
 <?php
 	}
 ?>

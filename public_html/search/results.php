@@ -1,6 +1,6 @@
 <?php
+	include_once('includes/login_header.php');
 	require_once('rupa/JaduRupaSearchLog.php');
-	require_once('rupa/JaduRupaGoogle.php');
 	require_once('rupa/JaduRupaSearch.php');
 	require_once('rupa/JaduRupaAppliance.php');
 	require_once('rupa/JaduRupaCollection.php');
@@ -8,24 +8,23 @@
 	require_once('rupa/JaduRupaRenameResultURL.php');
 	require_once('JaduMimeTypeList.php');
 	require_once('JaduFileTypeMappings.php');
-	require_once('rupa/JaduRupaSeasoning.php');
-	include_once('includes/login_header.php');
 	require_once('rupa/JaduRupaAppliance.php');
-
-	define(PAGE_SEARCH_RESULT_COUNT, 10);
-	define(MAXIMUM_NAV_PAGE_COUNT, 10);
+	require_once('websections/JaduDownloadFiles.php');
+	
+	define('PAGE_SEARCH_RESULT_COUNT', 10);
+	define('MAXIMUM_NAV_PAGE_COUNT', 10);
 
 	$liveAppliances = getRupaAppliances('live', true, '=');
 	if (empty($liveAppliances)) {
 		header('Location: http://'.DOMAIN.'/search/offline.php');
 	}
 	
-	$allRenameRules = getAllRupaRenameResultURLs();
+	$allRupaRenameResultURLs = getAllRupaRenameResultURLs();
 	$allCollections = getAllRupaCollections();
-
-	$defaultStylesheet = getSeasoningStylesheet(RUPA_STYLESHEET);
 	
 	$rupaSearch = new RupaSearch();
+	$rupaSearch->setDefaultFilter(FILTER_SNIPPET_ONLY);
+	$rupaSearch->configureFromGet($_GET);
 	
 	$allowedCollections = array();
 	
@@ -33,8 +32,8 @@
 		$allowedCollections[] = $collection->collectionName;
 	}
 		
-	if (is_array($_GET['collections']) && sizeof($_GET['collections']) > 0) {
-		foreach($_GET['collections'] as $collection) {
+	if (isset($_GET['sites']) && is_array($_GET['sites']) && sizeof($_GET['sites']) > 0) {
+		foreach($_GET['sites'] as $collection) {
 			if (in_array($collection, $allowedCollections)) {
 				$rupaSearch->addSite($collection);
 			}
@@ -49,172 +48,67 @@
 	}
 
 	if (sizeof($rupaSearch->sites) == sizeof($allowedCollections)) {
-		$searchAll = true;
-	}
-	else {
-		$searchAll = false;
+		$rupaSearch->allSites = true;
 	}
 
-	if (isset($_GET['q'])) {
-		if (isset($_GET['pre_q'])) {
-			$query = $_GET['pre_q'].' ';
-		}
-		$query .= $_GET['q'];
-		
- 		$rupaSearch->setQuery($query);
+	if (trim($rupaSearch->getFullQuery()) == '') {
+		header('Location: '.RUPA_HOME_URL.'advanced.php');
+		exit;	
 	}
-	if (!empty($query)) {
+	
+	$rupaSearch->addMetaDataFieldsName('JaduTopNavCategory');
+	
+	if (defined('RUPA_SECURE_RESULT_METADATA_TAG') && RUPA_SECURE_RESULT_METADATA_TAG  != '') {
+		$rupaSearch->addMetaDataFieldsName('RUPA_SECURE_RESULT_METADATA_TAG');
+	}
+	
+	if (defined('RUPA_RESULT_TITLE_METADATA_FIELD') && RUPA_RESULT_TITLE_METADATA_FIELD  != '') {
+		$rupaSearch->addMetaDataFieldsName('RUPA_RESULT_TITLE_METADATA_FIELD');
+	}
+	
+	if (defined('RUPA_RESULT_TITLE_METADATA_FIELD') && RUPA_RESULT_TITLE_METADATA_FIELD  != '') {
+		$rupaSearch->addMetaDataFieldsName('RUPA_RESULT_TITLE_METADATA_FIELD');
+	}
+	
+	$results = $rupaSearch->search();
+	$htmlSafeQuery = $rupaSearch->getFullQueryForXHTML();
+	$resultsCount = $results->documentsFound;
+	$displayedResultsCount = $results->startNumber + sizeof($results->resultItems) - 1;	 		
+	
+	//only log the first page request for non-blank searches
+	if ($rupaSearch->getFullQuery() != '' && $rupaSearch->startNum == -1) {
 		
-		// exact match
-		if (!empty($_GET['quoteQuery'])) {
-				$rupaSearch->setQuoteQuery($_GET['quoteQuery']);
-		}
+		$logDate = date('Y-m-d');
+		$logHour = date('H');
 	
-		// 'or' match
-		if (!empty($_GET['orQuery'])) {
-			$rupaSearch->setOrQuery($_GET['orQuery']);
-		}
-	
-		// exclude words
-		if (!empty($_GET['excludeWords'])) {
-			$rupaSearch->setExcludeWords($_GET['excludeWords']);
-		}
-	
-		// file format
-		if (!empty($_GET['fileFormat']) && is_array($_GET['fileFormat'])) {
-			foreach ($_GET['fileFormat'] as $fileFormat) {
-				$rupaSearch->addFileFormat($fileFormat);
-			}
-		}
+		$searchLog = getRupaSearchLog (mb_strtolower($rupaSearch->getFullQuery()), mb_strtolower($rupaSearch->getSitesAsString()), $logDate, $logHour);
 		
-		if (!empty($_GET['fileFormatInclusion'])) {
-			$rupaSearch->setFileFormatInclusion($_GET['fileFormatInclusion']);
+		if ($searchLog->id > -1) {
+			$searchLog->addHit($resultsCount);
+			$searchLog->update();
 		}
-		
-		if (!empty($_GET['start'])) {
-			$rupaSearch->setStartNum($_GET['start']);
+		else {
+			$searchLog->meanDocumentsFound = $resultsCount;
+			$searchLog->frequency = 1;
+			$searchLog->insert();
 		}
-		
-		if (!empty($_GET['num'])) {
-			$rupaSearch->setNumToShow($_GET['num']);
-		}
-	
-		if (!empty($_GET['sortBy'])) {
-			$rupaSearch->setSortBy($_GET['sortBy']);
-		}
-		
-		/*$google_query = array(
-							'q' => html_entity_decode($query),
-							'client' => RUPA_GSA_FRONTEND,
-							'site' => $siteString,
-							'collections' => $sites,
-							'output' => 'xml',
-							'ie' => '',
-							'lr' => '',
-							'oe' => '',
-							'filter' => 0,
-							'getfields' => '*',
-							'start' => $_GET['start'],
-							'sort' => $_GET['sort']
-							);*/
-	
-			
-		$results = $rupaSearch->search();
-	
-		//build sort links
-		$sortOptions = array(
-			'Sort by relevance' => '',
-			'Sort by date' => 'date:D:R:d1'
-		);
-	
-		/*$tempSort = $google_query['sort'];
-	
-		if ($google_query['sort'] == $sortOptions['Sort by relevance'] || ($google_query['sort'] == '')) {
-			$google_query['sort'] = $sortOptions['Sort by date'];
-			$sortQuery = http_build_query($google_query);
-			$sort = '<a href="'.RUPA_HOME_URL.'results.php?'.$sortQuery.'" title="Sort by date" >Sort by date</a> / Sort by relevance';
-		}
-		else{
-			$google_query['sort'] = $sortOptions['Sort by relevance'];
-			$sortQuery = http_build_query($google_query);
-			$sort = 'Sort by date / <a href="'.RUPA_HOME_URL.'results.php?'.$sortQuery.'" title="Sort by relevance" >Sort by relevance</a>';
-		}
-		
-		$google_query['sort'] = $tempSort;*/
-	
-		//$htmlSafeQuery = htmlentities(stripslashes(stripslashes(trim($results['GSP']['Q']))));
-		$htmlSafeQuery = $rupaSearch->getFullQueryForXHTML();
-		
-		$resultsCount = $results->documentsFound;
-		
-		/*$oneBoxResults = $results['GSP']['ENTOBRESULTS']['OBRES'];
-		if (!is_array($oneBoxResults['MODULE_RESULT'][0]) && is_array($oneBoxResults)) {
-			$temp = $oneBoxResults['MODULE_RESULT'];
-			$oneBoxResults['MODULE_RESULT'] = array();
-			$oneBoxResults['MODULE_RESULT'][0] = $temp;
-		}*/
-	
-	
-		//only log the first page request for non-blank searches
-		if ($rupaSearch->getFullQuery() != '' && $rupaSearch->startNum == -1) {
-			
-			$logDate = date('Y-m-d');
-			$logHour = date('H');
-		
-			$searchLog = getRupaSearchLog (strtolower($rupaSearch->getFullQuery()), strtolower($rupaSearch->getSitesAsString()), $logDate, $logHour);
-			
-			if ($searchLog->id > -1) {
-				$searchLog->addHit($resultsCount);
-				$searchLog->update();
-			}
-			else {
-				$searchLog->meanDocumentsFound = $resultsCount;
-				$searchLog->frequency = 1;
-				$searchLog->insert();
-			}
-		}
-   	}
+	}
+  	
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-	<title><?php print RUPA_INSTALLATION_NAME; ?> - Results</title>
-	<link rel="search" type="application/opensearchdescription+xml" href="http://<?php print DOMAIN; ?>/search/openSearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php print $defaultStylesheet->fullWebPath;?>" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?php print RUPA_HOME_URL; ?>styles/google_results.css" media="screen" />
-	<link rel="Shortcut Icon" type="image/x-icon" href="<?php print SHARED_HOME_URL; ?>favicon.ico" />
+	<title><?php print $htmlSafeQuery.' - '. encodeHtml(RUPA_INSTALLATION_NAME); ?> - Results</title>
+	<link rel="search" type="application/opensearchdescription+xml" href="<?php print RUPA_HOME_URL; ?>opensearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>">
+	<link rel="stylesheet" type="text/css" href="<?php print RUPA_HOME_URL; ?>styles/<?php print encodeHtml(RUPA_STYLESHEET); ?>" media="screen">
+	<link rel="stylesheet" type="text/css" href="<?php print RUPA_HOME_URL; ?>styles/google_results.css" media="screen">
+	<link rel="Shortcut Icon" type="image/x-icon" href="<?php print getStaticContentRootURL(); ?>/favicon.ico">
 	<!-- general metadata -->
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-	<meta http-equiv="content-language" content="en" />
-	<meta name="generator" content="http://www.jadu.co.uk" />
-	<meta name="robots" content="index,follow" />
-	<meta name="revisit-after" content="2 days" />
-	
-	<script type="text/javascript" src="<?php print RUPA_HOME_URL; ?>javascript/BubbleTooltips.js"></script>
-	<script src="<?php print RUPA_HOME_URL; ?>javascript/rupa.js" type="text/javascript"></script>	
-	<script type="text/javascript">
-		window.onload=function(){enableTooltips()};
-
-    function resizeRelativeWidth(element_id, start, end, type)
-    {
-        $(element_id).style.width = end + type;
-    }
-    
-    function switchRelativeWidth(element_id, width_a, width_b)
-    {
-        if($(element_id).style.width == width_a){
-            $(element_id).style.width = width_b;
-        }else{
-            $(element_id).style.width = width_a;
-        }
-    
-    }
-    
-    function newWindow (site)
-    {        
-        window.open($(site+'_frame').src);
-    }
-	</script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="content-language" content="en">
+	<meta name="generator" content="http://www.jadu.co.uk">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="revisit-after" content="2 days">
 	
 	<!--[if gte IE 5.5]><![if lt IE 7]>
 		<style type="text/css">
@@ -234,24 +128,25 @@
 	<div id="googlerupa_results">
 
 		<p class="googstrip">
-		<?php
+<?php
 
 		if ($resultsCount > 0) {
-		?>
-			Results <strong><?php print $results->startNumber; ?> - <?php print $results->endNumber; ?></strong> of about <strong><?php print $results->documentsFound; ?></strong>. <strong>(<?php print $results->time; ?>)</strong> seconds
-		<?php
-		}else{
-		?>
+?>
+			Results <strong><?php print $results->startNumber; ?> - <?php print $results->endNumber; ?></strong> of about <strong><?php print $results->documentsFound; ?></strong>.
+<?php
+		}
+		else{
+?>
 			No results were found.
 <?php
 		}
 ?>
 		</p>
-		
-<?php
-	if (!empty($query)) {
-?>
+
 		<p class="first">You searched for <strong><?php print $rupaSearch->getFullQueryForXHTML(); ?></strong>.</p>
+<?php
+		if ($resultsCount > 0) {
+?>
 		
 		<!-- Search Key -->
 		<div id="searchKey">
@@ -260,117 +155,191 @@
 <?php
 			$collectionImageLinks = array();
 		
-			foreach($allCollections as $coll){
-				$image = $collectionImages[$coll->image_id];
+			foreach ($allCollections as $coll) {
+				$tempRupaSearch = $rupaSearch->getClone();
+				$tempRupaSearch->clearSites();
+				$tempRupaSearch->addSite($coll->collectionName);
 				
-				$tempSite = $_GET['site'];
-				$tempSearchType = $_GET['searchType'];
-				$tempCollections = $_GET['collections'];
-				$tempStart = $_GET['start'];
-				$tempFileFormatInclusion = $_GET['fileFormatInclusion'];
-				$tempFileFormat = $_GET['fileFormat'];
-				$tempSearchMain = $_GET['googleSearchSubmitMain'];
-				unset($_GET['googleSearchSubmitMain']);
+				$queryString = $tempRupaSearch->getRupaQueryStringForXHTML();
 
-				$_GET['q'] = stripslashes(html_entity_decode($_GET['q']));
-				$_GET['site'] = '';
-				$_GET['searchType'] = 'advanced';
-				$_GET['collections'] = array();
-				$_GET['collections'][] = $coll->collectionName;
-				$_GET['start'] = '';
-				$_GET['fileFormatInclusion'] = '';
-				$_GET['fileFormat'] = '';
-				$keyQuery = http_build_query($_GET);
-				$collectionImageLinks[$coll->image_id] = $keyQuery;
-				
+				$collectionImageLinks[$coll->friendlyName] = RUPA_HOME_URL.'results.php?'.$queryString;
 ?>
-				<li><a href="<?php print RUPA_HOME_URL.'results.php?'.$keyQuery; ?>" title="<?php print $coll->friendlyName; ?>"><img alt="" src="<?php print PROTOCOL.DOMAIN.'/images/'.$coll->imageName	; ?>" /><?php print $coll->friendlyName; ?></a></li>
+				<li><a href="<?php print RUPA_HOME_URL.'results.php?'.$queryString; ?>"><img alt="" src="<?php print getStaticContentRootURL().'/images/'.encodeHtml($coll->imageName); ?>" /><?php print encodeHtml($coll->friendlyName); ?></a></li>
 
 <?php
-				$_GET['site'] = $tempSite;
-				$_GET['searchType'] = $tempSearchType;
-				$_GET['collections'] = $tempCollections;
-				$_GET['start'] = $tempStart;
-				$_GET['fileFormatInclusion'] = $tempFileFormatInclusion;
-				$_GET['fileFormat'] = $tempFileFormat;
-				if ($tempSearchMain != '') {
-					$_GET['googleSearchSubmitMain'] = $tempSearchMain;
-				}
 			}
 ?>
 			</ul>
 		</div>
 		<!-- END search Key -->
-<div id="searchResults" class="full_screen">
-								
 <?php
-					if ($synonyms) {
-						$temp = $_GET['q'];
-						$_GET['q'] = urldecode($synonyms['!q']);
-						$synonymQuery = http_build_query($_GET);
-						$_GET['q'] = $temp;
+		}
 ?>
-					<p class="first">You could also try: <a href="<?php print RUPA_HOME_URL.'results.php?'.htmlentities($synonymQuery); ?>"><?php print $synonyms['!']; ?></a>.</p>
-<?php	
-						
-					}
-    				if (sizeof($results->spellingSuggestions) > 0) {
-    				    $temp = $_GET['q'];
-    					$_GET['q'] = $results->spellingSuggestions[0]->query;
-    					$query = http_build_query($_GET);
-    					$_GET['q'] = $temp;
-?>
-           			<p class="first">
-        				Did you mean: <strong><a href="<?php print RUPA_HOME_URL.'results.php?'.htmlentities($query); ?>" class="copy"><?php print $results->spellingSuggestions[0]->query; ?></a></strong>
-        			</p>
+		<div id="searchResults" class="full_screen">
 <?php
+			if (sizeof($results->resultSynonyms) > 0) {
+?>
+				<p class="first">You could also try: <?php
+		
+				$count = 1;
+				foreach ($results->resultSynonyms as $synonym) {
+					$tempRupaSearch = $rupaSearch->getClone();
+					$tempRupaSearch->clearFullQuery();
+					$tempRupaSearch->setQuery(urldecode($synonym->query));
+					$synonymQuery = $tempRupaSearch->getRupaQueryStringForURL();
+					
+					print '<a href="'.RUPA_HOME_URL.'results.php?'.$synonymQuery.'">'.encodeHtml($synonym->suggestion).'</a>';
+					
+					if ($count < sizeof($results->resultSynonyms)) {
+						print ', ';
 					}
-					elseif (($results->documentsFound == 0) && (sizeof($results->resultKeyMatches) < 1)) {
+					
+					$count++;
+				}
+?>.</p>
+<?php
+			}
+		
+    		if (sizeof($results->spellingSuggestions) > 0) {
+?>
+				<p class="first">
+        				Did you mean: <?php
+        				
+    					$count = 1;
+						foreach ($results->spellingSuggestions as $spelling) {
+							$tempRupaSearch = $rupaSearch->getClone();
+							$tempRupaSearch->clearFullQuery();
+							$tempRupaSearch->setQuery($spelling->query);
+							
+							print '<strong><a href="'.RUPA_HOME_URL.'results.php?'.$tempRupaSearch->getRupaQueryStringForURL().'" class="copy">'.encodeHtml($spelling->query).'</a></strong>';
+							if ($count < sizeof($rupaSearch->spellingSuggestions)) {
+								print ', ';	
+							}
+							$count++;
+						}	
+?>.</p>
+<?php
+    		}
+    		
+			if (($results->documentsFound <= 0) && (sizeof($results->resultKeyMatches) < 1)) {
 ?>
         			<p class="first"><strong>Sorry, no results were found.</strong></p>
 <?php
-					}
+			}
 					
-           			if (sizeof($results->resultKeyMatches) > 0) {
+           	if (sizeof($results->resultKeyMatches) > 0) {
 
-						foreach ($results->resultKeyMatches as $km) {
+				foreach ($results->resultKeyMatches as $km) {
 ?>
           			<!-- key match result box -->
         			<div class="keymatch">
-        				<h2><a  title="<?php print strip_tags($km->name); ?>" href="<?php print htmlentities($km->url); ?>"><?php print $km->name; ?></a></h2>
-        					<p class="url"><?php print htmlentities($km->url); ?></p>
+        				<h2><a  title="<?php print encodeHtml($km->name); ?>" href="<?php print encodeHtml($km->url); ?>"><?php print encodeHtml($km->name); ?></a></h2>
+        					<p class="url"><?php print encodeHtml($km->url); ?></p>
         			</div>
 <?php
-						}
+				}
 
-        			}
+        	}
 ?>
 
             		<!-- search result box -->
 <?php
-        				if ($results->documentsFound > 0) {
+        	if ($results->documentsFound > 0) {
+        		
+        		$tempRupaSearch = $rupaSearch->getClone();
+				if ($rupaSearch->sortBy != 'date') {
+					$tempRupaSearch->setSortBy('date');
+					$sortText = '<a href="'.RUPA_HOME_URL.'results.php?'.$tempRupaSearch->getRupaQueryStringForXHTML().'">Sort by date</a> or <strong>relevance</strong>';
+				}
+				else {
+					$tempRupaSearch->setSortBy('');
+					$sortText = 'Sort by <strong>date</strong> or <a href="'.RUPA_HOME_URL.'results.php?'.$tempRupaSearch->getRupaQueryStringForXHTML().'">relevance</a>';
+				}
+        		
 ?>
-					<p id="sorting" ><?php
-						print $sort; 
-?>
-					</p>
+					<p id="sorting" ><?php print $sortText; ?></p>
 <?php   				
-						}
+			
 
-            			foreach ($results->resultItems as $resultItem) {
-            			// check cache is available - $element->cacheAvailable
-            			$cacheLink = RUPA_HOME_URL.'result_cache.php?url='.htmlentities($resultItem->url).'&CID='.$resultItem->cacheID;
-        				$cacheLink = str_replace('&', '&amp;', $cacheLink);
+          		foreach ($results->resultItems as $resultItem) {
+            		// check cache is available - $element->cacheAvailable
+            		$cacheLink = encodeHtml(RUPA_HOME_URL.'result_cache.php?url='.$resultItem->url.'&CID='.$resultItem->cacheID);
+            		
+            		$icon = '';
+			
+					switch ($resultItem->mime) {
+						case '':
+						case 'text/html':
+						case 'text/plain':
+							break;
+						default:
+							$icon = getIconForMimeType($resultItem->mime);
+							break;
+					}
+					
+					$href = '';
+					
+					if ($resultItem->url != '') {
+						$href = $resultItem->url;
+						foreach ($allRupaRenameResultURLs as $renameResultURL) {
+							$href = str_replace($renameResultURL->fromPattern, $renameResultURL->replaceWith, $href);	
+						}	
+					}
+					
+					$title = $resultItem->getTitleForXHTML();
+					$snippet = $resultItem->getSnippetForXHTML();
+					$restricted = '';
+					
+					if ((defined('RUPA_RESULT_TITLE_METADATA_FIELD') && RUPA_RESULT_TITLE_METADATA_FIELD != '') ||
+						(defined('RUPA_RESULT_SNIPPET_METADATA_FIELD') && RUPA_RESULT_SNIPPET_METADATA_FIELD != '') ||
+						(defined('RUPA_SECURE_RESULT_METADATA_TAG') && RUPA_SECURE_RESULT_METADATA_TAG != '')) {
+						
+						foreach ($resultItem->metadata as $metadata) {
+							if (defined('RUPA_RESULT_TITLE_METADATA_FIELD') && $metadata->name == RUPA_RESULT_TITLE_METADATA_FIELD && $metadata->value != '') {
+								$title = encodeHtml($metadata->value);	
+							}		
+							if (defined('RUPA_RESULT_SNIPPET_METADATA_FIELD') && $metadata->name == RUPA_RESULT_SNIPPET_METADATA_FIELD && $metadata->value != '') {
+								$snippet = encodeHtml($metadata->value);	
+							}
+							if (defined('RUPA_SECURE_RESULT_METADATA_TAG') && $metadata->name == RUPA_SECURE_RESULT_METADATA_TAG && $metadata->value != '') {
+								$restricted = '[Restricted]';	
+							}
+						}
+					}
+					
+					
+					if (mb_eregi('/download', $resultItem->url) && trim($title) == '') {
+						$filename = str_replace('http://'.DOMAIN.'/', '', $resultItem->url);
+						$filename = mb_eregi_replace('downloads/', '', $filename);
+						$filename = mb_eregi_replace('file\/([0-9]+)/', '', $filename);
+						$filename = mb_eregi_replace('download\/([0-9]+)/', '', $filename);
+						$filename = mb_eregi_replace('([0-9]+)/', '', $filename);
+						$filename = mb_eregi_replace('_', ' ', $filename);
+						$title = ucwords($filename);
+					}
+					
+					
+					if (trim($title) == '') {
+						$title = '[No title]';	
+					}
+					$title = str_replace(' - '.METADATA_GENERIC_NAME. '', '', $title);
+					
+					$extraInfo = '';
+					
+					if ($resultItem->size != '') {
+						$extraInfo = ' - '.$resultItem->size;	
+					}
+					
+					if ($resultItem->documentDate != '') {
+						$extraInfo .= ' - '.$resultItem->documentDate;	
+					}		
+            			
+            			
 ?>
         			<div class="googresult">
 <?php
 						//get the collection for this result
-						$collections  = getCollectionsForUrl($resultItem->url);
-						
-						foreach ($allRenameRules as $renameRule) {
-							$resultItem->url = str_replace($renameRule->fromPattern, $renameRule->replaceWith, $resultItem->url);
-							$resultItem->encodedUrl = str_replace($renameRule->fromPattern, $renameRule->replaceWith, $resultItem->encodedUrl);
-						}
+						$collections  = getCollectionsForUrl($resultItem->url, false);
 						
 						$images = array();
 						if (is_array($collections)) { 
@@ -383,130 +352,113 @@
 <?php			
         				        foreach ($images as $name => $image) {
 ?>
-        				            <a href="<?php print RUPA_HOME_URL.'results.php?'.$collectionImageLinks[$image->id]; ?>" title="Refine results: <?php print $name; ?>" class="showtooltip"><img src="<?php print PROTOCOL.DOMAIN.'/images/'.$image; ?>" alt="" /></a><br />
+        				            <a href="<?php print encodeHtml($collectionImageLinks[$name]); ?>" class="showtooltip"><img src="<?php print getStaticContentRootURL().'/images/'.encodeHtml($image); ?>" alt="" /></a><br />
 <?php
         				        }
 ?>
         				</div>      
 
 					<h2>
-			<?php
-						switch ($resultItem->mime) {
-							case '':
-							case 'text/html':
-							case 'text/plain':
-								$cached = 'cached';
-								break;
-							default:
-								$cached = 'HTML Version';
-								break;
-						}
-
-						$icon = getIconForMimeType($resultItem->mime);
-
-?>
-						<a title="<?php print $resultItem->title; ?>" href="<?php print str_replace('</b>', '</strong>', str_replace('<b>', '<strong>',  str_replace('&', '&amp;', $resultItem->url))); ?>"><?php if ($resultItem->title == '') { print '[no title]'; } else { print  str_replace('</b>', '</strong>', str_replace('<b>', '<strong>', $resultItem->title)); } ?></a>
+						<a href="<?php print encodeHtml($href); ?>"><?php print $title; ?></a> 
 <?php
+						if ($restricted != '') {
+?>
+						<span><?php print $restricted; ?></span>
+<?php													
+						}
+						
 						if ($icon != '') {
 ?>
-						<img alt="<?php print $resultItem->mime; ?>" src="<?php print RUPA_HOME_URL.'images/file_type_icons/'.$icon; ?>" />
+						<img alt="<?php print encodeHtml($resultItem->mime); ?>" src="<?php print RUPA_HOME_URL.'images/file_type_icons/'.encodeHtml($icon); ?>" /> [<?php print encodeHtml(substr($icon, 0, 3)); ?>]
 <?php
 						}
 ?>
 					</h2>
 									
-					<p><?php print str_replace('</b>', '</strong>', str_replace('<b>', '<strong>', $resultItem->snippet)); ?></p>
-					<?php
-					//get the date if available
-					?>
+					<p><?php print $snippet; ?></p>
 					
 					<!-- only if cache is available -->
-					<p><span class="url"><?php print $resultItem->url; ?> - <?php if ($resultItem->size != '') { print $resultItem->size.' '; } if ($resultItem->crawlDate != null) { print $resultItem->crawlDate; } ?></span>
+					<p><span class="url"><?php print encodeHtml($href) . $extraInfo; ?></span>
 <?php
-	if (defined('RUPA_SHOW_CACHED_RESULTS') && RUPA_SHOW_CACHED_RESULTS) {
+						if (defined('RUPA_SHOW_CACHED_RESULTS') && RUPA_SHOW_CACHED_RESULTS) {
 ?>
-					 - <a class="cache"  href="<?php  print $cacheLink; ?>"><?php print $cached; ?></a>
+					 - <a class="cache"  href="<?php  print encodeHtml($cacheLink); ?>"><?php print encodeHtml($cached); ?></a>
 <?php
-	}
+						}
 ?>
 					</p>
 				</div>
 				<!-- END of googresult -->
 <?php
-        				}
+        		}
         			
 ?>
-</div>
+			</div>
 <?php
-        				$pageCount = floor($results->documentsFound / PAGE_SEARCH_RESULT_COUNT) + 1;
+				$pageCount = floor($results->documentsFound / PAGE_SEARCH_RESULT_COUNT) + 1;
 
-						// if number of pages is a multiple of ten we don't need the last page
-						if (($results->documentsFound % 10) == 0) {
-							$pageCount--;
-						}
+				// if number of pages is a multiple of ten we don't need the last page
+		 		if (($results->documentsFound % 10) == 0) {
+		 			$pageCount--;
+		 		}
 
-        				if ($pageCount > 1) {
+				// if we're filtering, we haven't reached the end and the appliance says
+				// there's no next page, show option to turn off filter
+				if ($rupaSearch->getFilterResults() != FILTER_OFF && $results->documentsFound > $results->endNumber  && $results->nextPage == false) {
+		 				$tempRupaSearch = $rupaSearch->getClone();
+						$tempRupaSearch->setStartNum(0);
+						$tempRupaSearch->setFilterResults(FILTER_OFF);
+?>
+		 			<p class="resultsOmitted">In order to show you the most relevant results, we have omitted some entries very similar to the <?php print $displayedResultsCount; ?> already displayed. If you like, you can <a href="<?php print RUPA_HOME_URL.'results.php?' . encodeHtml($tempRupaSearch->getRupaQueryStringForURL()); ?>">repeat the search with the omitted results included</a>.</p>
+<?php
+		 		}
+		 		
+		 		if ($pageCount > 1) {
 ?>
             		<!-- Page navigation -->
         			<div id="pagenav">
 <?php
-							// if $_GET['start'] is not set we are on the first page of results.
-                			if (!isset($_GET['start']) || $_GET['start'] > $results->documentsFound) {
-                				$currentPage = 1;
-                				$_GET['start'] = 0;
-                			}
-                			else {
-                				$currentPage = (floor($_GET['start'] / PAGE_SEARCH_RESULT_COUNT)) + 1;
-                			}
-                			
-							if ($currentPage > MAXIMUM_NAV_PAGE_COUNT / 2) {
-								$startPage = max(1, intval($currentPage - (MAXIMUM_NAV_PAGE_COUNT / 2)));
-								$endPage = min($pageCount, intval($currentPage + (MAXIMUM_NAV_PAGE_COUNT / 2)));
-							} else {
-								$startPage = 1;
-								$endPage = $startPage + (MAXIMUM_NAV_PAGE_COUNT - 1);
-							}
-							
-                			 $endPage = min($endPage, $pageCount);
-                    		if ($results->documentsFound > 0) {
+		
+			 		$currentPage = (($results->startNumber - 1) / $rupaSearch->numToShow) + 1;
+			 		if ($currentPage > MAXIMUM_NAV_PAGE_COUNT / 2) {
+			 			$startPage = max(1, intval($currentPage - (MAXIMUM_NAV_PAGE_COUNT / 2)));
+			 			$endPage = min($pageCount, intval($currentPage + (MAXIMUM_NAV_PAGE_COUNT / 2)));
+			 		}
+			 		else {
+			 			$startPage = 1;
+			 			$endPage = $startPage + (MAXIMUM_NAV_PAGE_COUNT - 1);
+			 		}
+			 		
+			 		$endPage = min($endPage, $pageCount);
+                    
+                    if (count($results->resultItems) > 0) {
 ?>
-                			<p>Result Page:
+                		<p>
+                			<span>
 <?php
 								//previous page
-                				if ($_GET['start'] >= 10) {
-                				    $temp = $_GET['start'];
-                				    $_GET['start'] -= 10;
-                					print '<a href="'.RUPA_HOME_URL.'results.php?' . str_replace('&', '&amp;', http_build_query($_GET)).'">Previous</a> | ';
-                					$_GET['start'] = $temp;
+                				if ($results->previousPage || $results->startNumber > 1) {
+                					$tempRupaSearch = $rupaSearch->getClone();
+                					$tempRupaSearch->setStartNum($results->startNumber - (PAGE_SEARCH_RESULT_COUNT + 1));
+                					print '<a href="'.RUPA_HOME_URL.'results.php?' . encodeHtml($tempRupaSearch->getRupaQueryStringForURL()).'">Previous</a>';
                 				}
-								//numbered pages
-								$pageCount < 10 ? $i = 1 : $i = $startPage;
-                				for ($i; $i <= $endPage; $i++) {
-                					if ($i != $currentPage) {
-                					    $temp = $_GET['start'];
-                						$_GET['start'] = ($i - 1) * 10;
-                                    	$href = RUPA_HOME_URL.'results.php?' . str_replace('&', '&amp;',http_build_query($_GET));
-                                    	print '<a href="' . $href . '">' . $i . '</a> | ';
-                                    	$_GET['start'] = $temp;
-                                    } else {
-                						print '<strong>' . $i . '</strong> |  ';
-                                    }
-                				}
-        						
+
         						//next page
-                				if ($_GET['start'] < $resultsCount - 10) {
-                					$temp = $_GET['start'];
-                				    $_GET['start'] += 10;
-                					print '<a href="'.RUPA_HOME_URL.'results.php?' . str_replace('&', '&amp;',http_build_query($_GET)). '">Next</a>';
-                					$_GET['start'] = $temp;
+                				if ($results->nextPage && (($results->startNumber + $rupaSearch->numToShow) < $results->documentsFound && ($results->documentsFound - $rupaSearch->numToShow) > 0)) {
+                					$tempRupaSearch = $rupaSearch->getClone();
+					        		$tempRupaSearch->setStartNum($results->endNumber);
+                					print '<a href="'.RUPA_HOME_URL.'results.php?' . encodeHtml($tempRupaSearch->getRupaQueryStringForURL()). '">Next</a>';
                 				}
+?>
+							</span>
+						</p>
+<?php
                 			}
                 		
 ?>
-            		</p>
-            	</div>
+            		</div>
 <?php
-								}
+						}
 								
 								
   	    				if ($results->documentsFound > 0) {
@@ -515,10 +467,10 @@
             	
             	<!-- search within results form -->
             	<br />
-				<form name="searchWithinForm" id="searchWithinForm" method="get" action="<?php print RUPA_HOME_URL.'results.php'; ?>" class="search_within_form">
+				<form id="searchWithinForm" method="get" action="<?php print RUPA_HOME_URL.'results.php'; ?>" class="search_within_form">
 					<fieldset>
-						<p>
-							<label for="googleSearchWithinBox" class="">Search within results: </label>
+						<legend>Search within results</legend>
+						<label for="googleSearchWithinBox">Search within results: </label>
 <?php
 							// searching within results we need to reset the start so returned results will begin on page 1
 							$_GET['start'] = 0;
@@ -526,23 +478,22 @@
 								if (is_array($getValue)) {
 									foreach ($getValue as $subName => $subValue) {	
 ?>
-							<input type="hidden" name="<?php print $getName; ?>" value="<?php print htmlentities($subValue); ?>" />
+						<input type="hidden" name="<?php print encodeHtml($getName); ?>" value="<?php print encodeHtml($subValue); ?>" />
 <?php
 									}
 								}
 								else {
 									if ($getName != 'q') {
 ?>
-							<input type="hidden" name="<?php print $getName; ?>" value="<?php print htmlentities($getValue); ?>" />
+						<input type="hidden" name="<?php print encodeHtml($getName); ?>" value="<?php print encodeHtml($getValue); ?>" />
 <?php										
-									}	
+									}
 								}
 							}
 ?>							
-							<input type="hidden" name="pre_q" value="<?php print $htmlSafeQuery; ?>" />
-							<input class="keyword_field" type="text" name="q" id="googleSearchWithinBox" value="" size="35" />
-							<input type="submit" name="googleSearchSubmit" value="Search" class="small_button" />
-						</p>
+						<input type="hidden" name="pre_q" value="<?php print $htmlSafeQuery; ?>" />
+						<input class="keyword_field" type="text" name="q" id="googleSearchWithinBox" value="" size="35" />
+						<input type="submit" name="googleSearchSubmit" value="Search" class="small_button" />
 					</fieldset>
 				</form>
 
@@ -550,19 +501,14 @@
 <?php
 					}
 ?>
-            </div>
  <?php
 	}
-	else {
-?>
-		<p class="first">You must enter a <strong>Search Term</strong>.</p>
-<?php
-	}
-?> 	    
+?>   
+            </div>
 	</div>
 
 	<!-- Drawer -->	
-	<?php include_once("includes/drawer.php"); ?> 
+	<?php include_once("includes/footer.php"); ?> 
 
 </body>
 </html>

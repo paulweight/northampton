@@ -5,133 +5,110 @@
 	include_once("websections/JaduPageSupplements.php");
 	include_once("websections/JaduPageSupplementWidgets.php");
 	include_once("websections/JaduPageSupplementWidgetPublicCode.php");
-
-	$allWidgets = getAllNavWidgets();        
-
-	$lgclList = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);
-	$allRootCategories = $lgclList->getTopLevelCategories();
-	$rootDocumentCategories = filterCategoriesInUse($allRootCategories, DOCUMENTS_APPLIED_CATEGORIES_TABLE, true);
-	$rootHomepageCategories = filterCategoriesInUse($allRootCategories, HOMEPAGE_APPLIED_CATEGORIES_TABLE, true);
-
-	$categoriesUsed = array();
-	$rootCategories = array();
-
-	foreach ($rootDocumentCategories as $index => $item) {
-			$categoriesUsed[] = $item->id;
-			$rootCategories[] = $item;
-	}
-	foreach ($rootHomepageCategories as $index => $item) {
-			if (!in_array($item->id, $categoriesUsed)) {
-					$categoriesUsed[] = $item->id;
-					$rootCategories[] = $item;
-			}
-	}
-	ksort($rootCategories);
 	
-	$currentID = $dirTree[0]->id;
-	$bespokeCategoryList = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);
-	$allSecondLevelCategories = $bespokeCategoryList->getChildCategories($currentID);
-	$secondLevelCategories = filterCategoriesInUse($allSecondLevelCategories, DOCUMENTS_APPLIED_CATEGORIES_TABLE, true);	
-?>
-<div id="column_nav">
+	if (isset($_GET['homepageID']) || mb_strpos($_SERVER['REQUEST_URI'], '/site/index.php') !== false) {
+		include_once('websections/JaduHomepages.php');
+		if (isset($_GET['homepageID'])) {
+			$homepage = getHomepage($_GET['homepageID']);
+		}
+		else {
+			$allIndependantHomepages = getAllHomepagesIndependant();
+			if (count($allIndependantHomepages) > 0) {
+				$homepage = getHomepage($allIndependantHomepages[0]->id);
+			}
+		}
+		if (isset($homepage) && $homepage->hideTaxonomy == '1') {
+			return;
+		}
+	}
 
-<!-- ################ First nav widget -->
+	$allWidgets = getAllNavWidgets();
+	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
+	$allRootCategories = $lgclList->getTopLevelCategories();
+
+	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
+?>
+<!-- googleoff: index -->
+<div id="columnPrimary">	
+
+	<div class="navWidget">
+	<h2>Categories</h2>
+	<ul>
 <?php
-	if (sizeof($allWidgets) > 0) {
-		$i = 0;
-		foreach ($allWidgets as $widget) {
-			if ($i == 0) {
+	foreach ($columnRootCategories as $category) {
+?>
+		<li><a href="<?php print getSiteRootURL(); print buildDocumentsCategoryURL($category->id);?>"><?php print encodeHtml($category->name); ?></a></li>
+<?php
+	}
+?>
+	</ul>    
+	</div>
+
+<?php
+		if (sizeof($allWidgets) > 0) {
+			foreach ($allWidgets as $widget) {
 				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
 ?>
-	<h2><?php print htmlentities($widget->title);?></h2>
-	<ul class="navWidget">
+	<div class="navWidget">
+		<h2><?php print encodeHtml($widget->title); ?></h2>
+		<ul>
 <?php
-	foreach ($allLinks as $widgetLink) {
-		print '<li><a href="' . htmlentities($widgetLink->link) . '">' . htmlentities($widgetLink->title) . '</a></li>';
-	}
+			foreach ($allLinks as $widgetLink) {
+				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
+			}
 ?>
-	</ul>
+		</ul>
+	</div>
 <?php
 			}
-			$i++;
 		}
-	}
 ?>
-
-
-<!-- ################ LGNL Select -->
-	<form action="http://<?php print $DOMAIN;?>/site/scripts/documents.php" method="get" name="catNav">
-		<h3>Council information on...</h3>
-		<select class="select" name="categoryID" onchange="submitform('catNav')">
-			<option>Select a category</option>
+		<!-- Left-hand Supplements -->
 <?php
-foreach ($rootCategories as $category) {
-?>
-			<option value="<?php print $category->id;?>" <?php if ($currentID == $category->id) { print 'selected="selected"'; } ?>><?php print $category->name; ?></option>
-<?php
-}
-?>
-		</select>
-		<noscript><input type="submit" value="Go" class="button" id="go"/></noscript>
-	</form>
-
-<!-- ################ Rest of widgets -->
-<?php
-	if (sizeof($allWidgets) > 0) {
-		$i = 0;
-		foreach ($allWidgets as $widget) {
-			if ($i > 0) {
-			$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-?>
-	<h2><?php print htmlentities($widget->title);?></h2>
-	<ul class="navWidget"><?php
-		foreach ($allLinks as $widgetLink) {
-			print '<li><a href="' . htmlentities($widgetLink->link) . '">' . htmlentities($widgetLink->title) . '</a></li>';
-		}
-?></ul>
-<?php
-			}
-			$i++;
-		}
-	}
-?>
-
-
-<?php
+		$showLeftSupplements = false;
 		
-	//Left-hand Supplements -->
-		// get left-hand supplements 
-		if (isset($page->id) || isset($homepage->id)) {
-			if (isset($page->id)) {
-				$leftSupplements = getAllPageSupplements('', $page->id, '', 'Left');
-			}
-			elseif (isset($homepage->id)) {
-				$leftSupplements = getAllPageSupplements('', '', $homepage->id, 'Left');
-			}
-
-			// loop through each supplement
+		if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/faq_info.php' || 
+			$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs_index.php' || 
+			$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs.php') && 
+			isset($faq) && $faq->id > 0) {
+			$showLeftSupplements = true;
+			$contentType = 'faq';
+			$itemID = $faq->id;
+		}
+		else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/documents_info.php' || $_SERVER['SCRIPT_NAME'] == '/preview/documents_info.php') &&
+			isset($page) && $page->id > 0) {
+			$showLeftSupplements = true;
+			$contentType = 'document';
+			$itemID = $page->id;
+		}
+		else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/home_info.php' || 
+			$_SERVER['SCRIPT_NAME'] == '/site/scripts/documents.php' || 
+			$_SERVER['SCRIPT_NAME'] == '/site/index.php') &&
+			isset($homepage) && $homepage->id > 0) {
+			$showLeftSupplements = true;
+			$contentType = 'homepage';
+			$itemID = $homepage->id;
+		}
+		
+		if ($showLeftSupplements) {
+			$leftSupplements = getAllPageSupplements(array(
+				'contentType' => $contentType, 
+				'itemID' => $itemID, 
+				'locationOnPage' => 'left'
+			), 'position ASC');
+			
 			foreach ($leftSupplements as $supplement) {
-				// include supplement front-end code
-				$publicCode = getSupplementPublicCode($supplement->supplementWidgetID, $supplement->locationOnPage);
-				$supplementWidget = getPageSupplementWidget($supplement->supplementWidgetID);
-
-				include_once($supplementWidget->classFile);
-
-				$record = new $supplementWidget->className;
-				$record->id = $supplement->supplementRecordID;
-				$record->get();
-				include($HOME . '/site/includes/supplements/' . $publicCode->code);
+				$record = $supplement->getRecord();
+				if ($record->id > 0) {
+					$publicCode = getSupplementPublicCode($supplement->supplementWidgetID, $supplement->locationOnPage);
+					include(HOME . '/site/includes/supplements/' . $publicCode->code);
+				}
 			}
+			
+			unset($record);
+			unset($publicCode);
 		}
 ?>
-	<!-- End left-hand supplements -->
-
-<div id="google_translate_element"></div><script>
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en'
-  }, 'google_translate_element');
-}
-</script><script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+		<!-- End left-hand supplements -->
 </div>
+<!-- googleon: index -->

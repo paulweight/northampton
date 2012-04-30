@@ -10,12 +10,12 @@
 
 	$confirmRemove = false;
 
-	if (isset($_SESSION['userID'])) {
+	if (Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
 			
 		if (isset($_GET['userFormID'])) {
 			$userForm = getXFormsUserForm($_GET['userFormID']);
 			
-			if ($userForm->userID != $_SESSION['userID']) {
+			if ($userForm->userID != Jadu_Service_User::getInstance()->getSessionUserID()) {
 				header ("Location: $ERROR_REDIRECT_PAGE");
 				exit();
 			}
@@ -39,42 +39,42 @@
 				$app = getApplication($_POST['userAppID']);
 
 				// check that the logged in user owns this application
-				if ($app->userID == $_SESSION['userID']) {
+				if ($app->userID == Jadu_Service_User::getInstance()->getSessionUserID()) {
 					deleteApplication($_POST['userAppID']);
 				}
 				unset($app);
 			}
 		}
 
-		$allSubmittedUserForms = getAllXFormsUserFormsForUser ($_SESSION['userID'], true);
-		$allUnsubmittedUserForms = getAllXFormsUserFormsForUser ($_SESSION['userID'], false);
+		$allSubmittedUserForms = getAllXFormsUserFormsForUser (Jadu_Service_User::getInstance()->getSessionUserID(), true);
+		$allUnsubmittedUserForms = getAllXFormsUserFormsForUser (Jadu_Service_User::getInstance()->getSessionUserID(), false);
 		
-		$submittedJobApps = getSubmittedApplicationsForUser($_SESSION['userID'], 1);
-		$unsubmittedJobApps = getUnsubmittedApplicationsForUser($_SESSION['userID']);		
+		$submittedJobApps = getSubmittedApplicationsForUser(Jadu_Service_User::getInstance()->getSessionUserID(), 1, 'date');
+		$unsubmittedJobApps = getUnsubmittedApplicationsForUser(Jadu_Service_User::getInstance()->getSessionUserID());		
 	}
 	else {
 		header ("Location: $ERROR_REDIRECT_PAGE");
 		exit;
 	}
 
-	$loginString = getLastLoginAsString($_SESSION['userID']);
+	$loginString = Jadu_Service_User::getInstance()->getLastLoginAsString(Jadu_Service_User::getInstance()->getSessionUserID());
 	
 	$breadcrumb = 'userHome';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html<?php if (TEXT_DIRECTION == 'rtl') print ' dir="rtl"'; ?> xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title><?php print METADATA_GENERIC_COUNCIL_NAME;?> - Personal details</title>
+	<title><?php print encodeHtml(METADATA_GENERIC_NAME); ?> - Personal details</title>
 
 	<?php include_once("../includes/stylesheets.php"); ?>
 	<?php include_once("../includes/metadata.php"); ?>
 
-	<meta name="Keywords" content="account, regstration, user, profile, personal, details, <?php print METADATA_GENERIC_COUNCIL_KEYWORDS;?>" />
-	<meta name="Description" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> User personal details" />
+	<meta name="Keywords" content="account, regstration, user, profile, personal, details, <?php print encodeHtml(METADATA_GENERIC_KEYWORDS); ?>" />
+	<meta name="Description" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> User personal details" />
 
-	<meta name="DC.title" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> Personal details" />
-	<meta name="DC.description" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> User personal details" />
+	<meta name="DC.title" lang="en" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> Personal details" />
+	<meta name="DC.description" lang="en" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> User personal details" />
 
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
@@ -90,10 +90,10 @@
 		$job = getRecruitmentJob($app->jobID);
 ?>
 
-		<p class="first">Are you sure you want to <span class="warning">delete</span> your application for <strong><?php print $job->title; ?></strong></p>
+		<p class="first">Are you sure you want to <span class="warning">delete</span> your application for <strong><?php print encodeHtml($job->title); ?></strong></p>
 		<p>
-			<form action="http://<?php print $DOMAIN; ?>/site/scripts/user_home.php" method="post">
-				<input type="hidden" name="userAppID" value="<?php print $_GET['userAppID']; ?>" />
+			<form action="<?php print getSiteRootURL(); ?>/site/scripts/user_home.php" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="userAppID" value="<?php print (int) $_GET['userAppID']; ?>" />
 				<input type="submit" name="confirmRemove" class="button" value="Yes" />
 				<input type="submit" name="declineRemove" class="button" value="No" />
 			</form>
@@ -132,11 +132,11 @@
 					
 		<!-- Account options -->
 		<div class="content_box">
-			<h2>Your personal details <?php if (isset($detailsChanged)) { ?><em>have been updated.</em><? } ?></h2>
+			<h2>Your personal details <?php if (isset($detailsChanged)) { ?><em>have been updated.</em><?php } ?></h2>
 			<ul class="list">
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/change_details.php">Change your details</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/change_password.php">Change your password</a></li>
-				<li><a href="http://<?php print $DOMAIN;?>/site/index.php?logout=true">Sign out</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/change_details.php">Change your details</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/change_password.php">Change your password</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/index.php?logout=true">Sign out</a></li>
 			</ul>
 		</div>
 
@@ -149,7 +149,7 @@
 			if (sizeof($submittedJobApps) > 0) {
 ?>
 			<ul>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/user_job_archive.php" title="Job application archive.">Job application archive</a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/user_job_archive.php" title="Job application archive.">Job application archive</a></li>
 			</ul>
 <?php
 			}
@@ -161,7 +161,7 @@
 				foreach ($unsubmittedJobApps as $app) {
 					$job = getRecruitmentJob($app->jobID);				
 ?>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/application_details.php?appID=<?php print $app->id;?>" title="<?php print $job->title;?>."><?php print $job->title;?></a> : <a href="http://<?php print $DOMAIN; ?>/site/scripts/user_home.php?userAppID=<?php print $app->id; ?>&amp;remove=true"><span  class="remove">Remove</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/application_details.php?appID=<?php print $app->id;?>" title="<?php print encodeHtml($job->title); ?>."><?php print $job->title;?></a> : <a href="<?php print getSiteRootURL(); ?>/site/scripts/user_home.php?userAppID=<?php print $app->id; ?>&amp;remove=true"><span  class="remove">Remove</span></a></li>
 <?php
 				}
 ?>
@@ -175,7 +175,7 @@
 ?>
 			<h3>Your most recently submitted application</h3>
 			<ul>
-				<li><a href="http://<?php print $DOMAIN;?>/site/scripts/application_details.php?appID=<?php print $app->id;?>&viewApp=true" title="<?php print $job->title;?>." target="_self"><?php print $job->title;?></a> : Completed: <?php print date("d M y",$app->dateSubmitted); ?>
+				<li><a href="<?php print getSiteRootURL(); ?>/site/scripts/application_details.php?appID=<?php print $app->id;?>&amp;viewApp=true" title="<?php print encodeHtml($job->title);?>." target="_self"><?php print $job->title;?></a> : Completed: <?php print date("d M y",$app->dateSubmitted); ?>
 					<br />Status: <?php if ($app->accepted == -1) print "Pending review"; elseif($app->accepted == 0) print "Unsuccessful"; else print "Progressed"; ?>
 				</li>
 			</ul>

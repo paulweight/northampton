@@ -1,13 +1,12 @@
 <?php
 	include_once("websections/JaduContact.php");
-	$address = new Address;
+
+	$address = new Address();
 ?>
 
-<div class="contactBox">
-	<h3>Contact the Council</h3>
-	<ul>
-		<li class="icoEmail">Email: <a href="mailto:<?php print $address->email;?>"><?php print $address->email;?></a></li>
-		<li class="icoPhone">Telephone: <?php print $address->telephone;?></li>
-		<li class="icoBubble">Use our <a href="/feedbackform">feedback form</a> or find <a href="/contactus">key contact details</a></li>
-	</ul>
+<div class="vcard">
+	<h3>Contact us</h3>
+    <li>Email: <a href="mailto:<?php print encodeHtml($address->email); ?>" class="email"><?php print encodeHtml($address->email); ?></a></li>
+    <li>Telephone: <span class="tel"><?php print encodeHtml($address->telephone); ?></span></li>
+    <li>Send <a href="<?php print getSiteRootURL() . buildFeedbackURL();?>">your feedback</a> or find <a href="<?php print getSiteRootURL() . buildContactURL();?>">key contact details</a>.</li>
 </div>

@@ -1,15 +1,10 @@
 <?php
-	session_start();
 	include_once('rupa/JaduRupaCollection.php');
 
-	$collectionGroups = getAllRupaCollectionGroups();
-	$orphanedCollections = getRupaCollections('groupID', DEFAULT_COLLECTION_GROUP_ID);
-	
-?>
+	$allCollections = getAllRupaCollections();
 
 
-<?php
-	if (sizeof($collectionGroups) > 0) {
+	if (sizeof($allCollections) > 0) {
 ?>
 	<table class="root" summary="Table of groups and subgroup collections for Google search">
 		<thead>
@@ -19,39 +14,37 @@
 		</tr>
 		</thead>
 		<tbody>
-<?php
-		foreach ($collectionGroups as $group) {
-			$childCollections = getRupaCollections('groupID', $group->id);
-			if (sizeof($childCollections) > 0) {
-?>
+
 			<tr>
-				<td class="right_cell"><?php print $group->name; ?>: </td>
+				<td class="right_cell">Site: </td>
 				<td>
-				<ul>
+				<ul id="collections">
 				<li>
 					<label>
 						<input
 							type="checkbox" 
 							name="selectAll"
-							value="<?php print $collection->collectionName; ?>" 
+							id="selectAll"
+							value="<?php print encodeHtml($collection->collectionName); ?>" 
 							class="" 
-							onclick="selectAllChildCollections(this, '<?php print $group->id; ?>')" 
+							onclick="selectAllChildCollections(this)" 
 						/>
 						Select All
 					</label>
 				</li>						
 <?php
-					foreach ($childCollections as $childCollection) {
+			foreach ($allCollections as $collection) {
+			
 ?>
 					<li>
 						<label>
 							<input 
 								type="checkbox" 
-								name="collections[]"
-								value="<?php print $childCollection->collectionName; ?>" 
-								class="collection child_of_<?php print $group->id; ?>" 
+								name="sites[]"
+								value="<?php print encodeHtml($collection->collectionName); ?>" 
+								onclick="unselectSelectAll(this)"
 							/>
-							<?php print $childCollection->friendlyName; ?>
+							<?php print encodeHtml($collection->friendlyName); ?>
 						</label>
 					</li>
 <?php
@@ -60,54 +53,6 @@
 				</ul>
 				</td>
 			</tr>
-<?php
-			}
-		}
-
-		if (is_array($orphanedCollections) && !empty($orphanedCollections)) {
-?>
-			<tr>
-				<td class="right_cell"><?php print DEFAULT_COLLECTION_GROUP_NAME; ?></td>
-				<td>
-				<ul>
-				<li>
-					<label>
-						<input
-							type="checkbox" 
-							name="selectAll"
-							value="<?php print $collection->collection_name; ?>" 
-							class="" 
-							onclick="selectAllChildCollections(this, 'default')" 
-						/>
-						Select All
-					</label>
-				</li>				
-<?php
-					foreach ($orphanedCollections as $orphanedCollection) {
-?>
-					<li>
-						<label>
-							<input 
-								type="checkbox" 
-								name="collections[]"
-								value="<?php print $orphanedCollection->collectionName; ?>" 
-								class="collection child_of_default" 
-							/>
-							<?php print $orphanedCollection->friendlyName; ?>
-						</label>
-					</li>
-<?php
-					}
-?>
-
-				</ul>
-				</td>
-			</tr>
-<?php
-		}
-?>
-
-
 			</tbody>
 		</table>
 <?php
@@ -120,10 +65,3 @@
 ?>
 
 	<br class="clear" />
-<?php
-	if (basename($_SERVER['SCRIPT_FILENAME']) == 'preferences.php') {
-?>
-	<p class="search_radios"><a href="#" onclick="saveCollectionPreferences();" class="faux_button">Save Preferences</a><br /><em id="savePreferencesMessage" style="display:none;"></em></p>
-<?php
-	}
-?>

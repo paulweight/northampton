@@ -8,9 +8,9 @@
 	include_once("recruitment/JaduRecruitmentApplicationCurrentEmployment.php");
 	include_once("recruitment/JaduRecruitmentApplicationEmploymentHistory.php");
 
-	if (isset($_SESSION['userID'])) {
-    	if (isset($_SESSION['userID'])){
-    		$user = getUser($userID);
+	if (Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
+    	if (Jadu_Service_User::getInstance()->isSessionLoggedIn()){
+    		$user = Jadu_Service_User::getInstance()->getSessionUser();
     	}
 	
     	if (isset($user) && isset($_GET['appID'])){
@@ -29,7 +29,7 @@
     		}
     		
 	    	if ($app->submitted == 1 && (!isset($_GET['viewApp']))) {
-	    	    header("Location: application_details.php?appID=$app->id");
+	    	    header("Location: ". buildJobApplicationURL('details',$app->id));
 	    	    exit;
 			}
 			
@@ -66,11 +66,11 @@
 				}
 
     			if (isset($_POST['saveProceed']) && sizeof($missing) < 1) {
-	    			header("Location: application_employment_history.php?appID=$appID#anchor");
+	    			header("Location: ". buildJobApplicationURL('employmentHistory', $appID));
 	    			exit;
 	    		}
 	    		elseif (isset($_POST['saveExit'])) {
-					header("Location: application_details.php?appID=$appID#anchor");
+					header("Location: ". buildJobApplicationURL('details', $appID));
 					exit;
 	    		}
 	    	}
@@ -85,7 +85,7 @@
     			if (isset($_GET['viewApp'])) {
     				$viewAppString = "&viewApp=true";
     			}
-    			header("Location: application_employment_history.php?appID=$appID$viewAppString");
+    			header("Location: ". buildJobApplicationURL('employmentHistory', $appID));
     			exit;
     		}
 
@@ -105,20 +105,21 @@
 		exit;
 	}
 	
+	$breadcrumb = 'application_employment_current';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html<?php if (TEXT_DIRECTION == 'rtl') print ' dir="rtl"'; ?> xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Jobs at <?php print METADATA_GENERIC_COUNCIL_NAME;?></title>
+	<title>Jobs at <?php print encodeHtml(METADATA_GENERIC_NAME); ?></title>
 
 	<?php include_once("../includes/stylesheets.php"); ?>
 	<?php include_once("../includes/metadata.php"); ?>
 
-	<meta name="Keywords" content="jobs, recruitment, application, job, <?php print METADATA_GENERIC_COUNCIL_KEYWORDS;?>" />
-	<meta name="Description" content="Jobs currently available at <?php print METADATA_GENERIC_COUNCIL_NAME;?>" />
+	<meta name="Keywords" content="jobs, recruitment, application, job, <?php print encodeHtml(METADATA_GENERIC_KEYWORDS); ?>" />
+	<meta name="Description" content="Jobs currently available at <?php print encodeHtml(METADATA_GENERIC_NAME); ?>" />
 	
-	<meta name="DC.title" lang="en" content="Jobs at <?php print METADATA_GENERIC_COUNCIL_NAME;?>" />
-	<meta name="DC.description" lang="en" content="Jobs currently available at <?php print METADATA_GENERIC_COUNCIL_NAME;?>" />
+	<meta name="DC.title" lang="en" content="Jobs at <?php print encodeHtml(METADATA_GENERIC_NAME); ?>" />
+	<meta name="DC.description" lang="en" content="Jobs currently available at <?php print encodeHtml(METADATA_GENERIC_NAME); ?>" />
 	
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
@@ -126,171 +127,139 @@
 <body>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
-<!-- ########################## -->
-
-			<div id="anchor"></div>
-            <!-- Breadcrumb --><!-- googleoff:all -->
-            <div id="bc">
-                <span class="bcb">&raquo;</span> 
-                <a href="http://<?php print $DOMAIN; ?>/site/" >Home</a> | <a href="user_home.php">Your Account</a> | <a href="application_details.php?appID=<?php print $app->id; ?>">Application details</a> | Employment
-            </div>
-            <!-- END Breadcrumb --><!-- googleon:all -->
-    
-            <h1>Application for employment</h1>
+<!-- ########################## -->            
             
-            <p class="first"><span class="b">Position:</span> <?php print $job->title;?> <span class="b">Closing Date:</span> <?php print date("l jS F y", $job->closingDate);?></p>
-            
-            
-            <!-- Step / progress box -->
-            <?php include_once("../includes/application_sections.php"); ?>
-            <!-- END Step / progress box -->
-    
-            <p class="first">Fields marked * are manditory.
-    
-            <!-- Creates the slim central column -->
-            <div id="jobs_centre">
-    
-            <h2><span class="h">Step 5:</span> Employment</h2>
-    <?php
-        if (sizeof($missing) > 0) {
-    ?>
+	<?php include('../includes/application_sections.php'); ?>
+        
+<?php
+	if (sizeof($missing) > 0) {
+?>
             <!-- ERROR -->
-            <div class="joberror">
-                <p>Please ensure fields marked with ! are entered correctly</p>
-            </div>
+	<h2 class="warning">Please ensure fields marked with ! are entered correctly</h2>
             <!-- END ERROR -->
-    <?php
-        }
-    ?>
-            <!-- Begin form area -->
-             <form action="application_employment_current.php?appID=<?php print $_GET['appID']; ?>#anchor" method="post" enctype="x-www-form-encoded" class="jobs_form">
-    <?php
-        if (isset($_GET['changeStatus'])) {
-    ?>
+<?php
+	}
+?>
+             <form action="<?php print getSiteRootURL() . buildJobApplicationURL('employmentCurrent', $_GET['appID']); ?>" method="post" enctype="multipart/form-data" enctype="x-www-form-encoded" class="basic_form">
+<?php
+	if (isset($_GET['changeStatus'])) {
+?>
             <input type="hidden" name="statusChanged" value="true" />
-    <?php	
+<?php	
         }
         if (($emp->employmentStatus == "Unemployed" || $emp->employmentStatus == "Employed") && $_GET['changeStatus'] != 'true') {
-    ?>
-                <input type="hidden" name="employmentStatus" value="<?php print $emp->employmentStatus; ?>" />
-                <div class="jobs_centre">
-                <p class="first">Current Employment Status: <span class="b"><?php print $emp->employmentStatus; ?></span> - <a href="application_employment_current.php?appID=<?php print $_GET['appID']; ?>&changeStatus=true#anchor"class="small"> Change Status</a></p>
-                </div>
-    <?php
+?>
+                <input type="hidden" name="employmentStatus" value="<?php print encodeHtml($emp->employmentStatus); ?>" />
+                <p>Current Employment Status: <strong><?php print encodeHtml($emp->employmentStatus); ?></strong> - <a href="<?php print getSiteRootURL(). buildJobApplicationURL('employmentCurrent', $_GET['appID'], 'changeStatus'); ?>" >Change Status</a></p>
+<?php
         }
         else {
-    ?>
+?>
                 <!-- employment status -->
-                <div><label for="employmentStatus">Current Employment Status * </label>
+                <p>
+                	<label for="employmentStatus">Current Employment Status * </label>
                     <select id="employmentStatus" class="jobs_date" name="employmentStatus" >
                         <option <?php if ($emp->employmentStatus == "Employed") print "selected"; ?> value="Employed">Employed</option>
                         <option <?php if ($emp->employmentStatus == "Unemployed") print "selected"; ?> value="Unemployed">Unemployed</option>
                     </select>
-                </div>
-    <?php
+                    <span class="clear"></span>
+                </p>
+<?php
         }
-    ?>
-                <div class="form_line"></div>
-    
-                <!-- END employment status -->
-    <?php
+
         if ($emp->employmentStatus == 'Employed' && $_GET['changeStatus'] != 'true') {
-    ?>			
-                <!-- Current Employment -->
-                <div class="jobs_subheader">Current Employment</div>
+?>			
+                <h3>Current Employment</h3>
                 
-                <div><label for="employer"><?php if ($missing['employer']) { ?><span class="star">! <?php } ?>Employer <?php if ($missing['employer']) { ?></span><?php } ?>* </label><input id="employer" type="text" name="employer" class="jobs_form" value="<?php print $emp->employer;?>" /></div>
+                <p><label for="employer"><?php if ($missing['employer']) { ?><span class="star">! <?php } ?>Employer <?php if ($missing['employer']) { ?></span><?php } ?>* </label><input id="employer" type="text" name="employer" class="field" value="<?php print encodeHtml($emp->employer); ?>" /></p>
                 <!-- END employer -->
-                
-                <div class="form_line"></div>
-                
+                                
                 <!-- location -->
-                <div><label for="employerAddress"><?php if ($missing['employerAddress']) { ?><span class="star">! <?php } ?>Address of Employer<?php if ($missing['employerAddress']) { ?></span><?php } ?>* </label><textarea id="employerAddress" name="employerAddress" class="jobs_form" rows="4"><?php print $emp->employerAddress;?></textarea></div>
+                <p><label for="employerAddress"><?php if ($missing['employerAddress']) { ?><span class="star">! <?php } ?>Address of Employer<?php if ($missing['employerAddress']) { ?></span><?php } ?>* </label><textarea id="employerAddress" name="employerAddress" class="jobs_form" rows="4"><?php print encodeHtml($emp->employerAddress); ?></textarea></p>
                 <!-- END location -->
-                
-                <div class="form_line"></div>
-                
-                <!-- employer -->
-                
+                                
                 <!-- from date -->	
-                <div>
-                    <div class="multipleinput_label"><?php if ($missing['startDate']) { ?><span class="star">! <?php } ?>Start date <?php if ($missing['startDate']) { ?></span><?php } ?> * </div>
-                    <label for="day" class="multipleinput">&nbsp;day <input id="day" type="text" name="start_day" value="<?php print $start_day;?>" size="2" maxlength="2" class="jobs_date"  /></label>
-                    <label for="month" class="multipleinput">month <input id="month" type="text" name="start_month" value="<?php print $start_month;?>" size="2" maxlength="2" class="jobs_date" /></label>
-                    <label for="startyear" class="multipleinput">year <input id="startyear" type="text" name="start_year" value="<?php print $start_year;?>" size="4" maxlength="4" class="jobs_date"  /></label>
-                </div>
+                <p class="date_birth">
+                    <label><?php if ($missing['startDate']) { ?><span class="star">! <?php } ?>Start date <?php if ($missing['startDate']) { ?></span><?php } ?> * </label>
+                    <label for="day" class="multipleinput"><em>day</em> <input id="day" type="text" name="start_day" value="<?php print $start_day;?>" size="2" maxlength="2" class="dob"  /></label>
+                    <label for="month" class="multipleinput"><em>month</em> <input id="month" type="text" name="start_month" value="<?php print $start_month;?>" size="2" maxlength="2" class="dob" /></label>
+                    <label for="startyear" class="multipleinput"><em>year</em> <input id="startyear" type="text" name="start_year" value="<?php print $start_year;?>" size="4" maxlength="4" class="dob"  /></label>
+                	<span class="clear"></span>
+                </p>
                 <!-- END from date -->
-                
-                <div class="form_line"></div>
-                
+
                 <!-- salary -->
-                <div><label for="salary"><?php if ($missing['salary']) { ?><span class="star">! <?php } ?>Salary / Grade<?php if ($missing['salary']) { ?></span><?php } ?> * </label><input id="salary" type="text" name="salary" class="jobs_form" value="<?php print $emp->salary;?>" /></div>
+                <p>
+	                <label for="salary"><?php if ($missing['salary']) { ?><span class="star">! <?php } ?>Salary / Grade<?php if ($missing['salary']) { ?></span><?php } ?> * </label> 
+	                <input id="salary" type="text" name="salary" class="field" value="<?php print encodeHtml($emp->salary); ?>" />
+                </p>
                 <!-- END salary -->
                 
-                <div class="form_line"></div>
-                
                 <!-- employers business -->
-                <div><label for="employerBusiness"><?php if ($missing['employerBusiness']) { ?><span class="star">! <?php } ?>Employers business<?php if ($missing['employerBusiness']) { ?></span><?php } ?> * </label><input id="employerBusiness" type="text" name="employerBusiness" class="jobs_form" value="<?php print $emp->employerBusiness;?>" /></div>
+                <p>
+	                <label for="employerBusiness"><?php if ($missing['employerBusiness']) { ?><span class="star">! <?php } ?>Employers business<?php if ($missing['employerBusiness']) { ?></span><?php } ?> * </label>
+	                <input id="employerBusiness" type="text" name="employerBusiness" class="field" value="<?php print encodeHtml($emp->employerBusiness); ?>" />
+                </p>
                 <!-- END employers business -->
-                
-                <div class="form_line"></div>
-                
-    
+                          
                 <!-- telephone -->
-                <div><label for="phone"><?php if ($missing['phone']) { ?><span class="star">! <?php } ?>Telephone<?php if ($missing['phone']) { ?></span><?php } ?> * </label><input id="phone" type="text" name="phone" class="jobs_form" value="<?php print $emp->phone;?>" /></div>
+                <p>
+ 	               <label for="phone"><?php if ($missing['phone']) { ?><span class="star">! <?php } ?>Telephone<?php if ($missing['phone']) { ?></span><?php } ?> * </label>
+ 	               <input id="phone" type="text" name="phone" class="field" value="<?php print encodeHtml($emp->phone); ?>" />
+                </p>
                 <!-- END telephone -->
                 
-                <div class="form_line"></div>
-                
                 <!-- fax -->
-                <div><label for="fax">Fax </label><input id="fax" type="text" name="fax" class="jobs_form" value="<?php print $emp->fax;?>" /></div>
+                <p>
+  	              	<label for="fax">Fax </label>
+    	            <input id="fax" type="text" name="fax" class="field" value="<?php print encodeHtml($emp->fax); ?>" />
+                </p>
                 <!-- END fax -->
     
-                <div class="form_line"></div>
-    
                 <!-- email -->
-                <div><label for="email"><?php if ($missing['email']) { ?><span class="star">! <?php } ?>Email<?php if ($missing['email']) { ?></span><?php } ?> </label><input id="email" type="text" name="email" class="jobs_form" value="<?php print $emp->email;?>" /></div>
+                <p>
+         	       	<label for="email"><?php if ($missing['email']) { ?><span class="star">! <?php } ?>Email<?php if ($missing['email']) { ?></span><?php } ?> </label>
+           	     	<input id="email" type="text" name="email" class="field" value="<?php print encodeHtml($emp->email); ?>" />
+                </p>
                 <!-- END email -->
     
-                <div class="form_line"></div>
-    
                 <!-- post -->
-                <div><label for="jobTitle"><?php if ($missing['jobTitle']) { ?><span class="star">! <?php } ?>Post held / Type of work done<?php if ($missing['jobTitle']) { ?></span><?php } ?> * </label><input id="jobTitle" type="text" name="jobTitle" class="jobs_form" value="<?php print $emp->jobTitle;?>" /></div>
-                <!-- END post -->
+                <p>
+                	<label for="jobTitle"><?php if ($missing['jobTitle']) { ?><span class="star">! <?php } ?>Post held / Type of work done<?php if ($missing['jobTitle']) { ?></span><?php } ?> * </label>
+                	<input id="jobTitle" type="text" name="jobTitle" class="field" value="<?php print encodeHtml($emp->jobTitle); ?>" />
+                	<span class="clear"></span>
+                </p>
     
-                <div class="form_line"></div>
                 <!-- start -->
-                <div>
-                    <div class="multipleinput_label"><?php if ($missing['availableStartDate']) { ?><span class="star">! <?php } ?>When can you start? <?php if ($missing['availableStartDate']) { ?></span><?php } ?> * </div>
-                    <label for="newStart_day" class="multipleinput">&nbsp;day <input id="newStart_day" type="text" name="newStart_day" value="<?php print $newStart_day;?>" size="2" maxlength="2" class="jobs_date" /></label>
-                    <label for="newStart_month" class="multipleinput">month <input id="newStart_month" type="text" name="newStart_month" value="<?php print $newStart_month;?>" size="2" maxlength="2" class="jobs_date" /></label>
-                    <label for="year" class="multipleinput">year <input id="newStart_year" type="text" name="newStart_year" value="<?php print $newStart_year;?>" size="4" maxlength="4" class="jobs_date" /></label>
-                </div>
+                <p class="date_birth">
+                    <label><?php if ($missing['availableStartDate']) { ?><span class="star">! <?php } ?>When can you start? <?php if ($missing['availableStartDate']) { ?></span><?php } ?> * </label>
+                    <label for="newStart_day"><em>day</em> <input id="newStart_day" type="text" name="newStart_day" value="<?php print $newStart_day;?>" size="2" maxlength="2" class="dob" /></label>
+                    <label for="newStart_month"><em>month</em> <input id="newStart_month" type="text" name="newStart_month" value="<?php print $newStart_month;?>" size="2" maxlength="2" class="dob" /></label>
+                    <label for="year"><em>year</em> <input id="newStart_year" type="text" name="newStart_year" value="<?php print $newStart_year;?>" size="4" maxlength="4" class="dob" /></label>
+                	<span class="clear"></span>
+                </p>
                 <!-- END start -->
     
-                <div class="form_line"></div>
-    <?php
+<?php
         }
         
         if ($app->submitted != 1) {
-    ?>
+?>
                 <!-- proceed button -->
-                <div class="center">
-                    <input class="proceed_button" type="submit" name="saveProceed" value="Save &amp; Proceed" />
-                </div>
+                <p class="center">
+                    <input class="button" type="submit" name="saveProceed" value="Save &amp; Proceed" />
+                </p>
                 <!-- END proceed button -->
-    <?php
+<?php
         }
-    ?>
-            <!-- ENDS the slim central column -->
-            </div>
+?>
     
             <!-- save for later -->
             <?php include("../includes/savelater.php"); ?>
             <!-- END save for later -->
             </form>
                 
-            <p class="jobs_first"><?php print METADATA_GENERIC_COUNCIL_NAME;?> is an equal opportunities employer.</p>
+            <p class="note"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> is an equal opportunities employer.</p>
 
 			
 <!-- ################ MAIN STRUCTURE ############ -->

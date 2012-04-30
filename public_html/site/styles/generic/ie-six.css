@@ -1,0 +1,9 @@
+#mast .pseudoH1 {margin-top: 40px;}
+#mast form input.field { padding-bottom: 2px; margin-right: -1px;}
+#mast p { width: 310px;}
+
+.row_divider {width:100%;clear:both;margin: 0 0 5px 0; padding:0 5px 0 0; }
+
+input.button, #content form.basic_form input.button {margin:0; padding:0; vertical-align: top}
+
+img { -ms-interpolation-mode:bicubic; }

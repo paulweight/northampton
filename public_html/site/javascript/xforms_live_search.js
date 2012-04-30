@@ -1,48 +1,13 @@
-var nextLiveSearchSequence = 0;
-var lastSequenceUsed = 0;
-
-function doLiveSearch (e)
-{
-	var searchText = $('searchText').value;
-	
-	if (searchText.length > 2) {
-
-		var nonce = Math.floor(Math.random() * 100);
-
-		nextLiveSearchSequence = nextLiveSearchSequence + 1;
-
-		new Ajax.Request('/site/includes/xforms_search_results.php',
-						 {
-							parameters:'searchText=' + searchText + '&nonce=' + nonce + '&seq=' + nextLiveSearchSequence,
-							method:'post',
-							onSuccess:updateSearchResults
-						 }
-						);
-					
-		Element.show('loading');
-	}
-	else {
-		$('search_results').innerHTML = '';
-	}
+if (typeof (scriptFileExtension) == "undefined") {
+    var scriptFileExtension = 'php';
 }
 
-function updateSearchResults (response)
+function initLiveXFormsSearch ()
 {
-	Element.hide('loading');
-	
-	var responseFields = response.responseText.split('|');
-
-	var sequenceNumber = parseInt(responseFields[1]);
-
-	if (sequenceNumber >= lastSequenceUsed) {
-		$('search_results').innerHTML = responseFields[0];
-		lastSequenceUsed = sequenceNumber;
-	}
-}
-
-function initLiveSearch ()
-{
-	Event.observe('searchText', 'keyup', function(e) { doLiveSearch(e) });
+    var search = new LiveSearch('xforms_searchText', 'xforms_search_results', '/site/includes/xforms_search_results.' + scriptFileExtension, {
+		'frequency': 0.4,
+		'loadingIndicator': 'xforms_loading'
+	});
 }
 
 function addLoadEvent(func)
@@ -74,4 +39,4 @@ function addUnLoadEvent(func)
 	}
 }
 
-addLoadEvent(initLiveSearch);
+addLoadEvent(initLiveXFormsSearch);

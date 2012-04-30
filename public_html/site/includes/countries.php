@@ -53,7 +53,7 @@
 						<option>Congo, Democratic Republic of the</option>
 						<option>Cook Islands</option>
 						<option>Costa Rica</option>
-						<option>Cote d'Ivoire</option>
+						<option>Cote d&#39;Ivoire</option>
 						<option>Croatia</option>
 						<option>Cyprus</option>
 						<option>Czech Republic</option>
@@ -117,7 +117,7 @@
 						<option>Korea, Republic of</option>
 						<option>Kuwait</option>
 						<option>Kyrgyzstan</option>
-						<option>Lao People's Democratic Republic</option>
+						<option>Lao People&#39;s Democratic Republic</option>
 						<option>Latvia</option>
 						<option>Lebanon</option>
 						<option>Lesotho</option>

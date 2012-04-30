@@ -13,8 +13,9 @@
 	$telephone = "";
 	$comments = "";
 	
-	if (isset($_POST['submit'])) {
+	$error_array = array();
 	
+	if (isset($_POST['submit'])) {
 		if ($_POST['forename'] == "") {
 			$error_array['forename'] = true;
 		}
@@ -24,7 +25,7 @@
 		if ($_POST['address'] == "") {
 			$error_array['address'] = true;
 		}
-		if ($_POST['email'] == "") {
+		if ($_POST['email'] == "" || !preg_match('/^[0-9A-Za-z\.\-_]{1,127}@[0-9A-Za-z\.\-_]{1,127}$/', trim($_POST['email']))) {
 			$error_array['email'] = true;
 		}
 		if ($_POST['telephone'] == "") {
@@ -33,20 +34,19 @@
 		if ($_POST['comments'] == "") {
 			$error_array['comments'] = true;
 		}
-		if ($_POST['auth'] == 'fail' || $_POST['auth'] != $DOMAIN.date('Y')) {
-				$error_array['auth'] = true;		    
-		}		
+		if ($_POST['auth'] == 'fail' || $_POST['auth'] != md5(DOMAIN . date('Y'))) {
+			$error_array['auth'] = true;
+		}
 		
 		if (sizeof($error_array) == 0) {
-
 			$headerEmail = $_POST['email'];
-			if ($headerEmail == "") {
-				$headerEmail = $DEFAULT_EMAIL_ADDRESS;
+			if (empty($headerEmail)) {
+				$headerEmail = DEFAULT_EMAIL_ADDRESS;
 			}
 			
 			$HEADER = "From: $headerEmail\r\nReply-to: $headerEmail\r\nContent-Type: text/plain; charset=iso-8859-1;\r\n";
 			$SUBJECT = $DOMAIN. " feedback enclosed.";
-			$MESSAGE = "Please find here some feedback from the $DOMAIN website.\n\n";
+			$MESSAGE = "Please find here some feedback from the " . DOMAIN . " website.\n\n";
 
 			$CONTACT_STRING = "";
 			if ($_POST['forename'] != "" || $_POST['surname'] != "") {
@@ -76,15 +76,15 @@
 				$MESSAGE .= "COMMENTS\n" . nl2br($_POST['comments']) . "\n";
 			}
 
-			mail($DEFAULT_EMAIL_ADDRESS, $SUBJECT, $MESSAGE, $HEADER);		
-			header("Location: ./thanks.php");
+			mail(DEFAULT_EMAIL_ADDRESS, $SUBJECT, $MESSAGE, $HEADER);		
+			header('Location: ' . buildThanksURL());
 			exit();
 
 		}
 	}
 
-	if (!isset($_POST['submit']) && isset($_SESSION['userID'])) {
-		$user = getUser($_SESSION['userID']);
+	if (!isset($_POST['submit']) && Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
+		$user = Jadu_Service_User::getInstance()->getSessionUser();
 		$salutation = $user->salutation;
 		$forename = $user->forename;
 		$surname = $user->surname;
@@ -95,112 +95,21 @@
 		$telephone = $user->telephone;
 		$comments = "";
 	}
-	elseif(isset($_POST['submit'])) {
-		$salutation = $_POST['salutation'];
-		$forename = $_POST['forename'];
-		$surname = $_POST['surname'];
-		$address = $_POST['address'];
-		$postcode = $_POST['postcode'];
-		$country = $_POST['country'];
-		$email = $_POST['email'];
-		$telephone = $_POST['telephone'];
+	elseif (isset($_POST['submit'])) {
+		$salutation = isset($_POST['salutation']) ? $_POST['salutation'] : '';
+		$forename = isset($_POST['forename']) ? $_POST['forename'] : '';
+		$surname = isset($_POST['surname']) ? $_POST['surname'] : '';
+		$address = isset($_POST['address']) ? $_POST['address'] : '';
+		$postcode = isset($_POST['postcode']) ? $_POST['postcode'] : '';
+		$country = isset($_POST['country']) ? $_POST['country'] : '';
+		$email = isset($_POST['email']) ? $_POST['email'] : '';
+		$telephone = isset($_POST['telephone']) ? $_POST['telephone'] : '';
+		$commands = isset($_POST['comments']) ? $_POST['comments'] : '';
 	}
 
-	$breadcrumb = 'feedback';
+	// Breadcrumb, H1 and Title
+		$MAST_HEADING = 'Your feedback';
+		$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a  href="' . getSiteRootURL() . buildContactURL() .'" >Contact us</a></li><li><span>Your feedback</span></li>';
 
+	include("feedback.html.php");
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title>Feedback | <?php print METADATA_GENERIC_COUNCIL_NAME;?></title>
-	<?php include_once("../includes/stylesheets.php"); ?>
-	<?php include_once("../includes/metadata.php"); ?>
-
-	<meta name="Keywords" content="feedback, <?php print METADATA_GENERIC_COUNCIL_KEYWORDS;?>" />
-	<meta name="Description" content="Send your feedback directly to <?php print METADATA_GENERIC_COUNCIL_NAME;?>" />
-
-	<meta name="DC.title" lang="en" content="<?php print METADATA_GENERIC_COUNCIL_NAME;?> feedback" />
-	<meta name="DC.description" lang="en" content="Send your feedback directly to <?php print METADATA_GENERIC_COUNCIL_NAME;?>" />
-
-	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
-	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
-	<script type="text/javascript">
-	<!--
-		function preSubmit()
-		{
-			document.getElementById('auth').value = '<?php print $DOMAIN . date('Y'); ?>';
-		}
-	-->
-	</script>	
-	
-	<script type="text/javascript" src="site/javascript/global.js"></script>	
-</head>
-<body>
-<!-- ########## MAIN STRUCTURE ######### -->
-<?php include("../includes/opening.php"); ?>
-<!-- ########################## -->
-	
-<?php
-	if (!empty($error_array['auth'])) {
-?>
-	<h2 class="warning">You must have javascript enabled to use submit feedback</h3>
-<?php
-	} 
-	else if (sizeof($error_array) > 0) {
-?>
-	<h2 class="warning">Please check details highlighted <strong>!</strong> are entered correctly.</h2>
-<?php
-	}
-?>
-	<form action="http://<?php print $DOMAIN; ?>/site/scripts/feedback.php" method="post" enctype="x-www-form-encoded" class="basic_form" onsubmit="preSubmit(); return true;">
-		<fieldset>
-			<legend>Your comments or suggestions</legend>
-			<input type="hidden" name="auth" id="auth" value="fail" />	
-			<p>
-				<label for="Salutation"> Salutation</label>
-				<select class="select" name="salutation" id="Salutation">
-					<option <?php if ($salutation == "Select...") print "selected"; ?> value="">Select...</option>
-					<option <?php if ($salutation == "Mr") print "selected"; ?> value="Mr">Mr</option>
-					<option <?php if ($salutation == "Miss") print "selected"; ?> value="Miss">Miss</option>
-					<option <?php if ($salutation == "Mrs") print "selected"; ?> value="Mrs">Mrs</option>
-					<option <?php if ($salutation == "Ms") print "selected"; ?> value="Ms">Ms</option>
-					<option <?php if ($salutation == "Dr") print "selected"; ?> value="Dr">Dr</option>
-					<option <?php if ($salutation == "Other") print "selected"; ?> value="Other">Other</option>
-				</select>
-			</p>
-			<p>
-				<label for="Forename"><?php if ($error_array['forename']) { ?><strong>! <?php } ?>Forename (required)<?php if ($error_array['forename']) { ?></strong><?php } ?> </label>
-				<input id="Forename" type="text" name="forename" class="field<?php if ($error_array['forename']) { ?> warning<?php } ?>" value="<?php print $forename;?>" />
-			</p>
-			<p>
-				<label for="Surname"><?php if ($error_array['surname']) { ?><strong>! <?php } ?>Surname (required)<?php if ($error_array['surname']) { ?></strong><?php } ?></label>
-				<input id="Surname" type="text" name="surname" class="field<?php if ($error_array['surname']) { ?> warning<?php } ?>" value="<?php print $surname;?>" />
-			</p>
-			<p>
-				<label for="Address"><?php if ($error_array['address']) { ?><strong>! <?php } ?>Location (required)<?php if ($error_array['address']) { ?></strong><?php } ?> </label>
-				<input id="Address" type="text" name="address" class="field<?php if ($error_array['address']) { ?> warning<?php } ?>" value="<?php print $address;?>" />
-			</p>
-			<p>
-				<label for="Email"><?php if ($error_array['email']) { ?><strong>! <?php } ?>Email Address (required)<?php if ($error_array['email']) { ?></strong><?php } ?> </label>
-				<input id="Email" type="text" name="email" class="field<?php if ($error_array['email']) { ?> warning<?php } ?>" value="<?php print $email;?>" />
-			</p>
-			<p>
-				<label for="Telephone"><?php if ($error_array['telephone']) { ?><strong>! <?php } ?>Telephone (required)<?php if ($error_array['telephone']) { ?></strong><?php } ?></label>
-				<input id="Telephone" type="text" name="telephone" class="field<?php if ($error_array['telephone']) { ?> warning<?php } ?>" value="<?php print $telephone;?>" />
-			</p>
-			<p>
-				<label for="comments"><?php if ($error_array['comments']) { ?><strong>! <?php } ?>Your comments (required)<?php if ($error_array['comments']) { ?></strong><?php } ?> </label>
-				<textarea id="comments" name="comments" class="field<?php if ($error_array['comments']) { ?> warning<?php } ?>" cols="2" rows="5"><?php print $comments;?></textarea>
-			</p>
-			<p class="centre">
-				<input type="submit" value="Send your feedback" name="submit" class="button" />
-			</p>
-		</fieldset>
-	</form>
-
-
-	<h2>Data Protection</h2>
-	<p>The details you provide on this page will not be used to send unsolicited e-mail, and will not be sold to a 3rd party. <a href="http://<?php print $DOMAIN; ?>/site/scripts/terms.php">Privacy Statement</a></p>
-			
-<!-- ################ MAIN STRUCTURE ############ -->
-<?php include("../includes/closing.php"); ?>

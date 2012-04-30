@@ -1,4 +1,6 @@
 <?php
+	include_once('utilities/JaduModulePages.php');
+
 	$showFAQs = false;
 	$showForms = false;
 	$showDownloads = false;
@@ -6,9 +8,16 @@
 	$showDocuments = false;
 	$showNews = false;
 	$showEvents = false;
+	$showServices = false;
+	$showBlogs = false;
+	$showDirectories = false;
+	$showDirectoryEntries = false;
+	$directoryIDs = array();	
 
-	$lgclList = new CategoryList(BESPOKE_CATEGORY_LIST_NAME, BESPOKE_CATEGORY_LIST_FILE);	
-	$allCategories = array($lgclList->getCategory($_GET['categoryID']));
+if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
+	$categoryID = $_GET['categoryID'];
+	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
+	$allCategories = array($lgclList->getCategory($categoryID));
 	
 	$currentScript = basename($_SERVER['PHP_SELF']);
 
@@ -52,9 +61,62 @@
 	}
 	
 	if ($currentScript == 'download_info.php') {
-		$bookmarkTitle = $file->title;
+		$bookmarkTitle = $fileItem->title;
 	}
 	
+   	//	Podcasts
+   	$showPodcasts = false;
+   	if ($currentScript != "podcasts.php") {
+   		$greaterThan = 0;
+   		if ($currentScript == "podcast_info.php") {
+   			$greaterThan = 1;	
+   		}
+   		if (sizeof(filterCategoriesInUse($allCategories, MULTIMEDIA_PODCAST_APPLIED_CATEGORIES_TABLE, true)) > $greaterThan) {
+   			$showPodcasts = true;
+   		}
+   	}
+
+   	if ($currentScript == 'podcast_info.php') {
+   		$bookmarkTitle = $podcast->title;
+   	}
+
+   	//	Galleries
+   	$showGalleries = false;
+   	if ($currentScript != "galleries.php") {
+   		$greaterThan = 0;
+   		if ($currentScript == "gallery_info.php") {
+   			$greaterThan = 1;	
+   		}
+   		if (sizeof(filterCategoriesInUse($allCategories, MULTIMEDIA_GALLERY_APPLIED_CATEGORIES_TABLE, true)) > $greaterThan) {
+   			$showGalleries = true;
+   		}
+   	}
+
+   	if ($currentScript == 'gallery_info.php') {
+   		$bookmarkTitle = $gallery->title;
+   	}
+
+	if (getModulePageFromName('Directories')->id != -1) {
+		include_once(HOME_DIR .'jadu/directoryBuilder/JaduDirectories.php');
+		include_once(HOME_DIR .'jadu/directoryBuilder/JaduDirectoryEntries.php');
+		// directories
+		if ($currentScript != "directories_index.php") {
+    		$greaterThan = 0;
+    		if ($currentScript == "directory_home.php") {
+    			$greaterThan = 1;	
+    		}
+    		if (sizeof(filterCategoriesInUse($allCategories, DIRECTORY_APPLIED_CATEGORIES_TABLE, true)) > $greaterThan) {
+    			$showDirectories = true;
+    		}
+    	}
+
+		// directory entries
+		$allDirectories = getAllDirectories($adminID = -1, $live = 1, $categoryID);
+		foreach($allDirectories as $directory) {
+			$directoryIDs[] = $directory->id;
+		}
+	}
+
 	//	Meetings
 	if ($currentScript != "meetings.php") {
 		$greaterThan = 0;
@@ -65,7 +127,7 @@
 			$showMeetings = true;
 		}
 	}
-	
+
 	//	Documents
 	if ($currentScript != "documents.php") {
 		$greaterThan = 0;
@@ -79,7 +141,7 @@
 	else {
 		$bookmarkTitle = $parent->name;
 	}
-	
+
 	if ($currentScript == 'documents_info.php') {
 		$bookmarkTitle = $header->title;
 	}
@@ -95,7 +157,7 @@
 		}
 	}
 	else {
-		$bookmarkTitle = $categoryViewing->name . " news";
+		$bookmarkTitle = $currentCategory->name . " news";
 	}
 	
 	//	Events
@@ -112,34 +174,64 @@
 		$bookmarkTitle = $parent->name . " events";
 	}
 
+	//	Services
+	if ($currentScript != "services.php") {
+		$greaterThan = 0;
+		if ($currentScript == "services_info.php") {
+			$greaterThan = 1;
+		}
+		if (sizeof(filterCategoriesInUse($allCategories, SERVICES_APPLIED_CATEGORIES_TABLE, true)) > $greaterThan) {
+			$showServices = true;
+		}
+	}
+	else {
+		$bookmarkTitle = $parent->name . " services";
+	}
+	
+	//	Blogs
+	if ($currentScript != "blog_index.php") {
+		if (sizeof(filterCategoriesInUse($allCategories, BLOG_APPLIED_CATEGORIES_TABLE, true)) > 0) {
+			$showBlogs = true;
+		}
+	}
+	else {
+		$bookmarkTitle = $parent->name . " blogs";
+	}
+
 ?>
 
 <div id="related">
-
-<?php
-		 $emailFriendString = urlencode($currentScript . "?" . $_SERVER['QUERY_STRING']);
-?>
+	<h3>Related items</h3>
 	<ul>
+		<?php if ($showForms) { ?><li class="relform"><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($categoryID); ?>">Related Forms</a></li><?php } ?>
+		<?php if ($showDownloads) { ?><li class="reldownload"><a href="<?php print getSiteRootURL() . buildDownloadsURL($categoryID); ?>" >Related Downloads</a></li><?php } ?>
+		<?php if ($showPodcasts) { ?><li class="relpodcast"><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL($categoryID); ?>">Related Podcasts</a></li><?php } ?>
+		<?php if ($showGalleries) { ?><li class="relgallery"><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL($categoryID); ?>">Related Galleries</a></li><?php } ?>
+		<?php if ($showMeetings) { ?><li class="relmeet"><a href="<?php print getSiteRootURL() . buildMeetingsURL($categoryID); ?>">Related Meetings &amp; Minutes</a></li><?php } ?>
+		<?php if ($showDocuments) { ?><li class="reldocs"><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($categoryID); ?>">Related Documents</a></li><?php } ?>
+		<?php if ($showNews) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildNewsURL($categoryID); ?>">Related News</a></li><?php } ?>
+		<?php if ($showEvents) { ?><li class="relevents"><a href="<?php print getSiteRootURL() . buildEventsURL($categoryID); ?>">Related Events</a></li><?php } ?>
+		<?php if ($showFAQs) { ?><li class="relfaq"><a href="<?php print getSiteRootURL() . buildFAQURL(false, $categoryID); ?>">Related FAQs</a></li><?php } ?>
+		<?php if ($showServices) { ?><li class="relfaq"><a href="<?php print getSiteRootURL(). buildAZServicesCategoryURL($categoryID); ?>">Related Services</a></li><?php } ?>
+		<?php if ($showBlogs) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildBlogURL($categoryID);?>">Related Blogs</a></li><?php } ?>
+<?php
+		// show a related link for each directory if an entry in that directory
+		// is in this category
+		if (count($directoryIDs) > 0) {
+			foreach ($directoryIDs as $directoryID) {
+				$directory = getDirectory($directoryID);
+?>
+			<li class="reldocs"><a href="<?php print buildDirectoriesURL(-1, $directory->id); ?>" ><?php print encodeHtml($directory->name); ?></a></li>
+<?php
+			}
+		}
+		$currentScriptURL = base64_encode($_SERVER['REQUEST_URI']);
+		$currentScriptEmailURL = $_SERVER['REQUEST_URI'];
+?>
 		<li class="relprint"><a rel="nofollow" href="#" onclick="window.print();return false;">Print this page</a></li>
-		<li class="relemail"><a rel="nofollow" href="http://<?php print $DOMAIN; ?>/site/scripts/email_friend.php?link=<?php print $emailFriendString;?>">Email this to a friend</a></li>
-		<li class="relcomment"><a rel="nofollow" href="http://<?php print $DOMAIN; ?>/site/scripts/pageComments.php?link=<?php print $emailFriendString;?>">Comment on this page</a></li>
+		<li class="relemail"><a id="emailFriendLink" rel="nofollow" href="<?php print getSiteRootURL() . buildEmailFriendURL($currentScriptEmailURL); ?>">Email this to a friend</a></li>
 	</ul>
-
-<?php
-	if ($showFAQs || $showForms || $showDownloads || $showMeetings || $showDocuments || $showNews || $showEvents) {
-?>
-	<ul>
-		<li><h2>Related items</h2></li>
-		<?php if ($showForms) { ?><li class="relform"><a href="http://<?php print $DOMAIN; ?>/site/scripts/forms.php?categoryID=<?php print $categoryID;?>">Online forms</a></li><?php } ?>
-		<?php if ($showDownloads) { ?><li class="reldownload"><a href="http://<?php print $DOMAIN; ?>/site/scripts/downloads.php?categoryID=<?php print $categoryID;?>">Downloads</a></li><?php } ?>
-		<?php if ($showMeetings) { ?><li class="relmeet"><a href="http://<?php print $DOMAIN; ?>/site/scripts/meetings.php?categoryID=<?php print $categoryID;?>">Meetings and minutes</a></li><?php } ?>
-		<?php if ($showDocuments) { ?><li class="reldocs"><a href="http://<?php print $DOMAIN; ?>/site/scripts/documents.php?categoryID=<?php print $categoryID;?>">Further information</a></li><?php } ?>
-		<?php if ($showNews) { ?><li class="relnews"><a href="http://<?php print $DOMAIN; ?>/site/scripts/news_category.php?categoryID=<?php print $categoryID;?>">News</a></li><?php } ?>
-		<?php if ($showEvents) { ?><li class="relevents"><a href="http://<?php print $DOMAIN; ?>/site/scripts/events.php?categoryID=<?php print $categoryID;?>">Events</a></li><?php } ?>
-		<?php if ($showFAQs) { ?><li class="relfaq"><a href="http://<?php print $DOMAIN; ?>/site/scripts/faqs.php?categoryID=<?php print $categoryID;?>">Frequently asked questions</a></li><?php } ?>
-	</ul> 
-<?php
-		 }   
-?>
-
 </div>
+<?php
+}
+?>

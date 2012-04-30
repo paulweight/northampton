@@ -1,7 +1,9 @@
 var map;
 var localSearch = new GlocalSearch();
-var nextLiveSearchSequence = 0;
-var lastSequenceUsed = 0;
+
+if (typeof(scriptFileExtension) == "undefined") {
+	var scriptFileExtension = 'php';
+}
 
 var icon = new GIcon();
 icon.image = "http://www.google.com/mapfiles/marker.png";
@@ -10,41 +12,68 @@ icon.iconSize = new GSize(20, 34);
 icon.shadowSize = new GSize(37, 34);
 icon.iconAnchor = new GPoint(10, 34);
 
+function toggleElement (element) {
+	var item = document.getElementById(element);
+	
+	if (item.style.display == 'none') {
+		item.style.display = 'block';
+	}
+	else {
+		item.style.display = 'none';
+	}
+}
+
+function visibleElement (element) {
+	var item = document.getElementById(element);
+	
+	if (item.style.display == 'none') {
+		return false;
+	}
+	else {
+		return true;
+	}
+
+}
+
 function showPostcodeOnMap()
 {
-	usePointFromPostcode($('postcode').value, placeMarkerAtPoint);
+	usePointFromPostcode(document.getElementById('postcode').value, placeMarkerAtPoint);
 }
 
 function showFurtherInfo(serviceID) 
 {
-	Element.toggle('service_info_' + serviceID);
-	
-	if ($('service_map_' + serviceID)) {
-		Element.toggle('service_map_' + serviceID);
-		$('toggle_map_link_' + serviceID).innerHTML = 'Show map';
+	if (document.getElementById('service_info_' + serviceID)) {
+		toggleElement('service_info_' + serviceID);
 	}
 	
-	if ($('related_forms_' + serviceID)) {
-		Element.toggle('related_forms_' + serviceID);
+	if (document.getElementById('service_map_' + serviceID)) {
+		toggleElement('service_map_' + serviceID);
+		document.getElementById('toggle_map_link_' + serviceID).innerHTML = 'Show map';
+	}
+	
+	if (document.getElementById('related_forms_' + serviceID)) {
+		toggleElement('related_forms_' + serviceID);
+	}
+	
+	if (document.getElementById('map_' + serviceID)) {
+		document.getElementById('map_' + serviceID).style.display = 'none';
 	}
 
-	Element.hide('map_' + serviceID);
-
-	if ($("img_" + serviceID).src.indexOf('site/images/bllt_minus.gif') > 0) {
-		$("img_" + serviceID).src = 'site/images/bllt_plus.gif';
+	if (document.getElementById("img_" + serviceID).src.indexOf('site/images/bllt_minus.gif') > 0) {
+		document.getElementById("img_" + serviceID).src = 'site/images/bllt_plus.gif';
 	}
 	else {
-		$("img_" + serviceID).src = 'site/images/bllt_minus.gif';
+		document.getElementById("img_" + serviceID).src = 'site/images/bllt_minus.gif';
 	}
 }
 
 function createMapForPostcode(postcode, divID, callbackFunction)
 {
-	Element.toggle('map_' + divID);
+	toggleElement('map_' + divID);
 	
-	if (Element.visible('map_' + divID)) {
+	if (visibleElement('map_' + divID)) {
 		
-		$('toggle_map_link_' + divID).innerHTML = 'Hide map';
+		document.getElementById('toggle_map_link_' + divID).innerHTML = 'Hide map';
 
 		localSearch.setSearchCompleteCallback(null, 
 			function()
@@ -56,7 +85,7 @@ function createMapForPostcode(postcode, divID, callbackFunction)
 					callbackFunction('map_' + divID, point);
 				}
 				else {
-					alert("Postcode not found!");
+					document.getElementById('map_' + divID).innerHTML = 'Sorry! The map for postcode ' + postcode + ' could not be found.';
 				}
 			});
 
@@ -64,7 +93,7 @@ function createMapForPostcode(postcode, divID, callbackFunction)
 	
 	}
 	else {
-		$('toggle_map_link_' + divID).innerHTML = 'Show map';
+		document.getElementById('toggle_map_link_' + divID).innerHTML = 'Show map';
 	}
 }
 
@@ -89,7 +118,7 @@ function createMap(divID, startingPoint)
 {
 	if (GBrowserIsCompatible()) {
 
-		map = new GMap2($(divID));
+		map = new GMap2(document.getElementById(divID));
 
 		map.addControl(new GLargeMapControl());
 		map.addControl(new GMapTypeControl());
@@ -98,50 +127,12 @@ function createMap(divID, startingPoint)
 	}
 }
 
-function doLiveSearch (e)
-{
-	var searchText = $('searchText').value;
-	
-	if (searchText.length > 2) {
-
-		var nonce = Math.floor(Math.random() * 100);
-
-		nextLiveSearchSequence = nextLiveSearchSequence + 1;
-
-		new Ajax.Request('/site/includes/az_search_results.php',
-						 {
-							parameters:'searchText=' + searchText + '&nonce=' + nonce + '&seq=' + nextLiveSearchSequence,
-							method:'post',
-							onSuccess:updateSearchResults
-						 }
-						);
-					
-		Element.show('loading');
-	}
-	else {
-		$('search_results').innerHTML = '';
-	}
-}
-
-function updateSearchResults (response)
-{
-	Element.hide('loading');
-	
-	var responseFields = response.responseText.split('|');
-
-	var sequenceNumber = parseInt(responseFields[1]);
-
-	if (sequenceNumber >= lastSequenceUsed) {
-		$('search_results').innerHTML = responseFields[0];
-		lastSequenceUsed = sequenceNumber;
-	}
-}
-
 function initLiveSearch ()
 {
-	if (document.getElementById('searchText')) {
-		Event.observe('searchText', 'keyup', function(e) { doLiveSearch(e) });
-	}
+	var search = new LiveSearch('searchText', 'search_results', '/site/includes/az_search_results.' + scriptFileExtension, {
+		'frequency': 0.4,
+		'loadingIndicator': 'loading'
+	});
 }
 
 function addLoadEvent(func)

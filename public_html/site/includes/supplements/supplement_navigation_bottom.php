@@ -1,13 +1,16 @@
 <?php
 	if (isset($record)) {
 ?>
-	<div class="cate_info">
-		<h2><?php print $record->title; ?></h2>
-		<ul class="list">
+<div class="supplement">
+	<h3><?php print encodeHtml($record->title); ?></h3>
+<?php
+	if (is_array($record->urls) && sizeof($record->urls) > 0) {
+?>
+		<ul>
 <?php
 		foreach ($record->urls as $title => $url) {
 ?>
-			<li><a href="<?php print $url; ?>"><?php print $title; ?></a></li>
+		<li><a href="<?php print encodeHtml($url); ?>"><?php print encodeHtml($title); ?></a></li>
 <?php
 		}
 ?>
@@ -15,4 +18,7 @@
 <?php
 	}
 ?>
-	</div>
+</div>
+<?php
+	}
+?>

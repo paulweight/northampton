@@ -1,25 +1,22 @@
-			
-<?php
-	if (!toggleColumn('include') && !$indexPage && $breadcrumb != 'homeInfo') {
-		include($HOME . "site/includes/structure/rightColumn.php");
-	}
-?>
-						
 			</div><!-- End content -->
-			
-		</div>
-<?php
-	if (!toggleColumn('include')) {
-		include($HOME . "site/includes/structure/column.php");
-	}
+<?php		
+/*  
+	SECONDARY COLUMN
+	* Make sure body class is updated if ColumnSecondary div is removed.
+*/
 ?>
-		<br class="clear" />
+		<div id="columnSecondary">
+			<?php include(HOME . 'site/includes/right_supplements.php'); ?>
+			
+			<!-- Related information -->
+			<?php include(HOME . "site/includes/related_info.php"); ?>
 
-	<?php include($HOME . "site/includes/structure/footer.php"); ?>
+			<!-- The Contact box -->
+			<?php include(HOME . "site/includes/contactbox.php"); ?>
+			<!-- END of the Contact box -->
+		</div>
+		<?php include(HOME . "site/includes/structure/footer.php"); ?>
 </div>
-
-
-
 <!-- #################################### -->
 <?php
     if (defined('ANALYTICS_INCLUDE') && ANALYTICS_INCLUDE != '') {

@@ -1,25 +1,38 @@
 /* colors #000 #fff #000080 #008000*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, #page_wrap, #mast, #content table, #content table tr, #content table td, #content table th, #content #az_index, #content #az_index li span, #column_nav ul.navWidget li, #content p.date, #content strong, #content #breadcrumb, #content #breadcrumb ul li span, #content #az_index li span, #footer, #content .basic_form p, #content label, #content .xform label, #wrapper, #page_wrap, #mainNav ul#mainNavTop li em, #column_nav h2, #column_nav form h3, #column_nav form, div#footerLgnl, div#footerLgnl h2, #footer, ul#breadcrumb, #mainHeading h1, p.first, #Rightcolumn, #related h2, ul.newsLinks li h2, #content .lead p, #content .lead p.date, #content .content_box p.date, #content .content_box ul li, h3.decorative, h2.decorative, .note, div.contactBox, #content #az_index li span, #content .search_az, #content .pop_az ol li span, #content .search_az div, #content div.displayBoxIn p:first-child, #content div.displayBox li img, #content div.displayBoxIn, #content .basic_form legend, div.cate_info ul li, div.doc_info ul li, ul.list li, .download_box ul li ul li, #content ul.download_box li, #content #calendarcontainer table th, #content div.extLinks h3 span, #content h3.extLinks span, div.answer, #content .xform p, div#columnLeft ul li, div#columnRight ul li, #content h3#pagenavbox, #content ul.pagenav li a.noLink
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, 
+s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+#page_wrap, #mast, #mast #azbar, #mast .mast_links, #mast #primary_nav li, #mast #primary_nav li.lastItem a:link, #mast #primary_nav li.lastItem a:visited, 
+#mast #primary_nav li.lastItem a:hover, #mast #primary_nav li.lastItem a:active, #content p.page_down, #content table, #content table tr, #content table td, 
+#content table th, #content #az_index, #content #az_index li span, #column_nav ul.navWidget li, #content p.date, #content strong, #content #breadcrumb, 
+#content #breadcrumb ul li span, #content #az_index li span, #footer, #content .basic_form p, #content label, #content .xform label
 {background: #FFf; color: #000}
 
 #content #calendarcontainer table#calendar td.today, #content h2.signin, #column_nav h2.navWidget, #content #progressbar
 {background: #000; color: #FFf;}
 
-#mast .mast_links form input.field, #content table, #content table tr, #content table td, #content table th, #content .display_box img, #content .poll_box, #content .poll_box img, #content .content_box, #content .lead, #content .search_result, #content .download_box, #content div.cate_info, #content #related, #content #breadcrumb,  #content .sitemap, #content #az_index, #content .person_box img, #content .personBorder, #column_nav h2.navWidget, #column_nav ul.navWidget li, #footer, #content .basic_form p, #mast ul#skip li, #mainNav ul#mainNavTop, div#footerLgnl ul li, #footer, #footer ul li, div#footerLgnl, ul#breadcrumb li, #Rightcolumn, #content .content_box ul, #content .content_box, div.contactBox, div.divBox, .display_box ul li h2, #content #az_index li a:link, #content #az_index li a:visited, #content #az_index li a:hover, #content #az_index li a:active, #content #az_index li span, #content .search_az, #content div.displayBox, #content .basic_form fieldset, #content .basic_form input.field, #content .basic_form select.select, #content .basic_form textarea.field, .search_az input.field, #content .basic_form input.warning, #content .basic_form select.warning, #content .basic_form textarea.warning, div.download_box, #content #calendarcontainer table td, #content #calendarcontainer table tr, #content #calendarcontainer table th, #content h3#pagenavbox, #content div.byEditor blockquote, #column_nav, #mainNav form input.field
+#mast .mast_links form input.field, #content table, #content table tr, #content table td, #content table th, #content .lead_item img, #content .poll_box, #content .poll_box img,
+#content .listed_item, #content .listed_item, #content .download_box, #content div.cate_info, #content #related, #content #breadcrumb, 
+#content .sitemap, #content #az_index, #content .person_box img, #content .personBorder, #column_nav h2.navWidget, #column_nav ul.navWidget li, #footer,
+#content .basic_form p
 {border-color: #000;}
 
-a:link,a:visited, #mast .mast_links a:link, #mast .mast_links a:visited, #mast #primary_nav li a:link, #mast #primary_nav li a:visited, #content table th a:link, #content table th a:visited, #content #calendarcontainer #calendar td a:link, #content #calendarcontainer #calendar td a:visited, #content #az_index li a:link, #content #az_index li a:visited, #column_nav ul.navWidget li a:link, #column_nav ul.navWidget li a:visited, #content div.cate_info h2 a:link, #content div.cate_info h2 a:visited, #content div.doc_info h2 a:link, #content div.doc_info h2 a:visited, #content #breadcrumb ul li a:link, #content #breadcrumb ul li a:visited, div#mast div.pseudoH1 a:link, div#mast div.pseudoH1 a:visited, div#mast div.pseudoH1 a:link span, div#mast div.pseudoH1 a:visited span, #mast ul#skip li a:link, #mast ul#skip li a:visited, #mast ul#mastNav li a:link, #mast ul#mastNav li a:visited, #mast ul#mastNav li.contactDetails a:link span, #mast ul#mastNav li.contactDetails a:visited span, #mast ul#mastNav li.easyRead a:link span, #mast ul#mastNav li.easyRead a:visited span, #mast ul#mastNav li.languages a:link span, #mast ul#mastNav li.languages a:visited span, #mainNav ul#mainNavTop li a:link, #mainNav ul#mainNavTop li a:visited, #mainNav ul#mainNavAZ li a:link, #mainNav ul#mainNavAZ li a:visited, div#footerLgnl ul li a:link, div#footerLgnl ul li a:visited, #footer a:link, #footer a:visited, ul#breadcrumb li a:link, ul#breadcrumb li a:visited, ul.UserList li.userComplete a, ul.UserList li.userDelete a
-{background: #FFf; color: #000080; text-decoration: none;}
+a:link, a:visited, #mast .mast_links a:link, #mast .mast_links a:visited, #mast #primary_nav li a:link, #mast #primary_nav li a:visited,
+#content table th a:link, #content table th a:visited, #content #calendarcontainer #calendar td a:link, #content #calendarcontainer #calendar td a:visited, 
+#content #az_index li a:link, #content #az_index li a:visited, #column_nav ul.navWidget li a:link, #column_nav ul.navWidget li a:visited, 
+#content div.cate_info h2 a:link, #content div.cate_info h2 a:visited, #content div.doc_info h2 a:link, #content div.doc_info h2 a:visited,
+#content #breadcrumb ul li a:link, #content #breadcrumb ul li a:visited
+{background: #FFf; color: #000080}
 
-a:hover,a:active, #mast .mast_links a:hover, #mast .mast_links a:active, #mast #primary_nav li a:hover, #mast #primary_nav li a:active, #content table th a:hover, #content table th a:active, #content #calendarcontainer #calendar td a:hover, #content #calendarcontainer #calendar td a:active, #content #az_index li a:hover, #content #az_index li a:active, #column_nav ul.navWidget li a:hover, #column_nav ul.navWidget li a:active, #content div.cate_info h2 a:hover, #content div.cate_info h2 a:active, #content div.doc_info h2 a:hover, #content div.doc_info h2 a:active, #content #breadcrumb ul li a:hover, #content #breadcrumb ul li a:active, div#mast div.pseudoH1 a:hover, div#mast div.pseudoH1 a:active, div#mast div.pseudoH1 a:hover span, div#mast div.pseudoH1 a:active span, #mast ul#skip li a:hover, #mast ul#skip li a:active, #mast ul#mastNav li a:hover, #mast ul#mastNav li a:active, #mast ul#mastNav li.contactDetails a:hover span, #mast ul#mastNav li.contactDetails a:active span, #mast ul#mastNav li.easyRead a:hover span, #mast ul#mastNav li.easyRead a:active span, #mast ul#mastNav li.languages a:hover span, #mast ul#mastNav li.languages a:active span, #mainNav ul#mainNavTop li a:hover, #mainNav ul#mainNavTop li a:active, #mainNav ul#mainNavAZ li a:hover, #mainNav ul#mainNavAZ li a:active, div#footerLgnl ul li a:hover, div#footerLgnl ul li a:active, #footer a:hover, #footer a:active, ul#breadcrumb li a:hover, ul#breadcrumb li a:active, #content h2.warning, #content p.warning, #content form label strong, #content .xform span.help, #content .xform label strong, #content .xform span.label strong
-{background: #FFf; color: #008000; text-decoration: underline; border: none;}
+a:hover, a:active, #mast .mast_links a:hover, #mast .mast_links a:active, #mast #primary_nav li a:hover, #mast #primary_nav li a:active, 
+#content table th a:hover, #content table th a:active, #content #calendarcontainer #calendar td a:hover, #content #calendarcontainer #calendar td a:active,
+#content #az_index li a:hover, #content #az_index li a:active, #column_nav ul.navWidget li a:hover, #column_nav ul.navWidget li a:active,
+#content div.cate_info h2 a:hover, #content div.cate_info h2 a:active, #content div.doc_info h2 a:hover, #content div.doc_info h2 a:active,
+#content #breadcrumb ul li a:hover, #content #breadcrumb ul li a:active
+{background: #FFf; color: #008000}
 
-/* Buttons */
-#mast form input.button, #content input.button, #mainNav form input.button, #content input.yesbutton, #content input.nobutton, #content .xform input.button
-{ border: 2px solid; color: #000080; background: #fff; padding:1px 3px; margin: 0 6px;}
-
-#mast form input.button:hover, #content input.button:hover, #mainNav form input.button:hover, #content input.yesbutton:hover, #content input.nobutton:hover, #content .xform input.button:hover, #content .basic_form input.button:hover
-{ border: 2px solid #008000 ; color: #008000; background: #fff; padding:1px 3px; margin: 0 6px;}
+#mast form input.button, #content input.button, #content input.disabled
+{ border: 2px solid ; color: #000080; background: #FFf;}
 
 #content .row_divider .new_widget, #content  .row_divider .new_widget p, #content .row_divider .new_widget h2, #content .row_divider .new_widget h3, 
 #content .row_divider .new_widget div, #content .row_divider .new_widget span, #content .row_divider .new_widget dt, #content .row_divider .new_widget ul,
@@ -30,20 +43,3 @@ a:hover,a:active, #mast .mast_links a:hover, #mast .mast_links a:active, #mast #
 #content .row_divider .new_widget a:visited {background:#FFf; color: #000080; border:none;}
 #content .row_divider .new_widget a:hover, 
 #content .row_divider .new_widget a:active {background:#FFf; color: #008000; border:none;}
-
-/* ############### Specific ############## */
-#mast .pseudoH1 a:link, #mast .pseudoH1 a:visited, #mast .pseudoH1 a:hover, #mast .pseudoH1 a:active, #mast ul#mastNav li, #mast ul#mastNav li.languages a:link, #mast ul#mastNav li.languages a:visited, #mast ul#mastNav li.languages a:hover, #mast ul#mastNav li.languages a:active, #mainNav form, #mainNav ul#mainNavAZ, #column_nav h2, #mainHeading p.page_down a:link, #mainHeading p.page_down a:visited, #mainHeading p.page_down a:hover, #mainHeading p.page_down a:active {background: none;}
-#mainNav ul#mainNavTop li a:link, #mainNav ul#mainNavTop li a:visited, #mainNav ul#mainNavTop li a:hover, #mainNav ul#mainNavTop li a:active, #mainHeading h1, img.main_image, img.contentimage, #content .content_box img, #content div.displayBox li img, #content .person_box dd img { border: none; }
-#mast ul#mastNav li, #mainNav form input.button { text-transform: none;}
-#mast .pseudoH1 span, #mast h1 span, #mast ul#mastNav li.languages span { position: relative; margin-left: 0; top:0; }
-#column_nav {border-right: 1px solid;}
-#mainNav form input.field {border: 1px solid;}
-#Rightcolumn { border: none; border-left: 1px solid;  }
-#mast ul#mastNav {top: 11px; }
-#mast .pseudoH1, #mast h1 { background: none; font-size: 1.8em; width: auto; font-weight: normal; }
-#mast .pseudoH1 a {font-weight: normal; width: auto; height: auto;}
-#mast ul#mastNav li.languages a:link, #mast ul#mastNav li.languages a:visited, #mast ul#mastNav li.languages a:hover, #mast ul#mastNav li.languages a:active { width: auto; height: auto; }
-#mainNav ul#mainNavTop, #footer, div#footerLgnl {background: none; border-top: 3px solid;}
-#mainNav ul#mainNavAZ {background: none; border-bottom: 3px solid;}
-#content h2.warning, #content p.warning, #content .basic_form input.warning, #content .basic_form select.warning, #content .basic_form textarea.warning, #content form label strong, #content .xform span.help, #content .xform label strong, #content .xform span.label strong { text-decoration: none; }
-#content .basic_form input.field:focus, #content .basic_form select.select:focus, #content .basic_form input.dob:focus, #content .basic_form textarea.field:focus, .search_az input.field:focus { outline: none; }

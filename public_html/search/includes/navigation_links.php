@@ -10,16 +10,20 @@
                 <ul id="user_nav">
 <?php
                         foreach ($navigationLinks as $navLink) {
-                                if (strpos($navLink->url, 'http://'.RUPA_HOME_URL) !== 0) {
-                                        $external = ' - links to external website';
-                                }
-                                else {
-                                        $external = '';
-                                }
-
+                        	                        	
+                        	if ($_SERVER['SCRIPT_URI'] == $navLink->url ||
+                        		$_SERVER['SCRIPT_URI'] . 'index.php' == $navLink->url ||
+                        		$_SERVER['SCRIPT_URI'] ==  $navLink->url.'index.php') {
+                        		// we're on this page, don't link		
 ?>
-                        <li><a href="<?php print $navLink->url; ?>" title="<?php print $navLink->linkText.$external;?>"><?php print $navLink->linkText; ?></a></li>
+                        <li><?php print encodeHtml($navLink->linkText); ?></li>
+<?php                        			
+                        	}
+                        	else {
+?>
+                        <li><a href="<?php print encodeHtml($navLink->url); ?>"><?php print encodeHtml($navLink->linkText); ?></a></li>
 <?php
+                        	}
                         }
 ?>
                 </ul>
