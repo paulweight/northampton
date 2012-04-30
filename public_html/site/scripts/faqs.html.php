@@ -28,7 +28,7 @@
 ?>
 <li>
 	<p class="faq" id="a<?php print (int) $faqItem->id;?>">
-		Question: <a href="<?php print getSiteRootURL() . buildFAQURL(false, $currentCategory->id, $faqItem->id); ?>?faqID=<?php print (int) $faqItem->id;?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
+		Question: <a href="<?php print getSiteRootURL() . buildFAQURL(false, $currentCategory->id, $faqItem->id); ?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
 	</p>
 <?php
 			if (isset($faq) && $faq->id == $faqItem->id) {

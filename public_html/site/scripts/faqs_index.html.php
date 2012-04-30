@@ -29,7 +29,7 @@
 ?>
 <li>
 	<p id="a<?php print (int) $faqItem->id;?>">
-		Question: <a href="<?php print getSiteRootURL() . buildFAQURL(false, $catID, $faqItem->id); ?>?faqID=<?php print (int) $faqItem->id;?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
+		Question: <a href="<?php print getSiteRootURL() . buildFAQURL(false, $catID, $faqItem->id); ?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
 	</p>
 <?php
 			  if ($faq->id == $faqItem->id) {
