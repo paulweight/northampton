@@ -48,8 +48,8 @@
 ?>
 <!--[if lt IE 7]> <body class="ie6<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"> <![endif]-->
 <!--[if IE 7]>    <body class="ie7<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"> <![endif]-->
-<!--[if IE 8]>    <body class="ie8<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <body <?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' class="threeCol"'; } else { print ' class="twoCol"'; } ?>"> <!--<![endif]-->
+<!--[if gte IE 8]>    <body class="ie8<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 <div id="wrapper">
 		<?php include(HOME . "site/includes/structure/header.php"); ?>
@@ -58,7 +58,7 @@
 /* ANNOUNCMENTS */
 	if ($liveUpdate->id != '' && $liveUpdate->id != -1) {
 ?>
-					<div id="announcement">
+					<div id="announcement" class="box-shadow">
 						<div class="h2"><?php print encodeHtml($liveUpdate->title); ?></div>
 						<p><?php print encodeHtml($liveUpdate->content); ?></p>
 <?php
@@ -69,6 +69,8 @@
 		}
 ?>
 					</div>
+					
+					
 <?php
 	}
 	// tracked url
@@ -109,8 +111,15 @@
 <?php
     }
 ?>
+<div id="main" class="box-shadow">
+
+<div class="clear"></div>
 
 <?php
+/* CONTENT */
+?>
+				<div id="content">
+				<?php
 /*  
 	BREADCRUMB
 	* The breadcrumb can be updated by editing site/inclides/structure/breadcrumb.php
@@ -139,27 +148,54 @@
 	}
 ?>
 
-<?php
-/*  
-	PRIMARY COLUMN
-	* To show/hide this column, edit site/includes/lib.php
-*/
-	$hideColumn = (boolean) hideColumn();
-	
-	if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) {
-		include(HOME . "/site/includes/structure/column.php");
-	}
-?>
-
-<?php
-/* CONTENT */
-?>
-				<div id="content">
 				
 <?php
 	if (!isset($indexPage) || !$indexPage) {
-?>					
-					<h1><?php print encodeHtml($MAST_HEADING); ?></h1>					
+?>		
+<?php 
+	if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
+		// fetch filtered categories for level 1 category only
+		$catPath = $lgclList->getFullPath($_GET['categoryID']);
+		$topCats = $lgclList->getChildCategories($catPath[0]->id);
+		
+		$parents[] = $_GET['categoryID'];
+		$topicCategoryID = $_GET['categoryID'];
+		while ($topicCategoryID != "") {
+			$topParentCategories = $lgclList->getParentCategories($topicCategoryID);
+			$topicCategoryID = $topParentCategories[0]->id;
+			if ($topicCategoryID != "") {
+				$parents[] = $topicCategoryID;
+			}
+		}
+		$parents = array_reverse($parents);
+	}
+	else {
+		$topCats = $lgclList->GetTopLevelCategories();
+	}
+	$topCats = filterCategoriesInUse($topCats, DOCUMENTS_APPLIED_CATEGORIES_TABLE, true);
+	uasort($topCats, "cmp");
+?>
+	<div id="header">
+<?php
+	if (isset($catPath[0])) {
+?>
+			<img src="/site/images/headers/<?php print $catPath[0]->id; ?>.jpg" alt="<?php print $catPath[0]->name; ?>" />
+			<h1><?php print encodeHtml($MAST_HEADING); ?></h1>	
+			<div class="clear"></div>
+			</div>
+			<div id="content-inner">
+
+<?php
+	}
+	else {
+?>
+			<h1><?php print encodeHtml($MAST_HEADING); ?></h1>	
+			</div>
+			<div id="content-inner">
+<?php
+	}
+?>
+									
 <?php
 	}
 	else {

@@ -83,7 +83,7 @@
 	<!-- Search Key -->
 	<div class="searchKey">
 		<h3>Refine by:</h3>
-		<ul>
+		<ul  class="list icons generic">
 <?php
 		$index = 0;
 		foreach ($collectionsForRefine as $collection) {
@@ -135,7 +135,7 @@
 	
 	<p><?php print $sortText; ?></p>
 	
-	<ul>
+	<ul class="archive noborder">
 <?php
 		foreach ($currentRupaSearchResult->resultItems as $result) {
 			
@@ -232,7 +232,7 @@
 ?>
 			</h3>
 			<p><?php print $snippet; ?></p>
-			<p class="url"><?php print encodeHtml($href.$extraInfo); ?></p>
+			<p class="date"><?php print encodeHtml($href.$extraInfo); ?></p>
 	
 <?php
 		}
@@ -331,11 +331,11 @@
 <?php
 	}
 ?>
-	<form method="get" action="<?php print getSiteRootURL() . buildSearchResultsURL() ?>">
+	<form class="basic_form" method="get" action="<?php print getSiteRootURL() . buildSearchResultsURL() ?>">
 		<p>
 			<label for="searchAgain">Search again:</label>
 			<input type="text" id="searchAgain" name="q" maxlength="256" value="<?php print $currentRupaSearch->getFullQueryForXHTML(); ?>" />
-			<input type="submit" name="btnG" value="Go" />
+			<input type="submit" name="btnG" value="Go" class="genericButton grey" />
 		</p>
 	</form>
 

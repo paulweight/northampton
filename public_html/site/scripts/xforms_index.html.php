@@ -25,14 +25,14 @@
 <?php 
     if (!Jadu_Service_User::getInstance()->isSessionLoggedIn()){
 ?>
-	<p>Some forms may require you to <a href="<?php print getSecureSiteRootURL() . buildSignInURL() ;?>" >sign-in</a>. To create an account, <a href="<?php print getSecureSiteRootURL() . buildRegisterURL() ;?>">register here</a>.</p>
+	
 <?php 
 	} 
 		
 	if (sizeof($topForms) > 0) { 
 ?>
 	<h2>Frequently used online forms</h2>
-	<ul>
+	<ul class="list icons forms">
 <?php 
 		foreach($topForms as $topForm) {
 ?>
@@ -60,10 +60,10 @@
 		$relCats = filterCategoriesInUse($bespokeCategoryList->getChildCategories($rootCat->id), XFORMS_FORM_APPLIED_CATEGORIES_TABLE, true, BESPOKE_CATEGORY_LIST_NAME);
 ?>
 		<div class="cate_info">
-			<h2><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h2>
+			<h3><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h3>
 <?php
 			if (sizeof($relCats) > 0) {
-				print '<ul class="list">';
+				print '<ul class="list icons forms">';
 				foreach ($relCats as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a></li>
@@ -83,7 +83,7 @@
 		<p id="az_live_find">
 			<label for="xforms_searchText">Begin to type the form name and choose from the appearing choices.</label>
 			<span>
-				<input type="text" name="xforms_searchText" id="xforms_searchText" value="" />
+				<input type="text" name="xforms_searchText" id="xforms_searchText" class="long" value="" />
 				<img id="xforms_loading" style="display:none;" alt="Loading" src="<?php print getStaticContentRootURL(); ?>/site/images/loading.gif" />
 			</span>
 			<noscript><input name="searchXformButton" type="submit" value="Go" class="button" /></noscript>

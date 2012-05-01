@@ -1,0 +1,72 @@
+/* colors #010066 #9fcfff #ff0000 #ff0000*/
+
+html, body, div, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, 
+s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+#page_wrap, #mast, #mast #azbar, #mast .mast_links, #mast #primary_nav li, #mast #primary_nav li.lastItem a:link, #mast #primary_nav li.lastItem a:visited, 
+#mast #primary_nav li.lastItem a:hover, #mast #primary_nav li.lastItem a:active, #content p.page_down, #content table, #content table tr, #content table td, 
+#content table th, #content #az_index, #content #az_index li span, #column_nav ul.navWidget li, #content p.date, #content strong, #content #breadcrumb, 
+#content #breadcrumb ul li span, #content #az_index li span, #footer, #content .basic_form p
+{background: #9fcfff; color: #010066}
+
+#content #calendarcontainer table#calendar td.today, #content h2.signin, #column_nav h2.navWidget, #content #progressbar
+{background: #010066; color: #9fcfff;}
+
+#mast .mast_links form input.field, #content table, #content table tr, #content table td, #content table th, #content .lead_item img, #content .poll_box, #content .poll_box img,
+#content .listed_item, #content .listed_item, #content .download_box, #content div.cate_info, #content #related, #content #breadcrumb, 
+#content .sitemap, #content #az_index, #content .person_box img, #content .personBorder, #column_nav h2.navWidget, #column_nav ul.navWidget li, #footer,
+#content .basic_form p
+{border-color: #010066;}
+
+a:link, a:visited, #mast .mast_links a:link, #mast .mast_links a:visited, #mast #primary_nav li a:link, #mast #primary_nav li a:visited,
+#content table th a:link, #content table th a:visited, #content #calendarcontainer #calendar td a:link, #content #calendarcontainer #calendar td a:visited, 
+#content #az_index li a:link, #content #az_index li a:visited, #column_nav ul.navWidget li a:link, #column_nav ul.navWidget li a:visited, 
+#content div.cate_info h2 a:link, #content div.cate_info h2 a:visited, #content div.doc_info h2 a:link, #content div.doc_info h2 a:visited,
+#content #breadcrumb ul li a:link, #content #breadcrumb ul li a:visited, #footer a:link, #footer a:visited
+{background: #9fcfff; color: #ff0000}
+
+a:hover, a:active, #mast .mast_links a:hover, #mast .mast_links a:active, #mast #primary_nav li a:hover, #mast #primary_nav li a:active, 
+#content table th a:hover, #content table th a:active, #content #calendarcontainer #calendar td a:hover, #content #calendarcontainer #calendar td a:active,
+#content #az_index li a:hover, #content #az_index li a:active, #column_nav ul.navWidget li a:hover, #column_nav ul.navWidget li a:active,
+#content div.cate_info h2 a:hover, #content div.cate_info h2 a:active, #content div.doc_info h2 a:hover, #content div.doc_info h2 a:active,
+#content #breadcrumb ul li a:hover, #content #breadcrumb ul li a:active, #footer #social ul#networks li a:hover, #footer #social ul#networks li a:active, #main .grey:hover
+{background: #9fcfff; color: #ff0000}
+
+#mast form input.button, #content input.button, #content input.disabled
+{ border: 2px solid ; color: #ff0000; background: #9fcfff;}
+
+#content .row_divider .new_widget, #content .row_divider .new_widget p, #content .row_divider .new_widget h2, #content .row_divider .new_widget h3, 
+#content .row_divider .new_widget div, #content .row_divider .new_widget span, #content .row_divider .new_widget dt, #content .row_divider .new_widget ul,
+#content .row_divider .new_widget li, #content .row_divider .new_widget dd
+{background:#9fcfff; color: #010066 ; border:none;}
+
+#content .row_divider .new_widget a:link, 
+#content .row_divider .new_widget a:visited {background:#9fcfff; color: #ff0000; border:none;}
+#content .row_divider .new_widget a:hover, 
+#content .row_divider .new_widget a:active {background:#9fcfff; color: #ff0000; border:none;}
+
+/** Custom **/
+
+#wrapper, #mast, #footer, ul#main-nav-top, #mast form div#search-site, #main, #content #content-additional #pageAction, #main #side-nav h3, #content .xform input, #content .xform select, #content .xform textarea, ul#main-nav-top li a:link, ul#main-nav-top li a:visited, #content form input.genericButton, #content #eventSelection, #content #eventSelection form select, a.button:link, a.button:visited, #content table#calendar, #content table#calendar th, #content table#calendar td a, #content #content-additional #tools, .supplement, #content #content-inner blockquote, #content #myCouncilWidget form input#field, #content #myCouncilWidget form input.button, #content .xform .lead_item, #announcement {background: #9fcfff; border: 2px solid #ff0000; box-shadow: none !important; color: #010066 !important; text-shadow: none; }
+#wrapper, ul#main-nav-top li a:link, ul#main-nav-top li a:visited, #mast form input.button, #content input.button, #content input.disabled {border-top: 0 !important; border-bottom: 0 !important; }
+#mast, #content .contact, .leftSupplements .supplement {border-top: 0 !important;}
+#footer, #content #header, #content #content-additional #tools {border-bottom: 0 !important; }
+ul#main-nav-top li a:link, ul#main-nav-top li a:visited, #content, #mast form input.button, #content input.button, #content input.disabled, #content table#calendar th, #content #myCouncilWidget form input.button {border-left: 0px;}
+ul#main-nav-top li:last-child a, #mast form input.button, #content input.button, #content input.disabled, #mast ul#mast-nav li,#content table#calendar th , ul#main-nav-dropdown ul#apply, ul#main-nav-dropdown ul#pay, ul#main-nav-dropdown ul#report, #content #myCouncilWidget form input.button {border-right: 0px;}
+
+#content #content-inner ul.icons li a, #content #content-additional #tools ul.related li a:link, #content #content-additional #tools ul.related li a:visited, .navigation ul li a, ul#main-nav-dropdown ul li a:link, ul#main-nav-dropdown ul li a:visited, #announcement p {background: #9fcfff; color: #ff0000; text-shadow: none;}
+
+#main #side-nav a, #main #side-nav ul li a:link, #main #side-nav ul li a:visited, #mast form p label, #mast ul#mast-nav li a:link, #mast ul#mast-nav li a:visited, #mast ul#mast-nav li.font-size, #content #content-additional #pageAction ul.func li, #content #content-additional #pageAction ul.func li a:link, #content #content-additional #pageAction ul li a:visited, #breadcrumb ul li, #content .contact ul li, #footer #social h4, #mast span.h1 a:link, #mast h1 a:visited, #content #content-inner ul.icons li, a.button span, a.button:hover, #content #content-inner .rss, #content table#calendar td, #content #content-additional #tools ul.related ul li a:link, #content #content-additional #tools ul.related ul li a:visited, .supplement h3, #content #content-additional ul#pagination li a:link, #content #content-additional ul#pagination li a:visited, #content #content-inner blockquote p, #content label, #content span.label, #content ul.alphabeticNav li a, #announcement .h2, #announcement a  {color: #010066 !important; background: none !important;  text-shadow: none;}
+ul#main-nav-top li a span, #content #content-additional #pageAction ul.func li {padding: 0px; }
+#mast ul#mast-nav li.font-size span {margin-left: 0; position: relative; top: 0;}
+#mast ul#mast-nav li.font-size a:link, #mast ul#mast-nav li.font-size a:visited, #mast ul#mast-nav li.font-size {width: auto;}
+ul#main-nav-top li a:hover, ul#main-nav-top li a:active {color: #ff0000 !important; }
+#mast form input.button, #content input.button, #content input.disabled {background: url(../css_img/blue/search.gif) transparent no-repeat;}
+#mast span.h1 {background: url(../css_img/blue/logo.gif) transparent no-repeat;}
+
+ul#main-nav-top, #main #side-nav h3, a.button:link, a.button:visited, #content #content-inner table th, ul#main-nav-dropdown ul, #content ul.alphabeticNav li {border: 2px solid #ff0000; background: #9fcfff !important; text-shadow: none; color: #ff0000}
+ul#main-nav-dropdown ul#feedback {border: 2px solid}
+
+#content .latestNewsWidget h2, #content .opinionPollWidget h2, #content .documentListWidget h2, #content .navigationWidget h2, #content .cateInfoWidget h2, #content .topFaqWidget h2, #content .NewOnSiteWidget h2, #content .WhatsOnWidget h2, #content .middleAdvertWidget h2, #content .twitterFeed h3 {border: 0px; padding: 0px; font-size: 1.3em; box-shadow:none; text-shadow: none}
+
+li.colours span {color: #9fcfff;}
+li.prefContrast span {color: #fff;}

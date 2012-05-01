@@ -27,7 +27,7 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 
-	<p>Published <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?></p>
+	
 <?php 
 	if ($pressRelease->imageURL != "") { 
 		if (mb_strlen(getImageProperty($pressRelease->imageURL, 'longdesc')) > 0) {
@@ -40,20 +40,19 @@
 		}
 		else {
 ?>
-	<img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($pressRelease->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($pressRelease->imageURL, 'altText')); ?>" />
+	<img class="floatRight" src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($pressRelease->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($pressRelease->imageURL, 'altText')); ?>" />
 <?php 
 		}
 	}
 ?>
+	<p class="date">Published <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?></p>
 	<p><?php print encodeHtml($pressRelease->summary);?></p>
 	<div class="byEditor article">
 		<?php print $pressRelease->content; ?>
 	</div>
 	
-	<ul>
-		<li>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildRSSURL('press'); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> press release feed</a></li>
-	</ul>
+	<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive</a></strong></p>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('press'); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> press release feed</a></p>
 	
 	<!-- Social Bookmarks -->
 	<?php include("../includes/social_bookmarks.php"); ?>

@@ -139,7 +139,7 @@
 					}
 
 					if ($question->help != '') {
-						print "<span class=\"help\">Help: " . encodeHtml($question->help) . "</span>";
+						print "<a href=\" \" class=\"help\" title=\"Help\">Help:<span class=\"tooltip\"> " . encodeHtml($question->help) . "</a></span>";
 					}
 ?>
 				<br />
@@ -214,20 +214,20 @@
 			//	Completion page printed.
 ?>
 			<p class="centre">
-				<input type="submit" class="button" name="commit" value="Submit Form" />
-				<input type="submit" class="button" name="back" value="&laquo; Back" />
+				<input type="submit" class="genericButton grey" name="commit" value="Submit Form" />
+				<input type="submit" class="genericButton grey" name="back" value="&laquo; Back" />
 			</p>
 <?php
 			} 
 			else {
 ?>	
 			<p class="centre">
-				<input type="submit" class="button" name="next" value="Save and Continue &raquo;" />
+				<input type="submit" class="genericButton grey" name="next" value="Save and Continue &raquo;" />
 <?php
 				if ($pageNumber > 0) {
 ?>
-				<input type="submit" class="button" name="back" value="&laquo; Back" />
-				<input type="reset" class="button" name="reset" value="Reset" />
+				<input type="submit" class="genericButton grey" name="back" value="&laquo; Back" />
+				<input type="reset" class="genericButton grey" name="reset" value="Reset" />
 <?php
 				}
 ?>
@@ -241,7 +241,7 @@
 		</fieldset>
 	</form>
 	
-	<p>If you have <a href="<?php print getSecureSiteRootURL() . buildRegisterURL(); ?>">registered</a> with our web site and are signed in you can leave a form at any time to complete later or check all your saved and completed forms from Your Account page.</p>
+
 
 <?php
 		}

@@ -27,8 +27,9 @@ else if ($galleryItem->id < 1 || $item->id < 1) {
 else {
 ?>
 
-	<h2><?php print encodeHtml($item->title); ?></h2>
-	<div id="gallery_item" style="width: <?php print $maxSize; ?>px;">
+	<h2 class="topTitle"><?php print encodeHtml($item->title); ?></h2>
+	<p class="date">Created on <strong><?php print formatDateTime(FORMAT_DATE_FULL, $item->dateCreated);?></strong> in <a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id); ?>"><?php print encodeHtml($gallery->title); ?></a>. There are <?php print (int) $gallery->getNumItems(); ?> items in this gallery.</p>
+	<div id="gallery_item">
 <?php
 	if (!empty($item->caption)) {
 ?>
@@ -56,7 +57,7 @@ else {
 	}
 	else if ($item->isImage()) {
 ?>
-		<img src="<?php print getStaticContentRootURL() . $item->getThumbnail($maxSize); ?>" alt="<?php print encodeHtml($item->title); ?>" />
+		<img class="gallery_img" src="<?php print getStaticContentRootURL() . $item->getThumbnail($maxSize); ?>" alt="<?php print encodeHtml($item->title); ?>" />
 <?php
 		if (!empty($item->caption)) {
 ?>
@@ -66,7 +67,7 @@ else {
 
 		if( $item->width > $maxSize || $item->height > $maxSize) {
 ?>
-		<p><img src="<?php print getStaticContentRootURL();?>/site/images/search.gif" alt="" /> <a href="<?php print getSiteRootURL();?>/images/<?php print $item->filename;?>">Full size</a></p>
+		<p class="centre"> <a class="zoom" href="<?php print getSiteRootURL();?>/images/<?php print $item->filename;?>"><span>Full size</span><img src="<?php print getStaticContentRootURL();?>/site/styles/css_img/zoom.gif" alt="" /></a></p>
 <?php
 		}
 	}
@@ -81,14 +82,14 @@ else {
 <?php 
 	if ($gallery->getNumItems() > 1) {
 ?> 
-	<h3>More in this gallery</h3>
+	<h3 class="centre">More in this gallery</h3>
 	<ul id="gallery_near_items">
-		<li class="previous">
+		
 <?php
 				if (isset($previousItem) && $previousItem) {
 ?>
-			<a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id, $previousGalleryItem->itemID, $previousItem->title); ?>" >
-			<img src="<?php print getStaticContentRootURL() . (!$previousItem->isAudio() ? $previousItem->getThumbnail(75) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($previousItem->title); ?>" />
+			<li class="previous"><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id, $previousGalleryItem->itemID, $previousItem->title); ?>" >
+			<img src="<?php print getStaticContentRootURL() . (!$previousItem->isAudio() ? $previousItem->getThumbnail(300) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($previousItem->title); ?>" /></li>
  <?php
 			if ($previousItem->isAudio()) { 
 				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/listen.gif" alt="listen" />';
@@ -102,17 +103,17 @@ else {
 				}
 				else {
 ?>
-			You are viewing the first item
+			<li class="end">You are viewing the first item</li>
 <?php 
 				}
 ?>
-		</li>
-		<li class="next"> 
+		
+		
 <?php
 				if (isset($nextItem) && $nextItem) {
 ?>
-					<a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id, $nextGalleryItem->itemID, $nextItem->title); ?>">
-						<img src="<?php print getStaticContentRootURL() . (!$nextItem->isAudio() ? $nextItem->getThumbnail(75) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($nextItem->title); ?>" />
+					<li class="next"> <a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id, $nextGalleryItem->itemID, $nextItem->title); ?>">
+						<img src="<?php print getStaticContentRootURL() . (!$nextItem->isAudio() ? $nextItem->getThumbnail(200) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($nextItem->title); ?>" />
 <?php
 			if ($nextItem->isAudio()) { 
 				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/listen.gif" alt="listen" />';
@@ -121,26 +122,20 @@ else {
 				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/watch.gif" alt="watch" />';
 			}
 ?>
-					</a>
+					</a></li>
 <?php
 				}
 				else {
 ?>
-					You are viewing the last item
+					<li class="end">You are viewing the last item</li>
 <?php
 				}
 ?>
-		</li>
+		
 	</ul>
 <?php
 			}
-?>
-	<h3>Additional information</h3>
-	<p>Created on <?php print formatDateTime(FORMAT_DATE_FULL, $item->dateCreated);?></p>
-	<p><?php print (int) $gallery->getNumItems(); ?> items in this gallery</p>
-
-<?php
-}
+		}
 ?>
 
 <!-- ################ MAIN STRUCTURE ############ -->

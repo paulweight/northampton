@@ -29,22 +29,22 @@
 ?>
 			
 		<!-- Keyword Search -->
-	<form action="<?php print getSiteRootURL() . buildSearchResultsURL('',true) ?>" method="get">
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildSearchResultsURL('',true) ?>" method="get">
 <?php
 		if (sizeof($collections) > 0) {
 ?>
 			<!-- check boxes -->
-		<p>
+		
 <?php
 			foreach ($collections as $collection) {
 ?>
-			<label for="<?php print encodeHtml($collection->collectionName); ?>">
-				<input type="checkbox" id="<?php print encodeHtml($collection->collectionName); ?>" name="sites[]" value="<?php print encodeHtml($collection->collectionName); ?>" /><?php print encodeHtml($collection->friendlyName); ?>
-			</label>
+			<p class="search"><label for="<?php print encodeHtml($collection->collectionName); ?>">
+				<input type="checkbox" class="checkbox"  id="<?php print encodeHtml($collection->collectionName); ?>" name="sites[]" value="<?php print encodeHtml($collection->collectionName); ?>" /><?php print encodeHtml($collection->friendlyName); ?>
+			</label></p>
 <?php
 			}
 ?>
-		</p>
+		
 <?php
 		}
 ?>
@@ -80,9 +80,9 @@
 				<option value="rtf">Rich text format (.rtf)</option>
 			</select>
 		</p>
-		<input name="searchType" value="advanced" type="hidden" />
-		<p>
-			<input type="submit" name="advancedSubmit" value="Search" />
+		<div><input name="searchType" value="advanced" type="hidden" /></div>
+		<p class="centre">
+			<input type="submit" name="advancedSubmit" value="Search" class="genericButton grey" />
 		</p>
 	</form>
 			

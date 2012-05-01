@@ -37,7 +37,7 @@
 <?php 
 		}
 ?>
-			<p class="arrw">Visiting us? <a href="<?php print getSiteRootURL() . buildLocationURL();?>">Location map and travel details</a>.</span></p>
+			<p class="arrw">Visiting us? <a href="<?php print getSiteRootURL() . buildLocationURL();?>">Location map and travel details</a>.</p>
         </div>
 
 <?php 

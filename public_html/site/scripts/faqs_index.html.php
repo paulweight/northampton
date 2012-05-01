@@ -22,19 +22,19 @@
     if (sizeof($commonFAQs) > 0) {
 ?>
 	<h2>Common questions</h2>
-<ul>	
+<ul class="list icons faqs">	
 <?php
 		 foreach ($commonFAQs as $faqItem) {
 		 $catID = getFirstCategoryIDForItemOfType(FAQS_CATEGORIES_TABLE, $faqItem->id);
 ?>
-<li>
-	<p id="a<?php print (int) $faqItem->id;?>">
-		Question: <a href="<?php print getSiteRootURL() . buildFAQURL(false, $catID, $faqItem->id); ?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
-	</p>
+<li class="long">
+	
+		<strong>Q:</strong> <a href="<?php print getSiteRootURL() . buildFAQURL(false, $catID, $faqItem->id); ?>#a<?php print (int) $faqItem->id;?>"><?php print encodeHtml($faqItem->question); ?></a>
+	
 <?php
 			  if ($faq->id == $faqItem->id) {
 ?>
-	<div class="byEditor">
+	<div class="byEditor answer">
 		<p><strong>Answer:</strong></p>
 		<?php print processEditorContent($faq->answer);?>
 	</div>
@@ -56,10 +56,10 @@
 		$relCats = filterCategoriesInUse($lgclList->getChildCategories($rootCat->id), FAQS_APPLIED_CATEGORIES_TABLE, true);
 ?>    
 		<div class="cate_info">
-			<h2><a href="<?php print getSiteRootURL() . buildFAQURL(false, $rootCat->id) ;?>"><?php print encodeHtml($rootCat->name); ?></a></h2>
+			<h3><a href="<?php print getSiteRootURL() . buildFAQURL(false, $rootCat->id) ;?>"><?php print encodeHtml($rootCat->name); ?></a></h3>
 <?php
 		if (sizeof($relCats) > 0) {
-			print'<ul class="list">';
+			print'<ul class="list icons faqs">';
 			foreach ($relCats as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildFAQURL(false, $subCat->id) ;?>"><?php print encodeHtml($subCat->name); ?></a></li>
@@ -78,8 +78,8 @@
 		<fieldset>
 			<legend>Do you have a question?</legend>
 			<p>If there is anything you would like to ask us, about our services, our work or how we can help you, then please do.</p>
-			<p>
-				<input type="submit" value="Ask us a question" name="submit" />
+			<p class="centre">
+				<input type="submit" value="Ask us a question" name="submit" class="genericButton grey" />
 			</p>
 		</fieldset>
 	</form>

@@ -70,7 +70,7 @@
 	if ($showForm) {
 ?>
 	<p>The form below allows registered users to opt-out of receiving general email announcements from <?php print DOMAIN; ?>.</p>
-	<form name="main" action="<?php print getSiteRootURL() . buildNonReadableUnsubscribeURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" name="main" action="<?php print getSiteRootURL() . buildNonReadableUnsubscribeURL(); ?>" method="post" enctype="multipart/form-data">
 		<ol>
 			<li>
 				<label for="unsubscribeEmail">Email address <em>(required)</em></label>
@@ -80,8 +80,8 @@
 				<label for="password">Password <em>(required)</em></label>
 				<input id="password" type="password" name="unsubscribePassword" value="" />
 			</li>
-			<li>
-				<input type="submit" name="unsubscribe" value="Unsubscribe me now" />
+			<li class="center">
+				<input type="submit" name="unsubscribe" value="Unsubscribe me now" class="genericButton grey" />
 			</li>
 		</ol>
 	</form>

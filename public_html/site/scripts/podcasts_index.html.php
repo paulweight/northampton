@@ -30,7 +30,7 @@
 			<h2><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h2>                        
 <?php
 		if (sizeof($subCats) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list icons podcasts">';
 			foreach ($subCats as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a></li>

@@ -27,31 +27,32 @@
 	$allRootCategories = $lgclList->getTopLevelCategories();
 
 	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
+	
+	$allWidgets = getAllNavWidgets();
+	
+	$fullWidgets = getAllNavWidgets();
+	$allWidgets = array_slice($fullWidgets, 0, 1);
+
+	$additionalButtons = array_slice($fullWidgets, 1, 1);
+	$counter = 0;
+	
+	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
+	$allRootCategories = $lgclList->getTopLevelCategories();
+
+	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
 ?>
+
 <!-- googleoff: index -->
-<div id="columnPrimary">	
-
-	<div class="navWidget">
-	<h2>Categories</h2>
-	<ul>
-<?php
-	foreach ($columnRootCategories as $category) {
-?>
-		<li><a href="<?php print getSiteRootURL(); print buildDocumentsCategoryURL($category->id);?>"><?php print encodeHtml($category->name); ?></a></li>
-<?php
-	}
-?>
-	</ul>    
-	</div>
-
+<div id="side-nav">
+<div class="clear"></div>
 <?php
 		if (sizeof($allWidgets) > 0) {
 			foreach ($allWidgets as $widget) {
 				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
 ?>
-	<div class="navWidget">
-		<h2><?php print encodeHtml($widget->title); ?></h2>
-		<ul>
+	<div id="top-tasks">
+	<h3 class="red"><a href="javascript:void(0);" class="expand"  onclick="return false"><?php print encodeHtml($widget->title); ?></a></h3>
+		<ul class="tasks">
 <?php
 			foreach ($allLinks as $widgetLink) {
 				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
@@ -63,7 +64,29 @@
 			}
 		}
 ?>
+
+<?php
+		if (sizeof($additionalButtons) > 0) {
+			foreach ($additionalButtons as $widget) {
+				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
+?>
+	<div id="service-list">
+	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/services"><?php print encodeHtml($widget->title); ?></a></h3>
+		<ul>
+<?php
+			foreach ($allLinks as $widgetLink) {
+				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
+			}
+?>
+		</ul>
+	</div>
+<?php
+			}
+		}
+?></div>
+
 		<!-- Left-hand Supplements -->
+		<div class="leftSupplements">
 <?php
 		$showLeftSupplements = false;
 		
@@ -108,7 +131,7 @@
 			unset($record);
 			unset($publicCode);
 		}
-?>
+?></div>
 		<!-- End left-hand supplements -->
-</div>
+
 <!-- googleon: index -->

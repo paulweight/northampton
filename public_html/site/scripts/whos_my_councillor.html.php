@@ -39,12 +39,11 @@
 		} 
 ?>
 	
-	<form id="councillor_search" name="councillor_search" action="<?php print getSiteRootURL(); ?>/site/scripts/whos_my_councillor.php" method="get" class="basic_form">
+	<form id="councillor_search" action="<?php print getSiteRootURL(); ?>/site/scripts/whos_my_councillor.php" method="get" class="basic_form">
 		<fieldset>
 			<legend>Where you live</legend>
-			<ol>
-			<li>
-				<label for="YourPostcode"><?php if (isset($error['postcode'])) print "<strong>! ";?>Postcode <?php if (isset($error['postcode'])) print "</strong>";?></label>
+			
+				<label for="YourPostcode"<?php if (isset($error['postcode'])) print "class=\"error\" ";?>>Postcode <?php if (isset($error['postcode'])) print "</strong>";?></label>
 <?php 
 		if (!isset($_GET['postcode']) || $postcode === false || isset($error['postcode']) || isset($_GET['change'])) { 
 ?>
@@ -58,12 +57,12 @@
 <?php 
 		} 
 ?>
-			</li>
+			
 <?php 
 		if ($refinementLevel >= 0) { 
 			if (sizeof($streets) > 0) { 
 ?>
-			<li>
+			
 				<label for="StreetName"><?php if (isset($error['streetname'])) print "<strong>! ";?>Street name <?php if (isset($error['streetname'])) print "</strong>";?></label>
 <?php 
 				if (sizeof($streets) > 1) { 
@@ -85,7 +84,7 @@
 <?php 
 				} 
 ?>
-			</li>
+			
 <?php 
 			} 
 		} 
@@ -93,7 +92,7 @@
 		if ($refinementLevel >= 1) { 
 			if (sizeof($buildings) > 0) { 
 ?>
-			<li>
+			
 				<label for="YourAddress" ><?php if ($error['uprn']) print "<strong>! ";?>Address<?php if ($error['uprn']) print "</strong>";?> </label>
 				<select id="YourAddress" class="field" name="uprn" class="select">
 					<option value="-1">Please choose...</option>
@@ -107,13 +106,13 @@
 				} 
 ?>
 				</select>
-			</li>
+			
 <?php 
 			} 
 		}
 
 ?>
-			<li>
+			
 <?php 
 		if ($refinementLevel >= 0) { 
 ?>
@@ -121,9 +120,8 @@
 <?php 
 		} 
 ?>									
-				<input type="submit" class="button" name="find" id="find" value="Find now" />
-			</li>
-		</ol>
+				<input type="submit" class="genericButton grey" name="find" id="find" value="Find now" />
+			
 		</fieldset>
 	</form>
 

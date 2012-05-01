@@ -19,7 +19,7 @@
 		 * The following array lists any pages that should ALWAYS hide the column on
 		 * e.g. $hide_column = array('page1.php', 'page2.php');
 		 */
-		$hide_column = array('gallery_info.php', 'gallery_item.php', 'podcast_info.php', 'podcast_episode.php', 'resource_schedule.php', 'xforms_form.php');
+		$hide_column = array();
 
 		if (in_array(basename($_SERVER['PHP_SELF']), $hide_column)) {
 			$hide = true;

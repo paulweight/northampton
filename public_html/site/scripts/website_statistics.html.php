@@ -54,7 +54,7 @@
 		
 		<div class="contactbox">
 			<h3>Other available years</h3>
-			<ul class="list">
+			<ul class="bottomList">
 <?php
 			while ($firstYear <= date('Y')) {
 ?>

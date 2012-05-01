@@ -22,7 +22,7 @@
 	if (count($mostRecent) > 0) {
 ?>      
 	<h2>Most Recent Meetings</h2>
-	<ul>
+	<ul class="list icons meetings">
 <?php 
 		foreach($mostRecent as $index => $item) {
 			$header = getMeetingMinutesHeader($item->headerID);
@@ -40,10 +40,11 @@
 <?php
 	if (count($allHeaders) > 0) {
 ?>	
+	<h3>Archive</h3>
 	<p>To view a full archive of meetings, select a committee heading.</p>
 <?php
 	if(sizeof($allHeaders) > 0) {
-		print '<ul class="list">';
+		print '<ul class="list icons meetings">';
 		foreach ($allHeaders as $l) {
 ?>	
 			<li><a href="<?php print getSiteRootURL() . buildMeetingsURL( -1, 'committee', $l->id); ?>"><?php print encodeHtml($l->title); ?></a></li>
@@ -59,6 +60,7 @@
 <?php
 	}
 ?>
+<div class="clear"></div>
 	
 	<p><a href="<?php print getSiteRootURL() . buildMeetingsArchiveURL(); ?>">View all committees headings</a></p>
 

@@ -16,7 +16,7 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 
-	<h2>News published <?php print $dateShowing;?></h2>
+	<h2 class="topTitle">News published <?php print $dateShowing;?></h2>
 
 <?php
 	if (sizeof($allNews) == 0) {
@@ -29,7 +29,7 @@
 	else {
 ?>
 	
-	<ul>	
+	<ul class="archive">	
 <?php
 		foreach ($allNews as $news) {
 ?>
@@ -44,8 +44,9 @@
 <?php 
 			}
 ?>
-		<p>Published <?php print formatDateTime(FORMAT_DATE_LONG, $news->newsDate);?></p>
+		<p class="date">Published <?php print formatDateTime(FORMAT_DATE_LONG, $news->newsDate);?></p>
 		<p><?php print encodeHtml($news->summary); ?></p>
+		<div class="clear"></div>
 	</li>
 	
 <?php
@@ -83,8 +84,8 @@
 <?php
 	if(sizeof($months) > 0) {
 ?>
-	<h2>Available Months for <?php print encodeHtml($_GET['year']); ?></h2>
-	<ul>
+	<h3>Available Months for <?php print encodeHtml($_GET['year']); ?></h3>
+	<ul class="bottomList">
 <?php
 		foreach($months as $key => $month) {
 			if ($month['month'] == $_GET['month']) {
@@ -119,9 +120,9 @@
 	
 	$yearHasBeenOutput = false;
 ?>
-		
-	<h2>Available years</h2>
-	<ul>
+	<div class="clear"></div>
+	<h3>Available years</h3>
+	<ul class="bottomList">
 <?php
 	for ($j = $lastYear; $j >= $firstYear; $j--) {
 		if (sizeof(getAllNewsForYearAndMonth($j, 0, true, true, 'newsDate', 'DESC', -1, $numberToDisplay)) > 0) {

@@ -38,7 +38,7 @@
 	<h2>Access Keys</h2>
 	<p>This site also supports access keys for increased navigation help. A <a href="<?php print getSiteRootURL() . buildAccessibilityURL() ;?>">full listing of access keys</a> and how to use them is available.</p>
 				
-	<form action="<?php print getSiteRootURL() . buildNonReadableUserSettingsURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableUserSettingsURL(); ?>" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Choose your text preferences</legend>
 			<ul>
@@ -76,26 +76,27 @@
 		<fieldset>
 			<legend>Choose your colour preferences</legend>
 			<ul>
-				<li>
+				<li class="prefStandard colours">
 					<label for="default_colour">
-						<input name="colourScheme" value="" id="default_colour" type="radio" <?php if (!isset($_COOKIE["userColourscheme"]) || $_COOKIE["userColourscheme"] == '' || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "") ) print 'checked="checked"'; ?> />Standard</label>
+						<input name="colourScheme" value="" id="default_colour" type="radio" class="checkbox" <?php if (!isset($_COOKIE["userColourscheme"]) || $_COOKIE["userColourscheme"] == '' || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "") ) print 'checked="checked"'; ?> /><span>Standard</span></label>
 				</li>
-				<li class="prefContrast">
+				<li class="prefContrast colours">
 					<label for="highcontrast">
-						<input id="highcontrast" name="colourScheme" value="highcontrast" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "highcontrast") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "highcontrast") ) print 'checked="checked"'; ?>  />High contrast</label>
+						<input id="highcontrast" name="colourScheme" value="highcontrast" class="checkbox" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "highcontrast") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "highcontrast") ) print 'checked="checked"'; ?>  /><span>High contrast</span></label>
 				</li>
-				<li class="prefCream">
+				<li class="prefCream colours">
 					<label for="cream">
-					<input id="cream" name="colourScheme" value="cream" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "cream") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "cream") ) print 'checked="checked"'; ?> />Cream</label>
+					<input id="cream" name="colourScheme" value="cream" class="checkbox" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "cream") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "cream") ) print 'checked="checked"'; ?> /><span>Cream</span></label>
 				</li>
-				<li class="prefBlue">
+				<li class="prefBlue colours">
 					<label for="blue">
-					<input id="blue" name="colourScheme" value="blue" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "blue") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "blue") ) print 'checked="checked"'; ?> />Contrast blue</label>
+					<input id="blue" name="colourScheme" value="blue" class="checkbox" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "blue") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "blue") ) print 'checked="checked"'; ?> /><span>Contrast blue</span></label>
 				</li>
-				<li>
-					<input type="submit" value="Use these settings" name="saveButton" />
-					<input type="submit" value="Preview" name="previewButton" />
-					<input type="submit" name="resetButton" value="Reset" />
+				<li class="clear"></li>
+				<li class="centre">
+					<input type="submit" value="Use these settings" name="saveButton" class="genericButton grey" />
+					<input type="submit" value="Preview" name="previewButton" class="genericButton grey" />
+					<input type="submit" name="resetButton" value="Reset" class="genericButton grey" />
 				</li>
 			</ul>
 		</fieldset>

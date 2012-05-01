@@ -522,8 +522,11 @@
 					}
 					else {
 ?>
-				<label for="<?php print encodeHtml($question->componentName); ?>">
-<?php
+					<?php if ($question->help != '') {
+						print "<a href=\"#\" onclick=\"return false\"  class=\"help\" title=\"Help\"><span class=\"main\">Help:</span><span class=\"tooltip\"> " . encodeHtml($question->help) . "</a></span>";
+												         } ?>
+									<label for="<?php print encodeHtml($question->componentName); ?>">
+				<?php
 					}
 
 					if (isset($missing_array[$question->id]) || isset($error_array[$question->id])) { 
@@ -548,9 +551,7 @@
 <?php
 					}
 
-					if ($question->help != '') {
-						print "<span class=\"help\">Help: " . encodeHtml($question->help) . "</span>";
-					}
+				
 ?>
 				<br />
 <?php 	
@@ -624,23 +625,24 @@
 			//	Completion page printed.
 ?>
 			<p class="centre">
-				<input type="submit" class="button" name="commit" value="Submit Form" />
-				<input type="submit" class="button" name="back" value="&laquo; Back" />
+				<input type="submit" class="genericButton grey" name="commit" value="Submit Form" />
+				<input type="submit" class="genericButton grey" name="back" value="&laquo; Back" />
 			</p>
 <?php
 			} 
 			else {
 ?>	
 			<p class="centre">
-				<input type="submit" class="button" name="next" value="Save and Continue &raquo;" />
-<?php
+			<?php
 				if ($pageNumber > 0) {
 ?>
-				<input type="submit" class="button" name="back" value="&laquo; Back" />
-				<input type="reset" class="button" name="reset" value="Reset" />
+				<input type="submit" class="genericButton grey" name="back" value="&laquo; Back" />
+				<input type="reset" class="genericButton grey" name="reset" value="Reset" />
 <?php
 				}
 ?>
+
+				<input type="submit" class="genericButton grey" name="next" value="Save and Continue &raquo;" />
 			</p>
 <?php
 			}
@@ -651,7 +653,7 @@
 		</fieldset>
 	</form>
 	
-	<p>If you have <a href="<?php print getSecureSiteRootURL() . buildRegisterURL(); ?>">registered</a> with our web site and are signed in you can leave a form at any time to complete later or check all your saved and completed forms from Your Account page.</p>
+
 
 <?php
 		}

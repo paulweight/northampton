@@ -21,11 +21,11 @@
 <!-- ########################## -->
 
 
-	<ul>
+	<ul class="archive">
 <?php
 	if (isset($topNews) && $topNews->id != -1) {
 ?>
-		<li>
+		<li class="lead">
 			<h2><a href="<?php print getSiteRootURL() . buildNewsArticleURL($topNews->id, true, $topNews->title) ;?>" ><?php print encodeHtml($topNews->title); ?></a></h2>
 <?php 
 			if ($topNews->imageURL != "") {
@@ -36,8 +36,9 @@
 <?php 
 			}
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topNews->newsDate);?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topNews->newsDate);?></p>
 			<p><?php print encodeHtml($topNews->summary); ?></p>
+			<div class="clear"></div>
 		</li>
 
 
@@ -46,7 +47,7 @@
 ?>
 
 		<li>
-			<h2><a href="<?php print getSiteRootURL() . buildNewsArticleURL($news->id, true, $news->title) ;?>" ><?php print encodeHtml($news->title);?></a></h2>
+			<h3><a href="<?php print getSiteRootURL() . buildNewsArticleURL($news->id, true, $news->title) ;?>" ><?php print encodeHtml($news->title);?></a></h3>
 <?php 
 			if ($news->imageURL != "") { 
 ?>
@@ -56,8 +57,9 @@
 <?php 
 			}
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?></p>
 			<p><?php print encodeHtml($news->summary); ?></p>
+			<div class="clear"></div>
 		</li>	
 <?php
 		}
@@ -66,18 +68,17 @@
 ?>
 	</ul>
 
-	<ul>
-		<li>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildRSSURL();?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildCategoryRSSURL("news", $_GET['categoryID']); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></li>
-	</ul>
+	<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></strong></p>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL();?>"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></p>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildCategoryRSSURL("news", $_GET['categoryID']); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
+	
 
 <?php
 	if (sizeof($categories) > 0) {
 ?>
 		<div class="cate_info">
-			<h2>Categories in <?php print encodeHtml($currentCategory->name); ?></h2>
-			<ul class="list">
+			<h3>Categories in <?php print encodeHtml($currentCategory->name); ?></h3>
+			<ul class="list icons news">
 <?php
 			foreach ($categories as $subCat) {
 ?>

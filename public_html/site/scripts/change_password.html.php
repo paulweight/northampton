@@ -52,7 +52,7 @@
 <?php 
 	}
  ?>
-	<form name="changepass" action="<?php print getSecureSiteRootURL() . buildNonReadableChangePasswordURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" name="changepass" action="<?php print getSecureSiteRootURL() . buildNonReadableChangePasswordURL(); ?>" method="post" enctype="multipart/form-data">
 <?php		
 		if (isset($_GET['forced']) || isset($_POST['forced'])) {
 ?>		
@@ -90,8 +90,8 @@
 				</label>
 				<input id="passwordsDifferent" type="password" name="passwordConfirm" size="15" maxlength="30" value="" />
 			</li>
-			<li>
-				<input type="submit" name="getPassword" value="Change my password" />
+			<li class="centre">
+				<input type="submit" name="getPassword" value="Change my password" class="genericButton grey" />
 			</li>
 			</ol>
 		</fieldset>

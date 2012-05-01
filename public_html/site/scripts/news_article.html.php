@@ -36,7 +36,7 @@
 	else {
 ?>
 
-	<p>Published <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?></p>
+	
 <?php 
 	if ($news->imageURL != "") { 
 		if (mb_strlen(getImageProperty($news->imageURL, 'longdesc')) > 0) {
@@ -49,20 +49,20 @@
 		}
 		else {
 ?>
-		<img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($news->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($news->imageURL, 'altText')); ?>" />
+		<img class="floatRight"  src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($news->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($news->imageURL, 'altText')); ?>" />
 <?php 
 		}
 	}
 ?>
+	<p class="date">Published <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?></p>
 	<p><?php print encodeHtml($news->summary); ?></p>
 	<div class="byEditor article">
 		<?php print processEditorContent($news->content); ?>
 	</div>
 
-	<ul>
-		<li>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildRSSURL();?>"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></li>
-	</ul>
+	<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></strong></p>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL();?>"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></p>
+	
 
 <?php 	
 		$allRSSItems = getAllExternalFeedsForNews();

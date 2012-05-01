@@ -29,7 +29,7 @@
 ?>
 		
 	<p>Listed in order of date below are the meetings held by the <?php print encodeHtml($header->title); ?>.</p>
-	<ul>
+	<ul class="list icons meetings">
 <?php
 			foreach ($allMeetings as $meeting) {
 ?>

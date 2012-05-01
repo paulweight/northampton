@@ -200,20 +200,31 @@ if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
 
 ?>
 
-<div id="related">
-	<h3>Related items</h3>
-	<ul>
-		<?php if ($showForms) { ?><li class="relform"><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($categoryID); ?>">Related Forms</a></li><?php } ?>
-		<?php if ($showDownloads) { ?><li class="reldownload"><a href="<?php print getSiteRootURL() . buildDownloadsURL($categoryID); ?>" >Related Downloads</a></li><?php } ?>
-		<?php if ($showPodcasts) { ?><li class="relpodcast"><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL($categoryID); ?>">Related Podcasts</a></li><?php } ?>
-		<?php if ($showGalleries) { ?><li class="relgallery"><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL($categoryID); ?>">Related Galleries</a></li><?php } ?>
-		<?php if ($showMeetings) { ?><li class="relmeet"><a href="<?php print getSiteRootURL() . buildMeetingsURL($categoryID); ?>">Related Meetings &amp; Minutes</a></li><?php } ?>
-		<?php if ($showDocuments) { ?><li class="reldocs"><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($categoryID); ?>">Related Documents</a></li><?php } ?>
-		<?php if ($showNews) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildNewsURL($categoryID); ?>">Related News</a></li><?php } ?>
-		<?php if ($showEvents) { ?><li class="relevents"><a href="<?php print getSiteRootURL() . buildEventsURL($categoryID); ?>">Related Events</a></li><?php } ?>
-		<?php if ($showFAQs) { ?><li class="relfaq"><a href="<?php print getSiteRootURL() . buildFAQURL(false, $categoryID); ?>">Related FAQs</a></li><?php } ?>
-		<?php if ($showServices) { ?><li class="relfaq"><a href="<?php print getSiteRootURL(). buildAZServicesCategoryURL($categoryID); ?>">Related Services</a></li><?php } ?>
-		<?php if ($showBlogs) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildBlogURL($categoryID);?>">Related Blogs</a></li><?php } ?>
+<div id="tools">
+	<ul class="related">
+		<?php if ($showForms) { ?><li class="relform"><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($categoryID); ?>">Forms</a></li><?php } ?>
+		<?php if ($showDownloads) { ?><li class="reldownload"><a href="<?php print getSiteRootURL() . buildDownloadsURL($categoryID); ?>" >Downloads</a>
+			
+				<!-- replace this with dynamic list of downloads, keep mark up as ul, li, a, text -->
+				<ul>
+					<li><a href="#">Council Tax</a></li>
+					<li><a href="#">Housing and garage rents</a></li>
+					<li><a href="#">Business rates</a></li>
+					<li><a href="#">Sundry invoices</a></li>
+				</ul>
+				<!-- replace this with dynamic list of downloads -->
+			</li>
+		<?php } ?>
+		
+		<?php if ($showPodcasts) { ?><li class="relpodcast"><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL($categoryID); ?>">Podcasts</a></li><?php } ?>
+		<?php if ($showGalleries) { ?><li class="relgallery"><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL($categoryID); ?>">Galleries</a></li><?php } ?>
+		<?php if ($showMeetings) { ?><li class="relmeet"><a href="<?php print getSiteRootURL() . buildMeetingsURL($categoryID); ?>">Meetings &amp; Minutes</a></li><?php } ?>
+		<?php if ($showDocuments) { ?><li class="reldocs"><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($categoryID); ?>">Documents</a></li><?php } ?>
+		<?php if ($showNews) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildNewsURL($categoryID); ?>">News</a></li><?php } ?>
+		<?php if ($showEvents) { ?><li class="relevents"><a href="<?php print getSiteRootURL() . buildEventsURL($categoryID); ?>">Events</a></li><?php } ?>
+		<?php if ($showFAQs) { ?><li class="relfaq"><a href="<?php print getSiteRootURL() . buildFAQURL(false, $categoryID); ?>">FAQs</a></li><?php } ?>
+		<?php if ($showServices) { ?><li class="relfaq"><a href="<?php print getSiteRootURL(). buildAZServicesCategoryURL($categoryID); ?>">Services</a></li><?php } ?>
+		<?php if ($showBlogs) { ?><li class="relnews"><a href="<?php print getSiteRootURL() . buildBlogURL($categoryID);?>">Blogs</a></li><?php } ?>
 <?php
 		// show a related link for each directory if an entry in that directory
 		// is in this category
@@ -228,9 +239,8 @@ if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
 		$currentScriptURL = base64_encode($_SERVER['REQUEST_URI']);
 		$currentScriptEmailURL = $_SERVER['REQUEST_URI'];
 ?>
-		<li class="relprint"><a rel="nofollow" href="#" onclick="window.print();return false;">Print this page</a></li>
-		<li class="relemail"><a id="emailFriendLink" rel="nofollow" href="<?php print getSiteRootURL() . buildEmailFriendURL($currentScriptEmailURL); ?>">Email this to a friend</a></li>
 	</ul>
+	
 </div>
 <?php
 }

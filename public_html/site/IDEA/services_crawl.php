@@ -59,7 +59,7 @@
 		exit;
 	} 
 	
-	$MAST_HEADING = 'A to Z';
+	$MAST_HEADING = 'Welcome to the services generator';
 	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'/">Home</a></li><li class="bc_end"><span>A to Z services list</span></li>';
 	
 	include("services_crawl.html.php");

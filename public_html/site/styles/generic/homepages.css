@@ -1,14 +1,15 @@
-.row_divider {width:100%;clear:both;margin: 0 0 10px 0; overflow:hidden;}
-.new_widget {float:left; overflow:hidden;}
+.row_divider {width:100%;clear:both;margin: 0 0 10px 0; }
+.new_widget {float:left; }
 .stacking {margin: 0 0 10px 0; width:100%; clear:both; }
 
 .width2 {width:1%;margin:0 1% 0 0;} .width3 {width:2%;margin:0 1% 0 0;} .width4 {width:3%;margin:0 1% 0 0;} .width5 {width:4%;margin:0 1% 0 0;} .width6 {width:5%;margin:0 1% 0 0;} .width7 {width:6%;margin:0 1% 0 0;} .width8 {width:7%;margin:0 1% 0 0;} .width9 {width:8%;margin:0 1% 0 0;} .width10 {width:9%;margin:0 1% 0 0;} .width11 {width:10%;margin:0 1% 0 0;} .width12 {width:11%;margin:0 1% 0 0;} .width13 {width:12%;margin:0 1% 0 0;} .width14 {width:13%;margin:0 1% 0 0;} .width15 {width:14%;margin:0 1% 0 0;} .width16 {width:15%;margin:0 1% 0 0;} .width17 {width:16%;margin:0 1% 0 0;} .width18 {width:17%;margin:0 1% 0 0;} .width19 {width:18%;margin:0 1% 0 0;} .width20 {width:19%;margin:0 1% 0 0;} .width21 {width:20%;margin:0 1% 0 0;} .width22 {width:21%;margin:0 1% 0 0;} .width23 {width:22%;margin:0 1% 0 0;} .width24 {width:23%;margin:0 1% 0 0;} .width25 {width:24%;margin:0 1% 0 0;} .width26 {width:25%;margin:0 1% 0 0;} .width27 {width:26%;margin:0 1% 0 0;} .width28 {width:27%;margin:0 1% 0 0;} .width29 {width:28%;margin:0 1% 0 0;} .width30 {width:29%;margin:0 1% 0 0;} .width31 {width:30%;margin:0 1% 0 0;} .width32 {width:31%;margin:0 1% 0 0;} .width33 {width:32%;margin:0 1% 0 0;} .width34 {width:33%;margin:0 1% 0 0;} .width35 {width:34%;margin:0 1% 0 0;} .width36 {width:35%;margin:0 1% 0 0;} .width37 {width:36%;margin:0 1% 0 0;} .width38 {width:37%;margin:0 1% 0 0;} .width39 {width:38%;margin:0 1% 0 0;} .width40 {width:39%;margin:0 1% 0 0;} .width41 {width:40%;margin: 0 1% 0 0;} .width42 {width:41%;margin: 0 1% 0 0;} .width43 {width:42%;margin: 0 1% 0 0;} .width44 {width:43%;margin: 0 1% 0 0;} .width45 {width:44%;margin: 0 1% 0 0;} .width46 {width:45%;margin: 0 1% 0 0;} .width47 {width:46%;margin: 0 1% 0 0;} .width48 {width:47%;margin: 0 1% 0 0;} .width49 {width:48%;margin: 0 1% 0 0;} .width50 {width:49%;margin: 0 1% 0 0;} .width51 {width:50%;margin: 0 1% 0 0;} .width52 {width:51%;margin: 0 1% 0 0;} .width53 {width:52%;margin: 0 1% 0 0;} .width54 {width:53%;margin: 0 1% 0 0;} .width55 {width:54%;margin: 0 1% 0 0;} .width56 {width:55%;margin: 0 1% 0 0;} .width57 {width:56%;margin: 0 1% 0 0;}  .width58 {width:57%;margin: 0 1% 0 0;} .width59 {width:58%;margin: 0 1% 0 0;} .width60 {width:59%;margin: 0 1% 0 0;} .width61 {width:60%;margin: 0 1% 0 0;} .width62 {width:61%;margin: 0 1% 0 0;} .width63 {width:62%;margin: 0 1% 0 0;} .width64 {width:63%;margin: 0 1% 0 0;} .width65 {width:64%;margin: 0 1% 0 0;} .width66 {width:65%;margin: 0 1% 0 0;} .width67 {width:66%;margin: 0 1% 0 0;} .width68 {width:67%;margin: 0 1% 0 0;} .width69 {width:68%;margin: 0 1% 0 0;} .width70 {width:69%;margin: 0 1% 0 0;} .width71 {width:70%;margin: 0 1% 0 0;} .width72 {width:71%;margin: 0 1% 0 0;} .width73 {width:72%;margin: 0 1% 0 0;} .width74 {width:73%;margin: 0 1% 0 0;} .width75 {width:74%;margin: 0 1% 0 0;} .width76 {width:75%;margin: 0 1% 0 0;} .width77 {width:76%;margin: 0 1% 0 0;} .width78 {width:77%;margin: 0 1% 0 0;} .width79 {width:78%;margin: 0 1% 0 0;} .width80 {width:79%;margin: 0 1% 0 0;} .width81 {width:80%;margin: 0 1% 0 0;} .width82 {width:81%;margin: 0 1% 0 0;} .width83 {width:82%;margin: 0 1% 0 0;} .width84 {width:83%;margin: 0 1% 0 0;} .width85 {width:84%;margin: 0 1% 0 0;} .width86 {width:85%;margin: 0 1% 0 0;} .width87 {width:86%;margin: 0 1% 0 0;} .width88 {width:87%;margin: 0 1% 0 0;} .width89 {width:88%;margin: 0 1% 0 0;} .width90 {width:89%;margin: 0 1% 0 0;} .width91 {width:90%;margin: 0 1% 0 0;} .width92 {width:91%;margin: 0 1% 0 0;} .width93 {width:92%;margin: 0 1% 0 0;} .width94 {width:93%;margin: 0 1% 0 0;} .width95 {width:94%;margin: 0 1% 0 0;} .width96 {width:95%;margin: 0 1% 0 0;} .width97 {width:96%;margin: 0 1% 0 0;} .width98 {width:97%;margin: 0 1% 0 0;} .width99 {width:98%;margin: 0 1% 0 0;}
 .lastWidget2 {width:2%;margin:0 0 0 0;} .lastWidget3 {width:3%;margin:0 0 0 0;} .lastWidget4 {width:4%;margin:0 0 0 0;} .lastWidget5 {width:5%;margin:0 0 0 0;} .lastWidget6 {width:6%;margin:0 0 0 0;} .lastWidget7 {width:7%;margin:0 0 0 0;} .lastWidget8 {width:8%;margin:0 0 0 0;} .lastWidget9 {width:9%;margin:0 0 0 0;} .lastWidget10 {width:10%;margin:0 0 0 0;} .lastWidget11 {width:11%;margin:0 0 0 0;} .lastWidget12 {width:12%;margin:0 0 0 0;} .lastWidget13 {width:13%;margin:0 0 0 0;} .lastWidget14 {width:14%;margin:0 0 0 0;} .lastWidget15 {width:15%;margin:0 0 0 0;} .lastWidget16 {width:16%;margin:0 0 0 0;} .lastWidget17 {width:17%;margin:0 0 0 0;} .lastWidget18 {width:18%;margin:0 0 0 0;} .lastWidget19 {width:19%;margin:0 0 0 0;} .lastWidget20 {width:20%;margin:0 0 0 0;} .lastWidget21 {width:21%;margin:0 0 0 0;} .lastWidget22 {width:22%;margin:0 0 0 0;} .lastWidget23 {width:23%;margin:0 0 0 0;} .lastWidget24 {width:24%;margin:0 0 0 0;} .lastWidget25 {width:25%;margin:0 0 0 0;} .lastWidget26 {width:26%;margin:0 0 0 0;} .lastWidget27 {width:27%;margin:0 0 0 0;} .lastWidget28 {width:28%;margin:0 0 0 0;} .lastWidget29 {width:29%;margin:0 0 0 0;} .lastWidget30 {width:30%;margin:0 0 0 0;} .lastWidget31 {width:31%;margin:0 0 0 0;} .lastWidget32 {width:32%;margin:0 0 0 0;} .lastWidget33 {width:33%;margin:0 0 0 0;} .lastWidget34 {width:34%;margin:0 0 0 0;} .lastWidget35 {width:35%;margin:0 0 0 0;} .lastWidget36 {width:36%;margin:0 0 0 0;} .lastWidget37 {width:37%;margin:0 0 0 0;} .lastWidget38 {width:38%;margin:0 0 0 0;} .lastWidget39 {width:39%;margin:0 0 0 0;} .lastWidget40 {width:40%;margin:0 0 0 0;} .lastWidget41 {width:41%;margin:0 0 0 0;} .lastWidget42 {width:42%;margin:0 0 0 0;} .lastWidget43 {width:43%;margin:0 0 0 0;} .lastWidget44 {width:44%;margin:0 0 0 0;} .lastWidget45 {width:45%;margin:0 0 0 0;} .lastWidget46 {width:46%;margin:0 0 0 0;} .lastWidget47 {width:47%;margin:0 0 0 0;} .lastWidget48 {width:48%;margin:0 0 0 0;} .lastWidget49 {width:49%;margin:0 0 0 0;} .lastWidget50 {width:50%;margin:0 0 0 0;} .lastWidget51 {width:51%;margin:0 0 0 0;} .lastWidget52 {width:52%;margin:0 0 0 0;} .lastWidget53 {width:53%;margin:0 0 0 0;} .lastWidget54 {width:54%;margin:0 0 0 0;} .lastWidget55 {width:55%;margin:0 0 0 0;} .lastWidget56 {width:56%;margin:0 0 0 0;} .lastWidget57 {width:57%;margin:0 0 0 0;} .lastWidget58 {width:58%;margin:0 0 0 0;} .lastWidget59 {width:59%;margin:0 0 0 0;} .lastWidget60 {width:60%;margin:0 0 0 0;}  .lastWidget61 {width:61%;margin:0 0 0 0;} .lastWidget62 {width:62%;margin:0 0 0 0;} .lastWidget63 {width:63%;margin:0 0 0 0;} .lastWidget64 {width:64%;margin:0 0 0 0;} .lastWidget65 {width:65%;margin:0 0 0 0;} .lastWidget66 {width:66%;margin:0 0 0 0;} .lastWidget67 {width:67%;margin:0 0 0 0;} .lastWidget68 {width:68%;margin:0 0 0 0;} .lastWidget69 {width:69%;margin:0 0 0 0;} .lastWidget70 {width:70%;margin:0 0 0 0;} .lastWidget71 {width:71%;margin:0 0 0 0;} .lastWidget72 {width:72%;margin:0 0 0 0;} .lastWidget73 {width:73%;margin:0 0 0 0;} .lastWidget74 {width:74%;margin:0 0 0 0;} .lastWidget75 {width:75%;margin:0 0 0 0;} .lastWidget76 {width:76%;margin:0 0 0 0;} .lastWidget77 {width:77%;margin:0 0 0 0;} .lastWidget78 {width:78%;margin:0 0 0 0;} .lastWidget79 {width:79%;margin:0 0 0 0;} .lastWidget80 {width:80%;margin:0 0 0 0;} .lastWidget81 {width:81%;margin:0 0 0 0;} .lastWidget82 {width:82%;margin:0 0 0 0;} .lastWidget83 {width:83%;margin:0 0 0 0;} .lastWidget84 {width:84%;margin:0 0 0 0;} .lastWidget85 {width:85%;margin:0 0 0 0;} .lastWidget86 {width:86%;margin:0 0 0 0;} .lastWidget87 {width:87%;margin:0 0 0 0;} .lastWidget88 {width:88%;margin:0 0 0 0;} .lastWidget89 {width:89%;margin:0 0 0 0;} .lastWidget90 {width:90%;margin:0 0 0 0;} .lastWidget91 {width:91%;margin:0 0 0 0;} .lastWidget92 {width:92%;margin:0 0 0 0;} .lastWidget93 {width:93%;margin:0 0 0 0;} .lastWidget94 {width:94%;margin:0 0 0 0;} .lastWidget95 {width:95%;margin:0 0 0 0;} .lastWidget96 {width:96%;margin:0 0 0 0;} .lastWidget97 {width:97%;margin:0 0 0 0;} .lastWidget98 {width:98%;margin:0 0 0 0;} .lastWidget99 {width:99%;margin:0 0 0 0;}
 .width100 {width:100%; margin: 0;}	
 
+#content .width100  .widgetPadding {width: 100%;}
 
 #content .contentWidget, #content .WhatsOnWidget, #content .latestNewsWidget, #content .middleAdvertWidget, #content .rightAdvertWidget, #content .randomimageWidget, #content .topFaqWidget, #content .NewOnSiteWidget {
-	border-bottom: 1px solid #ccc; padding: 0 0 10px 0;}
+	padding: 0 0 10px 0; }
 
 #content .middleAdvertWidget img {float: left; margin: 5px; border: 1px solid #ccc;}
 
@@ -18,8 +19,8 @@
 
 #content .randomimageWidget span { color:#000; display:block; }
 
-#content .eventCalendarWidget { border-bottom: 1px solid #ccc; padding: 0 0 10px 0;}
-#content .eventCalendarWidget table.calendar {background: none; border-collapse: collapse; border: none; font-size: 0.9em; margin: 0 10px; width: 86%;}
+#content .eventCalendarWidget { padding: 0 0 10px 0;}
+#content .eventCalendarWidget table#calendar {border-bottom: 1px solid #D1D3D4}
 #content .eventCalendarWidget table th {background: none; text-transform: uppercase; color: #666; border: none; text-align: center;}
 #content .eventCalendarWidget table td {background: none; text-transform: uppercase; color: #666; border: none; padding:5px 0 0 0; text-align: center; font-weight:bold;}
 #content .eventCalendarWidget table tr {background: none; text-transform: uppercase; color: #333; border: none;}
@@ -36,3 +37,89 @@
 #content .dateWidget p.Sun { background: #999 url(../css_img/sun.gif) no-repeat left center;}
 
 #content .opinionPollWidget form label {float:none; width: auto; display:inline;}
+
+#content .latestNewsWidget h2, #content  .opinionPollWidget h2, #content  .documentListWidget h2,#content  .navigationWidget h2, #content .cateInfoWidget h2, #content .topFaqWidget h2, #content .NewOnSiteWidget h2, #content .WhatsOnWidget h2, #content .middleAdvertWidget h2  {width: 90%; margin: 0 0 10px 0; padding: 4px 10px; border-bottom: 0px; font-size: 1.1em;  color: #fff; text-shadow: 0px -2px 0px #8f1e20; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; margin-bottom: 15px; font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369, inset -1px -1px 1px #91173b;
+background: rgb(165,36,73); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(165,36,73,1) 30%, rgba(108,10,43,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,rgba(165,36,73,1)), color-stop(100%,rgba(108,10,43,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100%); /* IE10+ */
+background: linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a52449', endColorstr='#6c0a2b',GradientType=0 ); /* IE6-9 */
+}
+#content .latestNewsWidget h3 {font-size: 1.1em; margin: 0px; padding: 0; font-weight: bold;}
+#content .latestNewsWidget p {padding: 0; margin: 0 0 20px 0; font-size: .9em;}
+#content .latestNewsWidget p a {font-weight: bold; color: #282828; display: block; padding-left: 25px; background: url(../css_img/rss-small.gif) no-repeat; opacity: .8;}
+
+#content #myCouncilWidget img {width: 100%; margin-bottom: 10px}
+#content #myCouncilWidget form {display: block;}
+#content #myCouncilWidget form input#field {display: inline; float: left; border: 1px solid #A7A9AC; height: 20px; font-family: Arial, sans-serif; background: transparent; padding: 1%; width: 55%; padding: 1%; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
+#content #myCouncilWidget form input.button {background: #BCBEC0; border: 1px solid #A7A9AC; padding: 1%; float: right; display: inline; font-family: Arial, sans-serif; font-style: italic; width: 37%; padding: 1%; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; font-weight: normal; margin-bottom: 15px}
+
+#content .twitterFeed {background: #F1F2F2; border: 1px solid #D1D3D4; margin-bottom: 15px; padding: 8px 10px;}
+#content .twitterFeed h3 {background: url(../css_img/social-twitter.png) 0px 0px no-repeat; padding-left: 38px; text-shadow: 0 1px 0px #fff; font-weight: bold; font-size: 0.9em; padding-bottom: 5px; margin: 0; min-height: 30px; vertical-align: middle; display: block}
+#content .twitterFeed p, #content #content-inner .twitterFeed p {margin-top: 8px; font-size: .85em; list-style: none; line-height: 18px;}
+#content .twitterFeed a.tweetDate {font-size: .9em; color: #A7A9AC; width: 100%; display: block;}
+
+#content .contentWidgetWithLink {background: #F1F2F2; border: 1px solid #D1D3D4;  margin-bottom: 15px; display: block; padding: 10px; }
+.left {float:left;}
+.right {float: right;}
+#content .contentWidgetWithLink h4 {font-weight: bold; padding: 0px; margin-top: 0px;}
+#content .contentWidgetWithLink p {font-size: .9em; margin-top: 10px;}
+#content .contentWidgetWithLink a.arrow {text-indent: -10000px; display: block; float: right; background: url(../css_img/footer-box-arrow.gif) no-repeat; width: 21px; height: 17px; }
+
+/*##### RESPONSIVE CAROUSEL  #####*/
+
+.slidewrap {padding: 0;}
+	
+section.twothirds { width: 100%; }
+section.onethird { width: 30%; float: right; }
+		
+section ol { list-style: none; }
+		
+.slidewrap {overflow: hidden !important; position: relative; width: 100%; }
+	
+.crop {width:100%; overflow: hidden; height:250px; }
+	
+.crop img { display: block; left: 50%; margin-left: -400px;  width: 800px;}
+	
+.copy { float: left; display: inline; }
+	
+.carousel-tabs, .slidecontrols, .slider {list-style: none; margin: 0; padding: 0; }
+.carousel-tabs li, .slidecontrols li {float: left; display: inline; }
+.carousel-tabs li span {display: none;}
+.carousel-tabs li a:link, .carousel-tabs li a:visited, .slidecontrols li a:link, .slidecontrols li a:visited {display: block; position: relative;}
+.carousel-tabs li.carousel-active-tab a {font-weight: normal; color:#ccc;}
+.slidecontrols a.carousel-disabled:link, .slidecontrols a.carousel-disabled:visited, .slidecontrols a.carousel-disabled:active, .slidecontrols a.carousel-disabled:hover  {font-weight: normal; cursor: default; color: #ccc; text-decoration: none;}
+
+.slidewrap {position: relative; padding: 0; margin-bottom: 15px; }
+
+section.twothirds { width: 100%; }
+section.onethird { width: 30%; float: right; }
+	
+section ol { list-style: none; }
+	
+.slidewrap {overflow: hidden !important; position: relative; width: 100%;  }
+
+#content .crop {width:100%; overflow: hidden; height:350px;  }
+
+.crop {overflow: hidden; z-index: 1; position: relative;   -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
+.crop img {width:800px; position: absolute;  left: 50%; z-index: 1; }
+#content .copy {color: #fff; text-shadow: 0 -2px 0px rgb(0,0,0); float: left; display: inline; z-index: 1000; position: relative; background: rgb(65,65,65) ; opacity: .8; width: 100%; margin-top: 250px; min-height: 100px; }
+#content .copy h2 { border-bottom: 0px; margin: 10px 10px 5px 15px; padding: 0; }
+#content .copy h2 a {color: #fff;}
+#content .copy h2 a:hover {text-decoration: none;}
+#content .copy p {margin: 0 0 0 15px; padding-bottom: 15px; font-size: 1.1em; width: 70%; }
+
+.carousel-tabs {padding: 8px 20px 4px 0;  float: right; margin-top: -58px; list-style: none; position: relative; z-index: 20000}
+.carousel-tabs li {float: left; display: inline; margin-left: 10px; background: url(../css_img/slider-nav.gif) no-repeat; width: 20px; height: 20px; text-indent: -10000px;}
+.carousel-tabs li span {display: none;}
+.carousel-tabs li a:link, .carousel-tabs li a:visited {width: 20px; height: 20px; display: block; position: relative;}
+.carousel-tabs li.carousel-active-tab {background: url(../css_img/slider-nav-active.gif) no-repeat;}
+
+#content .directoryWidget input.field {width: 55%; font-size: .9em;}
+#content .directoryWidget input.genericButton {width: 30%;}
+#content .directoryWidget a {font-size: .9em;}
+
+#content .randomimageWidget .banner img, #content .middleAdvertWidget img {width: 100%;}

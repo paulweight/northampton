@@ -27,7 +27,7 @@ $arrList = array_merge(array('0-9'), range('A','Z'));
 foreach ($arrList as $value) {
 	if($value != '0-9'){
 ?>
-	<li><?php if (isset($validLetters[$value])) { ?><a href="<?php print getSiteRootURL() . buildAToZIndexURL($value);?>"><?php print $value; ?></a><?php } else { ?><span><?php print $value; ?></span><?php } ?></li>
+	<li class="genericButton grey"><?php if (isset($validLetters[$value])) { ?><a href="<?php print getSiteRootURL() . buildAToZIndexURL($value);?>"><?php print $value; ?></a><?php } else { ?><span><?php print $value; ?></span><?php } ?></li>
 <?php
 	}
 }
@@ -45,7 +45,7 @@ foreach ($arrList as $value) {
 		if($view == 'list') {
 ?>
 	<!-- Top Services List -->
-	<ul>
+	<ul class="list icons services">
 <?php
 		if (sizeof($topServices) > 0) {
 			$count = 0;

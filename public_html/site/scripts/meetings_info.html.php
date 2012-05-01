@@ -23,7 +23,7 @@
 	else {
 ?>
 	<h2><?php print encodeHtml($header->title); ?></h2>
-	<p>Date: <?php print $meeting->getMeetingMinutesDateFormatted(FORMAT_DATE_FULL); ?></p>
+	<p class="date">Date: <?php print $meeting->getMeetingMinutesDateFormatted(FORMAT_DATE_FULL); ?></p>
 
 <?php
 	if (sizeof($attachmentList) < 1) {
@@ -35,7 +35,7 @@
 		foreach ($typedAttachments as $index => $typeArray) {
 			$attachmentType = getMeetingMinutesType($index);
 ?>
-	<ul>
+	<ul class="list icons meetings">
 			
 <?php
 			foreach ($typeArray as $download) {

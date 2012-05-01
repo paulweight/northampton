@@ -17,15 +17,6 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 	
-	<h2>Local Councillors</h2>
-
-	<ul>
-		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('name'); ?>">View Councillors by Name</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('ward'); ?>">View Councillors by Ward</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('party'); ?>">View Councillors by Party</a></li>		
-		<li><a href="<?php print getSiteRootURL() . buildCouncillorLookupURL(); ?>">Find Councillors by Postcode</a></li>
-	</ul>
-
 	<p><?php print encodeHtml(METADATA_GENERIC_NAME); ?> is a democratic organisation.  It comprises of <a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('name'); ?>"><?php print (int) $numberOfCouncillors; ?> elected Councillors</a> who are responsible for agreeing policies about provision of services and how the Council's money is spent. The Council employs officers who are responsible for its day to day management.</p>
 	<p>Councillors decide which policies the Council should pursue, ensure that they are carried out and monitor services provided to ensure that they are delivered in the most efficient and effective way.</p>
 	<p>The local Councillor is there to represent the views and opinions of individuals. It is also his or her responsibility to help those with difficulties which the Council could help solve. <?php print encodeHtml(METADATA_GENERIC_NAME); ?> Councillors decide how the Council should carry out its many important functions.</p>
@@ -37,7 +28,8 @@
 <?php
 		if (!empty($all_party_types)) {
 ?>
-	<h3>Political Leaders</h3>
+	<h2>Political Leaders</h2>
+	<ul class="archive">
 <?php
 		}	
 
@@ -46,43 +38,48 @@
 				foreach($party_type['governing'] as $position=>$councillors) {
 					foreach ($councillors as $councillor) {
 						if ($councillor->id != "" && $councillor->id != "-1") {
-							print '<div class="listed_item">';
+							print '<li class="lead">';
 							if (!empty($councillor->imageURL)) {
 								print '<a href = "http://'. DOMAIN . buildCouncillorsIndividualURL($councillor->id) .'" ><img src="http://'. DOMAIN . '/images/' . encodeHtml($councillor->imageURL) . '" alt="' . encodeHtml(getImageProperty($councillor->imageURL, 'altText')) . '" /></a>';
 							}	
-							print '<h4><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'. encodeHtml($councillor->forename) . ' ' . encodeHtml($councillor->surname) . '</a> - ' . encodeHtml($position) . '</h4>';
+							print '<h3><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'. encodeHtml($councillor->forename) . ' ' . encodeHtml($councillor->surname) . '</a> - ' . encodeHtml($position) . '</h3>';
 							$ward = getWard($councillor->wardID);
-							print '<p>Ward:' . encodeHtml($ward->name) . '</p>';
+							print '<p>Ward: ' . encodeHtml($ward->name) . '</p>';
 							$party = getParty($councillor->partyID);
 							print '<p>Party: ' . encodeHtml($party->name) . '</p>';
-							print '</div>';
+							print '<p><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">Full details for  '.encodeHtml($councillor->forename).' '.encodeHtml($councillor->surname).'</a></p>';
+							print '<div class="clear"></div></li>';
 						}
 					}
 				}
 			}
-		}		
-			
-		foreach ($all_party_types as $party_type) {
+		}	foreach ($all_party_types as $party_type) {
 			if (!empty($party_type['shadow'])) {
 				foreach($party_type['shadow'] as $position => $councillors) {
 					foreach ($councillors as $councillor) {
 						if ($councillor->id != "" && $councillor->id != "-1") {
-							print '<div class="listed_item">';
+							print '<li>';
 							if (!empty($councillor->imageURL)) {							
 								print '<a href = "http://'. DOMAIN . buildCouncillorsIndividualURL($councillor->id) .'"><img src="http://'.$DOMAIN.'/images/'.$councillor->imageURL.'" alt="'.encodeHtml(getImageProperty($councillor->imageURL, 'altText')).' " /></a>';
 							}								
-							print '<h4><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'.encodeHtml($councillor->forename).' '.encodeHtml($councillor->surname).'</a> - '.$position.'</h4>';
+							print '<h3><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'.encodeHtml($councillor->forename).' '.encodeHtml($councillor->surname).'</a> - '.$position.'</h3>';
 							$ward = getWard($councillor->wardID);
-							print '<p>Ward:'.encodeHtml($ward->name).'</p>';
+							print '<p>Ward: '.encodeHtml($ward->name).'</p>';
 							$party = getParty($councillor->partyID);
-							print '<p>'.encodeHtml($party->name).'</p>';
-							print '</div>';
+							print '<p>Party: ' .encodeHtml($party->name).'</p>';
+							print '<p><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">Full details for  '.encodeHtml($councillor->forename).' '.encodeHtml($councillor->surname).'</a></p>';
+							print '<div class="clear"></div></li>';
 						}
 					}
 				}
 			}
 		}
-?>
-			
+?></ul>
+	<ul class="list icons councillors">
+		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('name'); ?>">View Councillors by Name</a></li>
+		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('ward'); ?>">View Councillors by Ward</a></li>
+		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('party'); ?>">View Councillors by Party</a></li>		
+		<li><a href="<?php print getSiteRootURL() . buildCouncillorLookupURL(); ?>">Find Councillors by Postcode</a></li>
+	</ul>	
 <!-- ####################################### -->
 <?php include("../includes/closing.php"); ?>

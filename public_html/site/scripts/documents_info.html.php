@@ -43,7 +43,9 @@
 ?>
 
 	<h2><?php print encodeHtml($page->title); ?></h2>
-		
+<?php 
+			}
+?>
 	<div class="byEditor article">
 <?php
 			if ($page->imageURL != '') {
@@ -57,7 +59,7 @@
 				}
 				else {
 ?>
-				<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($page->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($page->imageURL, 'altText')); ?> " />
+				<img class="floatRight" src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($page->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($page->imageURL, 'altText')); ?> " />
 <?php
 				}
 			}
@@ -66,44 +68,10 @@
 	</div>
 
 	<!-- Page Navigation list if there is more than one page -->
-<?php
-			if (sizeof($allPages) > 1) {
-?>
-			<h3>Pages in <?php print encodeHtml($header->title); ?></h3>
-			<ol class="pageList">
-<?php
-	$pageCount = 1;
-	foreach ($allPages as $p) {
-?>
-		<li>
-			<?php if ($pageCount == $pageNumber) { ?><strong>You are here:</strong><?php } ?> <?php if ($pageCount != $pageNumber) { ?><a href="<?php print getSiteRootURL() . buildDocumentsURL($document->id, $categoryID, $pageCount);?>"><?php } ?><?php print encodeHtml($p->title); ?><?php if ($pageCount != $pageNumber) { ?></a><?php } ?>
-		</li>
-<?php
-		$pageCount++;
-	}
-?>
-	</ol>
-<?php
-			}
-?>				
 
-	<!-- Page pagination if there is more than one page -->
-<?php
-			}
-			if (sizeof($allPages) > 1) {
-				$pageNumberPrev = $pageNumber -1;
-				$pageNumberNext = $pageNumber +1;
-				$pageTotal = count($allPages);
-?>
-				<ul class="pagePagination">
-					<?php if($pageNumberPrev != 0){ ?><li><a href="<?php print getSiteRootURL() . buildDocumentsURL($document->id, $categoryID, $pageNumberPrev);?>">Previous page</a></li><?php } ?>
-					<?php if($pageNumberNext != $pageTotal+1){ ?><li><a href="<?php print getSiteRootURL() . buildDocumentsURL($document->id, $categoryID, $pageNumberNext);?>">Next page</a></li><?php } ?>
-				</ul>
-<?php
-			}
-?>
-
+<div class="bottomSupplements">
 	<?php include('../includes/bottom_supplements.php'); ?>
+</div>
 
 <?php
 		}

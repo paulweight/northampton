@@ -21,7 +21,7 @@
 ?>
 	<h2><?php print encodeHtml($parent->name); ?> related events</h2>
 <?php
-			print '<ul class="list">';
+			print '<ul class="list icons events">';
 			foreach ($allEvents as $event) {
 ?>
 		<li><a href="<?php print getSiteRootURL() . buildEventsURL(-1, '', $event->id); ?>"><?php print encodeHtml($event->title); ?></a></li>
@@ -36,10 +36,10 @@
 	if (sizeof($categories > 0)) {
 ?>
 		
-
-	<h2>Categories in <?php print encodeHtml($parent->name); ?></h2>
+<div class="clear"></div>
+	<h3>Categories in <?php print encodeHtml($parent->name); ?></h3>
 <?php
-			print '<ul class="list">';
+			print '<ul class="list icons events">';
 			foreach ($categories as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildEventsURL($subCat->id) ?>"><?php print encodeHtml($subCat->name); ?></a></li>
@@ -52,8 +52,8 @@
 <?php
 	}
 ?>
-
-	<p><a href="<?php print getSiteRootURL() . buildCategoryRSSURL("events", $_GET['categoryID']); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
+<div class="clear"></div>
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildCategoryRSSURL("events", $_GET['categoryID']); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
 		
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

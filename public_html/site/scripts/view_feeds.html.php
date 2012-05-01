@@ -22,7 +22,7 @@
 	if ($viewFeed) {
 ?>
 	<h2><?php print encodeHtml($feed->name); ?></h2>
-	<ul>
+	<ul class="archive">
 <?php
     if (isset($parsedFeed) && $parsedFeed !== false) {
     	$i = 1;
@@ -74,7 +74,7 @@ else {
 ?>
 
 	<p>Choose a feed from below.</p>
-	<ul>
+	<ul  class="list icons news">
 <?php
 		foreach ($allFeeds as $feed) {
 			print '<li><a href="' . getSiteRootURL() . buildFeedsURL($feed->id) . '">' . encodeHtml($feed->name) . '</a></li>';

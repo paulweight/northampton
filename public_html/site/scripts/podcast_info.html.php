@@ -49,59 +49,68 @@ else {
 			}
 			else {
 ?>
-	<img src="<?php print getStaticContentRootURL();?>/images/<?php print $podcast->imageURL; ?>" alt="<?php print getImageProperty($podcast->imageURL, 'altText'); ?>" class="main_image"/>
+	<img class="floatRight main_image" src="<?php print getStaticContentRootURL();?>/images/<?php print $podcast->imageURL; ?>" alt="<?php print getImageProperty($podcast->imageURL, 'altText'); ?>" />
 <?php
 			}
 		}
 ?>
 		<?php print processEditorContent($podcast->description); ?>
-	</div>
+	</div><ul class="archive">
 <?php
 	if ($numEpisodes > 0) {
-		foreach ($allEpisodes as $index => $episode) {
+		foreach ($allEpisodes as $index => $episode) { ?><li><?php
 			$item = $episode->getItem();
 			if ($item) {
 				if ($index == 0 && $currentPage == 1) {
 ?>
-	<ul>
+	
+
+		<h3><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print encodeHtml($episode->title); ?></a></h3>
+		
 <?php
 		if ($episode->imageURL != '') { 
 ?>
-		<li>
+		
 		<a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>">
 			<img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($episode->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($episode->imageURL, 'altText')); ?>" class="main_image" />
 		</a>
-		</li>
+		
 <?php 
 		} 
-?>
-		<li><h2><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print encodeHtml($episode->title); ?></a></h2></li>
+?>		
+
 <?php 
 	}
 	else {
 
 		if ($episode->imageURL != '') { 
 ?>
-		<li>
+		
 		<a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>">
 			<img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($episode->imageURL);?>" alt="<?php print encodeHtml(getImageProperty($episode->imageURL, 'altText')); ?>" class="contentimage" />
 		</a>
-		</li>
+		
 <?php 
 		} 
 ?>
-		<li><h3><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print encodeHtml($episode->title); ?></a></h3></li>
+		<h3><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print encodeHtml($episode->title); ?></a></h3>
 <?php
 	}
 ?>
-		<li class="date">Published: <?php print formatDateTime(FORMAT_DATE_FULL, $episode->dateCreated);?></li>
-		<li><p><?php print encodeHtml($episode->summary); ?></p></li>
-		<li>Running time: <?php print secondsToTimecode($item->length); ?></li>
-		<li><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print $item->isAudio() ? 'Listen' : 'Watch'; ?> now</a></li>
-	</ul>
+		<p class="date">Published: <?php print formatDateTime(FORMAT_DATE_FULL, $episode->dateCreated);?></p>
+		<p><?php print encodeHtml($episode->summary); ?></p>
+		<p>Running time: <?php print secondsToTimecode($item->length); ?></p>
+		<p><a href="<?php print getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id); ?>"><?php print $item->isAudio() ? 'Listen' : 'Watch'; ?> now</a></p>
+	
 <?php
-		}
-	}
+		} 
+?></li>
+<?php
+	} 
+?>
+</ul>
+
+<?php
 	if ($currentPage != 1 || $currentPage != $pageCount) {
 ?>
 	<ul class="page_nav">
@@ -127,16 +136,17 @@ else {
 }
 if ($podcast->downloadable) {
 ?>
-	<ul>
-			<li><a href="itpc://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/podcast.gif" alt="Get this feed" /> iTunes</a></li>	
-			<li><a href="zcast://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/zencast.gif" alt="Get this feed" /> ZENCast</a></li>	  
-			<li><a href="zune://subscribe/?<?php print encodeHtml($podcast->title); ?>=<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/zunecast.gif" alt="Get this feed" /> Zune</a></li>	  
+	<ul class="bottomList">
+			<li><a href="itpc://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">iTunes</a></li>	
+			<li><a href="zcast://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">ZENCast</a></li>	  
+			<li><a href="zune://subscribe/?<?php print encodeHtml($podcast->title); ?>=<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">Zune</a></li>	 
+			<li><a href="<?php print getSiteRootURL() . buildAboutPodcastRSSURL(); ?>">About podcast feeds</a></li> 
 	</ul>
 	
-	<ul>
-			<li><a href="<?php print getSiteRootURL() . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/xml.gif" alt="Get this feed" /> RSS</a></li>
-			<li><a href="<?php print getSiteRootURL() . buildAboutPodcastRSSURL(); ?>">About podcast feeds</a></li>
-	</ul>
+	<div class="clear"></div>
+			<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('podcasts', $podcast->id); ?>" >RSS</a></p>
+			
+	
 <?php
 }
 }

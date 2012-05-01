@@ -28,7 +28,7 @@
 		<div class="cate_info">
 			<h2>Categories</h2>
 		
-			<ul class="list">
+			<ul class="list icons links">
 <?php 
 			foreach($categoriesList as $categoryItem) {
 ?>
@@ -46,23 +46,24 @@
 	foreach($categoriesList as $categoryItem) {
 ?>
 	<h3 id="cat<?php print (int) $categoryItem->id;?>"><?php print encodeHtml($categoryItem->title);?></h3>
-	<ul>
+	<ul class="list icons links">
 <?php
 		$links = getLinksInCategory($categoryItem->id);
 		foreach ($links as $link) {
 ?>
 		<li>
-			<h4 id="link<?php print encodeHtml($link->id);?>"><a href="<?php print encodeHtml($link->url);?>"><?php print encodeHtml($link->title);?></a></h4>
-<?php
+			<a href="<?php print encodeHtml($link->url);?>"><?php print encodeHtml($link->title);?></a>
+<?php /*
 			if (($link->description)!="") {
 				print nl2br(encodeHtml($link->description));
-			}
+			} */
 ?>
 		</li>
 <?php
 		}
 ?>
 	</ul>
+	<div class="clear"></div>
 <?php
 	}
 ?>

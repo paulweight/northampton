@@ -39,9 +39,11 @@
 
 	<p>You can email the link <a href="<?php print encodeHtml($link); ?>">for this page</a> to a friend by completing the details below, along with a message.</p>
 
-	<form name="sendFriend" action="<?php print getSiteRootURL() . buildNonReadableEmailFriendURL(base64_decode($_GET['link'])); ?>" method="post" enctype="multipart/form-data" onsubmit="document.getElementById('auth').value = '<?php print md5(DOMAIN . date('Y')); ?>'; return true;">
-		<input type="hidden" name="auth" id="auth" value="fail" />
-		<input type="hidden" name="authCode" id="authCode" value="<?php print isset($timerHash) ? $timerHash : ''; ?>" />
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableEmailFriendURL(base64_decode($_GET['link'])); ?>" method="post" enctype="multipart/form-data" onsubmit="document.getElementById('auth').value = '<?php print md5(DOMAIN . date('Y')); ?>'; return true;">
+		<div>
+			<input type="hidden" name="auth" id="auth" value="fail" />
+			<input type="hidden" name="authCode" id="authCode" value="<?php print isset($timerHash) ? $timerHash : ''; ?>" />
+		</div>
 		<fieldset>
 		<legend>Send the link to</legend>
 		<ol>	
@@ -102,8 +104,8 @@
 <?php
 	   }
 ?>
-			<li>
-				<input type="submit" name="sendFriend" value="Send to my friend" />
+			<li class="centre">
+				<input type="submit" name="sendFriend" value="Send to my friend" class="genericButton grey"/>
 			</li>
 		</ol>	
 		</fieldset>

@@ -21,32 +21,36 @@
 	if (sizeof($allGalleries) > 0) {
 ?>
 	<h2>Available galleries</h2>
+	<ul class="archive">
 <?php
 		foreach ($allGalleries as $gallery) {
 ?>
-	<div class="gallery_box">
+	
 <?php
 			if ($featured = $gallery->getFeaturedItem()) {
 ?>
-		<a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id); ?>" class="galImg">
+		<li><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id); ?>" >
 			<img src="<?php print getStaticContentRootURL() . (!$featured->isAudio() ? $featured->getThumbnail(100) : '/site/styles/css_img/audio_featured.gif'); ?>" alt="<?php print encodeHtml($featured->title); ?>" />
 		</a>
 <?php
 			}
 ?>
 		<h3><a href="<?php print getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id); ?>"><?php print encodeHtml($gallery->title); ?></a></h3>
-		<p><?php print nl2br(encodeHtml($gallery->summary)); ?></p>
-	</div>
+		<p><?php print nl2br(encodeHtml($gallery->summary)); ?></p></li>
+	
 
 <?php
 		}
+?>
+	</ul>
+<?php
 	}
 
 	if (sizeof($categories) > 0) {
 ?>
 	<div class="cate_info">
-		<h2><?php print encodeHtml($parent->name); ?> categories</h2>
-		<ul class="list">
+		<h3><?php print encodeHtml($parent->name); ?> categories</h3>
+		<ul class="list icons galleries">
 <?php
 			foreach ($categories as $subCat) {
 ?>

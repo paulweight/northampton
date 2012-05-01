@@ -62,7 +62,7 @@
 
 	// Breadcrumb, H1 and Title
 	$MAST_HEADING = 'Councillors by '. $pageTitle;
-	$MAST_BREADCRUMB = ' <li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildCouncillorsURL() .'" >Councillors</a></li><li><span>'. $pageTitle .'</li>';
+	$MAST_BREADCRUMB = ' <li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildCouncillorsURL() .'" >Councillors</a></li><li><span>'. $pageTitle .'</span></li>';
 	
 	include("councillors.html.php");	
 ?>

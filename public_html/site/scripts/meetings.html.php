@@ -23,7 +23,7 @@
 		if (sizeof($allMeetingMinutes) > 0) {
 ?>		
 			<h2><?php print encodeHtml($currentCategory->name);?> meetings</h2>
-			<ul class="list">
+			<ul class="list icons meetings">
 <?php
 				foreach ($allMeetingMinutes as $meeting) {
 					$header = getMeetingMinutesHeader($meeting->headerID);
@@ -38,10 +38,10 @@
 		if (sizeof($categories) > 0) {
 ?>
 		<div class="cate_info">
-			<h2>Categories in <?php print encodeHtml($parent->name); ?></h2>
+			<h3>Categories in <?php print encodeHtml($parent->name); ?></h3>
 <?php 
 			if (sizeof($categories) > 0) {
-				print '<ul class="list">';
+				print '<ul class="list icons meetings">';
 				foreach ($categories as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildMeetingsURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a> </li>

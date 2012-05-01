@@ -35,14 +35,14 @@
 <?php
 	if(sizeof ($currentPoll->answers) > 0) {
 ?>
-	<ul>
+	<ul class="list icons generic">
 <?php
 		$i = 1;
 		foreach($currentPoll->answers as $answer) {
 			list($count, $percentage) = $currentPoll->getCountPercentageArray($i);
 ?>	
 		<li>
-			<p><?php print encodeHtml($answer); ?> : <?php print (int) $count; ?> vote<?php if ($count != 1) { print 's'; } ?> : <?php print (int) $percentage; ?>%</p>		
+			<?php print encodeHtml($answer); ?> : <?php print (int) $count; ?> vote<?php if ($count != 1) { print 's'; } ?> : <?php print (int) $percentage; ?>%	
 <?php
 			if ($count > 0) {
 ?>
@@ -67,7 +67,7 @@
 	$archivedPolls = getArchivedPolls();
 	if(sizeof($archivedPolls) > 0) {
 ?>
-	<p><a href="<?php print getSiteRootURL() . buildPastPollResultsURL() ;?>">View past polls</a></p>
+	<p class="clear"><a href="<?php print getSiteRootURL() . buildPastPollResultsURL() ;?>">View past polls</a></p>
 <?php
 	}
 ?>

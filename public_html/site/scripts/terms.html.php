@@ -36,7 +36,7 @@
 		}
 		else {
 ?>
-		<img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($terms->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($terms->imageURL, 'altText')); ?> " />
+		<img class="floatRight" src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($terms->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($terms->imageURL, 'altText')); ?> " />
 <?php 
 		}
 	} 

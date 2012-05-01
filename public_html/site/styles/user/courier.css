@@ -1,3 +1,3 @@
-body, #main blockquote, #main blockquote cite, textarea {
-	font-family: courier, 'courier new', monospace;
+body, #main blockquote, #main blockquote cite, textarea, p, h1, h2, h3, h4, label, input, select {
+	font-family: courier, 'courier new', monospace !important;
 }

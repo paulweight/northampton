@@ -18,37 +18,35 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 
-	<!-- Calendar panel -->
-	<?php include("../includes/calendar.php"); ?>
-
 	<!-- Display the 'Pick of the week' -->
 <?php
 	$pick = getPickOfWeek();
 	if ($pick != null) {
 ?>
 	<h2><?php print encodeHtml($pick->title); ?></h2>
-	<ul>
-		<li><strong>Date:</strong> <?php print $pick->getDateString(); ?></li>
+	<ul class="list icons events">
+		<li class="long"><strong>Date:</strong> <?php print $pick->getDateString(); ?></li>
 <?php
 		$intervalString = $pick->getIntervalString();
 		if (!empty($intervalString)) {
 ?>
-		<li><strong><?php print $intervalString; ?></strong></li>
+		<li class="long"><strong><?php print $intervalString; ?></strong></li>
 <?php
 		}
 ?>
-		<li><strong>Location:</strong> <?php print encodeHtml($pick->location); ?></li>
+		<li class="long"><strong>Location:</strong> <?php print encodeHtml($pick->location); ?></li>
 <?php
 		$timeString = $pick->getTimeString();
 		if (!empty($timeString)) {
 ?>
-		<li><strong>Time:</strong> <?php print encodeHtml($timeString); ?></li>
+		<li class="long"><strong>Time:</strong> <?php print encodeHtml($timeString); ?></li>
 <?php
 		}
 ?>
-		<li><strong>Cost:</strong> <?php print encodeHtml($pick->cost); ?></li>
-		<li><strong><?php print encodeHtml($pick->summary); ?></strong></li>
+		<li class="long"><strong>Cost:</strong> <?php print encodeHtml($pick->cost); ?></li>
 	</ul>
+	<p><strong><?php print encodeHtml($pick->summary); ?></strong></p>
+	
 
 <?php
 		if (!empty($pick->description)) {
@@ -83,30 +81,31 @@
 	<h2>Happening today, <?php print formatDateTime(FORMAT_DATE_LONG); ?></h2>
 <?php
 		foreach ($liveEvents as $event) {
-?>
-	<ul>
-		<li><h3><?php print encodeHtml($event->title); ?></h3></li>
-		<li><strong>Date:</strong> <?php print $event->getDateString(); ?></li>
+?><h3><?php print encodeHtml($event->title); ?></h3>
+	<ul class="list icons events">
+		
+		<li class="long"><strong>Date:</strong> <?php print $event->getDateString(); ?></li>
 <?php
 			$intervalString = $event->getIntervalString();
 			if (!empty($intervalString)) {
 ?>
-		<li><strong><?php print $intervalString; ?></strong></li>
+		<li class="long"><strong><?php print $intervalString; ?></strong></li>
 <?php
 			}
 ?>
-		<li><strong>Location:</strong> <?php print encodeHtml($event->location); ?></li>
+		<li class="long"><strong>Location:</strong> <?php print encodeHtml($event->location); ?></li>
 <?php
 			$timeString = $event->getTimeString();
 			if (!empty($timeString)) {
 ?>
-		<li><strong>Time:</strong> <?php print encodeHtml($timeString); ?></li>
+		<li class="long"><strong>Time:</strong> <?php print encodeHtml($timeString); ?></li>
 <?php
 			}
 ?>
-		<li><strong>Cost:</strong> <?php print encodeHtml($event->cost); ?></li>
-		<li><strong><?php print encodeHtml($event->summary); ?></strong></li>
+		<li class="long"><strong>Cost:</strong> <?php print encodeHtml($event->cost); ?></li>
 	</ul>
+		<p><strong><?php print encodeHtml($event->summary); ?></strong></p>
+	
 <?php
 			if (!empty($event->description)) {
 ?>
@@ -118,10 +117,10 @@
 		}
 	}
 ?>
-	<ul>
-	<li><a href="<?php print getSiteRootURL() . buildRSSURL('events');?>"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> Events RSS feed</a></li>
-	<li><a href="<?php print getSiteRootURL() . buildNewEventURL();?>">Submit your event</a></li>
-	</ul>
+
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('events');?>">Events RSS feed</a></p>
+	
+	
 
 	<?php include('../includes/event_selection.php'); ?>
 

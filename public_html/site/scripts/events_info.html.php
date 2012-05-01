@@ -22,10 +22,6 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
-			
-	<!-- Calendar panel -->
-	<?php include("../includes/calendar.php"); ?>
-
 	
 	<!-- All that days events listed -->
 	<h2>
@@ -61,29 +57,30 @@
 	
 	foreach ($events as $event) {
 ?>
-	<ul>
-		<li><h3><?php print encodeHtml($event->title); ?></h3><li>
-		<li>Date: <?php print $event->getDateString(); ?></li>
+	<h3><?php print encodeHtml($event->title); ?></h3>
+	<ul class="list icons events">
+		<li class="long">Date: <?php print $event->getDateString(); ?></li>
 <?php
 		$intervalString = $event->getIntervalString();
 		if (!empty($intervalString)) {
 ?>
-		<li><?php print $intervalString; ?></li>
+		<li class="long"><?php print $intervalString; ?></li>
 <?php
 		}
 ?>
-		<li>Location: <?php print encodeHtml($event->location); ?></li>
+		<li class="long">Location: <?php print encodeHtml($event->location); ?></li>
 <?php
 		$timeString = $event->getTimeString();
 		if (!empty($timeString)) {
 ?>
-		<li>Time: <?php print encodeHtml($timeString); ?></li>
+		<li class="long">Time: <?php print encodeHtml($timeString); ?></li>
 <?php
 		}
 ?>
-		<li>Cost: <?php print encodeHtml($event->cost); ?></li>
-		<li><?php print encodeHtml($event->summary); ?></li>
+		<li class="long">Cost: <?php print encodeHtml($event->cost); ?></li>
 	</ul>
+	<p><strong><?php print encodeHtml($event->summary); ?></strong></p>
+	
 <?php
 		if (!empty($event->description)) {
 ?>
@@ -127,7 +124,7 @@
 	} 
 ?>
 
-	<p><a href="<?php print getSiteRootURL() . buildRSSURL('events');?>"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> Events RSS feed</a> | <a href="<?php print getSiteRootURL() . buildNewEventURL();?>">Submit your event</a></p>
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('events');?>">Events RSS feed</a></p>
 	
 	<?php include('../includes/event_selection.php'); ?>
 			

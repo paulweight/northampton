@@ -98,6 +98,7 @@
 ?> 	
 
 <link rel="Shortcut Icon" type="image/x-icon" href="<?php print getStaticContentRootURL(); ?>/site/favicon.ico" />
+<link rel="apple-touch-icon" href="<?php print getStaticContentRootURL(); ?>/site/apple-touch-icon.png" />
 <link rel="ToC" href="<?php print getSiteRootURL() . buildSiteMapURL(); ?>" />
 <?php
 	if (isset($homepage) && $homepage !== null) {
@@ -107,9 +108,68 @@
 	}
 ?>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<base href="<?php print getCurrentProtocolSiteRootURL(); ?>/" />
 <script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/swfobject.js'; ?>"></script>
+<script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/rotation-fix.js'; ?>"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+        $("#main-nav-dropdown").hide();
+        $(".show_hide").show();
+
+	$('.show_hide').click(function(){
+	$("#main-nav-dropdown").slideToggle();
+	});
+
+});
+
+</script>
+
+<?php
+	if (!isset($indexPage) || !$indexPage) {
+?>	
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+        $(".tasks").hide();
+        $(".expand").show();
+
+	$('.expand').click(function(){
+	$(".tasks").slideToggle();
+	});
+
+});
+
+</script>
+
+<?php
+	}
+	else {
+?>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+        $(".tasks").show();
+        $(".expand").show();
+
+	$('.expand').click(function(){
+	$(".tasks").slideToggle();
+	});
+
+});
+
+</script>
+	
+
+<?php
+	}
+?>		
 
 <!--
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>

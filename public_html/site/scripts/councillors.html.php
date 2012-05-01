@@ -25,13 +25,13 @@
 			case "specificward" :
 			case "specificparty" :
 			if(sizeof($array) > 0) {
-				print '<ul>';
+				print '<ul class="archive">';
 				foreach ($array as $councillor) {
 					$ward = getWard($councillor->wardID);
 					$party = getParty($councillor->partyID);
 ?>
 	<li>
-		<h3><a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id); ?>"><?php print encodeHtml($councillor->forename . ' ' . $councillor->surname); ?></a></h3>
+		
 <?php
 					if ($councillor->imageURL != "") { 
 ?>
@@ -41,19 +41,26 @@
 		</p>
 <?php 
 					} 
-?>
+?><h3><a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id); ?>"><?php print encodeHtml($councillor->forename . ' ' . $councillor->surname); ?></a></h3>
 		<p>Ward: <?php if ($ward->id != -1) print encodeHtml($ward->name); else print "Unknown";?></p>
 		<p>Party: <?php if ($party->id != -1) print encodeHtml($party->name); else print "Unknown";?></p>
 		<p>Full details on <a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id); ?>"><?php print encodeHtml($councillor->forename . ' ' . $councillor->surname); ?></a></p>
+		<div class="clear"></div>
 	</li>
 <?php
 				}
 				print '</ul>';
-			}	
-			break;
+			}	?>
+			<ul class="list icons councillors">
+				<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('name'); ?>">View Councillors by Name</a></li>
+				<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('ward'); ?>">View Councillors by Ward</a></li>
+				<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('party'); ?>">View Councillors by Party</a></li>		
+				<li><a href="<?php print getSiteRootURL() . buildCouncillorLookupURL(); ?>">Find Councillors by Postcode</a></li>
+			</ul>
+<?php			break;
 					   
 			case "ward" :   
-				print "<ul class=\"list\">";
+				print "<ul class=\"list icons councillors\">";
 				foreach ($array as $ward) {
 ?>
 		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('specificWard', $ward->id); ?>"><?php print encodeHtml($ward->name); ?></a></li>
@@ -63,7 +70,7 @@
 			break;
 						
 			case "party" :
-				print "<ul class=\"list\">";
+				print "<ul class=\"list icons councillors\">";
 				foreach ($array as $party) {
 ?>
 							<li> <a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('specificParty', $party->id); ?>"><?php print encodeHtml($party->name); ?></a></li>

@@ -29,8 +29,8 @@
 		$cat = $categoryList->getCategory(getFirstCategoryIDForItemOfType(NEWS_CATEGORIES_TABLE, $topNews->id));
 ?>
 
-	<ul>
-		<li>
+	<ul class="archive">
+		<li class="lead">
 			<h2><a href="<?php print getSiteRootURL() . buildNewsArticleURL($topNews->id, true, $topNews->title) ;?>"><?php print encodeHtml($topNews->title);?></a></h2>
 			
 <?php 
@@ -42,8 +42,9 @@
 <?php 
 		} 
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topNews->newsDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildNewsURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> news</a><?php } ?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topNews->newsDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildNewsURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> news</a><?php } ?></p>
 			<p><?php print encodeHtml($topNews->summary); ?></p>
+			<div class="clear"></div>
 		</li>
 
 <?php
@@ -64,8 +65,9 @@
 <?php 
 				} 
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildNewsURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> news</a><?php } ?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $news->newsDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildNewsURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> news</a><?php } ?></p>
 			<p><?php print encodeHtml($news->summary); ?></p>
+			<div class="clear"></div>
 		</li>
 <?php
 			}
@@ -73,10 +75,8 @@
 ?>
 	</ul>
 
-	<ul>
-		<li>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></li>
-		<li><p><a href="<?php print getSiteRootURL() . buildRSSURL();?>"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></li>
-	</ul>
+	<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildNewsArchiveURL(); ?>">news archive</a></strong></p>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL();?>"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> news feed</a></p>
 	
 <?php 	
 	}

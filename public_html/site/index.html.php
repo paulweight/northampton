@@ -36,7 +36,7 @@
 <?php
 	if (Jadu_Service_User::getInstance()->isSessionLoggedIn()) {
 ?>
-	<h2 class="welcome"><span>Hello, <strong><?php print encodeHtml($user->getDisplayName()); ?></strong> - You are signed-in</span></h2>
+	
 <?php
 	}
 	

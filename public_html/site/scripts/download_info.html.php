@@ -81,26 +81,26 @@
 ?>
 
 	<h2><?php print encodeHtml($fileItem->title);?></h2>
-	<h3><a href="<?php print $filename; ?>">Download now</a></h3>
-	<ul>
+	<ul class="list icons downloads">
 <?php
 	if (!empty($download->description)) {
 ?>
-		<li><?php print nl2br(encodeHtml($download->description)); ?></li>
+		<li class="long"><?php print nl2br(encodeHtml($download->description)); ?></li>
 <?php
 	}
 ?>
-		<li>Size: <?php print $fileItem->getHumanReadableSize(); ?></li>
-		<li>Extension: <?php print encodeHtml($extension); ?> <img src="<?php print getStaticContentRootURL() . $fileItem->getFileIcon(); ?>" alt=" " /></li>
+		<li class="long">Size: <?php print $fileItem->getHumanReadableSize(); ?></li>
+		<li class="long">Extension: <?php print encodeHtml($extension); ?> <img src="<?php print getStaticContentRootURL() . $fileItem->getFileIcon(); ?>" alt=" " /></li>
 	</ul>
-	
+	<a class="button red" href="<?php print $filename; ?>"><span>Download now</span></a>
 <?php
 		}
 		else if (count($allFiles) > 0) {
 ?>
 
+	
+	<p><?php print nl2br(encodeHtml($download->description)); ?></p>
 	<ul>
-		<li><?php print nl2br(encodeHtml($download->description)); ?></li>
 <?php
 			foreach ($allFiles as $fileItem) {
 				if ($fileItem->url == '') {

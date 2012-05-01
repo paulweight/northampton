@@ -41,8 +41,8 @@
 ?> 	
 	<p>You are commenting on <a href="<?php print encodeHtml($link); ?>">this page</a> by completing the form.  Type your comments or details of the problem you have encountered.</p>
 
-	<form name="sendComment" action="<?php print getSiteRootURL() . buildNonReadablePageCommentsURL(base64_decode($_GET['link'])); ?>" method="post" enctype="multipart/form-data" onsubmit="preSubmit(); return true;">
-		<input type="hidden" name="auth" id="auth" value="fail" />
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadablePageCommentsURL(base64_decode($_GET['link'])); ?>" method="post" enctype="multipart/form-data" onsubmit="preSubmit(); return true;">
+		<div><input type="hidden" name="auth" id="auth" value="fail" /></div>
 		<fieldset>
 			<legend>Your comment and details</legend>
 			<ol>
@@ -58,8 +58,8 @@
 					<label for="message"><?php if (isset($error_array['message'])) print "<strong>! ";?>Your comment <?php if (isset($error_array['message'])) print "</strong>";?><em>(required)</em></label>
 					<textarea id="message" name="message" rows="3" cols="2"><?php print encodeHtml($message); ?></textarea>
 				</li>
-				<li>					
-					<input type="submit" name="sendComment" value="Send your comment" />
+				<li class="centre">					
+					<input type="submit" name="sendComment" value="Send your comment" class="genericButton grey" />
 				</li>
 			</ol>
 		</fieldset>

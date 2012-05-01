@@ -42,7 +42,7 @@ else {
 ?>
     <h2><?php print encodeHtml($episode->title); ?></h2>
 	
-	<div id="podcast_multimedia" style="width: <?php print $maxSize; ?>px;">
+	<div id="podcast_multimedia">
 <?php
 	if ($item->isAudio()) { 
 		print $item->renderMediaPlayer(300, false);
@@ -50,45 +50,44 @@ else {
 	else if ($item->isVideo()) {
 		print $item->renderMediaPlayer($maxSize, false);
 	}
-?>
+?></div>
 		<p class="summary"><?php print encodeHtml($episode->summary); ?></p>
 		<div class="byEditor">
 			<?php print processEditorContent($episode->description); ?>
-		</div>
+		
     </div>
-	<ul class="galleryNavigation">
+	<ul class="list icons podcasts">
     
 <?php
         if ($podcast->downloadable) {
 ?>
-            <li><a href="<?php print getSiteRootURL() . $item->getDownloadFilename();  ?>"><strong>Download this episode</strong></a></li>
+            <li class="long"><a href="<?php print getSiteRootURL() . $item->getDownloadFilename();  ?>"><strong>Download this episode</strong></a></li>
 <?php
         }
 ?>
-    		<li>Running time is <strong><?php print secondsToTimecode($item->length); ?></strong>.</li>
+    		<li class="long">Running time is <strong><?php print secondsToTimecode($item->length); ?></strong>.</li>
 <?php
             if ($podcast->downloadable) {
 ?>
-            <li>File size is <strong><?php print humanReadableFilesize($item->filesize); ?></strong>.</li>
+            <li class="long">File size is <strong><?php print humanReadableFilesize($item->filesize); ?></strong>.</li>
 <?php
             }
 ?>
-			<li>Published on <strong><?php print formatDateTime(FORMAT_DATE_SHORT, $episode->dateCreated);?></strong>.</li>
+			<li class="long">Published on <strong><?php print formatDateTime(FORMAT_DATE_SHORT, $episode->dateCreated);?></strong>.</li>
 	</ul>
 	
 	
 <?php
 	if ($podcast->downloadable) {
 ?>
-	<ul>
-		<li><a href="itpc://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/podcast.gif" alt="Get this feed" /> iTunes</a></li>	
-		<li><a href="zcast://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/zencast.gif" alt="Get this feed" /> ZENCast</a></li>   
-		<li><a href="zune://subscribe/?<?php print encodeHtml($podcast->title); ?>=<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/zunecast.gif" alt="Get this feed" /> Zune</a></li>   
+	<ul class="bottomList">
+		<li><a href="itpc://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">iTunes</a></li>	
+		<li><a href="zcast://<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">ZENCast</a></li>   
+		<li><a href="zune://subscribe/?<?php print encodeHtml($podcast->title); ?>=<?php print DOMAIN . buildRSSURL('podcasts', $podcast->id); ?>">Zune</a></li>   
 	</ul>
-	<ul>
-		<li><a href="<?php print getSiteRootURL() . buildRSSURL('podcasts', $podcast->id); ?>" target="_blank"><img src="<?php print getStaticContentRootURL();?>/site/images/xml.gif" alt="Get this feed" /> RSS</a></li> 
-		<li><a href="<?php print getSiteRootURL() . buildAboutPodcastRSSURL(); ?>">About podcast feeds</a></li>
-	</ul>
+	<div class="clear"></div>
+		<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('podcasts', $podcast->id); ?>"> RSS</a></p>
+	
 <?php
     }
 }

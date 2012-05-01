@@ -75,7 +75,7 @@
 ?>
 			<div class="listed_item">
 				<h2>Online Services</h2>
-				<ul class="list">
+				<ul class="list icons services">
 <?php
 			foreach ($liveForms as $form) {
 				print '<li><a href="' . getSiteRootURL() . buildXFormsURL($form->id) . '">' . encodeHtml($form->title) . '</a></li>';
@@ -93,7 +93,7 @@
 ?>
 		<div class="section">
 			<h2>Eligibility</h2>
-			<?php print encodeHtml($service->eligibility); ?>
+			<p><?php print encodeHtml($service->eligibility); ?></p>
 		</div>
 <?php
 		}
@@ -102,7 +102,7 @@
 ?>
 		<div class="section">
 			<h2>Accessibility</h2>
-			<?php print encodeHtml($service->accessibility); ?>
+			<p><?php print encodeHtml($service->accessibility); ?></p>
 		</div>
 <?php
 		}
@@ -111,7 +111,7 @@
 ?>
 		<div class="section">
 			<h2>Availability</h2>
-			<?php print encodeHtml($service->availability); ?>
+			<p><?php print encodeHtml($service->availability); ?></p>
 		</div>
 <?php
 		}
@@ -131,7 +131,7 @@
 ?>
 			<div class="section">
 				<h2>Common Questions</h2>
-				<ul class="list">
+				<ul class="list icons faqs">
 <?php 
 					}
 ?>
@@ -166,7 +166,7 @@
 ?>
 			<div class="section">
 				<h2>Further Information</h2>
-				<ul class="list">
+				<ul class="list icons documents">
 <?php
 			foreach ($docsWithCategoryAndId as $doc) {
 					$docHeader = getDocumentHeader($doc->headerOriginalID);

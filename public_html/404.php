@@ -56,7 +56,7 @@
 		<form class="basic_form" method="get" action="http://<?php print $DOMAIN ?>/site/scripts/google_results.php">
 			<p>
 				 <input type="text" name="q" maxlength="256" value="<?php print $searchQuery; ?>" class="field" />
-				 <input type="submit" name="btnG" value="Search" class="button" />
+				 <input type="submit" name="btnG" value="Search" class="genericButton grey" />
 			</p>
 		</form>
 

@@ -23,7 +23,7 @@
 ?>
 
 	<!-- Sign in -->
-	<form action="<?php print getSecureSiteRootURL() . buildNonReadableSignInURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" action="<?php print getSecureSiteRootURL() . buildNonReadableSignInURL(); ?>" method="post" enctype="multipart/form-data">
 <?php
 	if (isset($referer)) {
 ?>
@@ -47,8 +47,8 @@
 					<label for="YourPassword">Password</label>
 					<input size="17" type="password" name="password" maxlength="22" id="YourPassword" autocomplete="off" />
 				</li>
-				<li>
-					<input type="submit" value="Sign-in" name="jaduSignInButton" />
+				<li class="centre">
+					<input type="submit" value="Sign-in" name="jaduSignInButton" class="genericButton grey" />
 				</li>
 			</ol>
 		</fieldset>

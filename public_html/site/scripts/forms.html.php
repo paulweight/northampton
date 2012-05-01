@@ -20,8 +20,8 @@
 <?php
 	if (sizeof($allXForms) > 0) {
 ?>
-	<h2>Available online forms</h2>
-	<ul>
+	<h2 class="topTitle">Available online forms</h2>
+	<ul class="list icons forms">
 <?php
 		foreach ($allXForms as $formItem) {
 ?>
@@ -37,10 +37,10 @@
 	if (sizeof($categories) > 0) {
 ?>
 		<div class="cate_info">
-			<h2><?php print encodeHtml($parent->name); ?> categories</h2>
+			<h3><?php print encodeHtml($parent->name); ?> categories</h3>
 <?php
 		if (sizeof($categories) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list icons forms">';
 			foreach ($categories as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildFormsCategoryURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a> </li>
@@ -54,7 +54,7 @@
 	}
 ?>
 
-	<p><a href="<?php print getSiteRootURL() . buildCategoryRSSURL("forms", $_GET['categoryID']); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildCategoryRSSURL("forms", $_GET['categoryID']); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
 		
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

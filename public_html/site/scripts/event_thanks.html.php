@@ -21,22 +21,22 @@
 	<h2>Thank you for your event submission</h2>
 	<p class="first">Your event now has to be approved by the webmaster before you are able to view the event on this site.</p>
 			
-	<ul>
+	
 <?php 
 		if (mb_strlen($address->telephone) > 0) { 
 ?>
-		<li>Telephone: <?php print encodeHtml($address->telephone); ?></li>
+		<p>Telephone: <?php print encodeHtml($address->telephone); ?></p>
 <?php 
 		}
 		if (mb_strlen($address->email) > 0) { 
 ?>
-		<li>Email: <a href="mailto:<?php print encodeHtml($address->email); ?>"><?php print encodeHtml($address->email); ?></a></li>
+		<p>Email: <a href="mailto:<?php print encodeHtml($address->email); ?>"><?php print encodeHtml($address->email); ?></a></p>
 <?php 
 		}
 
 		if (mb_strlen($address->fax) > 0) { 
 ?>
-		<li>Fax: <?php print encodeHtml($address->fax); ?></li>
+		<p>Fax: <?php print encodeHtml($address->fax); ?></p>
 <?php 
 		}
 ?>
@@ -46,48 +46,48 @@
 		if (mb_strlen($address->address) > 0) { 
 ?>
 
-		<li><?php print encodeHtml(METADATA_GENERIC_NAME); ?>, 	<?php print nl2br(encodeHtml($address->address)); ?></li>
+		<p><?php print encodeHtml(METADATA_GENERIC_NAME); ?>, 	<?php print nl2br(encodeHtml($address->address)); ?></p>
 <?php 
 		}
 ?>
-	</ul>
+
   
 <?php
 	foreach ($contactsList as $contact) {
 ?>	              
-	<ul>
+	
 <?php 
 		if (mb_strlen($contact->title) > 0) { 
 ?>
-		<li><?php print encodeHtml($contact->title); ?></li>
+		<p><?php print encodeHtml($contact->title); ?></p>
 <?php 
 		}
 
  		if (mb_strlen($contact->name) > 0) { 
 ?>
-		<li><?php print encodeHtml($contact->name); ?></li>
+		<p><?php print encodeHtml($contact->name); ?></p>
 <?php 
 		}
 
  		if (mb_strlen($contact->email) > 0) { 
 ?>
-		<li><a href="mailto:<?php print encodeHtml($contact->email); ?>"><?php print encodeHtml($contact->email); ?></a></li>
+		<p><a href="mailto:<?php print encodeHtml($contact->email); ?>"><?php print encodeHtml($contact->email); ?></a></p>
 <?php 
 		}
 
  		if (mb_strlen($contact->phone) > 0) { 
 ?>
-		<li><span class="tel"><?php print encodeHtml($contact->phone); ?></li>
+		<p><span class="tel"><?php print encodeHtml($contact->phone); ?></p>
 <?php 
 		}
 
  		if (mb_strlen($contact->address) > 0) { 
 ?>
-		<li><?php print nl2br(encodeHtml($contact->address));?></li>
+		<p><?php print nl2br(encodeHtml($contact->address));?></p>
 <?php 
 		}
 ?>
-	</ul>
+	
 <?php
 	}
 ?>

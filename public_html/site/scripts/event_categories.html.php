@@ -26,7 +26,7 @@
 	<h2><a href="<?php print getSiteRootURL() . buildEventsURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h2>
 <?php
 			if (sizeof($relCats) > 0) {
-				print '<ul class="list">';
+				print '<ul class="list icons events">';
 				foreach ($relCats as $cat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildEventsURL($cat->id); ?>"><?php print encodeHtml($cat->name); ?></a></li>

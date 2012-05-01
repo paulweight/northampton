@@ -29,10 +29,9 @@
 ?>
 			
 	<!-- Keyword Search -->
-	<form action="<?php print getSiteRootURL() . buildNonReadableSearchResultsURL('',true) ?>" method="post" enctype="multipart/form-data">
-		<ol>
-			<li>
-				<ul>
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableSearchResultsURL('',true) ?>" method="post" enctype="multipart/form-data">
+		
+			
 <?php
 			$seen = array();
 			foreach (array_keys($SEARCHABLE_TABLES) as $table) {
@@ -40,13 +39,13 @@
 				if (!in_array($friendly, $seen)) {
 					$seen[] = $friendly;
 ?>
-					<li><label for="<?php print encodeHtml(str_replace(' ','_',$friendly)); ?>"><input type="checkbox" id="<?php print encodeHtml(str_replace(' ','_',$friendly)); ?>" name="areas[]" class="areas_checkboxes" value="<?php print encodeHtml($friendly); ?>" /><?php print encodeHtml($friendly); ?></label></li>
+					<p class="search"><label  for="<?php print encodeHtml(str_replace(' ','_',$friendly)); ?>"><input type="checkbox" id="<?php print encodeHtml(str_replace(' ','_',$friendly)); ?>" name="areas[]" class="checkbox" value="<?php print encodeHtml($friendly); ?>" /><?php print encodeHtml($friendly); ?></label></p>
 <?php
 				}
 			}
 ?>
-				</ul>
-			</li>
+				
+			<ol>
 			<li>
 				<label for="all">With all the words</label>
 				<input id="all" type="text" name="all" />
@@ -63,8 +62,8 @@
 				<label for="phrase">With the exact phrase</label>
 				<input id="phrase" type="text" name="phrase"  />
 			</li>
-			<li>
-				<input type="submit" value="Search" name="advancedSubmit" />
+			<li class="centre">
+				<input type="submit" value="Search" name="advancedSubmit" class="genericButton grey" />
 			</li>
 		</ol>
 	</form>

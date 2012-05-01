@@ -57,7 +57,7 @@
 ?>
 
 	<h2>Record Details</h2>
-	<table>
+	<table class="record">
 <?php
 	// Build a list of all image fields. Used for map marker balloon
 	$imageFields = array();
@@ -98,7 +98,7 @@
 					print '	<div class="byEditor article">'. processEditorContent($recordValues[$field->id]->value).'</div>';
 					break;
 				case 'Image':
-					printf('<img src="http://%s/images/%s" />', DOMAIN, $directoryFieldValue);
+					printf('<img alt="Record Image" src="http://%s/images/%s" />', DOMAIN, $directoryFieldValue);
 					break;
 				case 'Google Map':
 					// marker image

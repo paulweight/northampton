@@ -66,7 +66,7 @@
 	}
 ?>
 
-	<form action="<?php print getSecureSiteRootURL() . buildNonReadableRegisterURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" action="<?php print getSecureSiteRootURL() . buildNonReadableRegisterURL(); ?>" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Your email address and password</legend>
 			<ol>
@@ -396,9 +396,11 @@
 <?php
 		}
 ?>
-				<li>
-					<input type="submit" value="Register now" name="submit" />
-				</li>
+			     <ul>
+							<li class="centre">
+								<input type="submit" value="Register now" name="submit" class="genericButton grey" />
+							</li>
+				</ul>
 			</ol>
 		</fieldset>
 	</form>

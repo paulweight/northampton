@@ -33,7 +33,7 @@
 ?>
 	<p>If you have forgotten your password, please enter your email address below. A new password will then be emailed to you straight away.</p>
 
-	<form name="getpass" action="<?php print getSecureSiteRootURL() . buildNonReadableForgotPasswordURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" name="getpass" action="<?php print getSecureSiteRootURL() . buildNonReadableForgotPasswordURL(); ?>" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Please enter your email address</legend>
 			<ol>
@@ -50,8 +50,8 @@
 				</label>
 				<input id="forgot_email" type="text" name="email" class="field" autocomplete="off" />
 			</li>
-			<li>
-				<input type="submit" name="getPassword" value="Remind me" />
+			<li class="centre">
+				<input type="submit" name="getPassword" value="Remind me" class="genericButton grey" />
 			</li>
 			</ol>
 		</fieldset>

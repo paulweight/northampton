@@ -28,22 +28,12 @@
 	}
 ?>
 
-	<ul class="alphabeticNav">
-<?php
-            foreach (range('a','z') as $letter) {
-?>
-		<li><a href="<?php print buildDirectoryAZURL($directory->id, $letter, $categoryInfo->id); ?>"><span class="hidden">Records beginning with </span><?php print encodeHtml($letter); ?></a></li>
-<?php
-            }
-?>
-	</ul>
-
 <?php
 	if(sizeof($records) > 0) {
 ?>
 
 	<h2>Records starting with <?php print encodeHtml($entryStartsWith); ?></h2>
-	<ul>
+	<ul class="list icons directories">
 <?php 
 		foreach ($records as $record) {
 ?>

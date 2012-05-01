@@ -14,12 +14,12 @@
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
 </head>
-<body>
+
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 			
-	<h2>What is RSS?</h2>
+	<h2 class="topTitle">What is RSS?</h2>
 		
 	<p><abbr title="Really Simple Syndication">RSS</abbr> (Really Simple Syndication) is a simple way to keep up to date with the latest news on a web site without actually having to visit the web site.</p>
 	

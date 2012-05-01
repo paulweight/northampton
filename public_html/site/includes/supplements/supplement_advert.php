@@ -1,9 +1,9 @@
 <?php
 	if (isset($record)) {
 ?>
-		<div class="supplement">
+		<div class="advert">
 			<img alt="<?php print encodeHtml($record->title); ?>" src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($record->imageFilename); ?>" />
-			<p><a href="<?php print encodeHtml($record->url); ?>"><?php print encodeHtml($record->urlText); ?></a></p>
+			<a class="button red" href="<?php print encodeHtml($record->url); ?>"><span><?php print encodeHtml($record->urlText); ?></span></a>
 		</div>
 <?php
 	}

@@ -51,7 +51,7 @@
 ?>
 
 	<h2>Search the directory</h2>
-	<form enctype="multipart/form-data" action="<?php print getSiteRootURL(); ?>/site/scripts/directory_search.php" method="get">
+	<form class="basic_form xform" enctype="multipart/form-data" action="<?php print getSiteRootURL(); ?>/site/scripts/directory_search.php" method="get">
 		<fieldset>
 			<input type="hidden" name="directoryID" value="<?php print (int) $directory->id; ?>" />
 			<p>
@@ -89,8 +89,8 @@
 <?php
 		}
 ?>        		
-			<p>
-				<input type="submit" value="Search" name="search" />
+			<p class="centre">
+				<input type="submit" value="Search" name="search" class="genericButton grey" />
 			</p>
 		</fieldset>
 	</form>
@@ -110,7 +110,7 @@
 	}
 ?>
 
-	<ul>
+	<ul class="list icons directories">
 <?php
 	$locationsUsed = array();
     foreach ($records as $record) {
@@ -146,7 +146,7 @@
 			}
 		}
 ?>
-		<li>
+		<li class-"long">
 	        <a href="<?php print buildDirectoryRecordURL($record->id, -1, $categoryInfoID); ?>">
 		        <?php print encodeHtml($record->title); ?>
 		    </a>

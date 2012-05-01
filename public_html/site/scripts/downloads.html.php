@@ -33,7 +33,7 @@
 ?>
 
 	<h3><a href="<?php print getSiteRootURL() . buildDownloadsURL(-1, -1, $downloadItem->id); ?>"><?php print encodeHtml($downloadItem->title); ?></a></h3>
-	<ul>
+	<ul class="downloadArchive">
 <?php
 	if (!empty($download->description)) {
 ?>
@@ -53,9 +53,8 @@
 						$path = encodeHtml($fileItem->url);
 					}
 ?>
-		<li><a href="<?php print $path; ?>"><?php print encodeHtml($fileItem->title); ?></a>
-		<img src="<?php print getStaticContentRootURL() . $fileItem->getFileIcon(); ?>" alt=" " /> (<?php print encodeHtml($extension); ?>)</li>
-		<li>Size: <?php print $fileItem->getHumanReadableSize();?></li>
+		<li><img class="fileIcon" src="<?php print getStaticContentRootURL() . $fileItem->getFileIcon(); ?>" alt=" " /><a href="<?php print $path; ?>"><?php print encodeHtml($fileItem->title); ?></a>
+		 (<?php print encodeHtml($extension); ?> / Size: <?php print $fileItem->getHumanReadableSize();?>)</li>
 <?php
 				}
 ?>
@@ -70,8 +69,8 @@
 	if (sizeof($categories) > 0) {
 ?>
 
-	<h2><?php print encodeHtml($parent->name); ?> categories</h2>
-			<ul class="list">
+	<h3><?php print encodeHtml($parent->name); ?> categories</h3>
+			<ul class="list icons downloads">
 <?php
 			foreach ($categories as $subCat) {
 ?>
@@ -80,11 +79,12 @@
 			}
 ?>
 			</ul>
+			<div class="clear"></div>
 <?php
 	}
 ?>
 
-	<p><a href="<?php print getSiteRootURL() . buildCategoryRSSURL("downloads", $_GET['categoryID']); ?>"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildCategoryRSSURL("downloads", $_GET['categoryID']); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
 
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

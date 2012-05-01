@@ -38,7 +38,7 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
-		
+		<p>Submit your event using the form below.</p>
 <?php
 	if (isset($error_array['auth'])) {
 ?>
@@ -51,7 +51,7 @@
 <?php
 	}
 ?>
-	<form enctype="multipart/form-data" action="<?php print getSiteRootURL() . buildNonReadableNewEventURL(); ?>" method="post" onsubmit="preSubmit(); return true;" name="eventsForm">
+	<form class="basic_form xform" enctype="multipart/form-data" action="<?php print getSiteRootURL() . buildNonReadableNewEventURL(); ?>" method="post" onsubmit="preSubmit(); return true;" >
 		<fieldset>
 			<input type="hidden" name="auth" id="auth" value="fail" />	
 			<ol>
@@ -103,12 +103,12 @@
 				<label for="description"><?php if (isset($error_array['description'])) { ?><strong>! <?php } ?>Description<?php if (isset($error_array['description'])) { ?></strong><?php } ?></label>
 				<textarea name="description" rows="5" cols="30"><?php print encodeHtml($description); ?></textarea>
 			</li>
-			<li>
+			<li class="image">
 				<label for="image"><?php if (isset($error_array['image'])) { ?><strong>! <?php } ?>Supporting Image<?php if (isset($error_array['image'])) { ?></strong><?php } ?> JPEG, GIF, PNG only</label>
-				<input type="file" name="image" id="<?php print encodeHtml($image); ?>" />
+				<input type="file" name="image" id="imageUpload" />
 			</li>	
-			<li>
-				<input type="submit" value="Submit your event" name="submit" />
+			<li class="centre">
+				<input type="submit" value="Submit your event" name="submit" class="genericButton grey" />
 			</li>
 			</ol>
 		</fieldset>

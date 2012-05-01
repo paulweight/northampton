@@ -31,12 +31,12 @@
 		else {
 ?>
 
-	<ul>
+	<ul class="archive">
 		<!-- Top story -->
 <?php
 	if(count($topPressRelease) > 0){
 ?>
-		<li>
+		<li class="lead">
 			<h2><a href="<?php print getSiteRootURL() . buildPressArticleURL($topPressRelease->id, true, $topPressRelease->title); ?>" ><?php print encodeHtml($topPressRelease->title); ?></a></h2>
 <?php 
 			if ($topPressRelease->imageURL != "") {
@@ -49,6 +49,7 @@
 ?>
 				<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topPressRelease->pressDate);?></p>
 				<p><?php print encodeHtml($topPressRelease->summary); ?></p>
+				<div class="clear"></div>
 		</li>
 <?php
 			}
@@ -71,6 +72,7 @@
 ?>
 				<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?></p>
 				<p><?php print encodeHtml($pressRelease->summary); ?></p>
+				<div class="clear"></div>
 			</li>	
 <?php
 			}
@@ -78,11 +80,9 @@
 ?>
 	</ul>
 
-		<ul>
-			<li>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive</a>.</li>
-			<li><a href="<?php print getSiteRootURL() . buildRSSURL('press');?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt="Get this feed" /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> press releases feed</a></li>
-			<li><a href="<?php print getSiteRootURL() . buildAboutRSSURL() ;?>">About RSS</a>.</li>
-		</ul>
+		<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive.</a></strong></p>
+			<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('press');?>"> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> press releases feed</a></p>
+		
 <?php
 	}
 ?>
@@ -92,7 +92,7 @@
 ?>
 		<div class="cate_info">
 			<h2>Categories in <?php print encodeHtml($categoryViewing->name); ?></h2>	
-			<ul class="list">
+			<ul class="list icons press">
 <?php
 			foreach ($categories as $subCat) {
 ?>
@@ -105,8 +105,6 @@
 <?php
 	}
 ?>
-
-	<p><a href="<?php print getSiteRootURL() . buildCategoryRSSURL("press", $_GET['categoryID']); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt="Get this feed" /> <?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $categoryViewing->name); ?>  feed</a></p>
 
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

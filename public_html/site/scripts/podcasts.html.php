@@ -39,7 +39,7 @@
 <?php
 		if (sizeof($categories) > 0) {
 ?>
-		<ul class="list">
+		<ul class="list icons podcast">
 <?php
 			foreach ($categories as $subCat) {
 ?>

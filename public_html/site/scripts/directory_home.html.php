@@ -30,26 +30,27 @@
 
 	<p><?php print nl2br(encodeHtml($directory->description)); ?></p>
 
-	<ul>
-		<li>View the <a href="<?php print buildDirectoryAZURL($directory->id); ?>">A to Z of records</a></li>
+	
+	<ul class="alphabeticNav">
 <?php
-	if ($directory->allowPublicSubmissions == '1') {
+            foreach (range('a','z') as $letter) {
 ?>
-		<li>Make a <a href="<?php print buildDirectoriesURL(-1, $directory->id, true); ?>">submission to this directory</a></li>
+		<li class="genericButton grey"><a href="<?php print buildDirectoryAZURL($directory->id, $letter, $categoryInfo->id); ?>"><span class="hidden">Records beginning with </span><?php print encodeHtml($letter); ?></a></li>
 <?php
-	}
+            }
 ?>
 	</ul>
-
+	
+<div class="clear"></div>
 <?php
     if (sizeof($categories) > 0) {
 ?>
     	<div class="cate_info">
-    		<h2>Categories in <?php print encodeHtml($directory->name); ?></h2>
+    		<h3>Categories in <?php print encodeHtml($directory->name); ?></h3>
 <?php
         if (sizeof($categories) > 0) {
 ?>
-    		<ul class="list">
+    		<ul class="list icons directories">
 <?php
             foreach ($categories as $category) {
                 $categoryInfo = getDirectoryCategoryInformationForCategory($category->id);
@@ -90,15 +91,16 @@
 <?php
 	}
 ?>
-	<form enctype="multipart/form-data" action="<?php print getSiteRootURL(); ?>/site/scripts/directory_search.php" method="get">
+	<form class="basic_form" enctype="multipart/form-data" action="<?php print getSiteRootURL(); ?>/site/scripts/directory_search.php" method="get">
+	<fieldset>
 		<legend>Search the directory</legend>
-			<fieldset>
+			
 			<input type="hidden" name="directoryID" value="<?php print (int) $directory->id; ?>" />
-			<p>
+			
 				<label for="keywords">Keywords</label>
-				<input type="text" name="keywords" value="" id="keywords" />
-				<input type="submit" value="Search" name="search" />
-			</p>
+				<input type="text" name="keywords" value="" id="keywords" class="field" />
+				<input type="submit" value="Search" name="search" class="genericButton grey" />
+			
 			<p>Try the <a href="<?php print buildDirectorySearchURL($directory->id); ?>">advanced search</a></p>
 		</fieldset>
 	</form>

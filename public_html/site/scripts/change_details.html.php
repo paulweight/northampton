@@ -37,7 +37,7 @@
 		}
 	}
 ?>
-	<form name="reg" action="<?php print getSecureSiteRootURL() . buildNonReadableChangeDetailsURL(); ?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" name="reg" action="<?php print getSecureSiteRootURL() . buildNonReadableChangeDetailsURL(); ?>" method="post" enctype="multipart/form-data">
 	<?php print $csrfToken->renderToken(); ?> 
 		<fieldset>
 			<legend>Your details</legend>
@@ -368,8 +368,8 @@
 <?php
 				}
 ?>
-				<li>
-					<input type="submit" value="Save changes" name="submit" />
+				<li class="centre">
+					<input type="submit" value="Save changes" name="submit" class="genericButton grey" />
 				</li>
 			</ol>
 			</fieldset>  

@@ -63,7 +63,7 @@
 <?php
 	foreach ($dayLabels as $dayLabel) {
 ?>
-		<th scope="col" abbr="<?php print encodeHtml($dayLabel); ?>"><span><?php print encodeHtml(substr($dayLabel, 0, 1)); ?></span></th>
+		<th class="grey" scope="col" abbr="<?php print encodeHtml($dayLabel); ?>"><span><?php print encodeHtml(substr($dayLabel, 0, 1)); ?></span></th>
 <?php
 	}
 ?>
@@ -85,7 +85,7 @@
 		if ($day > 0 && $day <= $daysInMonth) {
 			if (sizeof(getEventsForDate(date('d-m-Y', $timestamp))) > 0 || sizeof(getMeetingsInDateRangeAsEvents($date, $date)) > 0) {
 ?>
-			<a href="<?php print buildEventsURL(-1, '', -1, $date, $date, -1, $year, $month) ?>"><?php print strftime('%d', $timestamp); ?></a>
+			<a class="red" href="<?php print buildEventsURL(-1, '', -1, $date, $date, -1, $year, $month) ?>"><?php print strftime('%d', $timestamp); ?></a>
 <?php
 			}
 			else {

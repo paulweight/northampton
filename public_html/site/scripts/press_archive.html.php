@@ -18,41 +18,6 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 
-	
-<?php
-	if(sizeof($months) > 0) {
-		print '<ul>';
-		foreach($months as $index => $month) {
-?>
-			<li><a href="<?php print getSiteRootURL() . buildPressArchiveURL($_GET['year'], $month['month']);?>"><?php print encodeHtml($month['monthname']); ?> <?php print encodeHtml($_GET['year']); ?></a> </li>
-<?php
-		}
-		print '</ul>';
-	}
-?>
-
-	<h2>Available years</h2>
-	<ul>
-<?php
-	$tmpYear = date('Y');
-	foreach (range(date('Y'),$archiveStartYear) as $year) {
-		$allPressReleasesForYearLink = getAllPressReleasesForYearAndMonth($year, '00', true, true, 'pressDate', 'DESC', 0, 1);	
-		if (count($allPressReleasesForYearLink) > 0) {	
-			if ($year != $_GET['year']) {
-?>
-		<li><a href="<?php print getSiteRootURL() . buildPressArchiveURL($year, 1);?>"><?php print $year;?></a></li>
-<?php
-			}
-			else {
-				print '<li>'.$year.'</li>';
-			}
-			$yearHasBeenOutput = true;
-		}
-?>
-<?php
-	}
-?>
-	</ul>
 
 
 <?php
@@ -63,7 +28,7 @@
 	} 
 	else {
 ?>
-	<ul>
+	<ul class="archive">
 <?php
 		foreach ($allPressReleases as $pressRelease) {
 ?>
@@ -79,8 +44,9 @@
 <?php 
 			}
 ?>
-		<p>Published <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?></p>
+		<p class="date">Published <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?></p>
 		<p><?php print encodeHtml($pressRelease->summary); ?></p>
+		<div class="clear"></div>
 	</li>
 	
 <?php
@@ -112,6 +78,43 @@
 <?php
 		}
 ?>
+
+	
+<?php
+	if(sizeof($months) > 0) {
+		print '<ul>';
+		foreach($months as $index => $month) {
+?>
+			<li><a href="<?php print getSiteRootURL() . buildPressArchiveURL($_GET['year'], $month['month']);?>"><?php print encodeHtml($month['monthname']); ?> <?php print encodeHtml($_GET['year']); ?></a> </li>
+<?php
+		}
+		print '</ul>';
+	}
+?>
+
+	<h2>Available years</h2>
+	<ul class="bottomList">
+<?php
+	$tmpYear = date('Y');
+	foreach (range(date('Y'),$archiveStartYear) as $year) {
+		$allPressReleasesForYearLink = getAllPressReleasesForYearAndMonth($year, '00', true, true, 'pressDate', 'DESC', 0, 1);	
+		if (count($allPressReleasesForYearLink) > 0) {	
+			if ($year != $_GET['year']) {
+?>
+		<li><a href="<?php print getSiteRootURL() . buildPressArchiveURL($year, 1);?>"><?php print $year;?></a></li>
+<?php
+			}
+			else {
+				print '<li>'.$year.'</li>';
+			}
+			$yearHasBeenOutput = true;
+		}
+?>
+<?php
+	}
+?>
+	</ul>
+
 		
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

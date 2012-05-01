@@ -39,7 +39,7 @@
 <?php
 	}
 ?>
-	<form action="<?php print getSiteRootURL() . buildNonReadableFeedbackURL(); ?>" method="post" enctype="multipart/form-data" onsubmit="preSubmit(); return true;">
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableFeedbackURL(); ?>" method="post" enctype="multipart/form-data" onsubmit="preSubmit(); return true;">
 		<fieldset>
 			<input type="hidden" name="auth" id="auth" value="fail" />	
 			<ol>
@@ -78,8 +78,8 @@
 				<label for="comments"><?php if (isset($error_array['comments'])) { ?><strong>! <?php } ?>Your comments<?php if (isset($error_array['comments'])) { ?></strong><?php } ?> <em>(required)</em></label>
 				<textarea id="comments" name="comments" cols="2" rows="5"><?php print encodeHtml($comments); ?></textarea>
 			</li>
-			<li>
-				<input type="submit" value="Send your feedback" name="submit" />
+			<li class="center">
+				<input type="submit" value="Send your feedback" name="submit" class="genericButton grey" />
 			</li>
 			</ol>
 		</fieldset>

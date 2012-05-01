@@ -24,20 +24,20 @@ $arrList = array_merge(array('0-9'), range('A','Z'));
 foreach ($arrList as $value) {
 	if($value != '0-9'){
 ?>
-	<li><?php if (isset($validLetters[$value])) { ?><a href="<?php print getSiteRootURL() . buildAToZIndexURL($value);?>"><?php print $value; ?></a><?php } else { ?><span><?php print $value; ?></span><?php } ?></li>
+	<li class="genericButton grey"><?php if (isset($validLetters[$value])) { ?><a href="<?php print getSiteRootURL() . buildAToZIndexURL($value);?>"><?php print $value; ?></a><?php } else { ?><span><?php print $value; ?></span><?php } ?></li>
 <?php
 	}
 }
 ?>
 </ul>
-
+<div class="clear"></div>
 	<h2>Information that begins with <?php print encodeHtml($startsWith); ?></h2>
 			<!-- Returned list -->
 <?php 
 		if (sizeof($servicesList) > 0) {
 ?>
 	
-	<ul>
+	<ul  class="list icons services">
 	
 	<?php 
 				foreach ($servicesList as $service) {

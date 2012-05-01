@@ -22,7 +22,7 @@
 	if (sizeof($allRelatatedServices) > 0) {
 ?>
 	<h2>Available services</h2>
-	<ul>
+	<ul class="list icons services">
 <?php
 		foreach ($allRelatatedServices as $service) {
 ?>
@@ -37,7 +37,7 @@
 ?>
 
 	<h2><?php print encodeHtml($parent->name); ?> categories</h2>
-	<ul class="list">
+	<ul class="list icons services">
 <?php
 			foreach ($categories as $subCat) {
 ?>

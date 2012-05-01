@@ -2,7 +2,7 @@
 	include_once('JaduImages.php');
 ?>
 <!-- Contact -->
-<div class="vcard supplement">
+<div class="contactSupp supplement">
 <h3><?php print encodeHtml($record->title); ?></h3>
 
 <?php

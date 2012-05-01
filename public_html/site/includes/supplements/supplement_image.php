@@ -1,8 +1,8 @@
 <?php
 	if (isset($record)) {
 ?>
-	<div class="supplement">
-		<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($record->imageFilename); ?>" alt="<?php print encodeHtml(getImageProperty($record->imageFilename, 'altText')); ?>"  class="float_left" />
+	<div class="supplement image">
+		<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($record->imageFilename); ?>" alt="<?php print encodeHtml(getImageProperty($record->imageFilename, 'altText')); ?>" />
 <?php
 	if ($record->description != '') {
 ?>

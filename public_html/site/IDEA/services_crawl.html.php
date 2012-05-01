@@ -19,11 +19,11 @@
 <?php include(HOME . "site/includes/opening.php"); ?>
 <!-- ########################## -->
 
-	<h2>Welcome to the services generator.</h2>
+
 	<p class="first">Click the links below to generate lists of services ordered by PID or without PID.</p>
 	
 	<div class="content_box">
-		<ul class="list">
+		<ul class="list icons links">
 			<li><a href="/site/IDEA/services_crawl.php?set=pid">Generate PID services list</a></li>
 			<li><a href="/site/IDEA/services_crawl.php?set=nonpid">Generate non-PID services list</a></li>
 		</ul>
@@ -33,7 +33,7 @@
 ?>
 		<form name="expform" method="post" enctype="multipart/form-data" action="http://<?php print DOMAIN; ?>/site/IDEA/services_crawl.php?set=<?php print encodeHtml($_GET['set']); ?>" class="basic_form">
 			<p>Click the export spreadsheet button to download a CSV file of all the selected type of services.</p>
-			<p class="center"><input type="submit" name="submit" value="Export spreadsheet" class="button" /></p>
+			<p class="centre"><input type="submit" name="submit" value="Export spreadsheet" class="genericButton grey" /></p>
 		</form>
 <?php
 	}
@@ -44,7 +44,7 @@
 <?php
 	if (!empty($urls)) {
 ?>
-		<ul class="list">
+		<ul class="list icons links">
 <?php
 		foreach ($urls as $url) {
 ?>

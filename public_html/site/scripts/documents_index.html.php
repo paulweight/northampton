@@ -26,17 +26,17 @@
 		$splitArray = splitArray($relCats);
 ?>		
 
-	<h2><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h2>
+	<h3><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h3>
 	
 <?php
 		if (sizeof($relCats) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list icons documents">';
 			foreach ($relCats as $cat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($cat->id); ?>"><?php print encodeHtml($cat->name); ?></a></li>
 <?php
 			}
-			print '</ul>';
+			print '</ul><div class="clear"></div>';
 		}
 	}
 ?>

@@ -30,7 +30,7 @@
 		}
 		else {
 ?>
-		<img class="photo" src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($councillor->imageURL); ?>" alt="<?php print encodeHtml($councillor->forename . ' ' . $councillor->surname); ?>" />
+		<img class="floatRight" src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($councillor->imageURL); ?>" alt="<?php print encodeHtml($councillor->forename . ' ' . $councillor->surname); ?>" />
 <?php 
 		}
 	} 
@@ -88,25 +88,26 @@
 	<h2>Other Councillors for <?php print encodeHtml($ward->name); ?></h2>
             
 <?php
- 				print '<ul>';	
+ 				print '<ul class="archive">';	
                	foreach ($otherCouncillors as $otherCouncillor) {
 					$ward = getWard($otherCouncillor->wardID);
 					$party = getParty($otherCouncillor->partyID);
 ?>			
 				<li>
-					<p>
-					<a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($otherCouncillor->id); ?>">
-						<strong><?php print encodeHtml($otherCouncillor->forename . ' ' . $otherCouncillor->surname); ?></strong>
-					</a>
-					</p>
-<?php
+					
+					<?php
 				if ($councillor->imageURL != "") { 
 ?>
 				<p><a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($otherCouncillor->id); ?>"><img src="<?php print getStaticContentRootURL(); ?>/images/<?php print encodeHtml($otherCouncillor->imageURL); ?>" alt="<?php print encodeHtml($otherCouncillor->forename . ' ' . $otherCouncillor->surname); ?>" /></a></p>
 <?php 
 				} 
 ?>
-				<p>Ward: <?php print $ward->id != -1 ? encodeHtml($ward->name) : "Unknown"; ?></p>
+	
+					<h3><a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($otherCouncillor->id); ?>">
+						<?php print encodeHtml($otherCouncillor->forename . ' ' . $otherCouncillor->surname); ?>
+					</a></h3>
+					
+			<p>Ward: <?php print $ward->id != -1 ? encodeHtml($ward->name) : "Unknown"; ?></p>
 				<p>Party: <?php print $party->id != -1 ? encodeHtml($party->name) : "Unknown"; ?></p>
 				<p>Full details on <a href="<?php print getSiteRootURL() . buildCouncillorsIndividualURL($otherCouncillor->id); ?>"><?php print encodeHtml($otherCouncillor->forename . ' ' . $otherCouncillor->surname); ?></a></p>                    
 				</li>
@@ -114,14 +115,14 @@
                 }
 				print '</ul>';
 ?>
-		 </div>   
+	  
 
 <?php
             }
         }
 ?>
 	<h3>Councillors</h3>
-	<ul class="list">
+	<ul class="list icons councillors">
 		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('name'); ?>">View by name</a></li>
 		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('ward'); ?>"> View by ward</a></li>
 		<li><a href="<?php print getSiteRootURL() . buildCouncillorsGroupURL('party'); ?>">View by party</a></li>

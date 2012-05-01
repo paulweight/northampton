@@ -50,7 +50,7 @@ else {
 	else {
 ?>
 
-	<ul>
+	<ul class="galleryInfo">
 <?php
 		foreach ($allGalleryItems as $index => $item) {
 ?>
@@ -79,7 +79,7 @@ else {
 			}
 ?>
 			</a>
-			Published on <?php print formatDateTime(FORMAT_DATE_SHORT, $item->dateCreated);?>
+			<span>Published on <?php print formatDateTime(FORMAT_DATE_SHORT, $item->dateCreated);?></span>
 		</li>
 <?php
 		}

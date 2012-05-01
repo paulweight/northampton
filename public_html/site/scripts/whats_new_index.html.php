@@ -46,7 +46,7 @@
 		}
 
 ?>
-			<ul class="list">
+			<ul class="list icons generic">
 <?php
 			foreach ($sections as $section) {
 ?>
@@ -56,14 +56,14 @@
 ?>
 			</ul>
 			
-	<ul>
+	
 <?php 
 		if (sizeof($news) > 0) {
 ?>
 		<!-- most recent news -->
-	<li>
-		<h2 id="News">Latest news</h2>
-		<ul class="list">
+	
+		<h2>Latest news</h2>
+		<ul class="list icons news">
 <?php 
 		$itemsToShow = min(MAX_WHATS_NEW, count($news));
 		for ($i = 0; $i < $itemsToShow; $i++) {
@@ -79,7 +79,7 @@
 		}
 ?>
 		</ul>
-	</li>
+	
 		<!-- END most recent news -->
 <?php
 		}
@@ -87,9 +87,9 @@
 		if (sizeof($downloads) > 0) {
 ?>
 		<!-- most recent downloads -->
-	<li>
-		<h2 id="Downloads">Downloads</h2>
-		<ul class="list">
+	
+		<h2>Downloads</h2>
+		<ul class="list icons downloads">
 <?php 
 		$itemsToShow = min(MAX_WHATS_NEW, count($downloads));
 		for ($i = 0; $i < $itemsToShow; $i++) {
@@ -105,7 +105,7 @@
 		}
 ?>
 		</ul>
-	</li>
+	
 			<!-- END most recent downloads -->
 <?php
 		}
@@ -113,9 +113,9 @@
 		if (sizeof($documents) > 0) {
 ?>
 			<!-- most recent documents -->
-	<li>
+	
 		<h2 id="Documents">Documents</h2>
-		<ul class="list">
+		<ul class="list icons documents">
 <?php 
 		foreach ($documents as $document) {
 			
@@ -131,7 +131,7 @@
 		}
 ?>
 		</ul>
-	</li>
+	
 		<!-- END most recent documents -->
 <?php
 		}
@@ -141,9 +141,9 @@
 		if (sizeof($events) > 0) {
 ?>
 		<!-- most recent events -->
-	<li>
+	
 		<h2 id="Events">Events</h2>
-		<ul class="list">
+		<ul class="list icons events">
 <?php 
 		$itemsToShow = min(MAX_WHATS_NEW, count($events));
 		for ($i = 0; $i < $itemsToShow; $i++) {
@@ -160,7 +160,7 @@
 		}
 ?>
 		</ul>
-	</li>
+	
 		<!-- END most recent events -->
 <?php
 		}
@@ -168,9 +168,9 @@
 		if (sizeof($forms) > 0) {
 ?>
 		<!-- most recent online forms -->
-	<li>
+	
 		<h2 id="Forms">Online Forms</h2>
-		<ul class="list">
+		<ul class="list icons forms">
 <?php 
 		$itemsToShow = min(MAX_WHATS_NEW, count($forms));
 		for ($i = 0; $i < $itemsToShow; $i++) {
@@ -184,16 +184,16 @@
 		}
 ?>
 		</ul>
-	</li>
+
 		<!-- END most recent online forms -->
 <?php
 		}
 		if (sizeof($press) > 0) {
 ?>
 		<!-- most recent press releases -->
-	<li>
+	
 		<h2 id="PressReleases">Latest Press Releases</h2>
-		<ul class="list">
+		<ul class="list icons press">
 <?php 
 		$itemsToShow = min(MAX_WHATS_NEW, count($press));
 		for ($i = 0; $i < $itemsToShow; $i++) {
@@ -206,12 +206,12 @@
 		}
 ?>
 		</ul>
-	</li>
+	
 		<!-- END most recent press releases -->
 <?php
 		}
 ?>
-	</ul>
+	
 	<!--<p><a href="<?php print getSiteRootURL() . buildRSSURL("whats_new", -1); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt="Get this feed" /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> what's new site feed</a></p> -->
 			
 <!-- ################ MAIN STRUCTURE ############ -->

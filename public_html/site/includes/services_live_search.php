@@ -1,14 +1,16 @@
 <!-- Live Search -->
+<div class="clear"></div>
+<h2>Live Search</h2>
 	<form class="basic_form" action="<?php print getSiteRootURL(); ?>/site/scripts/az_home.php" method="get">
 		<p id="az_live_find">
-		Begin to type the name and select from the appearing choices.
-			<label class="hidden" for="searchText">Search by keyword</label>
-			<span>
-				<input class="field" type="text" name="searchText" id="searchText" value="" />
-				<img id="loading" style="display:none;" alt="Loading" src="<?php print getStaticContentRootURL(); ?>/site/images/loading.gif" />
-				<noscript><input name="searchAZButton" type="submit" value="Go" class="button" /></noscript>
-			</span>
-		</p>
+		Begin to type the name and select from the appearing choices.</p>
+			<div><label class="hidden" for="searchText">Search by keyword</label></div>
+			
+				<div><input class="field long" type="text" name="searchText" id="searchText" value="" /></div>
+				<div><img id="loading" style="display:none;" alt="Loading" src="<?php print getStaticContentRootURL(); ?>/site/images/loading.gif" />
+				<noscript><div><input name="searchAZButton" type="submit" value="Go" class="button" /></div></noscript>
+			</div>
+		
 		<div id="search_results">
 	<?php 
 	if(isset($_GET['searchAZButton'])) {

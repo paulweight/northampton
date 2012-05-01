@@ -57,7 +57,7 @@
 ?>
 	<p>Please note, that we will review the record before making it live.</p>
 
-	<form enctype="multipart/form-data" method="post" action="<?php print getSiteRootURL() . buildNonReadableDirectoryRecordURL($directoryEntry->id, -1, -1, true); ?>">
+	<form class="basic_form xform" enctype="multipart/form-data" method="post" action="<?php print getSiteRootURL() . buildNonReadableDirectoryRecordURL($directoryEntry->id, -1, -1, true); ?>">
 		<input type="hidden" name="<?php print $idType; ?>" value="<?php print (int) $directoryEntry->id; ?>" />        	
 		<input type="hidden" name="approved" value="<?php print (int) $approved; ?>" />
 		
@@ -164,8 +164,8 @@ foreach ($directoryFields as $directoryField) {
 	}
 }
 ?>
-		<p>
-			<input type="submit" name="submit" value="Submit" />
+		<p class="centre">
+			<input type="submit" name="submit" value="Submit" class="genericButton grey" />
 		</p>
 	</form>
 

@@ -41,7 +41,7 @@
 		}
 		
 ?>
-		<ul class="list">
+		<ul class="list icons generic">
 <?php
 		if (sizeof($searchCategories) > 0) {
 			foreach($searchCategories as $categoryItem) {
@@ -61,7 +61,7 @@
 ?>
 
 	<h2 id="<?php print encodeHtml($catItem); ?>">Results found in <?php print encodeHtml($foundInResults); ?></h2>
-	<ul>
+	<ul class="archive noborder">
 
 <?php
 			foreach ($allResults[$foundInResults] as $object) {
@@ -69,7 +69,7 @@
 		<li>
 			<h3><?php print $search->formatAndReturnTitleLink($object, $nonFormattedArgs); ?></h3>
 			<p><?php print $search->formatAndReturnResult($object, $nonFormattedArgs); ?></p>
-			<p class="url"><?php print $search->formatAndReturnRelevanceRating($object); ?></p>
+			<p class="date"><?php print $search->formatAndReturnRelevanceRating($object); ?></p>
 		</li>
 <?php
 			}

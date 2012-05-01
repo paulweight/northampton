@@ -28,8 +28,8 @@
 	else {
 		$cat = $categoryList->getCategory(getFirstCategoryIDForItemOfType(PRESS_RELEASES_CATEGORIES_TABLE, $topPressRelease->id));
 ?>
-	<ul>
-		<li>
+	<ul class="archive">
+		<li class="lead">
 			<h2><a href="<?php print getSiteRootURL() . buildPressArticleURL($topPressRelease->id, true, $topPressRelease->title);?>"><?php print encodeHtml($topPressRelease->title);?></a></h2>
 <?php 
 		if ($topPressRelease->imageURL != "") { 
@@ -40,8 +40,9 @@
 <?php 
 		} 
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topPressRelease->pressDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildPressURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> press releases</a><?php } ?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $topPressRelease->pressDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildPressURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> press releases</a><?php } ?></p>
 			<p><?php print encodeHtml($topPressRelease->summary); ?></p>
+			<div class="clear"></div>
 		</li>
 
 <?php
@@ -62,18 +63,18 @@
 <?php 
 				} 
 ?>
-			<p>Published on <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildPressURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> press releases</a><?php } ?></p>
+			<p class="date">Published on <?php print formatDateTime(FORMAT_DATE_FULL, $pressRelease->pressDate);?> in <?php if (isset($cat)) { ?><a href="<?php print getSiteRootURL() . buildPressURL($cat->id, $cat->name) ;?>"><?php print encodeHtml($cat->name); ?> press releases</a><?php } ?></p>
 			<p><?php print encodeHtml($pressRelease->summary); ?></p>
+			<div class="clear"></div>
 		</li>
 <?php
 			}
 		}
 ?>
 	</ul>	
-	<ul>
-		<li>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive</a></li>
-		<li><a href="<?php print getSiteRootURL() . buildRSSURL('press'); ?>" target="_blank"><img src="<?php print getStaticContentRootURL(); ?>/site/images/xml.gif" alt=" " /> <?php print encodeHtml(METADATA_GENERIC_NAME); ?> Press releases feed</a></li>
-	</ul>
+	<p><strong>More articles in the <a href="<?php print getSiteRootURL() . buildPressArchiveURL(); ?>">press release archive</a></strong></p>
+	<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('press'); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> Press releases feed</a></p>
+	
 
 <?php
 	}

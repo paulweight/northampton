@@ -36,9 +36,9 @@
 	}
 ?>  
 	<!-- Post a question -->
-	<form action="<?php print getSiteRootURL() . buildNonReadableFAQURL(true) ;?>" method="post" enctype="multipart/form-data">
+	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableFAQURL(true) ;?>" method="post" enctype="multipart/form-data">
 		<fieldset>
-			<legend>Ask us your question</legend>
+			<legend>Ask us your question...</legend>
 			<ol>
 			<li>
 				<label for="email">
@@ -58,8 +58,8 @@
 				</label>
 				<textarea id="question" name="question" rows="3" cols="2"><?php if ((isset($validation_array) && !$validation_array['question']) || ($error)) print encodeHtml($_POST['question']); ?></textarea>
 			</li>
-			<li>
-				<input type="submit" value="Send Your Question" name="submit" />
+			<li class="centre">
+				<input type="submit" value="Send Your Question" name="submit" class="genericButton grey" />
 			</li>
 			</ol>
 		</fieldset>

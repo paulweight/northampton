@@ -26,7 +26,7 @@
 
 <?php
 	if (sizeof($allDirectories) > 0) {
-		print '<ul class="list">';
+		print '<ul class="list icons directories">';
 			foreach ($allDirectories as $directory) {					
 ?>
 				<li><a href="<?php print buildDirectoriesURL(-1, $directory->id); ?>"><?php print encodeHtml($directory->name); ?></a></li>
@@ -55,7 +55,7 @@
 			</h2>
 <?php
 		if (sizeof($categories) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list icons directories">';
 			foreach ($categories as $subCat) {
 ?>
 				<li><a href="<?php print buildDirectoriesURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a></li>

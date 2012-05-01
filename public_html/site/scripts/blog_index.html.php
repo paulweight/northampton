@@ -20,23 +20,13 @@
 
 		<!-- Categories -->
 <?php
-	if (sizeof($categories) > 0) {
+	 {
 ?>
 
-	<h2>
-<?php
-            if (isset($_GET['categoryID'])) {
-                print 'Categories in ' . encodeHtml($parent->name);
-            }
-            else {
-                print "Blogs";
-            }
-?>
-	</h2>
-	
+		
 <?php
 		if (sizeof($categories) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list icons blogs">';
 			foreach ($categories as $subCat) {
 ?>
 				<li><a href="<?php print buildBlogURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a></li>
@@ -53,10 +43,10 @@
     if (sizeof($allBlogs) > 0) {
 ?>
 
-	<h2>Blogs in <?php print encodeHtml($parent->name); ?></h2>
+	<h2 class="topTitle">Blogs in <?php print encodeHtml($parent->name); ?></h2>
 
 <?php
-		print '<ul class="list">';
+		print '<ul class="list icons blogs">';
 		if (sizeof($allBlogs) > 0) {
 			foreach ($allBlogs as $blog) {
 ?>

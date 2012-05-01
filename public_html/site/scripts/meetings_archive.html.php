@@ -26,7 +26,7 @@
 		<h2>Active</h2>
 <?php
 	if(count($activeHeaders) > 0) {
-		print '<ul class="list">';
+		print '<ul class="list icons meetings">';
 		foreach ($activeHeaders as $left) {
 ?>	
 			<li><a href="<?php print getSiteRootURL() . buildMeetingsURL( -1, 'committee', $left->id); ?>"><?php print encodeHtml($left->title); ?></a></li>
@@ -43,7 +43,7 @@
 		<h2>Archived</h2>
 <?php
 	if(count($archivedHeaders) > 0) {
-		print '<ul class="list">';
+		print '<ul class="list icons meetings">';
 		foreach ($archivedHeaders as $left) {
 ?>	
 			<li><a href="<?php print getSiteRootURL() . buildMeetingsURL( -1, 'committee', $left->id); ?>"><?php print encodeHtml($left->title); ?></a></li>

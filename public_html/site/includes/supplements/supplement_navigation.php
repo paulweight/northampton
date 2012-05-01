@@ -1,7 +1,7 @@
 <?php
 	if (isset($record)) {
 ?>
-<div class="supplement">
+<div class="supplement navigation">
 	<h3><?php print encodeHtml($record->title); ?></h3>
 <?php
 	if (is_array($record->urls) && sizeof($record->urls) > 0) {

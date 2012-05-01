@@ -9,7 +9,7 @@
 	if (!empty($searchText)) {
 		$xforms = getAllXFormsForms(true, true);
 ?>
-	<ul class="list">
+	<ul class="list icons forms">
 <?php
 
 		foreach ($xforms as $form) {

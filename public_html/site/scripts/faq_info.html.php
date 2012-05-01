@@ -20,7 +20,7 @@
 
 <div class="article">
 	<p>Question: <?php print encodeHtml($faq->question); ?></p>
-	<div class="byEditor">
+	<div class="byEditor answer">
 		<p><strong>Answer:</strong></p>
 		<?php print processEditorContent($faq->answer); ?>
 	</div>

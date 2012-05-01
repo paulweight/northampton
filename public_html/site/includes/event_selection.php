@@ -1,5 +1,6 @@
+<div id="eventSelection">
 	<form action="<?php print getSiteRootURL() . "/site/scripts/events_info.php"; ?>" method="post" enctype="multipart/form-data" class="basic_form">
-	<p>
+	<div>
 		<label for="seewhatson">See what&#39;s on</label>
 		<select name="period" class="field" id="seewhatson">
 			<option value="thisWeek" selected="selected">What&#39;s On When</option>
@@ -9,13 +10,14 @@
 			<option value="nextMonth">Next Month</option>
 			<option value="full">Full List</option>
 		</select>
-		<input type="submit" class="button" value="Go" />
-		<span class="clear"></span>
-	</p>
+		
+		<input type="submit" class="genericButton grey"  value="Go" />
+		</div>
+		
 	</form>
 	
 	<form action="<?php print getSiteRootURL() . "/site/scripts/events_info.php"; ?>" method="post" enctype="multipart/form-data" class="basic_form">
-	<p>
+	<div>
 		<label for="placestogo">Places to go</label>
 		<select name="location" class="field" id="placestogo">
 		<option value="#">What&#39;s On Where</option>
@@ -28,7 +30,7 @@
 		}
 ?>
 		</select>
-		<input type="submit" class="button" value="Go" />
-	</p>
+		<input type="submit" class="genericButton grey" value="Go" />
+	</div>
 	</form>
-	
+</div>

@@ -1,12 +1,13 @@
-#content label, #content span.label 	{ font-weight: normal; font-size: 1em; color: #000; margin: 0 15px; vertical-align: top; width:25%; display:block; float:left;  }
+#content label, #content span.label 	{ font-weight: normal; font-size: 1em; color: #000; margin: 0 0 15px 0; vertical-align: top; width:100%; display:block; float:left;  }
 #mast input.field, 
 #content input.field, 
-select, textarea 						{ width: 55%; border: 1px solid #999; font-family: verdana, helvetica, arial, san-serif; font-size:1em; }
+select, textarea 						{ width: 65%; border: 1px solid #999; font-family: Arial; font-size:1em; }
+#content input.long {width: 90% !important;}
 #content input 							{ vertical-align: middle; }
 #content input.disabled 				{ background: #ddd; }
-#mast input.button, 
-#content input.button 					{ border: 1px solid #999; background: #ddd; color: #000; font-size:1.1em; font-weight:bold; }
-#content fieldset 						{ padding: 10px 0; border: none; margin:0 0 15px 0; }
+#content select {height: 40px; vertical-align: middle }
+
+#content fieldset 						{ padding: 10px 0; border: none; margin:0 0 15px 0;  }
 
 input[type="radio"]						{ margin-right:10px; }
 
@@ -21,35 +22,42 @@ form ol.dateOfBirth li input#dob_year	{ width:38px; }
 
 #content ol li.center 					{ text-align: center; }
 
-#content legend 						{ font-size: 1.3em; font-family: helvetica, verdana, arial, san-serif; font-weight:bold; padding-bottom:.58em; }
+#content legend 						{ font-size: 1.3em; font-family: helvetica, verdana, arial, san-serif; font-weight:400; display: block; margin-left: 0; padding-left: 0;  }
 #content .basic_form 					{ margin: 10px 0; clear:both; }
 
 #content h2.warning, 
 #content form label strong,  
-#content span.label strong 				{ color: #f00; }
-#content h2.warning strong 				{ color: #333; }
+#content span.label strong 				{ color: #f00;  }
+#content h2.warning strong 				{ color: #FFF46E; }
+#content h2.warning {background: url(../css_img/warning-large.gif) no-repeat 10px 10px #494948; padding: 15px 20px 15px 100px; margin: 0; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-size: 1em; font-weight:bold; color: #FFFFFF; text-shadow: 0px -1px 1px #000000;}
+#content label.error {background: url(../css_img/warning-icon.gif) no-repeat; padding-left: 20px; color: #d32a3a;}
 #content label em 						{ font-style: italic; color: #666; }
 
-#content #progressbar 					{ height:10px; padding: 1px; border: 1px solid #ccc; width: 500px; background: #fff; position: relative; }
-#content #progressbar img 				{ height: 10px; position: absolute;}
+#content #progressbar 					{ height:20px; padding: 1px; border: 1px solid #ccc; width: 100%; background: #fff; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;  }
+#content #progressbar img 				{ height: 18px; position: absolute; -webkit-border-top-left-radius: 5px; -webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-topleft: 5px; -moz-border-radius-bottomleft: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369;}
 
 #content .basic_form #search_checkbox label { text-align: left; }
+#content #xforms_searchText {border: 1px solid #999 !important}
 
 /* xforms styles */
-#content .xform p 						{ color: #555; }
+#content .xform p 						{ color: #555;font-size: .9em; }
+#content #content-inner .xform ol, #content #content-inner .xform ul {padding-left: 0px;}
 #content .xform p br 					{ display: none; }
 #content .xform label, 
 #content .xform span.label 				{ clear:both; margin: 0 0 5px 0; width: auto; float: none; text-align: left; }
 #content .xform input, 
-.xform select, 
-.xform textarea 						{ margin:5px 0; width: 350px; border: 1px solid #999; font-family: verdana, helvetica, arial, san-serif; font-size:1em; }
+#content .xform select, 
+#content .xform textarea 						{ margin:5px 0; width: 94%; border: 1px solid #999; font-family: Arial; font-size:1em; }
+#content .xform input.genericButton {width: auto; }
+#content .xform select {width: 100%;}
 #content .xform input.checkbox, 
 #content .xform input.radio 			{ width: auto; }
 #content .xform input.button 			{ margin: 0; width:auto; border: 1px outset #000; }
 #content .xform span.help, 
 #content .basic_form p em.help 			{ margin-top: 5px; display:block; font-size: 0.9em; font-style: normal; background: url(../css_img/50.png) no-repeat left 3px; padding-left: 13px; color: #555; } 
-#content .xform .lead_item 				{ background: #f3f3f3; padding: 10px 15px; border: 1px solid #ddd; margin: 10px 0; }
-#content .xform .lead_item p 			{ border:none; padding:0; }
+#content .xform .lead_item 				{ background: #f3f3f3; padding: 10px 15px; border: 1px solid #ddd; margin: 10px 0;line-height: 20px; font-family: Arial; font-size:.9em}
+#content .xform .lead_item p 			{ border:none; padding:0; margin: 0 0 15px  0 }
 
 /* used in directories submission */
 #content .basic_form div.googleMap 					{ margin: 0 auto; }
@@ -83,19 +91,25 @@ fieldset.userSettings span.clear 					{ border: none; padding: 0; display: block
 #content div.ref_column 							{ margin-bottom:15px; }
 #content div.ref_column strong 						{ font-weight:bold; }
 
-#content .xform table td 							{ overflow: hidden; }
 #content .xform table input,
 #content .xform table textarea,
 #content .xform table select 						{ margin:0; width: 90%; }
+#content .xform table .checkbox, #content .xform table .radio {margin-right: 5px;}
 
-.prefContrast 						{ background:#000; float:left; padding:10px; padding-left:0; border-radius:8px; }
-.prefCream 							{ background:#fff9d2; color:#010066; float:left; padding:10px; padding-left:0; border-radius:8px; }
-.prefBlue 							{ background:#9fcfff; color:#010066; float:left; padding:10px; padding-left:0; border-radius:8px; }
-
-#content .prefContrast label 		{ color: #fff; width:80%; }
-#content .prefCream label			{ width:80%; }
-#content .prefBlue label			{ width:80%; }
-
-
+.prefStandard {float:left; width: 42%;margin-right: 3%; padding:10px 3%; border-radius:8px;  border: 1px solid #ccc; background: #fff;}
+.prefContrast { background:#000; float:left; padding:10px 3%; border-radius:8px; width: 42%;border: 1px solid #fff; }
+.prefCream  { background:#fff9d2; color:#010066; float:left; padding:10px 3%; border-radius:8px;width: 42%; margin-right: 3%; border: 1px solid #fff; margin-bottom: 10px }
+.prefBlue  { background:#9fcfff; color:#010066; float:left; padding:10px 3%; border-radius:8px;width: 42%;  border: 1px solid #fff; margin-bottom: 10px}
+#content .prefContrast label  { color: #fff;  }
+#content .colours label span {margin-left: 10px; display: inline-block}
+#content .colours input {padding-top:0px; margin: 3px 0}
 
 
+/** Tooltip **/
+a.help {float: right;  background: url(../css_img/help-icon.gif) no-repeat; display: block; width: 20px; height: 30px; cursor: pointer;}
+a.help:hover  {background: url(../css_img/help-hover-icon.gif) no-repeat;}
+a.help span.main {display: none;}
+
+a.help span.tooltip { display: none; text-indent:0; position:absolute; z-index:20; margin-left: 35px;background: #F1F2F2;border: 1px solid #00000; width:180px; padding:10px; font-weight:normal; cursor:default;  color: #64797F; font-size: .9em; text-decoration: none ; border: 0;}
+a.help:hover span.tooltip { display:block; }
+#content p.search {width: 30%; float: left; display: inline;}

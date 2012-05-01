@@ -17,6 +17,7 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
+<p>Browse the listed galleries below.</p>
 <?php
 	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 	$allRootCategories = $lgclList->getTopLevelCategories();
@@ -31,7 +32,7 @@
 <?php
 		if (sizeof($subCats) > 0) {
 ?>
-			<ul class="list">
+			<ul class="list icons galleries">
 <?php
 			foreach ($subCats as $subCat) {
 ?>
@@ -39,7 +40,7 @@
 <?php
 			}
 ?>
-			</ul>
+			</ul><div class="clear"></div>
 <?php
 		}
 ?>

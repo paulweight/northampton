@@ -23,7 +23,7 @@
 
 	<!-- The ten most used downloads listed here. -->
 	<h2>Popular downloads</h2>
-	<ul>
+	<ul class="list  icons downloads">
 <?php 
 		foreach($topDownloads as $item) {
 			if ($item->url == "") {
@@ -56,13 +56,13 @@
 			<h3><a href="<?php print getSiteRootURL() . buildDownloadsURL($rootCat->id); ?>"><?php print encodeHtml($rootCat->name); ?></a></h3>                        
 <?php
 		if (sizeof($subCats) > 0) {
-			print '<ul class="list">';
+			print '<ul class="list  icons downloads">';
 			foreach ($subCats as $subCat) {
 ?>
 				<li><a href="<?php print getSiteRootURL() . buildDownloadsURL($subCat->id); ?>"><?php print encodeHtml($subCat->name); ?></a></li>
 <?php
 			}
-			print '</ul>';
+			print '</ul><div class="clear"></div>';
 		}
 ?>
 		</div>

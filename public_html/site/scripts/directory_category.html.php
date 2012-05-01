@@ -58,7 +58,7 @@
     	<div class="cate_info">
     		<h2>Categories in <?php print ($useDirectoryCategories) ? encodeHtml($category->title) : encodeHtml($category->name); ?></h2>
 
-    		<ul class="list">
+    		<ul class="list icons directories">
 <?php
             foreach ($subCats as $subCat) {
 ?>
@@ -78,7 +78,7 @@
 <?php
         if (sizeof($records) > 0) {
 ?>
-    		<ul class="list">
+    		<ul class="list icons directories">
 <?php
             foreach ($records as $record) {
 ?>
