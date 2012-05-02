@@ -617,7 +617,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 #content #content-inner {width: 100%;}
 #content #content-inner p, #content #content-inner li {line-height: 1.5em;}
 #content #content-inner .figcaption, #content #content-inner .floatRight {width: 100%;}
-#content #content-inner table {border: 1px solid #ddd; display: block; width: auto; overflow-x: auto; white-space: nowrap;}
+#content #content-inner table {zoom: .7; overflow: auto; white-space: normal}
 #content #content-inner table#calendar {border: 0px; display: inline-table; width: 100%; overflow-x: auto; white-space: normal;}
 #content #content-inner table.record {display: inherit; width: 100%; overflow-x: auto; white-space: normal; word-wrap: break-word; zoom: .7;}
 #content #content-inner .xform table {zoom: .7; overflow: auto; white-space: normal}

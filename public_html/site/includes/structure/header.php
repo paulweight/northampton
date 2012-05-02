@@ -50,10 +50,10 @@
 </div>
 <ul id="main-nav-top" class="grey box-shadow">
 				<li class="home" ><a href="<?php print getSiteRootURL(); ?>" ><span>Home</span></a></li>
-				<li class="apply"><a class="show_hide" onclick="return false;" href="javascript:void(0);"><span>Apply for it</span></a></li>
-				<li class="pay"><a class="show_hide" onclick="return false;" href="javascript:void(0);"><span>Pay for it</span></a></li>
-				<li class="report"><a class="show_hide" onclick="return false;" href="javascript:void(0);"><span>Report it</span></a></li>
-				<li class="feedback"><a class="show_hide" onclick="return false;" href="javascript:void(0);"><span>Feedback</span></a></li>
+				<li class="apply"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/apply"><span>Apply for it</span></a></li>
+				<li class="pay"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/pay"><span>Pay for it</span></a></li>
+				<li class="report"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/report"><span>Report it</span></a></li>
+				<li class="feedback"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/feedback"><span>Feedback</span></a></li>
 			</ul>
 			<ul id="main-nav-dropdown">
 			<li>
