@@ -117,12 +117,21 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-
+	var windowWidth = $(window).width();
+	console.log(windowWidth);
         $("#main-nav-dropdown").hide();
         $(".show_hide").show();
 
-	$('.show_hide').click(function(){
-	$("#main-nav-dropdown").slideToggle();
+	$('.show_hide').click(function(event){
+		if($(window).width() > 759) {
+			if(event.preventDefault) {
+				event.preventDefault();
+			}
+			else {
+				event.returnValue = false;
+			}
+			$("#main-nav-dropdown").slideToggle();
+		}
 	});
 
 });

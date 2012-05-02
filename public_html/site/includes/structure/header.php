@@ -48,7 +48,7 @@
 	<div class="clear"></div>
 	
 </div>
-<ul id="main-nav-top" class="grey box-shadow">
+			<ul id="main-nav-top" class="grey box-shadow">
 				<li class="home" ><a href="<?php print getSiteRootURL(); ?>" ><span>Home</span></a></li>
 				<li class="apply"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/apply"><span>Apply for it</span></a></li>
 				<li class="pay"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/pay"><span>Pay for it</span></a></li>
