@@ -606,7 +606,8 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 #content .crop {height:auto;}
 #content .copy { float: none; display: block; opacity: 1; margin-top: 150px; background: #414140; text-shadow: 0 -2px 0px #313130;}
 #content .copy h2 {padding-top: 10px}
-#content .copy h2, #main #main .copy p {margin-left: 10px; color: #ccc;}
+#content .copy h2, #content .copy p {margin-left: 10px; }
+#content .copy h3 {margin-left: 10px;}
 #content .carousel-tabs {margin: -15px 0 15px 0; list-style: none outside none; text-align: center; padding: 8px 0 4px 30%; width: auto; float: none;  }
 #content .carousel-tabs li {margin-bottom: 15px;}
 
