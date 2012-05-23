@@ -42,43 +42,6 @@
 		<!-- Bottom Supplements -->
 <?php include('../includes/bottom_supplements.php'); ?>
 		<!-- End bottom supplements -->
-<?php
-	if (sizeof($liveDocs) > 0) {
-?>
-
-	<h2 class="topTitle">Information on <?php print encodeHtml($currentCategory->name); ?></h2>
-
-<?php
-		if (sizeof($liveDocs) > 0) {
-			print '<ul class="list icons documents">';
-			foreach ($liveDocs as $documentID => $header) {
-?>
-		<li><a href="<?php print getSiteRootURL() . buildDocumentsURL($documentID, $_GET['categoryID']);?>"><?php print encodeHtml($header->title); ?></a></li>
-<?php
-			}
-			print '</ul><div class="clear"></div>';
-		}
-?>
-
-<?php
-	}
-
-	if (sizeof($categories) > 0) {
-?>
-	<h3>Categories in <?php print encodeHtml($currentCategory->name); ?></h3>
-<?php
-		if (sizeof($categories) > 0) {
-			print '<ul class="list icons documents">';
-			foreach ($categories as $subCat) {
-?>
-		<li><a href="<?php print getSiteRootURL() .buildDocumentsCategoryURL($subCat->id) ?>"><?php print encodeHtml($subCat->name); ?></a></li>
-<?php
-			}
-			print '</ul><div class="clear"></div>';
-		}
-	}
-?>		
-	
 	<p><a class="rss" href="<?php print getSiteRootURL() . buildCategoryRSSURL("documents", $_GET['categoryID']); ?>"><?php print encodeHtml(METADATA_GENERIC_NAME . ' ' . $currentCategory->name); ?>  feed</a></p>
 	
 <?php
