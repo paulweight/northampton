@@ -118,7 +118,7 @@
 <?php
 /* CONTENT */
 ?>
-				<div id="content">
+				<div id="content" <?php if (basename($_SERVER['SCRIPT_NAME']) != 'documents.php') { ?>class="full"<?php } ?>>
 				<?php
 /*  
 	BREADCRUMB

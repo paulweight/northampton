@@ -197,6 +197,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #main {background: #FFFFFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; margin: 20px 0; padding: 15px 15px 8px 15px; }
 
 #content { margin: 0 0 15px 0px; padding-left: 1.9%; float: right; width: 75%; border-left: 2px solid #B2B2B2; height: auto;}
+#main .full #content-inner {width: 100%; }
 
 #content h1 { margin: 0 0 .58em; font-size: 2em; padding-top:0.2em; }
 #content h2 { margin: 1em 0 .58em; font-size: 1.6em; font-weight: 400; padding-bottom:.2em; line-height:1.58em; width: 100%; display: block }

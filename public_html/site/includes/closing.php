@@ -52,6 +52,7 @@
 
 <?php } ?>	
 <div class="clear"></div>
+		<?php if (basename($_SERVER['SCRIPT_NAME']) == 'documents.php') { ?>
 		<?php include(HOME . 'site/includes/right_supplements.php'); ?>
 		<?php include(HOME . "site/includes/related_info.php"); ?>
 		<div id="pageAction">
@@ -61,6 +62,7 @@
 				<li class="comment"><a href="<?php print getSiteRootURL() . buildFeedbackURL(); ?>">Comment on this page</a></li>
 			</ul>
 		</div>
+		<?php  } ?>
 	</div>
 <?php  } ?>	
 </div>
