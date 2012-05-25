@@ -609,7 +609,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 #content .copy h2 {padding-top: 10px}
 #content .copy h2, #content .copy p {margin-left: 10px; }
 #content .copy h3 {margin-left: 10px;}
-#content .carousel-tabs {margin: -15px 0 15px 0; list-style: none outside none; text-align: center; padding: 8px 0 4px 30%; width: auto; float: none;  }
+#content .carousel-tabs {margin: -15px 0 15px -28px; list-style: none outside none; text-align: center; padding: 8px 0 4px 30%; width: auto; float: none;  }
 #content .carousel-tabs li {margin-bottom: 15px;}
 
 #breadcrumb {width: 100%; display: block; clear: both;}
