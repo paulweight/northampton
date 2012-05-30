@@ -2,7 +2,7 @@
 	include_once("websections/JaduNews.php");
 
 	$allNews = array();
-	$newsItemsToShow = 4;
+	$newsItemsToShow = 5;
 	
 	$topNews = getTopNews(true, true);
 
