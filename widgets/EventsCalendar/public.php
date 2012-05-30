@@ -74,68 +74,66 @@
 <div class="eventCalendarWidget">
 <h2><?php print $monthAsName;?></h2>
 <table summary="This month's events calendar" class="calendar">
-    <tr>
-		<?php
-			foreach ($days as $day){
-				print "<th scope=\"col\" abbr=\"$day\">".substr($day, 0, 1)."</th>";
-			}
-		?>
-    </tr>
-    
-	<?php
-		$nextDay = 1;
-		$started = false;
+	<tr>
+<?php
+	foreach ($days as &$day) {
+		print "		<th scope=\"col\" abbr=\"$day\">".substr($day, 0, 1)."</th>\n";
+	}
+?>
+	</tr>
+	
+<?php
+	$nextDay = 1;
+	$started = false;
 
-		// for each week start a new row
-		for ($i = 0; $i < $numWeeksInMonth; $i++){
-			print "<tr>\n";
-			// for each day start a new column
-			foreach ($days as $day){
-				if ($started){
-					if (strlen($nextDay) == 1) {
-						$nextDay = "0" . $nextDay;
-					}
-					if ($nextDay <= $lastDateOfMonth) {
-						("$nextDay-$currentMonth-$currentYear" == date("d-m-Y")) ? 	print '<td class="today">' : print '<td>';
-						if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
-						//if (eventIsOnDate($nextDay)){
-							$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
-							print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.php?startDate=$thisDate&endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
-						}
-						else {
-							print $nextDay;
-						}
-						print "</td>\n";
-						$nextDay++;
+	// for each week start a new row
+	for ($i = 0; $i < $numWeeksInMonth; $i++){
+		print "<tr>\n";
+		// for each day start a new column
+		foreach ($days as &$day){
+			if ($started){
+				if (strlen($nextDay) == 1) {
+					$nextDay = "0" . $nextDay;
+				}
+				if ($nextDay <= $lastDateOfMonth) {
+					("$nextDay-$currentMonth-$currentYear" == date("d-m-Y")) ? 	print '<td class="today">' : print '<td>';
+					if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
+						$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
+						print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.php?startDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
 					}
 					else {
-						print "<td></td>";
+						print $nextDay;
 					}
+					print "</td>\n";
+					$nextDay++;
 				}
 				else {
-					if (substr($day,0,3) == $firstDayOfMonth){
-						("$nextDay-$currentMonth-$currentYear" == date("d-m-Y")) ? 	print '<td class="today">' : print '<td>';
-						if (strlen($nextDay) == 1)
-							$nextDay = "0" . $nextDay;
-						if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
-						//if (eventIsOnDate($nextDay)){
-							$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
-							print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.phpstartDate=$thisDate&endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
-						}
-						else
-							print $nextDay;
-						print "</td>\n";
-						$started = true;
-						$nextDay++;
-					}
-					else {
-						print "<td></td>\n";
-					}
+					print "<td></td>";
 				}
 			}
-			print "</tr>\n";
+			else {
+				if (substr($day,0,3) == $firstDayOfMonth){
+					("$nextDay-$currentMonth-$currentYear" == date("d-m-Y")) ? 	print '<td class="today">' : print '<td>';
+					if (strlen($nextDay) == 1)
+						$nextDay = "0" . $nextDay;
+					if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
+						$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
+						print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.phpstartDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
+					}
+					else
+						print $nextDay;
+					print "</td>\n";
+					$started = true;
+					$nextDay++;
+				}
+				else {
+					print "<td></td>\n";
+				}
+			}
 		}
-	?>
+		print "</tr>\n";
+	}
+?>
 </table>
 
 </div>
