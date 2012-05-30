@@ -37,10 +37,14 @@
 		<li><a href="<?php print getSiteRootURL() . encodeHtml($_SERVER['REQUEST_URI']); ?>#column_nav" rel="nofollow">Skip to main navigation</a></li>
 	</ul>
 		
-	<form action="<?php print getSiteRootURL() . buildSearchResultsURL(); ?>" method="get" id="search">
+	<form action="<?php print getSiteRootURL() . '/improve_search'; ?>" method="get" id="search">
 		<p><label for="SearchSite">Search for it...</label></p>
+		<div>
+			<input type="hidden" name="pckid" value="1610317951" autocomplete="off">
+			<input type="hidden" name="aid" value="471434" autocomplete="off">
+		</div>
 		<div id="search-site">
-			<input type="text" size="18" maxlength="40" name="q" class="field" value="<?php if(isset($htmlSafeQuery)) { print encodeHtml($htmlSafeQuery); } ?>" />
+			<input type="text" size="18" maxlength="255" name="sw" class="field" value="<?php print isset($htmlSafeQuery) ? encodeHtml($htmlSafeQuery) : ''; ?>" />
 			<input type="submit" class="button" value=" " />
 		</div>
 	</form>
