@@ -1,23 +1,12 @@
 <?php
-    include_once("egov/JaduEGovJoinedUpServices.php");
-    include_once('JaduConstants.php'); 
-    include_once("utilities/JaduNavWidgets.php");
-    
-    $allWidgets = getAllNavWidgets();
+	include_once('JaduConstants.php');
+	include_once('utilities/JaduNavWidgets.php');
 	
-	$fullWidgets = getAllNavWidgets();
-	$apply = array_slice($fullWidgets, 2, 1);
-	$pay = array_slice($fullWidgets, 3, 1);
-	$report = array_slice($fullWidgets, 4, 1);
-	$feedback = array_slice($fullWidgets, 5, 1);
-	
-	$counter = 0;
-	
-	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
-	$allRootCategories = $lgclList->getTopLevelCategories();
-
-	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
-    
+	$allWidgets = getAllNavWidgets();
+	$apply = array_slice($allWidgets, 2, 1);
+	$pay = array_slice($allWidgets, 3, 1);
+	$report = array_slice($allWidgets, 4, 1);
+	$feedback = array_slice($allWidgets, 5, 1);
 ?>
 <!-- googleoff: index -->
 <div id="mobile_name"><?php print encodeHtml(METADATA_GENERIC_NAME); ?></div>
@@ -36,7 +25,7 @@
 		<li><a href="<?php print getSiteRootURL() . encodeHtml($_SERVER['REQUEST_URI']); ?>#content" rel="nofollow">Skip to content</a></li>
 		<li><a href="<?php print getSiteRootURL() . encodeHtml($_SERVER['REQUEST_URI']); ?>#column_nav" rel="nofollow">Skip to main navigation</a></li>
 	</ul>
-		
+	
 	<form action="<?php print getSiteRootURL() . '/improve_search'; ?>" method="get" id="search">
 		<p><label for="SearchSite">Search for it...</label></p>
 		<div>
@@ -60,86 +49,69 @@
 				<li class="feedback"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/feedback"><span>Feedback</span></a></li>
 			</ul>
 			<ul id="main-nav-dropdown">
-			<li>
-				<ul id="apply">
-					<?php
-							if (sizeof($apply) > 0) {
-								foreach ($apply as $widget) {
-									$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-					?>
-						
-							<?php
-										foreach ($allLinks as $widgetLink) {
-											print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
-										}
-							?>
-						
-					<?php
-								}
-							}
-					?>
-				</ul>
+				<li>
+					<ul id="apply">
+<?php
+	if (!empty($apply)) {
+		foreach ($apply as &$widget) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
+			foreach ($allLinks as &$widgetLink) {
+?>
+						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
+			}
+		}
+	}
+?>
+					</ul>
 				</li>
 				<li>
-				<ul id="pay">
-					<?php
-							if (sizeof($pay) > 0) {
-								foreach ($pay as $widget) {
-									$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-					?>
-						
-							<?php
-										foreach ($allLinks as $widgetLink) {
-											print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
-										}
-							?>
-						
-					<?php
-								}
-							}
-					?>
-				</ul>
+					<ul id="pay">
+<?php
+	if (!empty($pay)) {
+		foreach ($pay as &$widget) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
+			foreach ($allLinks as &$widgetLink) {
+?>
+						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
+			}
+		}
+	}
+?>
+					</ul>
 				</li>
 				<li>
-				<ul id="report">
-					<?php
-							if (sizeof($report) > 0) {
-								foreach ($report as $widget) {
-									$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-					?>
-						
-							<?php
-										foreach ($allLinks as $widgetLink) {
-											print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
-										}
-							?>
-						
-					<?php
-								}
-							}
-					?>
-
-				</ul>
+					<ul id="report">
+<?php
+	if (!empty($report)) {
+		foreach ($report as &$widget) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
+			foreach ($allLinks as &$widgetLink) {
+?>
+						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
+			}
+		}
+	}
+?>
+					</ul>
 				</li>
 				<li>
-				<ul id="feedback">
-					<?php
-							if (sizeof($feedback) > 0) {
-								foreach ($feedback as $widget) {
-									$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-					?>
-						
-							<?php
-										foreach ($allLinks as $widgetLink) {
-											print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
-										}
-							?>
-						
-					<?php
-								}
-							}
-					?>
-				</ul>
+					<ul id="feedback">
+<?php
+	if (!empty($feedback)) {
+		foreach ($feedback as &$widget) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
+			foreach ($allLinks as &$widgetLink) {
+?>
+						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
+			}
+		}
+	}
+?>
+					</ul>
 				</li>
 			</ul>
 			<div class="clear"></div>

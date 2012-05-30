@@ -146,6 +146,10 @@
 <?php
 	}
 	if (!isset($indexPage) || !$indexPage) {
+		if (!isset($lgclList)) {
+			$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
+		}
+		
 		if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
 			// fetch filtered categories for level 1 category only
 			$catPath = $lgclList->getFullPath($_GET['categoryID']);
