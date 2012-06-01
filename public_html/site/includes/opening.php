@@ -146,37 +146,21 @@
 <?php
 	}
 	if (!isset($indexPage) || !$indexPage) {
-		if (!isset($lgclList)) {
-			$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
-		}
-		
 		if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
-			// fetch filtered categories for level 1 category only
-			$catPath = $lgclList->getFullPath($_GET['categoryID']);
-			$topCats = $lgclList->getChildCategories($catPath[0]->id);
-			
-			$parents[] = $_GET['categoryID'];
-			$topicCategoryID = $_GET['categoryID'];
-			while ($topicCategoryID != "") {
-				$topParentCategories = $lgclList->getParentCategories($topicCategoryID);
-				$topicCategoryID = $topParentCategories[0]->id;
-				if ($topicCategoryID != "") {
-					$parents[] = $topicCategoryID;
-				}
+			if (!isset($lgclList) || !is_object($lgclList)) {
+				$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 			}
-			$parents = array_reverse($parents);
+			
+			$dirTree = $lgclList->getFullPath($_GET['categoryID']);
+			$rootCategory = $dirTree[0];
 		}
-		else {
-			$topCats = $lgclList->GetTopLevelCategories();
-		}
-		$topCats = filterCategoriesInUse($topCats, DOCUMENTS_APPLIED_CATEGORIES_TABLE, true);
-		uasort($topCats, "cmp");
+		$imagesDirectory = MAIN_HOME_DIR . 'public_html' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR;
 ?>
 					<div id="header">
 <?php
-		if (isset($catPath[0])) {
+		if (isset($rootCategory) && is_object($rootCategory) && file_exists($imagesDirectory . 'headers/' . $rootCategory->id . '.jpg')) {
 ?>
-						<img src="/site/images/headers/<?php print $catPath[0]->id; ?>.jpg" alt="<?php print $catPath[0]->name; ?>" />
+						<img src="/site/images/headers/<?php print $rootCategory->id; ?>.jpg" alt="<?php print encodeHtml($rootCategory->name); ?>" />
 						<h1><?php print encodeHtml($MAST_HEADING); ?></h1>
 						<div class="clear"></div>
 					</div>
