@@ -12,7 +12,7 @@ body { font-family:Arial, sans-serif; transition:all .2s linear;  -o-transition:
 blockquote, q { quotes: none; }
 blockquote:before, q:before { font-size:4em; text-indent:-.6em; margin-top:.15em; float:left; opacity:.3; }
 cite{display:block; text-transform:uppercase; letter-spacing:1px; font-style:normal; font-weight:bold; font-size:smaller; margin-top:1.9em;}
-cite:before{content:"–"; float:left; font-size:1.5em; text-indent:-1.3em; font-weight:bold; margin-top:-.1em;}
+cite:before{content:"ï¿½"; float:left; font-size:1.5em; text-indent:-1.3em; font-weight:bold; margin-top:-.1em;}
 
 abbr { border-bottom: 1px dotted; cursor: help; text-transform: uppercase; font-size:.85em; }
 
@@ -237,6 +237,10 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #main #side-nav #top-tasks h3	{ cursor:pointer; }
 #main #side-nav #top-tasks a {width: 100%; background: url(../css_img/arrow-down.gif) 95% -2px no-repeat; display: block; }
 #main #side-nav #top-tasks li a {background: none;}
+
+/** Service List Navigation **/
+#main #side-nav #service-list a.selected {color: #AA1E48;}
+#main #side-nav #service-list li.sub-menu a {color: #1d1d1d;}
 
 /** Documents **/
 

@@ -5,6 +5,87 @@
 	include_once("websections/JaduPageSupplements.php");
 	include_once("websections/JaduPageSupplementWidgets.php");
 	include_once("websections/JaduPageSupplementWidgetPublicCode.php");
+	include_once("websections/JaduDocuments.php");
+	
+	/**
+	 * Render any sub-category navigation
+	 * 
+	 * @param integer $categoryID
+	 * @param array[]integer $parents Array of parent {@link CategoryItem} id values
+	 * @param integer $depth Used to identify the navigation depth and indent elements correctly
+	 * @return boolean False if nothing to render
+	 */
+	function renderNavChildren($categoryID, $parents, $depth = 0) {
+		global $lgclList;
+		
+		if (!in_array($categoryID, $parents)) {
+			return false;
+		}
+		
+		// Get any live documents 
+		$allDocuments = getAllDocumentsWithCategory($categoryID, true, true, 'header.title');
+		$liveDocs = array();
+		foreach ($allDocuments as &$document) {
+			$header = new Versions(DOCUMENT_HEADERS_TABLE, $document->headerOriginalID, VERSIONED_DOCUMENTS_TABLE);
+			if ($header->liveVersion != -1) {
+				$liveDocs[$document->id] = $header->getLiveVersion();
+			}
+		}
+		
+		$allChildren = $lgclList->getChildCategories($categoryID);
+		$children = array();
+		if (empty($liveDocs) && empty($allChildren)) {
+			return false;
+		}
+		else if (!empty($allChildren)) {
+			$children = filterCategoriesInUseFromMultipleTables($allChildren, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
+		}
+		
+		if (empty($children) && empty($liveDocs)) {
+			return false;
+		}
+		
+		$tabDepth = '';
+		if ($depth > 0) {
+			for ($i = 0; $i < $depth; $i++) {
+				$tabDepth .= '		';
+			}
+		}
+		++$depth;
+?>
+				<?php print $tabDepth; ?><ul>
+<?php
+		foreach ($liveDocs as $documentID => &$documentHeader) {
+?>
+					<?php print $tabDepth; ?><li class="document"><a href="<?php print getSiteRootURL() . buildDocumentsURL($documentID, $categoryID); ?>"><?php print encodeHtml($documentHeader->title); ?></a></li>
+<?php
+		}
+		
+		foreach ($children as &$child) {
+			$selected = false;
+			if (in_array($child->id, $parents)) {
+				$selected = true;
+			}
+			
+			$subMenu = '';
+			if (isset($_GET['categoryID']) && $_GET['categoryID'] == $child->id) {
+				$subMenu = ' sub-menu';
+			}
+?>
+					<?php print $tabDepth; ?><li<?php print $selected ? ' class="selected'. $subMenu . '"' : ''; ?>>
+						<?php print $tabDepth; ?><a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($child->id); ?>"<?php print $selected ? ' class="selected"' : ''; ?>><?php print encodeHtml($child->name); ?></a>
+<?php
+			if ($selected) {
+				renderNavChildren($child->id, $parents, $depth);
+			}
+?>
+					<?php print $tabDepth; ?></li>
+<?php
+		}
+?>
+				<?php print $tabDepth; ?></ul>
+<?php
+	}
 	
 	if (isset($_GET['homepageID']) || mb_strpos($_SERVER['REQUEST_URI'], '/site/index.php') !== false) {
 		include_once('websections/JaduHomepages.php');
@@ -22,59 +103,82 @@
 		}
 	}
 
-	$allWidgets = getAllNavWidgets();
-	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
-	$allRootCategories = $lgclList->getTopLevelCategories();
-
-	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
-	
-	$allWidgets = getAllNavWidgets();
-	
 	$fullWidgets = getAllNavWidgets();
 	$allWidgets = array_slice($fullWidgets, 0, 1);
-
 	$additionalButtons = array_slice($fullWidgets, 1, 1);
-	$counter = 0;
 	
 	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 	$allRootCategories = $lgclList->getTopLevelCategories();
-
 	$columnRootCategories = filterCategoriesInUseFromMultipleTables($allRootCategories, array(DOCUMENTS_APPLIED_CATEGORIES_TABLE, HOMEPAGE_APPLIED_CATEGORIES_TABLE), true);
+	
+	$parents = array();
+	if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
+		$categoryID = (int) $_GET['categoryID'];
+		
+		if (!isset($dirTree) || !is_array($dirTree)) {
+			$dirTree = $lgclList->getFullPath($categoryID);
+		}
+		
+		foreach($dirTree as &$parent) {
+			if (!is_object($parent) || get_class($parent) != 'CategoryItem') {
+				continue;
+			}
+			$parents[] = $parent->id;
+		}
+	}
 ?>
 
 <!-- googleoff: index -->
 <div id="side-nav">
-<div class="clear"></div>
+	<div class="clear"></div>
 <?php
-		if (sizeof($allWidgets) > 0) {
-			foreach ($allWidgets as $widget) {
-				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
+	if (!empty($allWidgets)) {
+		foreach ($allWidgets as &$widget) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
 ?>
 	<div id="top-tasks">
 	<h3 class="red"><a href="javascript:void(0);" class="expand"  onclick="return false"><?php print encodeHtml($widget->title); ?></a></h3>
 		<ul class="tasks">
 <?php
-			foreach ($allLinks as $widgetLink) {
+			foreach ($allLinks as &$widgetLink) {
 				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
 			}
 ?>
 		</ul>
 	</div>
 <?php
-			}
+		}
+	}
+?>
+	<div id="service-list">
+	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/">Services</a></h3>
+		<ul>
+<?php
+	foreach ($columnRootCategories as &$columnRootCategory) {
+?>
+			<li<?php print (in_array($columnRootCategory->id, $parents)) ? ' class="selected"' : ''; ?>>
+				<a href="<?php print getSiteRootURL() . buildDocumentsCategoryURL($columnRootCategory->id); ?>"<?php print (in_array($columnRootCategory->id, $parents)) ? ' class="selected"' : ''; ?>><?php print encodeHtml($columnRootCategory->name); ?></a>
+<?php
+		if (isset($_GET['categoryID']) && is_numeric($_GET['categoryID'])) {
+			renderNavChildren($columnRootCategory->id, $parents);
 		}
 ?>
-
+			</li>
 <?php
-		if (sizeof($additionalButtons) > 0) {
-			foreach ($additionalButtons as $widget) {
+		}
+?>
+		</ul>
+	</div>
+<?php
+		if (!empty($additionalButtons)) {
+			foreach ($additionalButtons as &$widget) {
 				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
 ?>
 	<div id="service-list">
 	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/services"><?php print encodeHtml($widget->title); ?></a></h3>
 		<ul>
 <?php
-			foreach ($allLinks as $widgetLink) {
+			foreach ($allLinks as &$widgetLink) {
 				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
 			}
 ?>
@@ -83,7 +187,8 @@
 <?php
 			}
 		}
-?></div>
+?>
+</div>
 
 		<!-- Left-hand Supplements -->
 		<div class="leftSupplements">
@@ -131,7 +236,8 @@
 			unset($record);
 			unset($publicCode);
 		}
-?></div>
+?>
+		</div>
 		<!-- End left-hand supplements -->
 
 <!-- googleon: index -->
