@@ -151,7 +151,7 @@
 	}
 ?>
 	<div id="service-list">
-	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/">Services</a></h3>
+	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/info">Services</a></h3>
 		<ul>
 <?php
 	foreach ($columnRootCategories as &$columnRootCategory) {
@@ -169,27 +169,8 @@
 ?>
 		</ul>
 	</div>
-<?php
-		if (!empty($additionalButtons)) {
-			foreach ($additionalButtons as &$widget) {
-				$allLinks = getAllNavWidgetLinksInNavWidget ($widget->id);
-?>
-	<div id="service-list">
-	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/services"><?php print encodeHtml($widget->title); ?></a></h3>
-		<ul>
-<?php
-			foreach ($allLinks as &$widgetLink) {
-				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
-			}
-?>
-		</ul>
-	</div>
-<?php
-			}
-		}
-?>
-</div>
 
+</div>
 		<!-- Left-hand Supplements -->
 		<div class="leftSupplements">
 <?php

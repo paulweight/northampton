@@ -231,7 +231,8 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #main #side-nav ul li a:link, #main #side-nav ul li a:visited {text-decoration: none; color: #1d1d1d;}
 #main #side-nav ul li a:hover, #main #side-nav ul li a:active {text-decoration: underline;}
 #main #side-nav ul li ul {margin-left: 0px;}
-#main #side-nav ul li ul li {margin: 0 0 10px 15px; padding-top: 10px;}
+#main #side-nav ul li ul li {margin: 0 0 5px 15px; padding-top: 10px;}
+#main #side-nav ul li ul li ul {margin-bottom: 0px;}
 #main #side-nav ul li ul li ul li {margin-bottom: 0px;}
 
 #main #side-nav #top-tasks h3	{ cursor:pointer; }
