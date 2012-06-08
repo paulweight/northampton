@@ -27,14 +27,14 @@
 	if (isset($_COOKIE['userFontsize']) && !empty($_COOKIE['userFontsize'])) {
 		$url = '';
 		switch ($_COOKIE['userFontsize']) {
-			case 'small':
-				$url = 'user/small.css';
-				break;
-			case 'medium':
-				$url = 'user/medium.css';
-				break;
 			case 'large':
 				$url = 'user/large.css';
+				break;
+			case 'larger':
+				$url = 'user/larger.css';
+				break;
+			case 'largest':
+				$url = 'user/largest.css';
 				break;
 		}
 		if (isset($url)) {
@@ -66,15 +66,12 @@
 	if (isset($_COOKIE['userLetterspacing']) && !empty($_COOKIE['userLetterspacing'])) {
 		$url = '';
 		switch ($_COOKIE['userLetterspacing']) {
-			
 			case 'wide':
 				$url = 'user/wide.css';
 				break;
-				
 			case 'wider':
 				$url = 'user/wider.css';
 				break;
-				
 			case 'widest':
 				$url = 'user/widest.css';
 				break;
@@ -90,7 +87,7 @@
 <link rel="ToC" href="<?php print getSiteRootURL() . buildSiteMapURL(); ?>" />
 <?php
 	if (isset($homepage) && $homepage !== null) {
-?>			
+?>
 <link rel="stylesheet" type="text/css" href="<?php print getURLToWidgetStylesFileForSeason($STYLESHEET); ?>" media="screen" />
 <?php
 	}
@@ -104,7 +101,6 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var windowWidth = $(window).width();
 		$("#main-nav-dropdown").hide();
 		$(".show_hide").show();
 		$('.show_hide').click(function(event){
@@ -137,7 +133,7 @@
 	else {
 ?>
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$(".tasks").show();
 		$(".expand").show();
 		$('.expand').click(function(){

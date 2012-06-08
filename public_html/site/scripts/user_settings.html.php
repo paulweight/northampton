@@ -17,27 +17,28 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
-			
+
 <?php 
 	if (!isset($_COOKIE[session_name()]) && (isset($_POST['saveButton']) || isset($_POST['previewButton']))) {
 		print '<h2 class="warning">Sorry!</h2><p>You must have cookies turned on to use this sites user setting options.</p><p>To view a tutorial and instructions on how to enable cookies, please see our <a href="../cookies/cookie_instructions.php">cookie instructions</a>.</p>';		
 	}
 	else {
 ?>
-			
+
 	<p>
-<?php 	if (isset($_POST["saveButton"]) || isset($_POST["resetButton"])) {
+<?php
+	if (isset($_POST["saveButton"]) || isset($_POST["resetButton"])) {
 		print "Your settings have been changed. If you are using the browser Opera, you will need to refresh the page to see the changes.";
 	}
 	else {
 		print "In this section you can adapt this website to meet your needs. The settings you create on this page will be saved for future visits. If you wish to return to the standard settings, click the \"Reset site settings\" button.";
 	}
 ?>
-	</p>			
+	</p>
 
 	<h2>Access Keys</h2>
 	<p>This site also supports access keys for increased navigation help. A <a href="<?php print getSiteRootURL() . buildAccessibilityURL() ;?>">full listing of access keys</a> and how to use them is available.</p>
-				
+
 	<form class="basic_form xform" action="<?php print getSiteRootURL() . buildNonReadableUserSettingsURL(); ?>" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Choose your text preferences</legend>
@@ -46,9 +47,9 @@
 					<label for="fontSize">Text size</label>	
 					<select id="fontSize" name="fontSize">
 						<option value="" <?php if ($_COOKIE['userFontsize'] == '' || !isset($_COOKIE['userFontsize'])  || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "") ) print 'selected="selected"'; ?>>Standard</option>
-						<option value="small" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'small') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "small") ) print 'selected="selected"'; ?>>+1</option>
-						<option value="medium" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'medium') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "medium") ) print 'selected="selected"'; ?>>+2</option>
-						<option value="large" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'large') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "large") ) print 'selected="selected"'; ?>>+3</option>
+						<option value="large" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'large') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "large") ) print 'selected="selected"'; ?>>+1</option>
+						<option value="larger" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'larger') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "larger") ) print 'selected="selected"'; ?>>+2</option>
+						<option value="largest" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE['userFontsize'] == 'largest') || (isset($_POST["previewButton"]) && $_POST["fontSize"] == "largest") ) print 'selected="selected"'; ?>>+3</option>
 					</select>
 				</li>
 				<li>
@@ -78,11 +79,11 @@
 			<ul>
 				<li class="prefStandard colours">
 					<label for="default_colour">
-						<input name="colourScheme" value="" id="default_colour" type="radio" class="checkbox" <?php if (!isset($_COOKIE["userColourscheme"]) || $_COOKIE["userColourscheme"] == '' || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "") ) print 'checked="checked"'; ?> /><span>Standard</span></label>
+					<input id="default_colour" name="colourScheme" value="" type="radio" class="checkbox" <?php if (!isset($_COOKIE["userColourscheme"]) || $_COOKIE["userColourscheme"] == '' || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "") ) print 'checked="checked"'; ?> /><span>Standard</span></label>
 				</li>
 				<li class="prefContrast colours">
 					<label for="highcontrast">
-						<input id="highcontrast" name="colourScheme" value="highcontrast" class="checkbox" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "highcontrast") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "highcontrast") ) print 'checked="checked"'; ?>  /><span>High contrast</span></label>
+					<input id="highcontrast" name="colourScheme" value="highcontrast" class="checkbox" type="radio" <?php if ((!isset($_POST["previewButton"]) && $_COOKIE["userColourscheme"] == "highcontrast") || (isset($_POST["previewButton"]) && $_POST["colourScheme"] == "highcontrast") ) print 'checked="checked"'; ?>  /><span>High contrast</span></label>
 				</li>
 				<li class="prefCream colours">
 					<label for="cream">
@@ -107,6 +108,6 @@
 	<p>Please note, in order to remember your preferences as you navigate through the site, a cookie will be set.</p>
 <?php 
 	}
-?>	
+?>
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>
