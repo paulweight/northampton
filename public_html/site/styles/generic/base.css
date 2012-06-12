@@ -464,9 +464,13 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #footer #social ul#networks li img:hover, #footer #social ul#networks li img:active, #footer #social ul#networks li a:hover img, #footer #social ul#networks li a:active img {opacity: 1;}
 
 /** RESPONSIVE **/
-
+@media screen and  (max-width: 1025px) {
+ul#main-nav-dropdown ul#report {width: 23.8%;}
+}
 /* Small Screen */
-@media screen and (max-width: 1000px) {
+@media screen and  (max-width: 1000px) {
+
+ul#main-nav-dropdown ul#report {width: 24.1%;}
 
 ul#main-nav-top li.home a {background-position: 20px 9px; }
 ul#main-nav-top li.apply a {background-position: 10px 10px ;}
