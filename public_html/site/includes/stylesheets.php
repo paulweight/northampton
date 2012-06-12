@@ -103,7 +103,7 @@
 	$(document).ready(function(){
 		$("#main-nav-dropdown").hide();
 		$(".show_hide").show();
-		$('.show_hide').click(function(event){
+		$(".show_hide").click(function(event){
 			if($(window).width() > 759) {
 				if(event.preventDefault) {
 					event.preventDefault();
@@ -114,36 +114,26 @@
 				$("#main-nav-dropdown").slideToggle();
 			}
 		});
-	});
-</script>
-<?php
-	if (!isset($indexPage) || !$indexPage) {
-?>	
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".tasks").hide();
 		$(".expand").show();
-		$('.expand').click(function(){
+		$(".expand").click(function(){
 			$(".tasks").slideToggle();
 		});
-	});
-</script>
+<?php
+	if (!isset($indexPage) || !$indexPage) {
+?>
+		$(".tasks").hide();
 <?php
 	}
 	else {
 ?>
-<script type="text/javascript">
-	$(document).ready(function() {
 		$(".tasks").show();
-		$(".expand").show();
-		$('.expand').click(function(){
-			$(".tasks").slideToggle();
-		});
-	});
-</script>
 
 <?php
 	}
+?>
+	});
+</script>
+<?php
 	popJavascript();
 	popCSS();
 ?>
