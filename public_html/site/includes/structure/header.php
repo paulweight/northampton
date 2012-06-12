@@ -33,8 +33,8 @@
 			<input type="hidden" name="aid" value="471434" autocomplete="off">
 		</div>
 		<div id="search-site">
-			<input type="text" size="18" maxlength="255" name="sw" class="field" value="<?php print isset($htmlSafeQuery) ? encodeHtml($htmlSafeQuery) : ''; ?>" />
-			<input type="submit" class="button" value=" " />
+			<input id="search-site-query" type="text" size="18" maxlength="255" name="sw" class="field" value="<?php print isset($htmlSafeQuery) ? encodeHtml($htmlSafeQuery) : ''; ?>" autocomplete="off" />
+			<input id="search-site-submit" type="submit" class="button" value=" " />
 		</div>
 	</form>
 	
