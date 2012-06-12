@@ -42,7 +42,11 @@
 ?>
 		</ul>
 	</div>
+<?php
+		if (!isset($indexPage) || !$indexPage) {
+?>
 	<script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/widgets/responsive_carousel.min.js';?>"></script>
 <?php
+		}
 	}
 ?>
