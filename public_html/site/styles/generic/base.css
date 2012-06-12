@@ -184,8 +184,8 @@ ul#main-nav-top li.feedback a { background: url(../css_img/feedback-nav-bg.gif) 
 ul#main-nav-top li a:link, ul#main-nav-top li a:visited {color: #FFFFFF; text-decoration:none; padding: 13px 0 ; width: 19%; display: inline-block}
 ul#main-nav-top li a:hover, ul#main-nav-top li a:active {background-color: #5a6c71; -moz-box-shadow: inset 3px 3px 3px #4f6267; -webkit-box-shadow:  inset 3px 3px 3px #4f6267; box-shadow:  inset 3px 3px 3px #4f6267; }
 
-ul#main-nav-dropdown { z-index: 100; height: 150px; padding-left: 19%; margin-left: 2%;  font-size: 1.1em;}
-ul#main-nav-dropdown ul {float: left; display: inline; background: #BCBEC0; padding: 2.5% 0 1% 0; height: 120px;  z-index: 200; -moz-box-shadow: 1px 1px 1px #a1a2a2; -webkit-box-shadow: 1px 1px 12px #a1a2a2; box-shadow: 1px 1px 1px #a1a2a2; position:relative; width:24.3%; border-right: 1px solid #a5a6a6; border-left: 1px solid #cccdcd;}
+ul#main-nav-dropdown { z-index: 100; height: 200px; padding-left: 19%; margin-left: 2%;  font-size: 1.1em;}
+ul#main-nav-dropdown ul {float: left; display: inline; background: #BCBEC0; padding: 2.5% 0 1% 0; height: 170px;  z-index: 200; -moz-box-shadow: 1px 1px 1px #a1a2a2; -webkit-box-shadow: 1px 1px 12px #a1a2a2; box-shadow: 1px 1px 1px #a1a2a2; position:relative; width:24.3%; border-right: 1px solid #a5a6a6; border-left: 1px solid #cccdcd;}
 ul#main-nav-dropdown ul li {font-size: 0.9em; margin-bottom: 10px; z-index: 300; text-shadow: 0 1px 0 #e4e4e4; padding: 0 15px;}
 ul#main-nav-dropdown ul li a:link, ul#main-nav-dropdown ul li a:visited {color: #404040;}
 ul#main-nav-dropdown ul#apply {-webkit-border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; border-bottom-left-radius: 5px;}
@@ -494,7 +494,8 @@ a.help:hover span.tooltip { display:inline; text-decoration: none; }
 @media screen and (max-width : 800px) {
 
 #main {float: none;}
-
+ul#main-nav-dropdown {height: 250px;}
+ul#main-nav-dropdown ul {height: 220px;}
 #main #contact {margin-bottom: 20px;}
 #main #side-nav #top-tasks {float: none; width: 100%; }
 #main #side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
