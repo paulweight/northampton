@@ -17,7 +17,7 @@
 	
 	<ul id="mast-nav">
 		<li class="font-size"><a href="<?php print getSiteRootURL() . buildUserSettingsURL();?>"><span>Accessibility</span></a></li>
-		<li><a href="#">Other languages</a></li>
+		<li><a href="<?php print getSiteRootURL()?>/languages">Other languages</a></li>
 		<li class="last"><a href="<?php print getSiteRootURL() . buildContactURL();?>">Contact us</a></li>
 	</ul>
 	
