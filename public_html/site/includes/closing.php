@@ -92,25 +92,6 @@
 <script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/widgets/responsive_carousel.min.js';?>"></script>
 <?php 
 	}
-?>
-<link type="text/css" rel="stylesheet" charset="utf-8" href="//www.siteimprove.com/searchimprove/autocomplete/autocomplete.css" />
-<script type="text/javascript" src="//www.siteimprove.com/searchimprove/autocomplete/jquery.autocomplete.js"></script>
-<script type="text/javascript">
-	jQuery(function(){
-		$('#search-site-query').autocomplete({
-			serviceUrl:'//search.siteimprove.com/autocomplete/autocomplete.aspx?callback=?',
-			minChars:2,
-			width:195,
-			maxHeight:120,
-			params: {
-				account_id:471434,
-				package_id:1610317951
-			},
-			tooltipPretext: "Search for"
-		});
-	});
-</script>
-<?php
 	if (defined('ANALYTICS_INCLUDE') && ANALYTICS_INCLUDE != '') {
 		print ANALYTICS_INCLUDE;
 	}
