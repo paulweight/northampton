@@ -1,13 +1,13 @@
 <?php
-    include_once("utilities/JaduStatus.php");
-    include_once("JaduConstants.php");
+	include_once("utilities/JaduStatus.php");
+	include_once("JaduConstants.php");
 	include_once("JaduStyles.php");
 	
 	if (INSTALLATION_TYPE == GALAXY) {
 		header("Location: http://$DOMAIN/404.php");
 		exit();
 	}
-	  
+	
 	if (!isset($_GET['request'])) {
 		$request = urldecode($_SERVER['REQUEST_URI']);
 		header("HTTP/1.0 404 Not Found");
@@ -16,20 +16,20 @@
 		$request = $_GET['request'];
 	}
 	
-   
-    $fileExtension = mb_substr(strrchr($request, '.'), 1);
-
-    if ($fileExtension != '') {
-	$request = str_replace($fileExtension, '', $request);
-    }
-    
-    $terms = explode("/", $request);
-    
-    $searchQuery = encodeHtml(trim(implode($terms, ' ')));
-    
+	$fileExtension = mb_substr(strrchr($request, '.'), 1);
+	
+	if ($fileExtension != '') {
+		$request = str_replace($fileExtension, '', $request);
+	}
+	
+	$terms = explode("/", $request);
+	
+	$searchQuery = encodeHtml(trim(implode($terms, ' ')));
+	
 	$breadcrumb = '404';
+	
+	include("./site/includes/doctype.php");
 ?>
-<?php include("./site/includes/doctype.php"); ?>
 <head>
 	<title><?php print encodeHtml(METADATA_GENERIC_NAME);?> - Page not found</title>
 	<?php include_once($HOME . "site/includes/stylesheets.php"); ?>
@@ -53,10 +53,12 @@
 		
 		<p>We apologise for any inconvenience caused.</p>
 
-		<form class="basic_form" method="get" action="http://<?php print $DOMAIN ?>/site/scripts/google_results.php">
+		<form class="basic_form" action="<?php print getSiteRootURL() . '/improve_search'; ?>" method="get">
+			<input type="hidden" name="pckid" value="1610317951" autocomplete="off">
+			<input type="hidden" name="aid" value="471434" autocomplete="off">
 			<p>
-				 <input type="text" name="q" maxlength="256" value="<?php print $searchQuery; ?>" class="field" />
-				 <input type="submit" name="btnG" value="Search" class="genericButton grey" />
+				<input type="text" maxlength="256" name="sw" class="field" value="<?php print isset($searchQuery) ? encodeHtml($searchQuery) : ''; ?>" autocomplete="off" />
+				<input type="submit" name="btnG" value="Search" class="genericButton grey" />
 			</p>
 		</form>
 
