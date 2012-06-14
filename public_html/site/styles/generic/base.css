@@ -502,7 +502,8 @@ a.help:hover span.tooltip { display:inline; text-decoration: none; }
 }
 
 @media screen and (max-width : 800px) {
-
+#mast ul#mast-nav li {margin-left: 4px; margin-right: 4px;}
+#mast ul#mast-nav li.last {margin-right: 0; padding-right: 0;}
 #main {float: none;}
 ul#main-nav-dropdown {height: 250px;}
 ul#main-nav-dropdown ul {height: 220px;}
