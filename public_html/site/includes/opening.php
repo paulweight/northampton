@@ -154,13 +154,12 @@
 			$dirTree = $lgclList->getFullPath($_GET['categoryID']);
 			$rootCategory = $dirTree[0];
 		}
-		$imagesDirectory = MAIN_HOME_DIR . 'public_html' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR;
 ?>
 					<div id="header">
 <?php
-		if (isset($rootCategory) && is_object($rootCategory) && file_exists($imagesDirectory . 'headers/' . $rootCategory->id . '.jpg')) {
+		if (isset($rootCategory) && is_object($rootCategory) && file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $rootCategory->id . '.png')) {
 ?>
-						<img src="/site/images/headers/<?php print $rootCategory->id; ?>.jpg" alt="<?php print encodeHtml($rootCategory->name); ?>" />
+						<img src="/site/images/headers/<?php print $rootCategory->id; ?>.png" alt="<?php print encodeHtml($rootCategory->name); ?>" />
 						<h1><?php print encodeHtml($MAST_HEADING); ?></h1>
 						<div class="clear"></div>
 					</div>
