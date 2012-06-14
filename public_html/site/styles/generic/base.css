@@ -542,7 +542,8 @@ background: -ms-linear-gradient(top,  rgba(127,143,149,1) 49%,rgba(98,117,123,1)
 background: linear-gradient(top,  rgba(127,143,149,1) 49%,rgba(98,117,123,1) 50%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f8f95', endColorstr='#62757b',GradientType=0 ); /* IE6-9 */
  }
-ul#main-nav-top li a:link, ul#main-nav-top li a:visited{border: 0px; width: 100%; }
+ul#main-nav-top li a:link, ul#main-nav-top li a:visited, ul#main-nav-top li.feedback a:link, ul#main-nav-top li.feedback a:visited {border: 0px; width: 100%; }
+ul#main-nav-top li.feedback a:hover, ul#main-nav-top li.feedback a:active, ul#main-nav-top li.home a:hover, ul#main-nav-top li.home a:active {-webkit-border-radius: 9px;-moz-border-radius: 9px; border-radius: 9px;}
 
 ul#main-nav-top li:hover, ul#main-nav-top li:active { cursor: pointer; background-color: #5a6c71; -moz-box-shadow: inset 3px 3px 3px #4f6267, 2px 2px 10px #7b7b7b; -webkit-box-shadow:  inset 3px 3px 3px, 2px 2px 10px #7b7b7b #4f6267; box-shadow:  inset 3px 3px 3px #4f6267, 2px 2px 10px #7b7b7b; margin: 0 0 4% 0; }
 ul#main-nav-top li a:hover, ul#main-nav-top li a:active {-webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -moz-box-shadow: inset 3px 3px 3px #4f6267; -webkit-box-shadow:  inset 3px 3px 3px; box-shadow:  inset 3px 3px 3px #4f6267; }
