@@ -115,7 +115,7 @@
 			}
 		});
 		$(".expand").show();
-		$(".expand").click(function(){
+		$(".expand").click(function(event){
 			if(event.preventDefault) {
 				event.preventDefault();
 			}
