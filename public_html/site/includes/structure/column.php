@@ -129,14 +129,26 @@
 ?>
 
 <!-- googleoff: index -->
-<div id="side-nav">
+
+		
+
+
+<div class="side-nav">
 	<div class="clear"></div>
+<?php
+	if (isset($indexPage) || $indexPage) {
+?>
+	
+<?php
+	}
+	else {
+?>
 <?php
 	if (isset($allWidgets[0])) {
 		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[0]->id);
 ?>
 	<div id="top-tasks">
-		<h3 class="red"><a href="#top-tasks" class="expand
+	<h3 class="red"><a href="#top-tasks" class="expand
 	
 <?php
 	if (!isset($indexPage) || !$indexPage) {
@@ -153,6 +165,7 @@
 ?>
 	
 	">
+	
 	<?php print encodeHtml($allWidgets[0]->title); ?></a></h3>
 		<ul class="tasks">
 <?php
@@ -165,6 +178,8 @@
 		</ul>
 	</div>
 <?php
+	}
+
 	}
 ?>
 	<div id="service-list">

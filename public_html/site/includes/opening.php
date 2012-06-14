@@ -114,11 +114,61 @@
 <div id="main" class="box-shadow">
 
 <div class="clear"></div>
+<div class="side-nav">			
+<?php
+	if (!isset($indexPage) || !$indexPage) {
+?>
+	
+<?php
+	}
+	else {
+?>
+<?php
+	if (isset($allWidgets[0])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[0]->id);
+?>
+	<div id="top-tasks">
+	<h3 class="red"><a href="#top-tasks" class="expand
+	
+<?php
+	if (!isset($indexPage) || !$indexPage) {
+?>
+	
+<?php
+	}
+	else {
+?>
+		down
 
+<?php
+	}
+?>
+	
+	">
+	
+	<?php print encodeHtml($allWidgets[0]->title); ?></a></h3>
+		<ul class="tasks">
+<?php
+			foreach ($allLinks as &$widgetLink) {
+?>
+			<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
+			}
+?>
+		</ul>
+	</div>
+<?php
+	}
+
+	}
+?>
+	</div>
 <?php
 /* CONTENT */
 ?>
 				<div id="content"<?php print ($script != 'documents.php' && $script != 'documents_info.php' || $showHomepageContent == true) ? ' class="full"' : ''; ?>>
+	
+				
 <?php
 /*  
 	BREADCRUMB

@@ -179,6 +179,7 @@ ul#main-nav-top li.home a:hover {-webkit-border-radius: 9px 0 0 9px; -moz-border
 ul#main-nav-top li.feedback a:link, ul#main-nav-top li.feedback a:visited {width: 19.9%;}
  ul#main-nav-top li.feedback a:hover {-webkit-border-radius: 0 9px 9px 0; -moz-border-radius: 0 9px 9px 0; border-radius: 0 9px 9px 0;}
 ul#main-nav-top li {border-right: 2px solid #FFFFFF; margin-left: -3px; padding: 8px 0}
+ul#main-nav-top li.feedback {border: none;}
 ul#main-nav-top li a span {padding-left: 30px;}
 ul#main-nav-top li.home a {background: url(../css_img/home-nav-bg.gif) 35px 10px no-repeat transparent;}
 ul#main-nav-top li.apply a {background: url(../css_img/apply-nav-bg.gif) 25px 10px no-repeat transparent;}
@@ -225,28 +226,28 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 	
 /** Navigation Widgets **/
 	
-#main #side-nav {float: left; display: inline; max-width: 220px; width: 21%;  padding-right: 1.7%;}
-#main #side-nav h3 {color: #FFFFFF;  -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; margin-bottom: 10px; font-size: 1em; text-shadow: 0px -2px 0px #8f1e20; padding: 6px 0 6px 15px; font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369;}
-#main #side-nav h3 a:link, #main #side-nav h3 a:visited {color: #FFFFFF; text-decoration: none; }
-#main #side-nav h3:hover, #main #side-nav h3:active { padding: 7px 0 5px 15px; text-decoration: none;}
-#main #side-nav a:hover, #main #side-nav a:active {text-decoration: none;}
-#main #side-nav ul {font-size: 0.9em; margin: 0 0 15px 15px;}
-#main #side-nav ul li {margin-bottom: 10px;}
-#main #side-nav ul li a:link, #main #side-nav ul li a:visited {text-decoration: none; color: #1d1d1d;}
-#main #side-nav ul li a:hover, #main #side-nav ul li a:active {text-decoration: underline;}
-#main #side-nav ul li ul {margin-left: 0px;}
-#main #side-nav ul li ul li {margin: 0 0 5px 15px; padding-top: 10px;}
-#main #side-nav ul li ul li ul {margin-bottom: 0px;}
-#main #side-nav ul li ul li ul li {margin-bottom: 0px;}
+#main .side-nav {float: left; display: inline; max-width: 220px; width: 21%;  padding-right: 1.7%;}
+#main .side-nav h3 {color: #FFFFFF;  -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; margin-bottom: 10px; font-size: 1em; text-shadow: 0px -2px 0px #8f1e20; padding: 6px 0 6px 15px; font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369;}
+#main .side-nav h3 a:link, #main .side-nav h3 a:visited {color: #FFFFFF; text-decoration: none; }
+#main .side-nav h3:hover, #main .side-nav h3:active { padding: 7px 0 5px 15px; text-decoration: none;}
+#main .side-nav a:hover, #main .side-nav a:active {text-decoration: none;}
+#main .side-nav ul {font-size: 0.9em; margin: 0 0 15px 15px;}
+#main .side-nav ul li {margin-bottom: 10px;}
+#main .side-nav ul li a:link, #main .side-nav ul li a:visited {text-decoration: none; color: #1d1d1d;}
+#main .side-nav ul li a:hover, #main .side-nav ul li a:active {text-decoration: underline;}
+#main .side-nav ul li ul {margin-left: 0px;}
+#main .side-nav ul li ul li {margin: 0 0 5px 15px; padding-top: 10px;}
+#main .side-nav ul li ul li ul {margin-bottom: 0px;}
+#main .side-nav ul li ul li ul li {margin-bottom: 0px;}
 
-#main #side-nav #top-tasks h3	{ cursor:pointer; }
-#main #side-nav #top-tasks a {width: 100%; background: url(../css_img/leftarrow-down.gif) 95% 0px no-repeat; display: block; }
-#main #side-nav #top-tasks a.down {background: url(../css_img/leftarrow-up.gif) 95% 0px no-repeat;}
-#main #side-nav #top-tasks li a {background: none;}
+#main .side-nav #top-tasks h3	{ cursor:pointer; }
+#main .side-nav #top-tasks a {width: 100%; background: url(../css_img/leftarrow-down.gif) 95% 0px no-repeat; display: block; }
+#main .side-nav #top-tasks a.down {background: url(../css_img/leftarrow-up.gif) 95% 0px no-repeat;}
+#main .side-nav #top-tasks li a {background: none;}
 
 /** Service List Navigation **/
-#main #side-nav #service-list a.selected {color: #AA1E48;}
-#main #side-nav #service-list li.sub-menu a {color: #1d1d1d;}
+#main .side-nav #service-list a.selected {color: #AA1E48;}
+#main .side-nav #service-list li.sub-menu a {color: #1d1d1d;}
 
 /** Documents **/
 
@@ -506,14 +507,15 @@ a.help:hover span.tooltip { display:inline; text-decoration: none; }
 ul#main-nav-dropdown {height: 250px;}
 ul#main-nav-dropdown ul {height: 220px;}
 #main #contact {margin-bottom: 20px;}
-#main #side-nav #top-tasks {float: none; width: 100%; }
-#main #side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
+#main .side-nav #top-tasks {float: none; width: 100%; }
+#main .side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
 
-#main #side-nav, .leftSupplements {width: 100%; float: none; border: none;}
+#main .side-nav, .leftSupplements {width: 100%; float: none; border: none;}
 .leftSupplements { border-bottom: 1px solid #D1D3D4 !important}
 
 #content {width: 100%; border: 0;}
 #content p.search {width: 50%;}
+#content #content-inner {min-height: 100px;}
 
 a.help span.tooltip { display: none; text-indent:0; position:absolute; z-index:20; margin-left: -210px;background: #F1F2F2;border: 1px solid #D1D3D4; width:180px; padding:10px; font-weight:normal; cursor:default;  color: #64797F; font-size: .9em; text-decoration: none; }
 a.help:hover  {background: url(../css_img/help-hoversmall-icon.gif) no-repeat;}
@@ -575,8 +577,8 @@ ul#main-nav-dropdown ul#feedback {width: 23%; -webkit-border-top-right-radius: 5
 
 #main {margin-top: 10px;}
 
-#main#side-nav  #top-tasks {width: 100%; display: block; float: none;}
-#main #side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
+#main .side-nav #top-tasks {width: 100%; display: block; float: none;}
+#main .side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
 
 #main #main .news {padding-bottom: 15px; border-bottom: 2px solid #B2B2B2;}
 
@@ -651,8 +653,8 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 #content #content-additional {width: 100%; float: none; margin-top: 10px; padding-top: 10px;}
 #content #content-additional ul#pagination {width: 100%; float: none; text-align: center; display: block; height: 30px; margin-bottom: 20px; width: 100%;}
 #content #content-additional ul#pagination li {margin:20px 10px 30px 10px; font-size: 1.3em;}
-#main #side-nav #top-tasks {float: none; width: 100%; display: block;}
-#main #side-nav #services {float: none; width: 100%; display: block;}
+#main .side-nav #top-tasks {float: none; width: 100%; display: block;}
+#main .side-nav #services {float: none; width: 100%; display: block;}
 
 #main #main-footer {width: 90%; float: left; margin-bottom: 15px; height: auto;}
 
@@ -702,11 +704,11 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie6 ul#main-nav-dropdown li ul li {display: block}
 	body.ie6 #content {width: 690px;}
 	body.ie6 #content .contact {margin-left: 10px;}
-	body.ie6 #main #side-nav h3 {background: url(../css_img/red.gif) repeat-x top #731031;}
-	body.ie6 #main #side-nav h3:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
+	body.ie6 #main .side-nav h3 {background: url(../css_img/red.gif) repeat-x top #731031;}
+	body.ie6 #main .side-nav h3:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
 	body.ie6 #content .copy {height: 100px; float: none; bottom: 0; position: relative; display: block; background: #414140 }
 	body.ie6 .carousel-tabs {margin-right: 20px;}
-	body.ie6 #side-nav {width: 180px; max-width: 180px;}
+	body.ie6 .side-nav {width: 180px; max-width: 180px;}
 	body.ie6 span.sw 	{ bottom: -10px;}
 	body.ie6 span.se	 	{ bottom: -10px;}
 	body.ie6 #content #content-inner table.record img {width:350px;}
@@ -745,8 +747,8 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie7 ul#main-nav-dropdown ul {display: inline; width: 24%;}
 	body.ie7 ul#main-nav-dropdown li ul li {display: block}
 	body.ie7 #content {width: 690px;}
-	body.ie7 #main #side-nav h3 {background: url(../css_img/red.gif) repeat-x top #731031;}
-	body.ie7 #main #side-nav h3:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
+	body.ie7 #main .side-nav h3 {background: url(../css_img/red.gif) repeat-x top #731031;}
+	body.ie7 #main .side-nav h3:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
 	body.ie7 #content .copy {background: #414140 }
 	body.ie7 #content #content-inner .zoom img {margin-top: -20px;}
 	body.ie7 #content legend {margin-left: -8px !important;}
@@ -780,8 +782,8 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie8 ul#main-nav-top li.feedback a:hover, body.ie8 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
 	body.ie8 ul#main-nav-top li a:link, body.ie8 ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
 	body.ie8 ul#main-nav-dropdown ul {width: 24.1%;}
-	body.ie8 #main #side-nav h3, body.ie8 #main a.button {background: url(../css_img/red.gif) repeat-x top #731031;}
-	body.ie8 #main #side-nav h3:hover, body.ie8 #main a.button:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
+	body.ie8 #main .side-nav h3, body.ie8 #main a.button {background: url(../css_img/red.gif) repeat-x top #731031;}
+	body.ie8 #main .side-nav h3:hover, body.ie8 #main a.button:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
 	body.ie8 #content .copy { background: #414140 }
 	body.ie8 #content .genericButton, body.ie8 #content input {-webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0;}
 	body.ie8 #content #content-inner .zoom img {margin-top: -20px;}
@@ -804,7 +806,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie9 ul#main-nav-top { filter: none;} 
 	body.ie9 ul#main-nav-top li.home a:hover, body.ie9 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
 	body.ie9 ul#main-nav-top li.feedback a:hover, body.ie9 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
-	body.ie9 #main #side-nav h3.red:hover, body.ie9 #main #side-nav h3.red:active {filter: none;}
+	body.ie9 #main .side-nav h3.red:hover, body.ie9 #main .side-nav h3.red:active {filter: none;}
 	body.ie9 #content h2 {filter: none;}
 	body.ie9 .grey { filter: none; background: url(../css_img/ie9-nav-bg.jpg) repeat-x top #63757b; }
 	@media screen and (max-width : 760px) {
@@ -890,7 +892,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	
 	body.ie6 #wrapper { width:auto !important; }
 	
-	ul#main-nav-top, #main #side-nav, #content .bottomSupplements, #content #content-additional, .leftSupplements, #content .contact, #content #header img {display: none !important;}
+	ul#main-nav-top, #main .side-nav, #content .bottomSupplements, #content #content-additional, .leftSupplements, #content .contact, #content #header img {display: none !important;}
 	#main {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
 	#content, #content #content-inner, #content #header {width: 100%; border: 0px; }
 	#content #content-inner blockquote p, #content #content-inner table th {color: #fff !important; text-shadow: none; }
