@@ -796,12 +796,14 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie8 .red { filter: none;}
 	
 	/* IE9 */
+	body.ie9 #wrapper {width: 960px;}
 	body.ie9 #mast { filter: none;} 
 	body.ie9 .red { filter: none; background: url(../css_img/ie9-mast-bg.jpg) repeat-x top #730829; }
 	body.ie9 ul#main-nav-top { filter: none;} 
 	body.ie9 ul#main-nav-top li.home a:hover, body.ie9 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
 	body.ie9 ul#main-nav-top li.feedback a:hover, body.ie9 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
-
+	body.ie9 #main #side-nav h3.red:hover, body.ie9 #main #side-nav h3.red:active {filter: none;}
+	body.ie9 #content h2 {filter: none;}
 	body.ie9 .grey { filter: none; background: url(../css_img/ie9-nav-bg.jpg) repeat-x top #63757b; }
 	@media screen and (max-width : 760px) {
 	body.ie9 ul#main-nav-top li { filter: none; background: url(../css_img/ie9-nav-bg.jpg) repeat-x top #63757b; }
