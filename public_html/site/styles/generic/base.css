@@ -240,7 +240,8 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #main #side-nav ul li ul li ul li {margin-bottom: 0px;}
 
 #main #side-nav #top-tasks h3	{ cursor:pointer; }
-#main #side-nav #top-tasks a {width: 100%; background: url(../css_img/arrow-down.gif) 95% -2px no-repeat; display: block; }
+#main #side-nav #top-tasks a {width: 100%; background: url(../css_img/leftarrow-down.gif) 95% 0px no-repeat; display: block; }
+#main #side-nav #top-tasks a.down {background: url(../css_img/leftarrow-up.gif) 95% 0px no-repeat;}
 #main #side-nav #top-tasks li a {background: none;}
 
 /** Service List Navigation **/

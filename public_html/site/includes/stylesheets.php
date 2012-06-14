@@ -123,6 +123,7 @@
 				event.returnValue = false;
 			}
 			$(".tasks").slideToggle();
+			$(this).toggleClass('down');
 		});
 <?php
 	if (!isset($indexPage) || !$indexPage) {
