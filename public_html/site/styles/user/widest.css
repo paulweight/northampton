@@ -1,3 +1,5 @@
 body {
-	letter-spacing:0.5em;
+	letter-spacing:0.3em;
 }
+
+ul#main-nav-top li.apply a {background-position: 15px 10px;}
