@@ -116,6 +116,12 @@
 		});
 		$(".expand").show();
 		$(".expand").click(function(){
+			if(event.preventDefault) {
+				event.preventDefault();
+			}
+			else {
+				event.returnValue = false;
+			}
 			$(".tasks").slideToggle();
 		});
 <?php

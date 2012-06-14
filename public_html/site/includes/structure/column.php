@@ -102,10 +102,10 @@
 			return;
 		}
 	}
-
-	$fullWidgets = getAllNavWidgets();
-	$allWidgets = array_slice($fullWidgets, 0, 1);
-	$additionalButtons = array_slice($fullWidgets, 1, 1);
+	
+	if (!isset($allWidgets)) {
+		$allWidgets = getAllNavWidgets();
+	}
 	
 	$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 	$allRootCategories = $lgclList->getTopLevelCategories();
@@ -132,22 +132,22 @@
 <div id="side-nav">
 	<div class="clear"></div>
 <?php
-	if (!empty($allWidgets)) {
-		foreach ($allWidgets as &$widget) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
+	if (isset($allWidgets[0])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[0]->id);
 ?>
 	<div id="top-tasks">
-	<h3 class="red"><a href="javascript:void(0);" class="expand"  onclick="return false"><?php print encodeHtml($widget->title); ?></a></h3>
+	<h3 class="red"><a href="#top-tasks" class="expand"><?php print encodeHtml($allWidgets[0]->title); ?></a></h3>
 		<ul class="tasks">
 <?php
 			foreach ($allLinks as &$widgetLink) {
-				print '<li><a href="' . encodeHtml($widgetLink->link) . '">' . encodeHtml($widgetLink->title) . '</a></li>';
+?>
+			<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
+<?php
 			}
 ?>
 		</ul>
 	</div>
 <?php
-		}
 	}
 ?>
 	<div id="service-list">
@@ -166,8 +166,21 @@
 			</li>
 <?php
 		}
+		// Include any additional links from the second nav widget
+		if (isset($allWidgets[1])) {
+			$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[1]->id);
+			foreach ($allLinks as &$widgetLink) {
+?>
+			<li class="additional">
+				<a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a>
+			</li>
+<?php
+			}
+		}
 ?>
 		</ul>
+		
+		
 	</div>
 
 </div>

@@ -3,10 +3,6 @@
 	include_once('utilities/JaduNavWidgets.php');
 	
 	$allWidgets = getAllNavWidgets();
-	$apply = array_slice($allWidgets, 2, 1);
-	$pay = array_slice($allWidgets, 3, 1);
-	$report = array_slice($allWidgets, 4, 1);
-	$feedback = array_slice($allWidgets, 5, 1);
 ?>
 <!-- googleoff: index -->
 <div id="mobile_name"><?php print encodeHtml(METADATA_GENERIC_NAME); ?></div>
@@ -53,14 +49,12 @@
 				<li>
 					<ul id="apply">
 <?php
-	if (!empty($apply)) {
-		foreach ($apply as &$widget) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
-			foreach ($allLinks as &$widgetLink) {
+	if (isset($allWidgets[2])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[2]->id);
+		foreach ($allLinks as &$widgetLink) {
 ?>
 						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
 <?php
-			}
 		}
 	}
 ?>
@@ -69,14 +63,12 @@
 				<li>
 					<ul id="pay">
 <?php
-	if (!empty($pay)) {
-		foreach ($pay as &$widget) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
-			foreach ($allLinks as &$widgetLink) {
+	if (isset($allWidgets[3])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[3]->id);
+		foreach ($allLinks as &$widgetLink) {
 ?>
 						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
 <?php
-			}
 		}
 	}
 ?>
@@ -85,14 +77,12 @@
 				<li>
 					<ul id="report">
 <?php
-	if (!empty($report)) {
-		foreach ($report as &$widget) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
-			foreach ($allLinks as &$widgetLink) {
+	if (isset($allWidgets[4])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[4]->id);
+		foreach ($allLinks as &$widgetLink) {
 ?>
 						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
 <?php
-			}
 		}
 	}
 ?>
@@ -101,14 +91,12 @@
 				<li>
 					<ul id="feedback">
 <?php
-	if (!empty($feedback)) {
-		foreach ($feedback as &$widget) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($widget->id);
-			foreach ($allLinks as &$widgetLink) {
+	if (isset($allWidgets[5])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[5]->id);
+		foreach ($allLinks as &$widgetLink) {
 ?>
 						<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
 <?php
-			}
 		}
 	}
 ?>
