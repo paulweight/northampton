@@ -111,7 +111,7 @@ section ol { list-style: none; }
 #content .copy h3 { display: none; }
 #content .copy h2 a {color: #fff;}
 #content .copy h2 a:hover {text-decoration: none;}
-#content .copy p {margin: 0 0 0 15px; padding-bottom: 5px; font-size: 1.1em; width: 70%; }
+#content .copy p {margin: 0 0 0 15px; padding-bottom: 5px; font-size: 1.1em; width: 60%; }
 
 .carousel-tabs {padding: 8px 20px 4px 0;  float: right; margin-top: -58px; list-style: none; position: relative; z-index: 20000}
 .carousel-tabs li {float: left; display: inline; margin-left: 10px; background: url(../css_img/slider-nav.gif) no-repeat; width: 20px; height: 20px; text-indent: -10000px;}
