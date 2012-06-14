@@ -124,3 +124,7 @@ section ol { list-style: none; }
 #content .directoryWidget a {font-size: .9em;}
 
 #content .randomimageWidget .banner img, #content .middleAdvertWidget img {width: 100%;}
+
+@media screen and (max-width : 500px) {
+#content .copy p {width: 90% !important;}
+}
