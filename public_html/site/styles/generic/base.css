@@ -200,7 +200,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 
 #main {background: #FFFFFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; margin: 20px 0; padding: 15px 15px 8px 15px; }
 
-#content { margin: 0 0 15px 0px; padding-left: 1.9%; float: right; width: 75%; border-left: 2px solid #B2B2B2; height: auto;}
+#content { margin: 0 0 15px 0px; padding-left: 1.9%; float: right; width: 75%; border-left: 2px solid #B2B2B2; height: auto;  }
 #main .full #content-inner {width: 100%; }
 
 #content h1 { margin: 0 0 .58em; font-size: 2em; padding-top:0.2em; }
@@ -208,7 +208,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #content h3 { margin: 1em 0 .58em; font-size: 1.3em;  font-weight: 400; width: 100%; display: block}
 #content h4 { margin: 1em 0 .58em; font-weight: 400;}
 
-#content #content-inner {width: 69%; float: left; }
+#content #content-inner {width: 69%; float: left; position: relative; min-height: 500px; }
 #content #header {width: 100%; display: block; padding: 0 0 10px 0; border-bottom: 2px solid #B2B2B2; }
 #content #header h1 { font-weight: 400; bottom: 20px; padding-top: 85px; margin: 0px; line-height: 1.2em; }
 #content #header img {float: right; display: inline; margin-top: 20px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
@@ -298,7 +298,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f8f95', end
 #content #content-additional ul#pagination li {float: left; display: inline; margin: 10px 0 0 8px;}
 #content #content-additional ul#pagination li a:link, #content #content-additional  ul#pagination li a:visited {text-decoration: none; color: #AA1E48; }
 #content #content-additional ul#pagination li a:hover, #content #content-additional  ul#pagination li a:active {color: #000000;}
-.advert img {display: none;}
+.advert img {display: none}
 a.button {padding: 6px 10% ; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; margin-bottom: 10px; font-size: 1em; text-shadow: 0px -2px 0px #8f1e20; margin: 10px 0 15px 0; display: block; width: auto; text-decoration: none;  font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369;}
 .right {background: #F1F2F2; border: 1px solid #D1D3D4;  margin-bottom: 15px;}
 a.button:link, a.button:visited {display: block; width: 86%; max-width: 250px; margin: 10px auto 15px; padding: 10px 7%; color: #FFFFFF; }
@@ -349,7 +349,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #content #content-additional .twitter li {margin-top: 8px; font-size: .9em; list-style: none; line-height: 18px;}
 #content #content-additional .twitter li small {font-size: .9em; color: #A7A9AC; width: 100%; display: block;}
 
-#content .contact {float: left; width: 100%; display: inline;  border-top: 2px solid #B2B2B2; padding: 0 0 5px 0; margin-top: 10px;clear: both;}
+#content .contact {float: left; width: 100%; display: inline;  border-top: 2px solid #B2B2B2; padding: 0 0 5px 0; margin-top: 10px;clear: both; }
 #content .contact h4 {font-size: 1.2em; margin-bottom: 5px; font-weight: 400;}
 #content .contact ul {padding-left: 0 !important;}
 #content .contact ul li {float: left; display: inline; margin-right: 20px; color: #AA1E48; font-weight: bold;}
@@ -534,7 +534,7 @@ a.help span.tooltip:hover {display: none}
 
 ul#main-nav-top {display: block; background: none; border: none; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; padding-right: 0px; text-align: center;}
 ul#main-nav-top {width: 100%;}
-ul#main-nav-top li {width: 48%; display: block;  margin: 0 0 4% 0; border: 2px solid #FFFFFF;padding: 0;  -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -moz-box-shadow: 2px 2px 10px #7b7b7b; -webkit-box-shadow: 2px 2px 10px #7b7b7b; box-shadow: 2px 2px 10px #7b7b7b; font-size: 1.1em; background: rgb(127,143,149); /* Old browsers */
+ul#main-nav-top li {width: 48%; display: block;  margin: 0 0 4% 0; border: 2px solid #FFFFFF; padding: 0; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -moz-box-shadow: 2px 2px 10px #7b7b7b; -webkit-box-shadow: 2px 2px 10px #7b7b7b; box-shadow: 2px 2px 10px #7b7b7b; font-size: 1.1em; background: rgb(127,143,149); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(127,143,149,1) 49%, rgba(98,117,123,1) 50%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(49%,rgba(127,143,149,1)), color-stop(50%,rgba(98,117,123,1))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top,  rgba(127,143,149,1) 49%,rgba(98,117,123,1) 50%); /* Chrome10+,Safari5.1+ */
@@ -739,7 +739,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie7 ul#main-nav-top {background: url(../css_img/ie-nav-bg.gif) no-repeat top center !important; border: 0; filter: 0; height: 42px;}
 	body.ie7 ul#main-nav-top li.home a:hover, body.ie7 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
 	body.ie7 ul#main-nav-top li.feedback a:hover, body.ie7 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
-	body.ie7 ul#main-nav-top li a:link, ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
+	body.ie7 ul#main-nav-top li a:link, body.ie7 ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
 	body.ie7 ul#main-nav-dropdown {padding-left: 180px;}
 	body.ie7 ul#main-nav-dropdown li {display: inline; }
 	body.ie7 ul#main-nav-dropdown ul {display: inline; width: 24%;}
@@ -809,7 +809,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie9 .grey { filter: none; background: url(../css_img/ie9-nav-bg.jpg) repeat-x top #63757b; }
 	@media screen and (max-width : 760px) {
 	body.ie9 ul#main-nav-top li { filter: none; background: url(../css_img/ie9-nav-bg.jpg) repeat-x top #63757b; }
-		}	
+		}
 
 /** Offline page **/
 	
