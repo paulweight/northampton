@@ -1,363 +1,534 @@
 /*! (c) Mat Marquis (@wilto). MIT License. http://wil.to/3a */
-(function (e, n) {
-	var o = 0;
-	e.fn.getPercentage = function () {
-		return this.attr("style").match(/margin\-left:(.*[0-9])/i) && parseInt(RegExp.$1, 10)
+/* Ref: 0e2ab13ceff6d24bea5f38eceafd2ea8377417e8 */
+(function ($, undefined) {
+	var inst = 0;
+
+	$.fn.getPercentage = function () {
+		var oPercent = this.attr('style').match(/margin\-left:(.*[0-9])/i) && parseInt(RegExp.$1);
+
+		return oPercent;
 	};
-	e.fn.adjRounding = function (i) {
-		var a = e(this),
-			i = a.find(i),
-			a = a.parent().width() - e(i[0]).width();
-		if(0 !== a) {
-			e(i).css("position", "relative");
-			for(var j = 0; j < i.length; j++) {
-				e(i[j]).css("left", a * j + "px")
+
+	$.fn.adjRounding = function (slide) {
+		var $el = $(this),
+			$slides = $el.find(slide),
+			diff = $el.parent().width() - $($slides[0]).width();
+
+		if (diff !== 0) {
+			$($slides).css("position", "relative");
+
+			for (var i = 0; i < $slides.length; i++) {
+				$($slides[i]).css("left", (diff * i) + "px");
 			}
 		}
-		return this
+
+		return this;
 	};
-	e.fn.carousel = function (i) {
-		if(!this.data("carousel-initialized")) {
-			this.data("carousel-initialized", !0);
-			var a = e.extend({
-				slider: ".slider",
-				slide: ".slide",
-				prevSlide: null,
-				nextSlide: null,
-				slideHed: null,
-				addPagination: !1,
-				addNav: i != n && (i.prevSlide || i.nextSlide) ? !1 : !0,
-				namespace: "carousel",
-				speed: 600
-			}, i),
-				j = this,
-				k = document.body || document.documentElement,
-				g = {
-					init: function () {
-						o++;
-						j.each(function (f) {
-							var c = e(this),
-								b = c.find(a.slider),
-								d = c.find(a.slide),
-								h = d.length,
-								m = "margin-left " + a.speed / 1E3 + "s ease",
-								l = "carousel-" + o + "-" + f;
-							1 >= d.length || (c.css({
-								overflow: "hidden",
-								width: "100%"
-							}).attr("role", "application"), b.attr("id", b[0].id || "carousel-" + o + "-" + f).css({
-								marginLeft: "0px",
-								"float": "left",
-								width: 100 * h + "%",
-								"-webkit-transition": m,
-								"-moz-transition": m,
-								"-ms-transition": m,
-								"-o-transition": m,
-								transition: m
-							}).bind("carouselmove", g.move).bind("nextprev", g.nextPrev).bind("navstate", g.navState), d.css({
-								"float": "left",
-								width: 100 / h + "%"
-							}).each(function (b) {
-								var c = e(this);
-								c.attr({
-									role: "tabpanel document",
-									id: l + "-slide" + b
-								});
-								a.addPagination && c.attr("aria-labelledby", l + "-tab" + b)
-							}), a.addPagination && g.addPagination(), a.addNav && g.addNav(), b.trigger("navstate", {
-								current: 0
-							}))
-						})
-					},
-					addNav: function () {
-						j.each(function () {
-							var f = e(this),
-								c = f.find(a.slider)[0].id,
-								c = ['<ul class="slidecontrols" role="navigation">', '\t<li role="presentation"><a href="#' + c + '" class="' + a.namespace + '-next">Next</a></li>', '\t<li role="presentation"><a href="#' + c + '" class="' + a.namespace + '-prev">Prev</a></li>', "</ul>"].join("");
-							a = e.extend(a, {
-								nextSlide: "." + a.namespace + "-next",
-								prevSlide: "." + a.namespace + "-prev"
-							});
-							f.prepend(c)
-						})
-					},
-					addPagination: function () {
-						j.each(function (f) {
-							var c = e(this),
-								b = e('<ol class="' + a.namespace + '-tabs" role="tablist navigation" />');
-							c.find(a.slider);
-							for(var d = c.find(a.slide), h = d.length, f = "carousel-" + o + "-" + f; h--;) {
-								var g = e(d[h]).find(a.slideHed).text() || "Page " + (h + 1),
-									g = ['<li role="presentation">', '<a href="#' + f + "-slide" + h + '"', ' aria-controls="' + f + "-slide" + h + '"', ' id="' + f + "-tab" + h + '" role="tab">' + g + "</a>", "</li>"].join("");
-								b.prepend(g)
-							}
-							b.appendTo(c).find("li").keydown(function (a) {
-								var b = e(this),
-									c = b.prev().find("a"),
-									b = b.next().find("a");
-								switch(a.which) {
-								case 37:
-									;
-								case 38:
-									c.length && c.trigger("click").focus();
-									a.preventDefault();
-									break;
-								case 39:
-									;
-								case 40:
-									b.length && b.trigger("click").focus(), a.preventDefault()
-								}
-							}).find("a").click(function (b) {
-								var d = e(this);
-								"false" == d.attr("aria-selected") && (d = -(100 * d.parent().index()), c.find(a.slider).trigger("carouselmove", {
-									moveTo: d
-								}));
-								b.preventDefault()
-							})
-						})
-					},
-					roundDown: function (a) {
-						a = parseInt(a, 10);
-						return 100 * Math.ceil((a - a % 100) / 100)
-					},
-					navState: function (f, c) {
-						var b = e(this),
-							d = b.find(a.slide),
-							h = -(c.current / 100),
-							g = e(d[h]);
-						b.attr("aria-activedescendant", g[0].id);
-						g.addClass(a.namespace + "-active-slide").attr("aria-hidden", !1).siblings().removeClass(a.namespace + "-active-slide").attr("aria-hidden", !0);
-						if(a.prevSlide || a.nextSlide) {
-							b = e('[href*="#' + this.id + '"]'), b.removeClass(a.namespace + "-disabled"), 0 == h ? b.filter(a.prevSlide).addClass(a.namespace + "-disabled") : h == d.length - 1 && b.filter(a.nextSlide).addClass(a.namespace + "-disabled")
+
+	$.fn.carousel = function (config) {
+
+		// Prevent re-init:
+		if (this.data("carousel-initialized")) {
+			return;
+		}
+
+		// Carousel is being initialized:
+		this.data("carousel-initialized", true);
+
+		var defaults = {
+			slider: '.slider',
+			slide: '.slide',
+			prevSlide: null,
+			nextSlide: null,
+			slideHed: null,
+			addPagination: false,
+			addNav: (config != undefined && (config.prevSlide || config.nextSlide)) ? false : true,
+			namespace: 'carousel',
+			speed: 300
+		},
+			opt = $.extend(defaults, config),
+			$slidewrap = this,
+			dBody = (document.body || document.documentElement),
+			transitionSupport = function () {
+				dBody.setAttribute('style', 'transition:top 1s ease;-webkit-transition:top 1s ease;-moz-transition:top 1s ease;');
+				var tSupport = !! (dBody.style.transition || dBody.style.webkitTransition || dBody.style.msTransition || dBody.style.OTransition || dBody.style.MozTransition)
+
+				return tSupport;
+			},
+			carousel = {
+				init: function () {
+					inst++;
+
+					$slidewrap.each(function (carInt) {
+						var $wrap = $(this),
+							$slider = $wrap.find(opt.slider),
+							$slide = $wrap.find(opt.slide),
+							slidenum = $slide.length,
+							transition = "margin-left " + (opt.speed / 1000) + "s ease",
+							tmp = 'carousel-' + inst + '-' + carInt;
+
+						if ($slide.length <= 1) {
+							return; /* No sense running all this code if the carousel functionality is unnecessary. */
 						}
-						a.addPagination && (d = g.attr("aria-labelledby"), d = e("#" + d), d.parent().addClass(a.namespace + "-active-tab").siblings().removeClass(a.namespace + "-active-tab").find("a").attr({
-							"aria-selected": !1,
-							tabindex: -1
-						}), d.attr({
-							"aria-selected": !0,
-							tabindex: 0
-						}))
-					},
-					move: function (f, c) {
-						var b = e(this);
-						b.trigger(a.namespace + "-beforemove").trigger("navstate", {
-							current: c.moveTo
+
+						$wrap.css({
+							overflow: "hidden",
+							width: "100%"
+						}).attr('role', 'application');
+
+						$slider.attr('id', ($slider[0].id || 'carousel-' + inst + '-' + carInt)).css({
+							"marginLeft": "0px",
+							"float": "left",
+							"width": 100 * slidenum + "%",
+							"-webkit-transition": transition,
+							"-moz-transition": transition,
+							"-ms-transition": transition,
+							"-o-transition": transition,
+							"transition": transition
+						}).bind('carouselmove', carousel.move).bind('nextprev', carousel.nextPrev).bind('navstate', carousel.navState);
+
+						$slide.css({
+							"float": "left",
+							width: (100 / slidenum) + "%"
+						}).each(function (i) {
+							var $el = $(this);
+
+							$el.attr({
+								role: "tabpanel document",
+								id: tmp + '-slide' + i
+							});
+
+							if (opt.addPagination) {
+								$el.attr('aria-labelledby', tmp + '-tab' + i);
+							}
 						});
-						k.setAttribute("style", "transition:top 1s ease;-webkit-transition:top 1s ease;-moz-transition:top 1s ease;");
-						if(k.style.transition || k.style.webkitTransition || k.style.msTransition || k.style.OTransition || k.style.MozTransition) {
-							b.adjRounding(a.slide).css("marginLeft", c.moveTo + "%").one("transitionend webkitTransitionEnd OTransitionEnd", function () {
-								e(this).trigger(a.namespace + "-aftermove")
-							})
-						} else {
-							b.adjRounding(a.slide).animate({
-								marginLeft: c.moveTo + "%"
-							}, {
-								duration: a.speed,
-								queue: !1
-							}, function () {
-								e(this).trigger(a.namespace + "-aftermove")
-							})
-						}
-					},
-					nextPrev: function (f, c) {
-						var b = e(this),
-							d = b ? b.getPercentage() : 0,
-							h = b.find(a.slide),
-							i = "prev" === c.dir ? 0 != d : -d < 100 * (h.length - 1),
-							l = e('[href="#' + this.id + '"]');
-						if(!b.is(":animated") && i) {
-							switch(d = "prev" === c.dir ? 0 != d % 100 ? g.roundDown(d) : d + 100 : 0 != d % 100 ? g.roundDown(d) - 100 : d - 100, b.trigger("carouselmove", {
-								moveTo: d
-							}), l.removeClass(a.namespace + "-disabled").removeAttr("aria-disabled"), d) {
-							case 100 * -(h.length - 1):
-								l.filter(a.nextSlide).addClass(a.namespace + "-disabled").attr("aria-disabled", !0);
-								break;
-							case 0:
-								l.filter(a.prevSlide).addClass(a.namespace + "-disabled").attr("aria-disabled", !0)
-							}
-						} else {
-							d = g.roundDown(d), b.trigger("carouselmove", {
-								moveTo: d
-							})
-						}
-					}
-				};
-			g.init(this);
-			e(a.nextSlide + "," + a.prevSlide).bind("click", function (f) {
-				var c = e(this),
-					b = this.hash,
-					d = c.is(a.prevSlide) ? "prev" : "next",
-					b = e(b);
-				if(c.is("." + a.namespace + "-disabled")) {
-					return !1
-				}
-				b.trigger("nextprev", {
-					dir: d
-				});
-				f.preventDefault()
-			}).bind("keydown", function (a) {
-				e(this);
-				var c = this.hash;
-				switch(a.which) {
-				case 37:
-					;
-				case 38:
-					e("#" + c).trigger("nextprev", {
-						dir: "next"
+
+						// Build and insert navigation/pagination, if specified in the options:
+						opt.addPagination && carousel.addPagination();
+						opt.addNav && carousel.addNav();
+
+						$slider.trigger("navstate", {
+							current: 0
+						});
 					});
-					a.preventDefault();
-					break;
-				case 39:
-					;
-				case 40:
-					e("#" + c).trigger("nextprev", {
-						dir: "prev"
-					}), a.preventDefault()
-				}
-			});
-			j.bind("dragSnap", {
-				wrap: this,
-				slider: a.slider
-			}, function (f, c) {
-				e(this).find(a.slider).trigger("nextprev", {
-					dir: "left" === c.direction ? "next" : "prev"
-				})
-			});
-			j.filter("[data-autorotate]").each(function () {
-				var f, c = e(this),
-					b = c.attr("data-autorotate"),
-					d = c.find(a.slide).length,
-					g = function () {
-						var i = c.find(a.slider);
-						switch(-(e(a.slider).getPercentage() / 100) + 1) {
-						case d:
-							clearInterval(f);
-							f = setInterval(function () {
-								g();
-								i.trigger("nextprev", {
-									dir: "prev"
-								})
-							}, b);
-							break;
-						case 1:
-							clearInterval(f), f = setInterval(function () {
-								g();
-								i.trigger("nextprev", {
-									dir: "next"
-								})
-							}, b)
-						}
-					};
-				f = setInterval(g, b);
-				c.attr("aria-live", "polite").bind("mouseenter click touchstart", function () {
-					clearInterval(f)
-				})
-			});
-			return this
-		}
-	};
-	e.event.special.dragSnap = {
-		setup: function (i) {
-			var a = e(this),
-				j = function (a, e) {
-					var c = e ? "margin-left 0.3s ease" : "none";
-					a.css({
-						"-webkit-transition": c,
-						"-moz-transition": c,
-						"-ms-transition": c,
-						"-o-transition": c,
-						transition: c
-					})
 				},
-				k = function (a) {
-					a = parseInt(a, 10);
-					return 100 * Math.ceil((a - a % 100) / 100)
-				};
-			a.bind("snapback", function (a, e) {
-				var c = e.target,
-					b = c.attr("style") != n ? c.getPercentage() : 0,
-					b = !1 === e.left ? k(b) - 100 : k(b);
-				j(c, !0);
-				dBody.setAttribute("style", "transition:top 1s ease;-webkit-transition:top 1s ease;-moz-transition:top 1s ease;");
-				dBody.style.transition || dBody.style.webkitTransition || dBody.style.MozTransition ? c.css("marginLeft", b + "%") : c.animate({
-					marginLeft: b + "%"
-				}, opt.speed)
-			}).bind("touchstart", function (g) {
-				function f(a) {
-					var c = a.originalEvent.touches ? a.originalEvent.touches[0] : a;
-					d = {
-						time: (new Date).getTime(),
-						coords: [c.pageX, c.pageY]
-					};
-					b && !(Math.abs(b.coords[0] - d.coords[0]) < Math.abs(b.coords[1] - d.coords[1])) && (h.css({
-						"margin-left": k + 100 * ((d.coords[0] - b.coords[0]) / b.origin.width()) + "%"
-					}), 10 < Math.abs(b.coords[0] - d.coords[0]) && a.preventDefault())
-				}
-				var c = g.originalEvent.touches ? g.originalEvent.touches[0] : g,
-					b = {
-						time: (new Date).getTime(),
-						coords: [c.pageX, c.pageY],
-						origin: e(g.target).closest(i.wrap)
-					},
-					d, h = e(g.target).closest(i.slider),
-					k = h.attr("style") != n ? h.getPercentage() : 0;
-				j(h, !1);
-				a.bind("gesturestart", function () {
-					a.unbind("touchmove", f).unbind("touchend", f)
-				}).bind("touchmove", f).one("touchend", function (c) {
-					a.unbind("touchmove", f);
-					j(h, !0);
-					if(b && d) {
-						if(10 < Math.abs(b.coords[0] - d.coords[0]) && Math.abs(b.coords[0] - d.coords[0]) > Math.abs(b.coords[1] - d.coords[1])) {
-							c.preventDefault()
-						} else {
-							a.trigger("snapback", {
-								target: h,
-								left: !0
-							});
-							return
+				addNav: function () {
+					$slidewrap.each(function (i) {
+						var $oEl = $(this),
+							$slider = $oEl.find(opt.slider),
+							currentSlider = $slider[0].id,
+							navMarkup = [
+								'<ul class="slidecontrols" role="navigation">',
+								'	<li role="presentation"><a href="#' + currentSlider + '" class="' + opt.namespace + '-next">Next</a></li>',
+								'	<li role="presentation"><a href="#' + currentSlider + '" class="' + opt.namespace + '-prev">Prev</a></li>',
+								'</ul>'
+								].join(''),
+							nextprev = {
+								nextSlide: '.' + opt.namespace + '-next',
+								prevSlide: '.' + opt.namespace + '-prev'
+							};
+
+						opt = $.extend(opt, nextprev);
+
+						$oEl.prepend(navMarkup);
+					});
+				},
+				addPagination: function () {
+					$slidewrap.each(function (i) {
+						var $oEl = $(this),
+							$pagination = $('<ol class="' + opt.namespace + '-tabs" role="tablist navigation" />'),
+							$slider = $oEl.find(opt.slider),
+							$slides = $oEl.find(opt.slide)
+							slideNum = $slides.length,
+							associated = 'carousel-' + inst + '-' + i;
+
+						while (slideNum--) {
+							var hed = $($slides[slideNum]).find(opt.slideHed).text() || 'Page ' + (slideNum + 1),
+								tabMarkup = [
+									'<li role="presentation">',
+									    '<a href="#' + associated + '-slide' + slideNum + '"',
+									    ' aria-controls="' + associated + '-slide' + slideNum + '"',
+									    ' id="' + associated + '-tab' + slideNum + '" role="tab">' + hed + '</a>',
+									'</li>'
+									].join('');
+
+							$pagination.prepend(tabMarkup);
+						};
+
+						$pagination.appendTo($oEl).find('li').keydown(function (e) {
+							var $el = $(this),
+								$prevTab = $el.prev().find('a'),
+								$nextTab = $el.next().find('a');
+
+							switch (e.which) {
+							case 37:
+							case 38:
+								$prevTab.length && $prevTab.trigger('click').focus();
+								e.preventDefault();
+								break;
+							case 39:
+							case 40:
+								$nextTab.length && $nextTab.trigger('click').focus();
+								e.preventDefault();
+								break;
+							}
+						}).find('a').click(function (e) {
+							var $el = $(this);
+
+							if ($el.attr('aria-selected') == 'false') {
+								var current = $el.parent().index(),
+									move = -(100 * (current)),
+									$slider = $oEl.find(opt.slider);
+
+								$slider.trigger('carouselmove', {
+									moveTo: move
+								});
+							}
+							e.preventDefault();
+						});
+					});
+				},
+				roundDown: function (oVal) {
+					var val = parseInt(oVal, 10);
+
+					return Math.ceil((val - (val % 100)) / 100) * 100;
+				},
+				navState: function (e, ui) {
+					var $el = $(this),
+						$slides = $el.find(opt.slide),
+						ind = -(ui.current / 100),
+						$activeSlide = $($slides[ind]);
+
+					$el.attr('aria-activedescendant', $activeSlide[0].id);
+
+					// Update state of active tabpanel:
+					$activeSlide.addClass(opt.namespace + "-active-slide").attr('aria-hidden', false).siblings().removeClass(opt.namespace + "-active-slide").attr('aria-hidden', true);
+
+					// Update state of next/prev navigation:
+					if (( !! opt.prevSlide || !! opt.nextSlide)) {
+						var $target = $('[href*="#' + this.id + '"]');
+
+						$target.removeClass(opt.namespace + '-disabled');
+
+						if (ind == 0) {
+							$target.filter(opt.prevSlide).addClass(opt.namespace + '-disabled');
+						} else if (ind == $slides.length - 1) {
+							$target.filter(opt.nextSlide).addClass(opt.namespace + '-disabled');
 						}
-						1 < Math.abs(b.coords[0] - d.coords[0]) && 75 > Math.abs(b.coords[1] - d.coords[1]) && (c = b.coords[0] > d.coords[0], -(d.coords[0] - b.coords[0]) > b.origin.width() / 4 || d.coords[0] - b.coords[0] > b.origin.width() / 4 ? b.origin.trigger("dragSnap", {
-							direction: c ? "left" : "right"
-						}) : a.trigger("snapback", {
-							target: h,
-							left: c
-						}))
 					}
-					b = d = n
-				})
-			})
-		}
-	}
+
+					// Update state of pagination tabs:
+					if ( !! opt.addPagination) {
+						var tabId = $activeSlide.attr('aria-labelledby'),
+							$tab = $('#' + tabId);
+
+						$tab.parent().addClass(opt.namespace + '-active-tab').siblings().removeClass(opt.namespace + '-active-tab').find('a').attr({
+							'aria-selected': false,
+							'tabindex': -1
+						});
+
+						$tab.attr({
+							'aria-selected': true,
+							'tabindex': 0
+						});
+					}
+				},
+				move: function (e, ui) {
+					var $el = $(this);
+
+					$el.trigger(opt.namespace + "-beforemove").trigger("navstate", {
+						current: ui.moveTo
+					});
+
+					if (transitionSupport()) {
+
+						$el.adjRounding(opt.slide) /* Accounts for browser rounding errors. Lookin’ at you, iOS Safari. */
+						.css('marginLeft', ui.moveTo + "%").one("transitionend webkitTransitionEnd OTransitionEnd", function () {
+							$(this).trigger(opt.namespace + "-aftermove");
+						});
+
+					} else {
+						$el.adjRounding(opt.slide).animate({
+							marginLeft: ui.moveTo + "%"
+						}, {
+							duration: opt.speed,
+							queue: false
+						}, function () {
+							$(this).trigger(opt.namespace + "-aftermove");
+						});
+					}
+				},
+				nextPrev: function (e, ui) {
+					var $el = $(this),
+						left = ($el) ? $el.getPercentage() : 0,
+						$slide = $el.find(opt.slide),
+						constrain = ui.dir === 'prev' ? left != 0 : -left < ($slide.length - 1) * 100,
+						$target = $('[href="#' + this.id + '"]');
+
+					if (!$el.is(":animated") && constrain) {
+
+						if (ui.dir === 'prev') {
+							left = (left % 100 != 0) ? carousel.roundDown(left) : left + 100;
+						} else {
+							left = ((left % 100) != 0) ? carousel.roundDown(left) - 100 : left - 100;
+						}
+
+						$el.trigger('carouselmove', {
+							moveTo: left
+						});
+
+						$target.removeClass(opt.namespace + '-disabled').removeAttr('aria-disabled');
+
+						switch (left) {
+						case (-($slide.length - 1) * 100):
+							$target.filter(opt.nextSlide).addClass(opt.namespace + '-disabled').attr('aria-disabled', true);
+							break;
+						case 0:
+							$target.filter(opt.prevSlide).addClass(opt.namespace + '-disabled').attr('aria-disabled', true);
+							break;
+						}
+					} else {
+						var reset = carousel.roundDown(left);
+
+						$el.trigger('carouselmove', {
+							moveTo: reset
+						});
+					}
+
+				}
+			};
+
+		carousel.init(this);
+
+		$(opt.nextSlide + ',' + opt.prevSlide).bind('click', function (e) {
+			var $el = $(this),
+				link = this.hash,
+				dir = ($el.is(opt.prevSlide)) ? 'prev' : 'next',
+				$slider = $(link);
+
+			if ($el.is('.' + opt.namespace + '-disabled')) {
+				return false;
+			}
+
+			$slider.trigger('nextprev', {
+				dir: dir
+			});
+
+			e.preventDefault();
+		}).bind('keydown', function (e) {
+			var $el = $(this),
+				link = this.hash;
+
+			switch (e.which) {
+			case 37:
+			case 38:
+				$('#' + link).trigger('nextprev', {
+					dir: 'next'
+				});
+				e.preventDefault();
+				break;
+			case 39:
+			case 40:
+				$('#' + link).trigger('nextprev', {
+					dir: 'prev'
+				});
+				e.preventDefault();
+				break;
+			}
+		});
+
+		var setup = {
+			wrap: this,
+			slider: opt.slider
+		};
+		$slidewrap.bind("dragSnap", setup, function (e, ui) {
+			var $slider = $(this).find(opt.slider),
+				dir = (ui.direction === "left") ? 'next' : 'prev';
+
+			$slider.trigger("nextprev", {
+				dir: dir
+			});
+		});
+
+
+		$slidewrap.filter('[data-autorotate]').each(function () {
+			var auto, $el = $(this),
+				speed = $el.attr('data-autorotate'),
+				slidenum = $el.find(opt.slide).length,
+				autoAdvance = function () {
+					var $slider = $el.find(opt.slider),
+						active = -($(opt.slider).getPercentage() / 100) + 1;
+
+					switch (active) {
+					case slidenum:
+						clearInterval(auto);
+
+						auto = setInterval(function () {
+							autoAdvance();
+							$slider.trigger("nextprev", {
+								dir: 'prev'
+							});
+						}, speed);
+
+						break;
+					case 1:
+						clearInterval(auto);
+
+						auto = setInterval(function () {
+							autoAdvance();
+							$slider.trigger("nextprev", {
+								dir: 'next'
+							});
+						}, speed);
+
+						break;
+					}
+				};
+
+			auto = setInterval(autoAdvance, speed);
+
+			$el.attr('aria-live', 'polite').bind('mouseenter click touchstart', function () {
+				clearInterval(auto);
+			});
+		});
+
+		return this;
+	};
 })(jQuery);
 
-$(document).ready(function() {
+
+$.event.special.dragSnap = {
+	setup: function (setup) {
+
+		var $el = $(this),
+			transitionSwap = function ($el, tog) {
+				var speed = .3,
+					transition = (tog) ? "margin-left " + speed + "s ease" : 'none';
+
+				$el.css({
+					"-webkit-transition": transition,
+					"-moz-transition": transition,
+					"-ms-transition": transition,
+					"-o-transition": transition,
+					"transition": transition
+				});
+			},
+			roundDown = function (left) {
+				var left = parseInt(left, 10);
+
+				return Math.ceil((left - (left % 100)) / 100) * 100;
+			},
+			snapBack = function (e, ui) {
+				var $el = ui.target,
+					currentPos = ($el.attr('style') != undefined) ? $el.getPercentage() : 0,
+					left = (ui.left === false) ? roundDown(currentPos) - 100 : roundDown(currentPos),
+					dBody = document.body,
+					transitionSupport = function () {
+						dBody.setAttribute('style', 'transition:top 1s ease;-webkit-transition:top 1s ease;-moz-transition:top 1s ease;');
+						var tSupport = !! (dBody.style.transition || dBody.style.webkitTransition || dBody.style.MozTransition)
+
+						return tSupport;
+					};
+
+				transitionSwap($el, true);
+
+				if (transitionSupport()) {
+					$el.css('marginLeft', left + "%");
+				} else {
+					$el.animate({
+						marginLeft: left + "%"
+					}, opt.speed);
+				}
+			};
+
+		$el.bind("snapback", snapBack).bind("touchstart", function (e) {
+			var data = e.originalEvent.touches ? e.originalEvent.touches[0] : e,
+				start = {
+					time: ((new Date).getTime()),
+					coords: [data.pageX, data.pageY],
+					origin: $(e.target).closest(setup.wrap),
+					interacting: false
+				},
+				stop, $tEl = $(e.target).closest(setup.slider),
+				currentPos = ($tEl.attr('style') != undefined) ? $tEl.getPercentage() : 0;
+
+			transitionSwap($tEl, false);
+
+			function moveHandler(e) {
+				var data = e.originalEvent.touches ? e.originalEvent.touches[0] : e;
+				stop = {
+					time: (new Date()).getTime(),
+					coords: [data.pageX, data.pageY]
+				}, deltaX = Math.abs(start.coords[0] - data.pageX), deltaY = Math.abs(start.coords[1] - data.pageY);
+
+				if (!start || deltaX < deltaY || deltaX < 15) {
+					return;
+				}
+
+				// prevent scrolling
+				if (deltaX >= 15) {
+					start.interacting = true;
+					$tEl.css({
+						"margin-left": currentPos + (((stop.coords[0] - start.coords[0]) / start.origin.width()) * 100) + '%'
+					});
+					e.preventDefault();
+				} else {
+					return;
+				}
+			};
+
+			$el.bind("gesturestart", function (e) {
+				$el.unbind("touchmove", moveHandler).unbind("touchend", moveHandler);
+			}).bind("touchmove", moveHandler).one("touchend", function (e) {
+				$el.unbind("touchmove", moveHandler);
+
+				transitionSwap($tEl, true);
+
+				if (start && stop) {
+					var deltaX = Math.abs(start.coords[0] - stop.coords[0]),
+						deltaY = Math.abs(start.coords[1] - stop.coords[1]),
+						left = start.coords[0] > stop.coords[0],
+						jumppoint;
+
+					if (deltaX > 20 && (deltaX > deltaY)) {
+						e.preventDefault();
+					} else {
+						if (start.interacting) {
+							$el.trigger('snapback', {
+								target: $tEl,
+								left: left
+							});
+						}
+						return;
+					}
+
+					jumppoint = start.origin.width() / 4;
+
+					if (-deltaX > jumppoint || deltaX > jumppoint) {
+						start.origin.trigger("dragSnap", {
+							direction: left ? "left" : "right"
+						});
+					} else {
+						$el.trigger('snapback', {
+							target: $tEl,
+							left: left
+						});
+					}
+				}
+				start = stop = undefined;
+			});
+		});
+	}
+};
+
+$(document).ready(function () {
 	$('.slidewrap').carousel({
 		slider: '.slider',
 		slide: '.slide',
 		slideHed: '.slidehed',
-		nextSlide : '.next',
-		prevSlide : '.prev',
+		nextSlide: '.next',
+		prevSlide: '.prev',
 		addPagination: true,
-		addNav : false
+		addNav: false
 	});
-	
-	$('.slidewrap2').carousel({
-		slider: '.slider',
-		slide: '.slide',
-		addNav: false,
-		addPagination: true,
-		speed: 300 // ms.
-	});
-	
-	$('.slidewrap3').carousel({
-		namespace: "mr-rotato" // Defaults to "carousel".
-	}).bind({
-		'mr-rotato-beforemove' : function() {
-			$('.events').append('<li>"beforemove" event fired.</li>');
-		},
-		'mr-rotato-aftermove' : function() {
-			$('.events').append('<li>"aftermove" event fired.</li>');
-		}
-	}).after('<ul class="events">Events</ul>');
 });
