@@ -44,7 +44,8 @@
 			addPagination: false,
 			addNav: (config != undefined && (config.prevSlide || config.nextSlide)) ? false : true,
 			namespace: 'carousel',
-			speed: 300
+			speed: 300,
+			rotate: false
 		},
 			opt = $.extend(defaults, config),
 			$slidewrap = this,
@@ -288,7 +289,7 @@
 							break;
 						}
 					} else {
-						var reset = carousel.roundDown(left);
+						var reset = opt.rotate == true ? 0 : carousel.roundDown(left);
 
 						$el.trigger('carouselmove', {
 							moveTo: reset
@@ -529,6 +530,8 @@ $(document).ready(function () {
 		nextSlide: '.next',
 		prevSlide: '.prev',
 		addPagination: true,
-		addNav: false
+		addNav: false,
+		speed: 600,
+		rotate: true
 	});
 });
