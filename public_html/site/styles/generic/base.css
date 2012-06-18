@@ -174,7 +174,7 @@ border-radius: 10px;}
 	
 ul#main-nav-top {display: block; max-width: 960px; width: 100%; text-align: center;  border: 2px solid #FFFFFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 0px !important;  height: auto; z-index: 10000; position:relative; }
 ul#main-nav-top li  {display: inline; color: #FFFFFF;  text-shadow: 0px -2px 1px #58686d; font-weight: bold; font-size: 1.1em; margin: 0px; } 
-ul#main-nav-top li.home a {margin-left: -0.2%; }
+ul#main-nav-top li.home a {margin-left: 0.2%; }
 ul#main-nav-top li.home a:hover {-webkit-border-radius: 9px 0 0 9px; -moz-border-radius: 9px 0 0 9px; border-radius: 9px 0 0 9px;}
 ul#main-nav-top li.feedback a:link, ul#main-nav-top li.feedback a:visited {width: 19.9%;}
 ul#main-nav-top li.feedback a:hover {-webkit-border-radius: 0 9px 9px 0; -moz-border-radius: 0 9px 9px 0; border-radius: 0 9px 9px 0;}
