@@ -9,5 +9,5 @@
 	<egov><config:constant name="MAIN_HOME_DIR" />jadu/egov/htaccess_readable</egov>
 	<xforms><config:constant name="MAIN_HOME_DIR" />jadu/egov/htaccess_readable_xforms</xforms>
 	<utilities><config:constant name="MAIN_HOME_DIR" />jadu/utilities/htaccess_readable</utilities>
-	<custom><config:constant name="MAIN_HOME_DIR" />jadu/custom/htaccess_readable_bottom</custom>
+	<custombottom><config:constant name="MAIN_HOME_DIR" />jadu/custom/htaccess_readable_bottom</custombottom>
 </readable_urls>
