@@ -10,3 +10,6 @@ RewriteRule ^/?contact/?$ contactus [QSA,NC,L]
 
 # FB 28700 - Allow a custom Councillors target
 RewriteRule ^/?councillors/?$ your_councillors [QSA,NC,L]
+
+# FB 28702 - Allow a custom Jobs target
+RewriteRule ^/?jobs/?$ jobs_northamptonshire [QSA,NC,L]
