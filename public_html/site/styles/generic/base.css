@@ -987,3 +987,4 @@ a, a:active, a:visited 	{ color: #AA1E48; -webkit-transition:color .3s ease-in-o
 #content form input.genericButton {height: 40px;  color: #FFFFFF; cursor: pointer; }
 #content .genericButton a:link, #content .genericButton a:visited {color: #FFFFFF; display: block; text-decoration: none; padding: 10px 12px }
 
+#socitm-survey-link {text-align: center;}

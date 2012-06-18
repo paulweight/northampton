@@ -92,8 +92,23 @@
 <script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/widgets/responsive_carousel.min.js';?>"></script>
 <?php 
 	}
+	else {
+?>
+<script type="text/javascript">
+	/* <![CDATA[ */
+	var socitm_my_domains = "www.northampton.gov.uk";
+	var socitm_custcode = "263";
+	var socitm_intro_file = "<?php print getStaticContentRootURL() ?>/site/includes/socitm_intro.php";
+	/* ]]> */
+</script>
+<script type="text/javascript" src="/site/javascript/socitm_wrapper.js"></script>
+<noscript>
+	<p id="socitm-survey-link"><a href="http://socitm.govmetric.com/survey.aspx?code=263">Tell us what you think about our site...</a> <img src="http://socitm.govmetric.com/imagecounter.aspx?code=263"  alt="" /></p>
+</noscript>
+<?php
+	}
 	if (defined('ANALYTICS_INCLUDE') && ANALYTICS_INCLUDE != '') {
-		print ANALYTICS_INCLUDE;
+		print ANALYTICS_INCLUDE . PHP_EOL;
 	}
 ?>
 </body>
