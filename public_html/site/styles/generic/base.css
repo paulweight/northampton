@@ -127,7 +127,7 @@ span.se	 	{ background: url(../css_img/se.png) no-repeat left top; bottom: 0; di
 
 body {background-color:#fcfcfc; color:#444; background: url(../css_img/bg.jpg) repeat;   font-size: 14px; height: 100%  }
 
-#wrapper { background: #D1D3D4; max-width: 960px; width: 88%; padding: 0 20px; margin: 0 auto; -moz-box-shadow: 0px 0px 15px #2d2f30; -webkit-box-shadow: 0px 0px 15px #2d2f30; box-shadow: 0px 0px 15px #2d2f30; height: 100%  }
+#wrapper { background: #D1D3D4; max-width: 960px; width: 88%; padding: 0 20px; margin: 0 auto; -moz-box-shadow: 0px 0px 15px #2d2f30; -webkit-box-shadow: 0px 0px 15px #2d2f30; box-shadow: 0px 0px 15px #2d2f30;   }
 
 /* ----- Header ----- */
 
