@@ -7,3 +7,6 @@ RewriteRule ^/?feedback/?$ customer_feedback [QSA,NC,L]
 
 # FB 28701 - Allow a custom Contact Us target
 RewriteRule ^/?contact/?$ contactus [QSA,NC,L]
+
+# FB 28700 - Allow a custom Councillors target
+RewriteRule ^/?councillors/?$ your_councillors [QSA,NC,L]
