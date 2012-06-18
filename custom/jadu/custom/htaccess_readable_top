@@ -4,3 +4,6 @@ RewriteRule ^/?search/index.%EXTENSION%$ /site/scripts/search_index.%EXTENSION% 
 
 # FB 28695 - Allow a custom target for /feedback
 RewriteRule ^/?feedback/?$ customer_feedback [QSA,NC,L]
+
+# FB 28701 - Allow a custom Contact Us target
+RewriteRule ^/?contact/?$ contactus [QSA,NC,L]
