@@ -733,7 +733,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie6 img 							{ -ms-interpolation-mode:bicubic; }
 
 
-	/* IE7 */
+		/* IE7 */
 	body.ie7 #wrapper {width: 960px;}
 	body.ie7 #main {height: auto; display: block; background: url(../css_img/ie-maintop-bg.gif) no-repeat top center #FFFFFF; margin-bottom: 0px;}
 	body.ie7 #ieFix {height: 14px; display: block; width: 100%; background: url(../css_img/ie-mainbottom-bg.gif) no-repeat top; margin-bottom: 20px; }
@@ -741,7 +741,11 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie7 #footer {background: url(../css_img/ie-footer-bg.gif) no-repeat top center; border: 0; }
 	body.ie7 #mast form div#search-site {margin-top: -30px;}
 	body.ie7 ul#main-nav-top {background: url(../css_img/ie-nav-bg.gif) no-repeat top center !important; border: 0; filter: 0; height: 42px;}
-	body.ie7 ul#main-nav-top li.home a:hover, body.ie7 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
+	body.ie7 ul#main-nav-top li a {margin-right: -3px; margin-left: 3px;}
+	body.ie7 ul#main-nav-top li.home a {margin-left: -3px;}
+	body.ie7 ul#main-nav-dropdown {padding-left: 190px !important;}
+	body.ie7 ul#main-nav-dropdown li ul {width:190px !important;}
+	body.ie7 ul#main-nav-top li.home a:hover, body.ie7 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;  }
 	body.ie7 ul#main-nav-top li.feedback a:hover, body.ie7 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
 	body.ie7 ul#main-nav-top li a:link, body.ie7 ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
 	body.ie7 ul#main-nav-dropdown {padding-left: 180px;}
@@ -783,6 +787,10 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie8 ul#main-nav-top li.home a:hover, body.ie8 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
 	body.ie8 ul#main-nav-top li.feedback a:hover, body.ie8 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
 	body.ie8 ul#main-nav-top li a:link, body.ie8 ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
+	body.ie8 ul#main-nav-top li a {margin-right: -3px; margin-left: 3px;}
+	body.ie8 ul#main-nav-top li.home a {margin-left: -3px;}
+	body.ie8 ul#main-nav-dropdown {padding-left: 185px !important;}
+	body.ie8 ul#main-nav-dropdown li ul {width:190px !important;}
 	body.ie8 ul#main-nav-dropdown ul {width: 24.1%;}
 	body.ie8 #main .side-nav h3, body.ie8 #main a.button {background: url(../css_img/red.gif) repeat-x top #731031;}
 	body.ie8 #main .side-nav h3:hover, body.ie8 #main a.button:hover  {background: url(../css_img/red-hover.gif) repeat-x top #a52042;}
