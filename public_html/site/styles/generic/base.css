@@ -216,7 +216,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #content #header img {float: right; display: inline; margin-top: 20px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;width: 50%; }
 	
 /** Breadcrumbs **/
-#breadcrumb ul {font-size: 0.75em; color: #B2B2B2; }
+#breadcrumb ul {font-size: 0.75em; color: #B2B2B2;width: 100%; display: block; min-height: 20px; }
 #breadcrumb ul li {float: left; display: inline;  margin: 0 15px 5px 0; padding-right: 17px; background: url(../css_img/breadcrumb-arrow.gif) right 2px no-repeat;}
 #breadcrumb ul li:last-child {background: none;}
 #breadcrumb ul li a:link, #breadcrumb ul li a:visited {text-decoration: none; color: #61757b;}
