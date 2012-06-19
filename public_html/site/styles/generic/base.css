@@ -211,9 +211,9 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #content h4 { margin: 1em 0 .58em; font-weight: 400;}
 
 #content #content-inner {width: 69%; float: left; position: relative; min-height: 500px; }
-#content #header {width: 100%; display: block; padding: 0 0 10px 0; border-bottom: 2px solid #B2B2B2; }
-#content #header h1 { font-weight: 400; bottom: 20px;padding-top: 78px;  margin: 0px; line-height: 1.2em; }
-#content #header img {float: right; display: inline; margin-top: 20px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+#content #header {width: 100%; display: block; padding: 0 0 10px 0; border-bottom: 2px solid #B2B2B2; position: relative}
+#content #header h1 { font-weight: 400; vertical-align: bottom;  margin-top: 10px; line-height: 1.2em;  float: left; display: inline-block; width: 50%; }
+#content #header img {float: right; display: inline; margin-top: 20px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;width: 50%; }
 	
 /** Breadcrumbs **/
 #breadcrumb ul {font-size: 0.75em; color: #B2B2B2; }
@@ -320,7 +320,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 .contactSupp ul.list {margin-top: 10px; font-size: 1em; padding-left: 0px !important;}
 
 #content .rightSupplements p {font-size: 0.85em;}
-#content .bottomSupplements {border-bottom: 1px solid #D1D3D4}
+#content .bottomSupplements div:last-child {border-bottom: 1px solid #D1D3D4}
 #content .bottomSupplements p {font-size: 0.85em;}
 .leftSupplements {float: left; display: inline; max-width: 220px; width: 21%;  }
 .leftSupplements p {font-size: 0.85em;}
