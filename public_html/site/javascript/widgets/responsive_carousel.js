@@ -1,5 +1,10 @@
-/*! (c) Mat Marquis (@wilto). MIT License. http://wil.to/3a */
-/* Ref: 0e2ab13ceff6d24bea5f38eceafd2ea8377417e8 */
+/**
+ * Customised by Jadu Limited
+ * 
+ * Based on original code by:
+ * ! (c) Mat Marquis (@wilto). MIT License. http://wil.to/3a
+ * Ref: 0e2ab13ceff6d24bea5f38eceafd2ea8377417e8 
+ */
 (function ($, undefined) {
 	var inst = 0;
 
@@ -45,7 +50,8 @@
 			addNav: (config != undefined && (config.prevSlide || config.nextSlide)) ? false : true,
 			namespace: 'carousel',
 			speed: 300,
-			rotate: false
+			rotate: false,
+			startSlide: 1
 		},
 			opt = $.extend(defaults, config),
 			$slidewrap = this,
@@ -66,7 +72,8 @@
 							$slide = $wrap.find(opt.slide),
 							slidenum = $slide.length,
 							transition = "margin-left " + (opt.speed / 1000) + "s ease",
-							tmp = 'carousel-' + inst + '-' + carInt;
+							tmp = 'carousel-' + inst + '-' + carInt,
+							start = opt.startSlide < 1 ? 1 : opt.startSlide > slidenum ? slidenum : parseInt(opt.startSlide)
 
 						if ($slide.length <= 1) {
 							return; /* No sense running all this code if the carousel functionality is unnecessary. */
@@ -78,7 +85,7 @@
 						}).attr('role', 'application');
 
 						$slider.attr('id', ($slider[0].id || 'carousel-' + inst + '-' + carInt)).css({
-							"marginLeft": "0px",
+							"marginLeft": -(100 * (start - 1)) + "%",
 							"float": "left",
 							"width": 100 * slidenum + "%",
 							"-webkit-transition": transition,
@@ -109,7 +116,7 @@
 						opt.addNav && carousel.addNav();
 
 						$slider.trigger("navstate", {
-							current: 0
+							current: -(100 * (start - 1))
 						});
 					});
 				},
@@ -117,7 +124,8 @@
 					$slidewrap.each(function (i) {
 						var $oEl = $(this),
 							$slider = $oEl.find(opt.slider),
-							currentSlider = $slider[0].id,
+							start = opt.startSlide < 1 ? 1 : opt.startSlide > slidenum ? slidenum : parseInt(opt.startSlide),
+							currentSlider = $slider[start - 1].id,
 							navMarkup = [
 								'<ul class="slidecontrols" role="navigation">',
 								'	<li role="presentation"><a href="#' + currentSlider + '" class="' + opt.namespace + '-next">Next</a></li>',
@@ -175,7 +183,6 @@
 							}
 						}).find('a').click(function (e) {
 							var $el = $(this);
-
 							if ($el.attr('aria-selected') == 'false') {
 								var current = $el.parent().index(),
 									move = -(100 * (current)),
@@ -351,38 +358,45 @@
 			});
 		});
 
-
 		$slidewrap.filter('[data-autorotate]').each(function () {
 			var auto, $el = $(this),
 				speed = $el.attr('data-autorotate'),
 				slidenum = $el.find(opt.slide).length,
+				$slider = $el.find(opt.slider),
+				autoAdvanceNext = function () {
+					clearInterval(auto);
+
+					auto = setInterval(function () {
+						autoAdvance();
+						$slider.trigger("nextprev", {
+							dir: 'next'
+						});
+					}, speed);
+				},
 				autoAdvance = function () {
-					var $slider = $el.find(opt.slider),
-						active = -($(opt.slider).getPercentage() / 100) + 1;
 
-					switch (active) {
-					case slidenum:
-						clearInterval(auto);
+					if (opt.rotate) {
+						autoAdvanceNext();
+					}
+					else {
+						var active = -($(opt.slider).getPercentage() / 100) + 1;
 
-						auto = setInterval(function () {
-							autoAdvance();
-							$slider.trigger("nextprev", {
-								dir: 'prev'
-							});
-						}, speed);
+						switch (active) {
+						case slidenum:
+							clearInterval(auto);
 
-						break;
-					case 1:
-						clearInterval(auto);
+							auto = setInterval(function () {
+								autoAdvance();
+								$slider.trigger("nextprev", {
+									dir: 'prev'
+								});
+							}, speed);
 
-						auto = setInterval(function () {
-							autoAdvance();
-							$slider.trigger("nextprev", {
-								dir: 'next'
-							});
-						}, speed);
-
-						break;
+							break;
+						default:
+							autoAdvanceNext();
+							break;
+						}
 					}
 				};
 
@@ -390,6 +404,10 @@
 
 			$el.attr('aria-live', 'polite').bind('mouseenter click touchstart', function () {
 				clearInterval(auto);
+			});
+
+			$el.attr('aria-live', 'polite').bind('mouseleave', function () {
+				auto = setInterval(autoAdvance, speed);
 			});
 		});
 
@@ -532,6 +550,7 @@ $(document).ready(function () {
 		addPagination: true,
 		addNav: false,
 		speed: 600,
-		rotate: true
+		rotate: true,
+		startSlide: 1
 	});
 });
