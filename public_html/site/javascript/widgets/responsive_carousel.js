@@ -273,7 +273,7 @@
 						left = ($el) ? $el.getPercentage() : 0,
 						$slide = $el.find(opt.slide),
 						constrain = ui.dir === 'prev' ? left != 0 : -left < ($slide.length - 1) * 100,
-						maxLeft = -($slide.length - 1) * 100;
+						maxLeft = -($slide.length - 1) * 100,
 						$target = $('[href="#' + this.id + '"]');
 
 					if (!$el.is(":animated") && constrain) {
