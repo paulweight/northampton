@@ -478,6 +478,8 @@ ul#main-nav-dropdown ul#report {width: 23.8%;}
 @media screen and  (max-width: 1000px) {
 
 ul#main-nav-dropdown ul#report {width: 24.1%;}
+ul#main-nav-dropdown {height: 250px;}
+ul#main-nav-dropdown ul {height: 220px;}
 
 ul#main-nav-top li.home a {background-position: 20px 9px; }
 ul#main-nav-top li.apply a {background-position: 10px 10px ;}
@@ -506,8 +508,6 @@ a.help:hover span.tooltip { display:inline; text-decoration: none; }
 #mast ul#mast-nav li {margin-left: 4px; margin-right: 4px;}
 #mast ul#mast-nav li.last {margin-right: 0; padding-right: 0;}
 #main {float: none;}
-ul#main-nav-dropdown {height: 250px;}
-ul#main-nav-dropdown ul {height: 220px;}
 #main #contact {margin-bottom: 20px;}
 #main .side-nav #top-tasks {float: none; width: 100%; }
 #main .side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
