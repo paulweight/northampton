@@ -127,7 +127,7 @@ span.se	 	{ background: url(../css_img/se.png) no-repeat left top; bottom: 0; di
 
 body {background-color:#fcfcfc; color:#444; background: url(../css_img/bg.jpg) repeat;   font-size: 14px; height: 100%  }
 
-#wrapper { background: #D1D3D4; max-width: 960px; width: 88%; padding: 0 20px; margin: 0 auto; -moz-box-shadow: 0px 0px 15px #2d2f30; -webkit-box-shadow: 0px 0px 15px #2d2f30; box-shadow: 0px 0px 15px #2d2f30;   }
+#wrapper { background: #D1D3D4; max-width: 960px; width: 88%; padding: 0 20px; margin: 0 auto; -moz-box-shadow: 0px 0px 15px #2d2f30; -webkit-box-shadow: 0px 0px 15px #2d2f30; box-shadow: 0px 0px 15px #2d2f30;  }
 
 /* ----- Header ----- */
 
@@ -569,7 +569,6 @@ ul#main-nav-dropdown ul#apply {width: 21.1%; margin-left: 0px; -webkit-border-to
 ul#main-nav-dropdown ul#pay {width: 19%;}
 ul#main-nav-dropdown ul#report {width: 21%;}
 ul#main-nav-dropdown ul#feedback {width: 23%; -webkit-border-top-right-radius: 5px; -moz-border-radius-topright: 5px; border-top-right-radius: 5px;}
-
 #announcement {margin-top: 0px;}
 
  #content #eventSelection form select {width: 70%;  }
@@ -599,7 +598,7 @@ ul#main-nav-dropdown ul#feedback {width: 23%; -webkit-border-top-right-radius: 5
 
 body {font-size: 105%; }
 
-#mast {}
+#mast {margin-bottom:2%;}
 #mast span.h1 {float: none; margin: 0 auto; max-width: 300px; width: 95%; height: 70px; display: block; background-size: 100%;}
 #mast span.h1 a:link, #mast span.h1 a:visited {width: 100%; display: block;}
 #mast form {display: block; float: none; width: 93%; padding: 0 10px; padding-bottom: 20px; margin-bottom: 30px; }
@@ -612,16 +611,19 @@ ul#main-nav-top {display: block; background: none; border: none; -moz-box-shadow
 ul#main-nav-top {width: 100%; min-width: 280px;}
 ul#main-nav-top li {display: block;  border: 2px solid #FFFFFF; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; -moz-box-shadow: 2px 2px 10px #7b7b7b; -webkit-box-shadow: 2px 2px 10px #7b7b7b; box-shadow: 2px 2px 10px #7b7b7b;  }
 
-ul#main-nav-top li.home a {background-position: 40 11px; }
-ul#main-nav-top li.apply a {background-position: 10px 12px ;}
-ul#main-nav-top li.pay a {background-position: 10px 12px;}
-ul#main-nav-top li.report a {background-position: 10px 12px;}
-ul#main-nav-top li.feedback a {background-position: 10px 11px;}
+ul#main-nav-top li, ul#main-nav-top li:hover, ul#main-nav-top li.home {margin: 0 0 2% 0}
+ul#main-nav-top li.home a {background-position: 40 9px; }
+ul#main-nav-top li.apply a {background-position: 10px 10px ;}
+ul#main-nav-top li.pay a {background-position: 10px 10px;}
+ul#main-nav-top li.report a {background-position: 10px 10px;}
+ul#main-nav-top li.feedback a {background-position: 10px 9px;}
 
+ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 #mast form p label {display: none;}
 #mast form input.field {height: 20px; width: 70%; }
 #content p.search {width: 90%;}
 
+#main {margin-top: 0px;}
 #content .slidewrap {background-color: #414140; }
 #content .crop img {width:400px; display: block; position: absolute; left: 50%; margin-left: -200px; }
 #content .crop {height:auto;}
@@ -638,7 +640,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 
 #content #content-inner {width: 100%;}
 #content #content-inner p, #content #content-inner li {line-height: 1.5em;}
-#content #content-inner .figcaption, #content #content-inner .floatRight {max-width: 100%;}
+#content #content-inner .figcaption, #content #content-inner .floatRight {max-width: 100%; }
 #content #content-inner table {zoom: .7; overflow: auto; white-space: normal}
 #content #content-inner table#calendar {border: 0px; display: inline-table; width: 100%; overflow-x: auto; white-space: normal;}
 #content #content-inner table.record {display: inherit; width: 100%; overflow-x: auto; white-space: normal; word-wrap: break-word; zoom: .7;}
@@ -682,7 +684,7 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 #footer #social ul#networks li img {margin: 0 auto; float: none}
 
 }
- 
+
 
 /* ----- IE Fixes ----- */
 
@@ -733,14 +735,14 @@ ul#main-nav-top li.feedback a {background-position: 10px 11px;}
 	body.ie6 img 							{ -ms-interpolation-mode:bicubic; }
 
 
-		/* IE7 */
+	/* IE7 */
 	body.ie7 #wrapper {width: 960px;}
 	body.ie7 #main {height: auto; display: block; background: url(../css_img/ie-maintop-bg.gif) no-repeat top center #FFFFFF; margin-bottom: 0px;}
 	body.ie7 #ieFix {height: 14px; display: block; width: 100%; background: url(../css_img/ie-mainbottom-bg.gif) no-repeat top; margin-bottom: 20px; }
 	body.ie7 #mast {background: url(../css_img/ie-mast-bg.gif) no-repeat bottom center; border: 0; }
 	body.ie7 #footer {background: url(../css_img/ie-footer-bg.gif) no-repeat top center; border: 0; }
 	body.ie7 #mast form div#search-site {margin-top: -30px;}
-	body.ie7 ul#main-nav-top {width: 100%; background: url(../css_img/ie-nav-bg.gif) no-repeat top center !important; border: 0; filter: 0; height: 42px;}
+	body.ie7 ul#main-nav-top {width: 100%;background: url(../css_img/ie-nav-bg.gif) no-repeat top center !important; border: 0; filter: 0; height: 42px;}
 	body.ie7 ul#main-nav-top li a {margin-right: -3px; margin-left: 3px;}
 	body.ie7 ul#main-nav-top li.home a {margin-left: -3px;}
 	body.ie7 ul#main-nav-dropdown {padding-left: 190px !important;}
