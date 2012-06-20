@@ -124,6 +124,8 @@
 					$slidewrap.each(function (i) {
 						var $oEl = $(this),
 							$slider = $oEl.find(opt.slider),
+							$slide = $oEl.find(opt.slide),
+							slidenum = $slide.length,
 							start = opt.startSlide < 1 ? 1 : opt.startSlide > slidenum ? slidenum : parseInt(opt.startSlide),
 							currentSlider = $slider[start - 1].id,
 							navMarkup = [
@@ -271,6 +273,7 @@
 						left = ($el) ? $el.getPercentage() : 0,
 						$slide = $el.find(opt.slide),
 						constrain = ui.dir === 'prev' ? left != 0 : -left < ($slide.length - 1) * 100,
+						maxLeft = -($slide.length - 1) * 100;
 						$target = $('[href="#' + this.id + '"]');
 
 					if (!$el.is(":animated") && constrain) {
@@ -288,7 +291,7 @@
 						$target.removeClass(opt.namespace + '-disabled').removeAttr('aria-disabled');
 
 						switch (left) {
-						case (-($slide.length - 1) * 100):
+						case (maxLeft):
 							$target.filter(opt.nextSlide).addClass(opt.namespace + '-disabled').attr('aria-disabled', true);
 							break;
 						case 0:
@@ -296,7 +299,7 @@
 							break;
 						}
 					} else {
-						var reset = opt.rotate == true ? 0 : carousel.roundDown(left);
+						var reset = (opt.rotate && ui.dir === 'next') ? 0 : ((opt.rotate && ui.dir === 'prev') ? maxLeft : carousel.roundDown(left));
 
 						$el.trigger('carouselmove', {
 							moveTo: reset
@@ -478,9 +481,12 @@ $.event.special.dragSnap = {
 				stop = {
 					time: (new Date()).getTime(),
 					coords: [data.pageX, data.pageY]
-				}, deltaX = Math.abs(start.coords[0] - data.pageX), deltaY = Math.abs(start.coords[1] - data.pageY);
+				}, 
+				deltaX = Math.abs(start.coords[0] - data.pageX),
+				deltaY = Math.abs(start.coords[1] - data.pageY),
+				left = (currentPos + (((stop.coords[0] - start.coords[0]) / start.origin.width()) * 100));
 
-				if (!start || deltaX < deltaY || deltaX < 15) {
+				if (!start || deltaX < 15 || currentPos <= 0 && left > 0) {
 					return;
 				}
 
@@ -488,7 +494,7 @@ $.event.special.dragSnap = {
 				if (deltaX >= 15) {
 					start.interacting = true;
 					$tEl.css({
-						"margin-left": currentPos + (((stop.coords[0] - start.coords[0]) / start.origin.width()) * 100) + '%'
+						"margin-left": left + '%'
 					});
 					e.preventDefault();
 				} else {
@@ -520,6 +526,7 @@ $.event.special.dragSnap = {
 						}
 						return;
 					}
+					
 
 					jumppoint = start.origin.width() / 4;
 
