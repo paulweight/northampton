@@ -166,7 +166,7 @@
 <?php
 /* CONTENT */
 ?>
-				<div id="content"<?php print ($script != 'documents.php' && $script != 'documents_info.php' || $showHomepageContent == true) ? ' class="full"' : ''; ?>>
+				<div id="content"<?php print ($script != 'documents.php' && $script != 'documents_info.php' && $script != 'events_index.php'  && $script != 'events_categories.php' && $script != 'events_info.php' && $script != 'events.php'   || $showHomepageContent == true) ? ' class="full"' : ''; ?>>
 	
 				
 <?php

@@ -429,7 +429,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #content table#calendar {width: 100%; margin: 0;}
 #content table#calendar caption {font-size: 1.3em; margin-bottom: 5px;}
 #content table#calendar th { color: #FFFFFF;  text-shadow: 0px -2px 1px #58686d; font-weight: bold; font-size: 1.1em;width: 14%; padding: 7px 0; }
-#content table#calendar tbody {background: #F1F2F2; border:1px solid #D1D3D4; border-bottom: 0px;}
+#content table#calendar tbody {background: #F1F2F2; border:1px solid #D1D3D4;}
 #content table#calendar td {width: 14%; padding: 5px 0; text-align: center; color: #64797F}
 #content table#calendar td a {color: #FFFFFF;  -webkit-border-radius:4px; -moz-border-radius: 4px; border-radius: 4px; margin-bottom: 10px; font-size: 1em; text-shadow: 0px -2px 0px #8f1e20; font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369; padding: 3px;}
 #content table#calendar td a:hover, #content table#calendar td a:active {text-decoration: none;}
