@@ -129,61 +129,29 @@
 ?>
 
 <!-- googleoff: index -->
-
-		
-
-
 <div class="side-nav">
 	<div class="clear"></div>
 <?php
-	if (isset($indexPage) || $indexPage) {
-?>
-	
-<?php
-	}
-	else {
-?>
-<?php
-	if (isset($allWidgets[0])) {
+	if ((!isset($indexPage) || !$indexPage) && isset($allWidgets[0])) {
 		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[0]->id);
 ?>
 	<div id="top-tasks">
-	<h3 class="red"><a href="#top-tasks" class="expand
-	
-<?php
-	if (!isset($indexPage) || !$indexPage) {
-?>
-	
-<?php
-	}
-	else {
-?>
-		down
-
-<?php
-	}
-?>
-	
-	">
-	
-	<?php print encodeHtml($allWidgets[0]->title); ?></a></h3>
+		<h3 class="red"><a href="#top-tasks" class="expand"><?php print encodeHtml($allWidgets[0]->title); ?></a></h3>
 		<ul class="tasks">
 <?php
-			foreach ($allLinks as &$widgetLink) {
+		foreach ($allLinks as &$widgetLink) {
 ?>
 			<li><a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a></li>
 <?php
-			}
+		}
 ?>
 		</ul>
 	</div>
 <?php
 	}
-
-	}
 ?>
 	<div id="service-list">
-	<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/info">Services</a></h3>
+		<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/info">Services</a></h3>
 		<ul>
 <?php
 	foreach ($columnRootCategories as &$columnRootCategory) {
@@ -197,71 +165,69 @@
 ?>
 			</li>
 <?php
-		}
-		// Include any additional links from the second nav widget
-		if (isset($allWidgets[1])) {
-			$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[1]->id);
-			foreach ($allLinks as &$widgetLink) {
+	}
+	// Include any additional links from the second nav widget
+	if (isset($allWidgets[1])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[1]->id);
+		foreach ($allLinks as &$widgetLink) {
 ?>
 			<li class="additional">
 				<a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a>
 			</li>
 <?php
-			}
 		}
+	}
 ?>
 		</ul>
-		
-		
 	</div>
 
 </div>
 		<!-- Left-hand Supplements -->
 		<div class="leftSupplements">
 <?php
-		$showLeftSupplements = false;
+	$showLeftSupplements = false;
+	
+	if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/faq_info.php' || 
+		$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs_index.php' || 
+		$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs.php') && 
+		isset($faq) && $faq->id > 0) {
+		$showLeftSupplements = true;
+		$contentType = 'faq';
+		$itemID = $faq->id;
+	}
+	else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/documents_info.php' || $_SERVER['SCRIPT_NAME'] == '/preview/documents_info.php') &&
+		isset($page) && $page->id > 0) {
+		$showLeftSupplements = true;
+		$contentType = 'document';
+		$itemID = $page->id;
+	}
+	else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/home_info.php' || 
+		$_SERVER['SCRIPT_NAME'] == '/site/scripts/documents.php' || 
+		$_SERVER['SCRIPT_NAME'] == '/site/index.php') &&
+		isset($homepage) && $homepage->id > 0) {
+		$showLeftSupplements = true;
+		$contentType = 'homepage';
+		$itemID = $homepage->id;
+	}
+	
+	if ($showLeftSupplements) {
+		$leftSupplements = getAllPageSupplements(array(
+			'contentType' => $contentType, 
+			'itemID' => $itemID, 
+			'locationOnPage' => 'left'
+		), 'position ASC');
 		
-		if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/faq_info.php' || 
-			$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs_index.php' || 
-			$_SERVER['SCRIPT_NAME'] == '/site/scripts/faqs.php') && 
-			isset($faq) && $faq->id > 0) {
-			$showLeftSupplements = true;
-			$contentType = 'faq';
-			$itemID = $faq->id;
-		}
-		else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/documents_info.php' || $_SERVER['SCRIPT_NAME'] == '/preview/documents_info.php') &&
-			isset($page) && $page->id > 0) {
-			$showLeftSupplements = true;
-			$contentType = 'document';
-			$itemID = $page->id;
-		}
-		else if (($_SERVER['SCRIPT_NAME'] == '/site/scripts/home_info.php' || 
-			$_SERVER['SCRIPT_NAME'] == '/site/scripts/documents.php' || 
-			$_SERVER['SCRIPT_NAME'] == '/site/index.php') &&
-			isset($homepage) && $homepage->id > 0) {
-			$showLeftSupplements = true;
-			$contentType = 'homepage';
-			$itemID = $homepage->id;
-		}
-		
-		if ($showLeftSupplements) {
-			$leftSupplements = getAllPageSupplements(array(
-				'contentType' => $contentType, 
-				'itemID' => $itemID, 
-				'locationOnPage' => 'left'
-			), 'position ASC');
-			
-			foreach ($leftSupplements as $supplement) {
-				$record = $supplement->getRecord();
-				if ($record->id > 0) {
-					$publicCode = getSupplementPublicCode($supplement->supplementWidgetID, $supplement->locationOnPage);
-					include(HOME . '/site/includes/supplements/' . $publicCode->code);
-				}
+		foreach ($leftSupplements as $supplement) {
+			$record = $supplement->getRecord();
+			if ($record->id > 0) {
+				$publicCode = getSupplementPublicCode($supplement->supplementWidgetID, $supplement->locationOnPage);
+				include(HOME . '/site/includes/supplements/' . $publicCode->code);
 			}
-			
-			unset($record);
-			unset($publicCode);
 		}
+		
+		unset($record);
+		unset($publicCode);
+	}
 ?>
 		</div>
 		<!-- End left-hand supplements -->
