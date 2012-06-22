@@ -30,7 +30,7 @@
 			<h2>Contacting us</h2>
 			<ul class="list icons documents">
 				<li><a href="<?php print getSiteRootURL() . buildContactURL();?>">Contact us</a></li>
-				<li><a href="<?php print getSiteRootURL() . buildFeedbackURL();?>">Feedback form</a></li>
+				<li><a href="<?php print getSiteRootURL() . buildFeedbackURL();?>">Feedback</a></li>
 				<li><a href="<?php print getSiteRootURL() . buildLocationURL();?>">Location map and directions</a></li>
 			</ul>
 		
@@ -48,7 +48,6 @@
 				}
 ?>	
 				
-				<li><a href="<?php print getSiteRootURL() . buildJobsURL();?>">Job vacancies</a></li>
 				<li><a href="<?php print getSiteRootURL() . buildLinksURL();?>">Links and web resources</a></li>
 			</ul>
 		
