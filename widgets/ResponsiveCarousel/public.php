@@ -9,17 +9,18 @@
 	<span class="ne"> </span>
 	<span class="sw"> </span>
 	<span class="se"> </span>
-		<ul class="slider" id="sliderName">
+		<ul class="slider">
 <?php
-		foreach ($middleAdverts as &$advert) {
+		foreach ($middleAdverts as $advertKey => &$advert) {
 ?>
-			<li class="slide">	
+			<li class="slide">
 				<div class="crop">
 <?php
 			if (!empty($advert->imageURL)) {
 ?>
 					<a href="<?php print encodeHtml($advert->url);?>">
-						<img alt="<?php print encodeHtml($advert->title);?>" src="<?php print getSiteRootURL(); ?>/images/<?php print encodeHtml($advert->imageURL);?>" />
+						<img <?php print $advertKey == 0 ? '' : 'class="lazy"';?> title="<?php print $advertKey == 0 ? '' : 'Image: ' . getSiteRootURL() .'/images/' . encodeHtml($advert->imageURL);?>" alt="<?php print encodeHtml($advert->title);?>" src="<?php print $advertKey == 0 ? getSiteRootURL() . '/images/' . encodeHtml($advert->imageURL) : '/site/images/imageLoading.gif';?>" />
+						<noscript><img alt="<?php print encodeHtml($advert->title);?>" src="<?php print getSiteRootURL() . '/images/' . encodeHtml($advert->imageURL);?>" /></noscript>
 					</a>
 <?php
 			}

@@ -94,6 +94,7 @@ section ol { list-style: none; }
 .slidecontrols a.carousel-disabled:link, .slidecontrols a.carousel-disabled:visited, .slidecontrols a.carousel-disabled:active, .slidecontrols a.carousel-disabled:hover  {font-weight: normal; cursor: default; color: #ccc; text-decoration: none;}
 
 .slidewrap {position: relative; padding: 0; margin-bottom: 15px; }
+.slidewrap img.lazy {display: none;}
 
 section.twothirds { width: 100%; }
 section.onethird { width: 30%; float: right; }
