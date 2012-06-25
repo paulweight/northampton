@@ -33,7 +33,7 @@
 		dBody = (document.body || document.documentElement);
 		dBody.setAttribute('style', 'transition:top 1s ease;-webkit-transition:top 1s ease;-moz-transition:top 1s ease;');
 		return !! (dBody.style.transition || dBody.style.webkitTransition || dBody.style.msTransition || dBody.style.OTransition || dBody.style.MozTransition);
-	}
+	};
 
 	$.fn.carousel = function (config) {
 
