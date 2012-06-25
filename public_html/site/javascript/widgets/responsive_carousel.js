@@ -464,8 +464,7 @@ $.event.special.dragSnap = {
 			snapBack = function (e, ui) {
 				var $el = ui.target,
 					currentPos = ($el.attr('style') != undefined) ? $el.getPercentage() : 0,
-					left = (ui.left === false) ? roundDown(currentPos) - 100 : roundDown(currentPos),
-					dBody = document.body;
+					left = (ui.left === false) ? roundDown(currentPos) - 100 : roundDown(currentPos);
 
 				transitionSwap($el, true);
 
