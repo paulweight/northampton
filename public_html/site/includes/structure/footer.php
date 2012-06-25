@@ -9,11 +9,11 @@
 		<div id="social">
 			<h4>Follow us on&hellip;</h4>
 			<ul id="networks">
-				<li><a href="<?php print getSiteRootURL(); ?>/facebook"><img src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-facebook.png" alt="Facebook" title="Facebook" /> <span>Facebook</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/twitter"><img src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-twitter.png" alt="Twitter" title="Twitter" /> <span>Twitter</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/flickr"><img src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-flickr.png" alt="Flickr" title="Flickr" /> <span>Flickr</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/youtube"><img src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-youtube.png" alt="YouTube" title="YouTube" /> <span>YouTube</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/rss"><img src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-rss.png" alt="RSS" title="RSS" /> <span>RSS</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/facebook"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-facebook.png" alt="Facebook" title="Facebook" /> <span>Facebook</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/twitter"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-twitter.png" alt="Twitter" title="Twitter" /> <span>Twitter</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/flickr"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-flickr.png" alt="Flickr" title="Flickr" /> <span>Flickr</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/youtube"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-youtube.png" alt="YouTube" title="YouTube" /> <span>YouTube</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/rss"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-rss.png" alt="RSS" title="RSS" /> <span>RSS</span></a></li>
 			</ul>
 		</div>
 		<ul class="hidden">
