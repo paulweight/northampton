@@ -51,8 +51,7 @@
 			speed: 300,
 			rotate: false,
 			startSlide: 1,
-			lazy: false,
-			lazyFadeDuration: 300
+			lazy: false
 		},
 			opt = $.extend(defaults, config),
 			$slidewrap = this,
@@ -139,7 +138,7 @@
 						if (index != opt.startSlide - 1 && typeof title !== 'undefined') {
 							$(this).hide();
 							img = title.replace('Image: ', '');
-							$(this).attr('src', img).fadeIn(opt.lazyFadeDuration);
+							$(this).removeAttr('title').attr('src', img).fadeIn(opt.lazyFadeDuration);
 						}
 					});
 					imgLoaded = true;
@@ -270,11 +269,9 @@
 				move: function (e, ui) {
 					var $el = $(this);
 
-					$el.trigger(opt.namespace + "-beforemove").trigger("navstate", {
+					$el.trigger('loadimages').trigger(opt.namespace + "-beforemove").trigger("navstate", {
 						current: ui.moveTo
 					});
-
-					$el.trigger('loadimages');
 
 					if (transitionSupport()) {
 
@@ -587,7 +584,6 @@ $(document).ready(function () {
 		speed: 600,
 		rotate: true,
 		startSlide: 1,
-		lazy: true,
-		lazyFadeDuration: 100
+		lazy: true
 	});
 });
