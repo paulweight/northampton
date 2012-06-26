@@ -727,7 +727,7 @@ ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 	body.ie6 a.help span.main {display: inline; float: left; margin-right: 5px; font-size: .9em;}
 	body.ie6 a.help span.tooltip { display: inline; position:relative; z-index:20; margin-left: 0; background: none; border: none; width:auto; padding:0; font-weight:normal; cursor:default;  color: #64797F; font-size: .9em; text-decoration: none ; border: 0;}
 	body.ie6 a.help:hover span.tooltip { display:inline; text-decoration: none; }
-	body.ie6 .width70 {width: 62% !important}
+	body.ie6 .twitterFeed {width: 145px;}
 	body.ie6 .contentWidgetWithLink {zoom: 1;}
 	body.ie6 #mast .pseudoH1 				{ margin-top: 40px; }
 	body.ie6 #mast form input.field 		{ padding-bottom: 2px; margin-right: -1px; }
