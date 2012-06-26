@@ -1,4 +1,4 @@
-<div class="imageWidget"><?php
+<?php
 	if ('%IMG_SRC%' != '' && '%IMG_SRC%' != '%IMG_SRC'.'%' && '%IMG_SRC%' != 'http://'.DOMAIN.'/images/') {
 	
 		if (function_exists('getStaticContentRootURL')) {
@@ -42,7 +42,7 @@
 		$widgetLinkHrefEncoded = encodeHtml($widgetLinkHref);
 		
 ?>
-<div class="widget_banner">
+<div class="widget_banner imageWidget">
 <?php
 	if ($widgetLinkHrefEncoded != '' && $widgetImgLinkText != '') {
 ?>
@@ -67,4 +67,3 @@
 <?php
 	}
 ?>
-	</div>
