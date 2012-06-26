@@ -95,14 +95,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/swfobject.js'; ?>"></script>
-<script type="text/javascript" src="<?php print getStaticContentRootURL() . '/site/javascript/rotation-fix.js'; ?>"></script>
-
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
-	if (typeof jQuery == 'undefined') {
-		document.write(unescape("%3Cscript src='<?php print getStaticContentRootURL() . '/site/javascript/jquery.min.js'; ?>' type='text/javascript'%3E%3C/script%3E"));
-	}
+	"undefined"==typeof jQuery&&document.write(unescape("%3Cscript type='text/javascript' src='<?php print getStaticContentRootURL() . '/site/javascript/jquery.min.js'; ?>'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
