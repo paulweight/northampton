@@ -1,15 +1,16 @@
 <?php
 	include_once("JaduConstants.php");
+	include_once('library/JaduNetworkFunctions.php');
 ?>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
-<h1 style="margin:0 25px 0 150px;"><?php print METADATA_GENERIC_COUNCIL_NAME; ?> website satisfaction survey</h1>
+<h1 style="margin:0 25px 0 150px;"><?php print encodeHtml(METADATA_GENERIC_NAME); ?> website satisfaction survey</h1>
 
 <div style="text-align:left; padding-top:65px;">
 <p>Please help us to improve our service to you, as we are always trying to increase satisfaction with council services.  We value your opinions and would like to receive your views about our website.</p>
 
 <p>The survey will take only a few minutes. Your details will remain anonymous. All the information collected is stored securely and is covered by our privacy policy.</p>
 
-<p>If you require an individual reply please <a href="http://<?php print DOMAIN; ?>/contactus">contact us directly</a>.</p>
+<p>If you require an individual reply please <a href="<?php print getSiteRootURL(); ?>/contactus">contact us directly</a>.</p>
 
 <p>If you would like to complete the survey, please click YES.</p>
 <p><strong>[Note: The survey will appear when you leave the website]</strong></p>
