@@ -103,6 +103,8 @@
 	if (typeof jQuery == 'undefined') {
 		document.write(unescape("%3Cscript src='<?php print getStaticContentRootURL() . '/site/javascript/jquery.min.js'; ?>' type='text/javascript'%3E%3C/script%3E"));
 	}
+</script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		$("#main-nav-dropdown").hide();
 		$(".show_hide").show();
