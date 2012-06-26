@@ -1,10 +1,11 @@
 <?php 
 	include_once('marketing/JaduAdverts.php');
+	include_once('marketing/JaduListFilters.php');
 	
 	$middleAdverts = getMiddleAdvertsForUser($_SESSION['userID']);
 	if (!empty($middleAdverts)) {
 ?>
-	<div class="slidewrap" data-autorotate="2500">
+	<div class="slidewrap">
 	<span class="nw"> </span>
 	<span class="ne"> </span>
 	<span class="sw"> </span>

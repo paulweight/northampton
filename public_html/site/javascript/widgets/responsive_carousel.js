@@ -58,7 +58,8 @@
 			rotate: false,
 			startSlide: 1,
 			lazy: false,
-			lazyFadeDuration: 300
+			lazyFadeDuration: 300,
+			autoRotate: false
 			},
 			opt = $.extend(defaults, config),
 			$slidewrap = this,
@@ -382,9 +383,9 @@
 			});
 		});
 
-		$slidewrap.filter('[data-autorotate]').each(function () {
+		$slidewrap.each(function () {
 			var auto, $el = $(this),
-				speed = $el.attr('data-autorotate'),
+				speed = parseInt(opt.autoRotate, 10) > parseInt(opt.speed) ? parseInt(opt.autoRotate, 10) : 5000,
 				slidenum = $el.find(opt.slide).length,
 				$slider = $el.find(opt.slider),
 				autoAdvanceNext = function () {
@@ -423,6 +424,10 @@
 						}
 					}
 				};
+
+			if (opt.autoRotate == false) {
+				return;
+			}
 
 			auto = setInterval(autoAdvance, speed);
 
@@ -576,6 +581,7 @@ $(document).ready(function () {
 		rotate: true,
 		startSlide: 1,
 		lazy: true,
-		lazyFadeDuration: 100
+		lazyFadeDuration: 100,
+		autoRotate: 6000
 	});
 });
