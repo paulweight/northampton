@@ -699,6 +699,8 @@ ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 	body.ie6 #mast form input.button {margin: 10px 10px 0 0;}
 	body.ie6 #mast ul#mast-nav {margin-bottom: 10px;}
 	body.ie6 ul#main-nav-top {width: 100%; background: url(../css_img/ie-nav-bg.gif) no-repeat top center !important; border: 0; filter: 0; height: 42px;}
+	body.ie6 ul#main-nav-top li a {margin-right: -3px; margin-left: 3px;}
+	body.ie6 ul#main-nav-top li.home a {margin-left: -3px;}
 	body.ie6 ul#main-nav-top li a:link, body.ie6 ul#main-nav-top li a:visited {margin-top: 1px;padding: 11px 0 12px 0;}
 	body.ie6 ul#main-nav-top li.home a:hover, body.ie6 ul#main-nav-top li.home a:active {background: url(../css_img/ie7-home-hover.gif) 2px 0px no-repeat !important; background-color: transparent !important;}
 	body.ie6 ul#main-nav-top li.feedback a:hover, body.ie6 ul#main-nav-top li.feedback a:active {background: url(../css_img/ie7-feedback-hover.gif) -1px 1px no-repeat !important; background-color: transparent !important;}
