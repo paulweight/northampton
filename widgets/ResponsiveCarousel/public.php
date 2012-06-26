@@ -21,7 +21,7 @@
 ?>
 					<a href="<?php print encodeHtml($advert->url);?>">
 						<img <?php print $advertKey == 0 ? '' : 'class="lazy"';?> title="<?php print $advertKey == 0 ? '' : 'Image: ' . getSiteRootURL() .'/images/' . encodeHtml($advert->imageURL);?>" alt="<?php print encodeHtml($advert->title);?>" src="<?php print $advertKey == 0 ? getSiteRootURL() . '/images/' . encodeHtml($advert->imageURL) : '/site/images/imageLoading.gif';?>" />
-						<noscript><img alt="<?php print encodeHtml($advert->title);?>" src="<?php print getSiteRootURL() . '/images/' . encodeHtml($advert->imageURL);?>" /></noscript>
+						<object><noscript><div><img alt="<?php print encodeHtml($advert->title);?>" src="<?php print getSiteRootURL() . '/images/' . encodeHtml($advert->imageURL);?>" /></div></noscript></object>
 					</a>
 <?php
 			}
