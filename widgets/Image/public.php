@@ -1,4 +1,4 @@
-<?php
+<div class="imageWidget"><?php
 	if ('%IMG_SRC%' != '' && '%IMG_SRC%' != '%IMG_SRC'.'%' && '%IMG_SRC%' != 'http://'.DOMAIN.'/images/') {
 	
 		if (function_exists('getStaticContentRootURL')) {
@@ -67,3 +67,4 @@
 <?php
 	}
 ?>
+	</div>
