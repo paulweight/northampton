@@ -9,7 +9,7 @@
 
 <div id="mast" class="red box-shadow">
 
-	<span class="h1"><a href="<?php print getSiteRootURL(); ?>"><span><?php print encodeHtml(METADATA_GENERIC_NAME); ?></span></a></span>
+	<span class="h1"><a href="<?php print !isset($indexPage) || !$indexPage ? getSiteRootURL() : '#mast'; ?>"><span><?php print encodeHtml(METADATA_GENERIC_NAME); ?></span></a></span>
 	
 	<ul id="mast-nav">
 		<li class="font-size"><a href="<?php print getSiteRootURL() . buildUserSettingsURL();?>"><span>Accessibility</span></a></li>
@@ -39,7 +39,7 @@
 	
 </div>
 			<ul id="main-nav-top" class="grey box-shadow">
-				<li class="home" ><a href="<?php print getSiteRootURL(); ?>" ><span>Home</span></a></li>
+				<li class="home" ><a href="<?php print !isset($indexPage) || !$indexPage ? getSiteRootURL() : '#mast'; ?>" ><span>Home</span></a></li>
 				<li class="apply"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/apply"><span>Apply for it</span></a></li>
 				<li class="pay"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/pay"><span>Pay for it</span></a></li>
 				<li class="report"><a class="show_hide" href="<?php print getSiteRootURL(); ?>/report"><span>Report it</span></a></li>
