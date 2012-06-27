@@ -97,7 +97,9 @@
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
+	<!--
 	"undefined"==typeof jQuery&&document.write(unescape("%3Cscript type='text/javascript' src='<?php print getStaticContentRootURL() . '/site/javascript/jquery.min.js'; ?>'%3E%3C/script%3E"));
+	//-->
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
