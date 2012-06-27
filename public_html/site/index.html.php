@@ -44,7 +44,7 @@
 
 	include('./includes/bottom_supplements.php');
 
-	if (isset($homepage)) {
+	if (isset($homepage) && filesize(MAIN_HOME_DIR . 'public_html/site/javascript/homepage_widget.js') != 0) {
 ?>
 	<script type="text/javascript" src="<?php print getStaticContentRootURL(); ?>/site/javascript/homepage_widget.js?md=<?php print filemtime($HOME.'/site/javascript/homepage_widget.js'); ?>"></script>
 <?php
