@@ -29,7 +29,7 @@ form ol.dateOfBirth li input#dob_year	{ width:38px; }
 #content form label strong,  
 #content span.label strong 				{ color: #f00;  }
 #content h2.warning strong 				{ color: #FFF46E; }
-#content h2.warning {background: url(../css_img/warning-large.gif) no-repeat 10px 10px #494948; padding: 15px 20px 15px 100px; margin: 0; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-size: 1em; font-weight:bold; color: #FFFFFF; text-shadow: 0px -1px 1px #000000;}
+#content h2.warning {padding: 2%; width: 96%; background: #393939; margin: 0; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; font-size: 1em; font-weight:bold; color: #FFFFFF; text-shadow: 0px -1px 1px #000000;}
 #content label.error {background: url(../css_img/warning-icon.gif) no-repeat; padding-left: 20px; color: #d32a3a;}
 #content label em 						{ font-style: italic; color: #666; }
 
