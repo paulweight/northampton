@@ -82,7 +82,7 @@
 	}
 ?>
 
-<link rel="Shortcut Icon" type="image/x-icon" href="<?php print getStaticContentRootURL(); ?>/site/favicon.ico" />
+<link rel="Shortcut Icon" type="image/x-icon" href="<?php print getStaticContentRootURL(); ?>/site/faviconNew.ico" />
 <link rel="apple-touch-icon" href="<?php print getStaticContentRootURL(); ?>/site/apple-touch-icon.png" />
 <link rel="ToC" href="<?php print getSiteRootURL() . buildSiteMapURL(); ?>" />
 <?php
