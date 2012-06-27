@@ -190,7 +190,7 @@
 		}
 		else {
 ?>
-						<h1><?php print encodeHtml($MAST_HEADING); ?></h1>
+						<h1 class="long-title"><?php print encodeHtml($MAST_HEADING); ?></h1>
 						<div class="clear"></div>
 					</div>
 					<div id="content-inner">

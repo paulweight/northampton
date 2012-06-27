@@ -213,6 +213,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #content #content-inner {width: 69%; float: left; position: relative; min-height: 500px; }
 #content #header {width: 100%; display: block; padding: 0 0 10px 0; border-bottom: 2px solid #B2B2B2; position: relative}
 #content #header h1 { font-weight: 400; vertical-align: bottom;  margin-top: 10px; line-height: 1.2em;  float: left; display: inline-block; width: 50%; }
+#content #header h1.long-title {width: 100%;}
 #content #header img {float: right; display: inline; margin-top: 20px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;width: 50%; }
 	
 /** Breadcrumbs **/
@@ -266,6 +267,7 @@ ul#main-nav-dropdown ul#feedback {-webkit-border-bottom-right-radius: 5px; -moz-
 #content #content-inner blockquote {background:  url(../css_img/blockquote-bg.gif) no-repeat #e2e2e2; padding: 15px; margin: 15px 0; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
 #content #content-inner blockquote p {font-size: 1.2em; font-family: Georgia; font-style: italic; color: #63757b; text-shadow: 0px 1px 0px #f3f3f3; line-height: 25px; margin-top: 0px;}
 #content #content-inner .byEditor ul {margin-bottom: 15px;}
+.byEditor img {max-width: 100%}
 	
 /** Tables **/
 #content #content-inner table { width: 100%; font-size: .9em}
