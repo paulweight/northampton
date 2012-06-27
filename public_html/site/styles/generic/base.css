@@ -383,7 +383,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #content #content-inner ul.generic li {background: url(../css_img/scripticon-generic.gif) no-repeat;}
 
 #content #content-inner p#az_live_find {margin-bottom: 20px; display: block}
-#content #content-inner .rss {font-weight: bold; color: #282828; display: block; padding-left: 25px; background: url(../css_img/rss-small.gif) no-repeat; opacity: .8;}
+#content #content-inner .rss {font-weight: bold; color: #282828; display: block; padding-left: 25px; background: url(../css_img/rss-small.gif) no-repeat; opacity: .8; clear: both;}
 #content #content-inner .fileIcon { margin: 3px 10px -3px -25px;}
 
 /** AZ **/
