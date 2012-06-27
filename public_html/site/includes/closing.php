@@ -93,7 +93,7 @@
 	(function() {
 		function load() {
 			var src = [
-				'<?php print getStaticContentRootURL(); ?>/site/javascript/widgets/responsive_carousel.js',
+				'<?php print getStaticContentRootURL(); ?>/site/javascript/widgets/responsive_carousel.min.js',
 				'<?php print getStaticContentRootURL(); ?>/site/javascript/rotation-fix.js'
 			], i;
 			
