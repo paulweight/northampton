@@ -94,7 +94,7 @@
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<base href="<?php print getCurrentProtocolSiteRootURL(); ?>/" />
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 	<!--
