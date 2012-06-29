@@ -161,7 +161,7 @@ ul#skip li a { text-decoration:none; }
 #mast form {display: inline; float: right; width: 42%; clear: right; }
 #mast form p {margin-bottom: 0;}
 #mast form p label { font-size: 1.2em; color: #FFF46E; font-style: italic; margin-top: 5px;  cursor: default; float: left; display: inline;  text-shadow: 0px -2px 0px #7e0b32; width: 125px; text-align: right; font-weight: bold;}
-#mast form div#search-site {background: #FFFFFF; -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; -moz-box-shadow: inset 3px 3px 3px #bcbbbb, -2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; -webkit-box-shadow:  inset 3px 3px 3px #bcbbbb, -2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; box-shadow:  inset 3px 3px 3px #bcbbbb, -2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; padding-left: 10px; float: right; display: inline; width: 60.7%;}
+#mast form div#search-site {background: #FFFFFF; -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; -moz-box-shadow: /*inset 3px 3px 3px #bcbbbb, */-2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; -webkit-box-shadow:/*inset 3px 3px 3px #bcbbbb, */-2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; box-shadow:  /*inset 3px 3px 3px #bcbbbb, */-2px -2px 1px #8b1d1e, 2px 2px 1px #c7353b; padding-left: 10px; float: right; display: inline; width: 60.7%;}
 #mast form input.field {height: 20px;  border: 0px;  font-family:Arial, sans-serif;  background: transparent; padding-top: 5px; width: 70%; float: left; display: inline;}
 #mast form input.button {background: url(../css_img/search-button-bg.gif) transparent no-repeat; border: 0px; margin-top: 5px;padding-right: 17px; float: right; display: inline; height: 25px; }
 
