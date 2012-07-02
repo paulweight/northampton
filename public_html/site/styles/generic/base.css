@@ -438,7 +438,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #content table#calendar {width: 100%; margin: 0;}
 #content table#calendar caption {font-size: 1.3em; margin-bottom: 5px;}
 #content table#calendar th { color: #FFFFFF;  text-shadow: 0px -2px 1px #58686d; font-weight: bold; font-size: 1.1em;width: 14%; padding: 7px 0; }
-#content table#calendar tbody {background: #F1F2F2; border:1px solid #D1D3D4;}
+#content table#calendar tbody {background: #F1F2F2; border:1px solid #D1D3D4; }
 #content table#calendar td {width: 14%; padding: 5px 0; text-align: center; color: #64797F}
 #content table#calendar td a {color: #FFFFFF;  -webkit-border-radius:4px; -moz-border-radius: 4px; border-radius: 4px; margin-bottom: 10px; font-size: 1em; text-shadow: 0px -2px 0px #8f1e20; font-weight: bold; border: 1px solid #AA1E48; box-shadow: inset 1px 1px 1px #ec6369; padding: 3px;}
 #content table#calendar td a:hover, #content table#calendar td a:active {text-decoration: none;}
@@ -517,6 +517,7 @@ a.help:hover span.tooltip { display:inline; text-decoration: none; }
 #mast ul#mast-nav li {margin-left: 4px; margin-right: 4px;}
 #mast ul#mast-nav li.last {margin-right: 0; padding-right: 0;}
 #main {float: none;}
+
 #main #contact {margin-bottom: 20px;}
 #main .side-nav #top-tasks {float: none; width: 100%; }
 #main .side-nav #services {display: none; margin-left: -200000px; position: absolute; top: -200000px}
@@ -634,14 +635,16 @@ ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 
 #main {margin-top: 0px;}
 #content .slidewrap {background-color: #414140; }
+
 #content .crop img {width:400px; display: block; position: absolute; left: 50%; margin-left: -200px; }
 #content .crop {height:auto;}
 #content .copy { float: none; display: block; opacity: 1; margin-top: 150px; background: #414140; text-shadow: 0 -2px 0px #313130;}
 #content .copy h2 {padding-top: 10px}
 #content .copy h2, #content .copy p {margin-left: 10px; }
 #content .copy h3 {margin-left: 10px;}
-#content .carousel-tabs {margin: -15px 0 15px -28px; list-style: none outside none; text-align: center; padding: 8px 0 4px 30%; width: auto; float: none;  }
+#content .carousel-tabs {margin: -15px 0 15px -28px; list-style: none outside none; text-align: center; padding: 8px 0 4px 30%; width: auto; float: none; bottom: 0; position:absolute }
 #content .carousel-tabs li {margin-bottom: 15px;}
+#content .slider {padding-bottom: 60px;}
 
 #breadcrumb {width: 100%; display: block; clear: both;}
 #content #header h1 {padding-top: 20px; width: 100%; display: block; clear: both;}
@@ -1006,5 +1009,6 @@ a, a:active, a:visited 	{ color: #AA1E48; -webkit-transition:color .3s ease-in-o
 #content form ol li input[type="submit" { margin-left:31%; }
 
 #content input.rounded { border:none; border:1px solid #e1e1e1; border-radius:50px; padding: 5px 10px; font-size:0.9em; text-transform:none;  }
+
 
 #socitm-survey-link {text-align: center;}
