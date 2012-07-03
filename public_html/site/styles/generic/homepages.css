@@ -72,6 +72,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a52449', end
 /*##### RESPONSIVE CAROUSEL  #####*/
 
 .slidewrap {padding: 0;}
+.slidewrap img.lazy {display: none;}
 	
 section.twothirds { width: 100%; }
 section.onethird { width: 30%; float: right; }
@@ -80,7 +81,7 @@ section ol { list-style: none; }
 		
 .slidewrap {overflow: hidden !important; position: relative; width: 100%; }
 	
-.crop {width:100%; overflow: hidden; height:250px; }
+.crop {width:100%; overflow: hidden; height:315px; }
 	
 .crop img { display: block; left: 50%; margin-left: -400px;  width: 800px;}
 	
@@ -108,13 +109,13 @@ section ol { list-style: none; }
 .crop {overflow: hidden; z-index: 1; position: relative;   -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
 .crop img {width:800px; position: absolute;  left: 50%; z-index: 1; }
 #content .copy {color: #fff; text-shadow: 0 -2px 0px rgb(0,0,0); float: left; display: inline; z-index: 1000; position: relative; background: rgb(65,65,65) ; opacity: .9; width: 100%; margin-top: 250px; min-height: 100px; }
-#content .copy h2 { border-bottom: 0px; margin: 10px 10px 0px 15px; padding: 0; }
+#content .copy h2 { border-bottom: 0px; margin: 5px 10px 0px 15px; padding: 0; }
 #content .copy h3 { display: none; }
 #content .copy h2 a {color: #fff;}
 #content .copy h2 a:hover {text-decoration: none;}
 #content .copy p {margin: 0 0 0 15px; padding-bottom: 5px; font-size: 1.1em; width: 60%; }
 
-.carousel-tabs {padding: 8px 20px 4px 0;  float: right; margin-top: -58px; list-style: none; position: relative; z-index: 20000}
+.carousel-tabs {padding: 8px 20px 4px 0;  float: right; margin-top: -50px; list-style: none; position: relative; z-index: 20000}
 .carousel-tabs li {float: left; display: inline; margin-left: 10px; background: url(../css_img/slider-nav.gif) no-repeat; width: 20px; height: 20px; text-indent: -10000px;}
 .carousel-tabs li span {display: none;}
 .carousel-tabs li a:link, .carousel-tabs li a:visited {width: 20px; height: 20px; display: block; position: relative;}
