@@ -114,7 +114,9 @@
 	}
 	else {
 ?>
+<script type="text/javascript">
 <?php include(HOME . '/site/javascript/rotation-fix.js'); ?>
+</script>
 <script type="text/javascript">
 	/* <![CDATA[ */
 	var socitm_my_domains = "www.northampton.gov.uk";
