@@ -104,7 +104,7 @@ section ol { list-style: none; }
 	
 .slidewrap {overflow: hidden !important; position: relative; width: 100%;  }
 
-#content .crop {width:100%; overflow: hidden; height:350px;  }
+#content .crop {width:100%; overflow: hidden; height:315px;  }
 
 .crop {overflow: hidden; z-index: 1; position: relative;   -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
 .crop img {width:800px; position: absolute;  left: 50%; z-index: 1; }
