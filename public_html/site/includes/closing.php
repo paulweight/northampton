@@ -93,8 +93,7 @@
 	(function() {
 		function load() {
 			var src = [
-				'<?php print getStaticContentRootURL(); ?>/site/javascript/widgets/responsive_carousel.min.js',
-				'<?php print getStaticContentRootURL(); ?>/site/javascript/rotation-fix.js'
+				'<?php print getStaticContentRootURL(); ?>/site/javascript/widgets/responsive_carousel.min.js'
 			], i;
 			
 			for(i in src) {
@@ -107,29 +106,15 @@
 		}
 		window.attachEvent ? window.attachEvent('onload', load) : window.addEventListener('load', load, !1)
 	})();
+</script>
+<script type="text/javascript">
+<?php include(HOME . '/site/javascript/rotation-fix.js'); ?>
 </script>
 <?php 
 	}
 	else {
 ?>
-<script type="text/javascript">
-	(function() {
-		function load() {
-			var src = [
-				'<?php print getStaticContentRootURL(); ?>/site/javascript/rotation-fix.js'
-			], i;
-			
-			for(i in src) {
-				(function(d,t){
-					var s = d.createElement(t), o = d.getElementsByTagName(t), o = o[o.length - 1];
-					s.async = !0; s.type = 'text/javascript'; s.src = src[i];
-					o.parentNode.insertBefore(s, o)
-				}(document,'script'));
-			}
-		}
-		window.attachEvent ? window.attachEvent('onload', load) : window.addEventListener('load', load, !1)
-	})();
-</script>
+<?php include(HOME . '/site/javascript/rotation-fix.js'); ?>
 <script type="text/javascript">
 	/* <![CDATA[ */
 	var socitm_my_domains = "www.northampton.gov.uk";
