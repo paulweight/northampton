@@ -8,6 +8,10 @@ var iAltLimit=365;
 var hasAlternate=false;
 var suppresspop = false;
 
+if (!socitm_intro_file) {
+	socitm_ratio = 0;
+}
+
 if (socitm_my_domains_tmp.length > 0) { socitm_my_domains = socitm_my_domains_tmp; }
 var r = Math.floor(Math.random() * (typeof(socitm_ratio) != "undefined" ? socitm_ratio : 5));
 
