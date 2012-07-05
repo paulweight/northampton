@@ -131,8 +131,8 @@
 						return;
 					}
 
-					var $el = $(this);
-					$images = $el.find(opt.slide + ' img');
+					var $el = $(this),
+						$images = $el.find(opt.slide + ' img');
 					$images.each(function (index) {
 						$(this).removeClass('lazy');
 						title = $(this).attr('title');
