@@ -48,7 +48,6 @@
 				}
 ?>	
 				
-				<li><a href="<?php print getSiteRootURL() . buildLinksURL();?>">Links and web resources</a></li>
 			</ul>
 		
 			<h2>Downloads</h2>
