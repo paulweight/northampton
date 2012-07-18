@@ -1,3 +1,8 @@
+<?php
+include('../../404.php');
+exit;
+?>
+
 <?php include_once("../includes/doctype.php"); ?>
 <head>
 	<title><?php print encodeHtml($MAST_HEADING); ?> | <?php print encodeHtml(METADATA_GENERIC_NAME); ?></title>

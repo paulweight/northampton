@@ -1,4 +1,9 @@
 <?php
+include('../../404.php');
+exit;
+?>
+
+<?php
 	include_once('utilities/JaduStatus.php');
 	include_once("JaduStyles.php"); 
 	include_once("egov/JaduEGovMeetingMinutes.php");
