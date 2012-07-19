@@ -35,7 +35,7 @@
 <?php
             foreach (range('a','z') as $letter) {
 ?>
-		<li class="genericButton grey"><a href="<?php print buildDirectoryAZURL($directory->id, $letter, $categoryInfo->id); ?>"><span class="hidden">Records beginning with </span><?php print encodeHtml($letter); ?></a></li>
+		<li class="genericButton grey"><a href="<?php print buildDirectoryAZURL($directory->id, $letter, -1); ?>"><span class="hidden">Records beginning with </span><?php print encodeHtml($letter); ?></a></li>
 <?php
             }
 ?>
