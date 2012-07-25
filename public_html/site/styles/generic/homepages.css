@@ -48,6 +48,16 @@ background: -ms-linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100
 background: linear-gradient(top, rgba(165,36,73,1) 30%,rgba(108,10,43,1) 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a52449', endColorstr='#6c0a2b',GradientType=0 ); /* IE6-9 */
 }
+#content .latestNewsWidget h2 a {color: #fff; text-decoration: none;}
+#content .latestNewsWidget h2:hover {background: rgb(108,10,43); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(108,10,43,1) 0%, rgba(165,36,73,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(108,10,43,1)), color-stop(100%,rgba(165,36,73,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(108,10,43,1) 0%,rgba(165,36,73,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(108,10,43,1) 0%,rgba(165,36,73,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(108,10,43,1) 0%,rgba(165,36,73,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(108,10,43,1) 0%,rgba(165,36,73,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6c0a2b', endColorstr='#a52449',GradientType=0 ); /* IE6-9 */
+}
 #content .latestNewsWidget h3 {font-size: 1.1em; margin: 0px; padding: 0; font-weight: bold;width: 90%}
 #content .latestNewsWidget p {padding: 0; margin: 0 0 20px 0; font-size: .9em;width: 90%}
 #content .latestNewsWidget p a {font-weight: bold; color: #282828; display: block; padding-left: 25px; background: url(../css_img/rss-small.gif) no-repeat; opacity: .8;}
