@@ -419,9 +419,9 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 /** Galleries **/
 
 #content #content-inner ul.galleryInfo {padding: 0px;}
-#content #content-inner ul.galleryInfo li {width: 50%; text-align: center; float: left; margin-bottom: 20px;}
+#content #content-inner ul.galleryInfo li {width: 25%; text-align: center; float: left; margin-bottom: 20px;}
 #content #content-inner ul.galleryInfo li img {width: 80%; border: 1px solid #D1D3D4;}
-#content #content-inner ul.galleryInfo li span {font-size: .9em; color: #B2B2B2 }
+#content #content-inner ul.galleryInfo li span {font-size: .9em; color: #B2B2B2; display: block }
 #content #content-inner #gallery_item {width: 100%;}
 #content #content-inner #gallery_item img.gallery_img {width: 100%;border: 1px solid #D1D3D4}
 #content #content-inner #gallery_near_items {padding-left: 0; text-align: center}
@@ -432,6 +432,7 @@ a.button span {width: 100%; background: url(../css_img/arrow-right.gif) 100% -2p
 #content #content-inner .zoom {padding-top: 15px; font-weight: bold; color: #282828; display: block; padding-left: 25px; opacity: .8;}
 #content #content-inner .zoom span {margin: 0 10px 0 -20px; }
 #content #content-inner .zoom img { padding-top: 10px; vertical-align: bottom; }
+
 
 /** Events **/
 

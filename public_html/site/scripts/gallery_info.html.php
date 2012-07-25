@@ -38,7 +38,7 @@ else {
 ?>
 
 	<div class="byEditor article">
-		<?php print processEditorContent($gallery->description); ?>
+		<p><?php print processEditorContent($gallery->description); ?></p>
 	</div>
 	
 <?php
