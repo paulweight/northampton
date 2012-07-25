@@ -27,7 +27,7 @@
 	}
 ?>
 <div class="latestNewsWidget">
-	<h2>Latest news</h2>
+	<h2><a href="<?php print getSiteRootURL() . buildNewsURL();?>">Latest news</a></h2>
 <?php
 	$loops = 0;
 	foreach ($allNews as $news) {
