@@ -128,7 +128,7 @@
 		foreach ($allWidgetLinks as $widgetLink) {
 ?>
 		<li class="long"><a title="<?php print encodeHtml($widgetLink[0]); ?>" href="<?php
-		if (strpos($widgetLink[1], 'http://') !== 0 && strpos($widgetLink[1], 'https://') !== 0) {
+		if (strpos($widgetLink[1], 'http://') !== 0 && strpos($widgetLink[1], 'https://') !== 0 && strpos($widgetLink[1], 'mailto:') !== 0) {
 			print 'http://';
 		}
 		print encodeHtml($widgetLink[1]);
