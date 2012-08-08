@@ -1,5 +1,5 @@
 <?php
-include('../../404.php');
+header( 'Location: /councilmeetings' ) ;
 exit;
 ?>
 
