@@ -33,6 +33,10 @@
 		$event->summary = $_POST['summary'];
 	 	$event->description = $_POST['description'];
 	 	
+	 	if($_POST['interval'] == '1day') {
+	 		$event->endDate = $event->startDate;
+	 	}
+	 	
 	 	$error_array = validateEventDetails($event->title, $event->startDate, $event->endDate, 
 	 					$event->startTime, $event->endTime,$event->location, $event->cost, $event->summary, 
 	 					$event->description, true, true);
