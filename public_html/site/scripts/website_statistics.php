@@ -1,4 +1,7 @@
 <?php
+	include('../../404.php');
+	exit;
+
 	include_once("utilities/JaduStatus.php");
 	include_once("JaduStyles.php");
 	include_once('JaduConstants.php');
