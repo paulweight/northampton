@@ -154,6 +154,18 @@
 		<h3 class="red"><a href="<?php print getSiteRootURL(); ?>/info">Services</a></h3>
 		<ul>
 <?php
+	// Include any additional links from the second nav widget
+	if (isset($allWidgets[1])) {
+		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[1]->id);
+		
+		foreach ($allLinks as &$widgetLink) {
+?>
+			<li class="additional">
+				<a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a>
+			</li>
+<?php
+		}
+	}
 	foreach ($columnRootCategories as &$columnRootCategory) {
 ?>
 			<li<?php print (in_array($columnRootCategory->id, $parents)) ? ' class="selected"' : ''; ?>>
@@ -166,17 +178,7 @@
 			</li>
 <?php
 	}
-	// Include any additional links from the second nav widget
-	if (isset($allWidgets[1])) {
-		$allLinks = getAllNavWidgetLinksInNavWidget($allWidgets[1]->id);
-		foreach ($allLinks as &$widgetLink) {
-?>
-			<li class="additional">
-				<a href="<?php print encodeHtml($widgetLink->link); ?>"><?php print encodeHtml($widgetLink->title); ?></a>
-			</li>
-<?php
-		}
-	}
+	
 ?>
 		</ul>
 	</div>
