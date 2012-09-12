@@ -22,7 +22,7 @@
 			$($slides).css("position", "relative");
 
 			for (var i = 0; i < $slides.length; i++) {
-				$slides.eq(i).css("left", (diff * i) + "px");
+				
 			}
 		}
 
@@ -275,7 +275,7 @@
 
 					if ($el.transitionSupport()) {
 
-						$el.adjRounding(opt.slide) /* Accounts for browser rounding errors. Lookin’ at you, iOS Safari. */
+						$el.adjRounding(opt.slide) /* Accounts for browser rounding errors. Lookin? at you, iOS Safari. */
 						.css('marginLeft', ui.moveTo + "%").one("transitionend webkitTransitionEnd OTransitionEnd", function () {
 							$(this).trigger(opt.namespace + "-aftermove");
 						});
