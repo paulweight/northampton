@@ -74,7 +74,7 @@
 ?>
 
 	<!-- post a question -->
-	<form action="<?php print getSiteRootURL() . buildNonReadableFAQURL(true);?>" method="post" enctype="multipart/form-data">
+	<form action="<?php print getSiteRootURL() . '/contactthecouncil';?>" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Do you have a question?</legend>
 			<p>If there is anything you would like to ask us, about our services, our work or how we can help you, then please do.</p>
