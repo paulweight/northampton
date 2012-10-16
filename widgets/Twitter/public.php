@@ -47,8 +47,7 @@
 				$cacheTweets 	= new Cache('twitter', 'tweets' . $TWITTER_USERNAME . '-' . $TWITTER_MAX_POSTS );
 				$cacheTwitter	= new TimedCache('twitter', $TWITTER_USERNAME); 
 				
-				if ($cacheTwitter->isEmpty()) {	
-					echo 'No cache';
+				if ($cacheTwitter->isEmpty()) {
 					/**
 					* Check user exists before attempting to get feed
 					*/
@@ -141,7 +140,7 @@
 								print $buffer;
 								$twitterFeedOK = true;
 							} catch (Exception $e) {
-								// Prevent fail error
+								// Prevent fatal error
 							}
 						} 
 						
