@@ -34,53 +34,6 @@ foreach ($arrList as $value) {
 ?>
 </ul>
 
-	<h2>Our most popular services</h2>
-<?php
-			if (is_array($tags) && sizeof($tags) > 0) {
-?>
-	<p>View as a <a href="<?php print getSiteRootURL() . buildAToZURL(); ?>?view=list">List</a> or a <a href="<?php print getSiteRootURL() . buildAToZURL(); ?>?view=cloud">Cloud</a>.</p>
-<?php
-			}
-		
-		if($view == 'list') {
-?>
-	<!-- Top Services List -->
-	<ul class="list icons services">
-<?php
-		if (sizeof($topServices) > 0) {
-			$count = 0;
-			foreach ($topServices as $id => $requests) {
-?>
-		<li>
-			<a href="<?php print getSiteRootURL() . buildAZServiceURL($id, true, $services[$id]->title); ?>"><?php print encodeHtml($services[$id]->title); ?></a>
-		</li>
-<?php
-				if ($count++ > $topServicesToShow) {
-					break;
-				}
-			}
-		}
-?>
-	</ul>
-<?php
-	}
-	else if ($view == 'cloud') {
-?>
-	<!-- Services tag cloud -->
-		<?php
-			if (is_array($tags)) {
-				foreach ($tags as $id => $value) {
-					$size = $min_size + (($value - $min_qty) * $step);
-		?>
-	<a href="<?php print getSiteRootURL() . buildAZServiceURL($id, true, $services[$id]->title); ?>" style="font-size:<?php print (int) $size; ?>%" ><?php print encodeHtml($services[$id]->title); ?></a>  
-		<?php
-				}
-			}
-		?>
-<?php
-	}
-?>
-
 	<?php include("../includes/services_live_search.php") ?>
 
 <!-- ################ MAIN STRUCTURE ############ -->
