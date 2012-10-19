@@ -22,7 +22,6 @@
 			<ul class="list icons documents">
 				<li><a href="<?php print getSiteRootURL() . buildAccessibilityURL();?>">Accessibility statement and access keys</a></li>
 				<li><a href="<?php print getSiteRootURL() . buildUserSettingsURL();?>">Settings for accessibility</a></li>
-				<li><a href="<?php print getSiteRootURL() . buildStatisticsURL();?>">Website statistics</a></li>
 				<li><a href="<?php print getSiteRootURL() . buildWhatsNewURL();?>">What's new</a></li>
 				<li><a href="<?php print getSiteRootURL() . buildTermsURL();?>">Terms and disclaimer</a></li>
 			</ul>
