@@ -113,9 +113,9 @@
 </script>
 <script type="text/javascript">
 	/* <![CDATA[ */
-	var socitm_my_domains = "www.northampton.gov.uk",
-		socitm_custcode = "263",
-		socitm_intro_file = $(document).outerWidth() < 500 ? null : "<?php print getStaticContentRootURL() ?>/site/includes/socitm_intro.php";
+	var socitm_my_domains = "www.northampton.gov.uk";
+	var	socitm_custcode = "263";
+	var	socitm_intro_file = "<?php print getStaticContentRootURL(); ?>/site/includes/socitm_intro.php";
 	/* ]]> */
 </script>
 <script type="text/javascript" src="/site/javascript/socitm_wrapper.js"></script>
