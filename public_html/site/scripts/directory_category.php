@@ -64,6 +64,12 @@
 		$records = getAllDirectoryEntriesInCategory($category->id, $directory->id, true);
 	}
 
+	if(empty($records)){
+		header("HTTP/1.0 404 Not Found");
+		include('../../404.php');
+		exit;
+	}
+
 	$dirTree = array_reverse(getDirectoryCategoryAncestors($category->id));
 
    // Breadcrumb, H1 and Title
