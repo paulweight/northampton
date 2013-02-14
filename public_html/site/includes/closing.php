@@ -111,6 +111,12 @@
 <script type="text/javascript">
 <?php include(HOME . '/site/javascript/rotation-fix.js'); ?>
 </script>
+<?php
+	}
+	if (defined('ANALYTICS_INCLUDE') && ANALYTICS_INCLUDE != '') {
+		print ANALYTICS_INCLUDE . PHP_EOL;
+	}
+?>
 <script type="text/javascript">
 	/* <![CDATA[ */
 	var socitm_my_domains = "www.northampton.gov.uk";
@@ -122,11 +128,6 @@
 <noscript>
 	<p id="socitm-survey-link"><a href="http://socitm.govmetric.com/survey.aspx?code=263">Tell us what you think about our site...</a> <img src="http://socitm.govmetric.com/imagecounter.aspx?code=263"  alt="" /></p>
 </noscript>
-<?php
-	}
-	if (defined('ANALYTICS_INCLUDE') && ANALYTICS_INCLUDE != '') {
-		print ANALYTICS_INCLUDE . PHP_EOL;
-	}
-?>
+
 </body>
 </html>
