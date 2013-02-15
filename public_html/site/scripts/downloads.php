@@ -29,6 +29,11 @@
 		$dirTree = array();
 	}
 	
+	// 404 if there are no downloads in categories and no categories either
+	if ((!isset($allDownloads) || empty($allDownloads)) && (!isset($categories) || empty($categories))) {
+		include('../../404.php');
+	}
+	
 	// Breadcrumb, H1 and Title
 	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildDownloadsURL() .'">Document downloads</a></li>';
 	$levelNo = 1;
