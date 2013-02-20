@@ -51,7 +51,7 @@
 					/**
 					* Check user exists before attempting to get feed
 					*/
-					$url = 'http://twitter.com/' . $TWITTER_USERNAME;
+					$url = 'https://twitter.com/' . $TWITTER_USERNAME;
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 					curl_setopt($ch, CURLOPT_URL, $url);
