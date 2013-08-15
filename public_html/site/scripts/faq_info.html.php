@@ -25,19 +25,8 @@
 		<?php print processEditorContent($faq->answer); ?>
 	</div>
 </div>
-	
-	<!-- post a question -->
-	<form action="<?php print getSiteRootURL() . buildNonReadableFAQURL(true);?>" method="post" enctype="multipart/form-data">
-		<fieldset>
-			<legend>Do you have a question?</legend>
-			<p>If there is anything you would like to ask us, about our services, our work or how we can help you, then please do.</p>
-			<p>
-				<input type="submit" value="Ask us a question" name="submit" />
-			</p>
-		</fieldset>
-	</form>
 
-	<?php include('../includes/bottom_supplements.php'); ?>
+<?php include('../includes/bottom_supplements.php'); ?>
 			
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>
