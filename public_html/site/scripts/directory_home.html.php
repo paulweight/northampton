@@ -28,7 +28,7 @@
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
 
-	<p><?php print nl2br(encodeHtml($directory->description)); ?></p>
+	<p><?php print nl2br($directory->description); ?></p>
 
 	
 	<ul class="alphabeticNav">
