@@ -796,7 +796,7 @@ ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 	#content form.basic_form input.button 	{ margin:0; padding:0; vertical-align: top; }
 	body.ie7 img 							{ -ms-interpolation-mode:bicubic; }
 	body.ie7 .contentWidgetWithLink {zoom:1;}
-	
+	body.ie7 #content #content-inner .figcaption img { width: 150px; }
 	
 	/* IE8 */
 	body.ie8 #wrapper {width: 960px;}
@@ -990,6 +990,8 @@ ul#main-nav-top li a:link, ul#main-nav-top li a:visited {padding: 10px 0; }
 	
 
 }
+
+
 
 /** TYPOGRAPHIC ENRICHMENTS **/
 
