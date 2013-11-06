@@ -1,4 +1,7 @@
 <?php
+	header('Location: /homepage/407/what_s_on_in_northampton');
+        exit;
+
 	include_once("utilities/JaduStatus.php");
 	include_once("JaduStyles.php");
 	include_once("egov/JaduCL.php");
