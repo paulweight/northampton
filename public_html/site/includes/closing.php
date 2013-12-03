@@ -59,7 +59,6 @@
 		<div id="pageAction">
 			<ul class="func">
 				<li class="print"><a rel="nofollow" href="#" onclick="window.print();return false;">Print this page</a></li>
-				<li class="email"><a id="emailFriendLink" rel="nofollow" href="<?php print getSiteRootURL() . buildEmailFriendURL($currentScriptEmailURL); ?>">Email to a friend</a></li>
 				<li class="comment"><a href="<?php print getSiteRootURL() . buildFeedbackURL(); ?>">Comment on this page</a></li>
 			</ul>
 		</div>
