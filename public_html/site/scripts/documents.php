@@ -48,10 +48,12 @@
 						$homepageSections[$content->positionY][] = $content;
 					}
 				}
-				
+				// Following commented out for ref:20131223-16
+				/*	
 				if ($homepage->stylesheet != '' && $STYLESHEET != 'generic/handheld.css') {
 					$STYLESHEET = $homepage->stylesheet;
 				}
+				*/
 			}
 		}
 		

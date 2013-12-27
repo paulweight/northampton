@@ -38,10 +38,12 @@
 		}
 	}
 
+	// Following commented out for ref:20131223-16
+	/*
 	if ($homepage->stylesheet != '' && $STYLESHEET != 'generic/handheld.css' && !isset($_GET['previewstyle']) && !isset($_GET['switchstyle']) && !isset($_SESSION['switchstyle'.$site->id])) {
 		$STYLESHEET = $homepage->stylesheet;
 	}
-	
+	*/
 	$widgets = $homepage->getWidgetsToHomepages();
 	
 	$homepageSections = array();

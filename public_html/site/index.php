@@ -21,12 +21,14 @@
 	if (count($allIndependantHomepages) > 0) {
 		$homepage = getHomepage($allIndependantHomepages[0]->id, true);
 		if ($homepage->id != -1) {
+			// Following commented out for ref:20131223-16
+			/*
 			if ($homepage->stylesheet != '') {
 				if(!isset($_GET['previewstyle']) && !isset($_GET['switchstyle']) && !isset($_SESSION['switchstyle'.$site->id])) {
 					$STYLESHEET = $homepage->stylesheet;
 				}
 			}
-
+			*/
 			$homepageSections = array();
 			foreach ($homepage->getWidgetsToHomepages() as $content) {
 				if (!isset($homepageSections[$content->positionY])) {
