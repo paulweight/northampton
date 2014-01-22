@@ -39,10 +39,12 @@
 		$dirTree = array_reverse(getDirectoryCategoryAncestors($category->id));
 	}
 
+	$categoryInfoID = -1;
 	if (isset($_REQUEST['categoryInfoID']) && is_numeric($_REQUEST['categoryInfoID'])) {
 		$categoryInfo = getDirectoryCategoryInformation($_REQUEST['categoryInfoID']);
-		
+
 		if ($categoryInfo->id != -1 && is_numeric($categoryInfo->id)) {
+			$categoryInfoID = $categoryInfo->id;
 			$categoryFields = getAllDirectoryCategoryFields($categoryInfo->categoryID);
 			foreach ($categoryFields as $categoryField) {
 				$directoryFields[] = getDirectoryField ($categoryField->fieldID);
@@ -68,12 +70,12 @@
 	$MAST_HEADING = $directory->name . ' - '. $record->title;
 	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . buildDirectoriesURL(-1, $directory->id) . '">'.encodeHtml($directory->name).'</a></li>';
 	foreach ($dirTree as $cat) {
-		$MAST_BREADCRUMB .= '<li><a href="' . buildDirectoryCategoryURL($directory->id, $category->id, $categoryInfo->id) . '">'. encodeHtml($cat->title) .'</a></li>';
+		$MAST_BREADCRUMB .= '<li><a href="' . buildDirectoryCategoryURL($directory->id, $cat->id, $categoryInfoID) . '">'. encodeHtml($cat->title) .'</a></li>';
 	}
 	if (isset($_REQUEST['categoryID'])) {
-		$MAST_BREADCRUMB .= '<li><a href="' . buildDirectoryCategoryURL($directory->id, $category->id, $categoryInfo->id) . '">'. encodeHtml($category->title) .'</a></li>';
+		$MAST_BREADCRUMB .= '<li><a href="' . buildDirectoryCategoryURL($directory->id, $category->id, $categoryInfoID) . '">'. encodeHtml($category->title) .'</a></li>';
 	}
 	$MAST_BREADCRUMB .= '<li><span>'. encodeHtml($record->title) .'</span></li>';
-	
+
 	include("directory_record.html.php");
 ?>
