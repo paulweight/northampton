@@ -3,7 +3,6 @@
 	<div id="footer" class="box-shadow">
 		<ul id="smallprint">
 			<li>&copy; <?php print date("Y") . ' ' . encodeHtml(METADATA_GENERIC_NAME); ?> </li>
-			<li>Made with XHTML and CSS to WAI-AA. ICRA rated.</li>
 			<li>Powered by Jadu <a href="http://www.jadu.net" title="Jadu Content Management">Content Management.</a></li>
 		</ul>
 		<div id="social">
