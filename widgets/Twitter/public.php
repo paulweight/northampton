@@ -123,9 +123,9 @@
 									// make links clickable
 									$text = ereg_replace("[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]", "<a href=\"\\0\">\\0</a>", $text);
 									// make #... clickable		
-									$text = preg_replace('/#([0-9a-z_]+)/i', "<a href=\"http://search.twitter.com/search?q=%23\\1\">\\0</a>", $text);					
+									$text = preg_replace('/#([0-9a-z_]+)/i', "<a href=\"https://twitter.com/search?q=%23\\1\">\\0</a>", $text);					
 									// make @... clickable		
-									$text = preg_replace('/@([0-9a-z_]+)/i', "<a href=\"http://twitter.com/\\1\">\\0</a>", $text);
+									$text = preg_replace('/@([0-9a-z_]+)/i', "<a href=\"https://twitter.com/\\1\">\\0</a>", $text);
 								
 									$buffer .= "<p>\n";
 									$buffer .= $text. "\n";
