@@ -5,6 +5,6 @@
 ?>
 
 <div class="contact">
-	<h4><a href="<?php print getSiteRootURL(); ?>/contactthecouncil">Contact the Council</a>
+	<h4><a href="<?php print getSiteRootURL(); ?>/doitonline">Can't find what you're looking for?</a>
 	</h4>
 </div>
