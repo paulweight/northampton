@@ -30,7 +30,7 @@
 	}
 	
 	// Breadcrumb and H1
-	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildAToZURL() . '">Council servives</a></li>';
+	$MAST_BREADCRUMB = '<li><a href="' . getSiteRootURL() .'" rel="home">Home</a></li><li><a href="' . getSiteRootURL() . buildAToZURL() . '">Council services</a></li>';
 	$levelNo = 1;
 	$count = 0;
 	foreach ($dirTree as $parent) {
