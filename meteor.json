@@ -1,0 +1,8 @@
+{
+    "migrations": {
+        "name": "Northampton Migrations",
+        "table": "JaduMigrationsCustom",
+        "namespace": "DoctrineMigrations",
+        "directory": "upgrades/migrations"
+    }
+}
