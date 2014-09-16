@@ -1,13 +1,17 @@
 {
     "repositories": [
         {
-            "type": "git",
-            "url": "git@gitlab.hq.jadu.net:engineering/meteor.git"
+		"type": "git",
+		"url": "https://gitlab.hq.jadu.net/engineering/migrations.git"
+        },
+        {
+		"type": "git",
+                "url": "https://gitlab.hq.jadu.net/engineering/meteor.git"
         }
     ],
     "require": {
         "php": ">=5.3.2",
-        "doctrine/migrations": "1.0.*@dev",
-        "jadu/meteor": "1.0.*@dev"
+        "doctrine/migrations": "~1.0",
+        "jadu/meteor": "~1.0"
     }
 }
