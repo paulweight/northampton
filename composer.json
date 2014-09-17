@@ -7,11 +7,18 @@
         {
 		"type": "git",
                 "url": "https://gitlab.hq.jadu.net/engineering/meteor.git"
+        },
+        {
+            "type": "git",
+            "url": "https://gitlab.hq.jadu.net/spacecraft/hydrazine-cmp.git"
         }
     ],
     "require": {
         "php": ">=5.3.2",
         "doctrine/migrations": "~1.0",
         "jadu/meteor": "~1.0"
+    },
+    "require-dev": {
+        "jadu/cmp": "1.12.0.*"
     }
 }
