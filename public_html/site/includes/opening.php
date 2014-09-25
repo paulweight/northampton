@@ -1,7 +1,7 @@
 <?php
 	include_once('lib.php');
 	include(HOME . "site/includes/structure/breadcrumb.php");
-
+	
 	include_once('websections/JaduAnnouncements.php');
 	$liveUpdate = getLiveAnnouncement();
 
@@ -171,16 +171,16 @@
 			if (!isset($lgclList) || !is_object($lgclList)) {
 				$lgclList = getLiveCategoryList(BESPOKE_CATEGORY_LIST_NAME);
 			}
-
+			
 			$dirTree = $lgclList->getFullPath($_GET['categoryID']);
-			$thisCategory = end($dirTree);
+			$rootCategory = $dirTree[0];
 		}
 ?>
 					<div id="header">
 <?php
-		if (isset($thisCategory) && is_object($thisCategory) && file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $thisCategory->id . '.png')) {
+		if (isset($rootCategory) && is_object($rootCategory) && file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $rootCategory->id . '.png')) {
 ?>
-						<img src="/site/images/headers/<?php print $thisCategory->id; ?>.png" alt="<?php print encodeHtml($thisCategory->name); ?>" />
+						<img src="/site/images/headers/<?php print $rootCategory->id; ?>.png" alt="<?php print encodeHtml($rootCategory->name); ?>" />
 						<h1><?php print encodeHtml($MAST_HEADING); ?></h1>
 						<div class="clear"></div>
 					</div>
