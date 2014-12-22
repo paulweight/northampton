@@ -173,6 +173,7 @@
 			}
 			
 			$dirTree = $lgclList->getFullPath($_GET['categoryID']);
+			$thisCategory = end($dirTree);
 		}
 ?>
 					<div id="header">
