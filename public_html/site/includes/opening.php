@@ -173,14 +173,26 @@
 			}
 			
 			$dirTree = $lgclList->getFullPath($_GET['categoryID']);
-			$rootCategory = $dirTree[0];
 		}
 ?>
 					<div id="header">
 <?php
-		if (isset($rootCategory) && is_object($rootCategory) && file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $rootCategory->id . '.png')) {
+		$imageLocation = '';
+		for ($i = (count($dirTree) - 1); $i >= 0; $i--) {
+			if (isset($dirTree[$i]) && is_object($dirTree[$i])) {
+				if (file_exists(MAIN_HOME_DIR . 'public_html/images/' . $dirTree[$i]->id . '.png')) {
+					$imageLocation = '/images/' . $dirTree[$i]->id . '.png';
+					break;
+				} elseif (file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $dirTree[$i]->id . '.png')) {
+					$imageLocation = '/site/images/headers/' . $dirTree[$i]->id . '.png';
+					break;
+				}
+			}
+		}
+
+		if ($imageLocation != '') {
 ?>
-						<img src="/site/images/headers/<?php print $rootCategory->id; ?>.png" alt="<?php print encodeHtml($rootCategory->name); ?>" />
+						<img src="<?php print encodeHtml($imageLocation); ?>" alt="<?php print encodeHtml($thisCategory->name); ?>" />
 						<h1><?php print encodeHtml($MAST_HEADING); ?></h1>
 						<div class="clear"></div>
 					</div>
