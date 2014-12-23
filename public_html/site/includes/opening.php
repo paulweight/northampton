@@ -138,7 +138,7 @@
 <?php
 /* CONTENT */
 ?>
-				<div id="content"<?php print ($script != 'documents.php' && $script != 'documents_info.php' && $script != 'events_index.php'  && $script != 'events_categories.php' && $script != 'events_info.php' && $script != 'events.php'   || $showHomepageContent == true) ? ' class="full"' : ''; ?>>
+				<div id="content"<?php print ($script != 'documents.php' && $script != 'documents_info.php' && $script != 'events_index.php'  && $script != 'events_categories.php' && $script != 'events_info.php' && $script != 'events.php'   || (isset($showHomepageContent) && $showHomepageContent == true)) ? ' class="full"' : ''; ?>>
 <?php
 /*  
 	BREADCRUMB
@@ -179,14 +179,16 @@
 					<div id="header">
 <?php
 		$imageLocation = '';
-		for ($i = (count($dirTree) - 1); $i >= 0; $i--) {
-			if (isset($dirTree[$i]) && is_object($dirTree[$i])) {
-				if (file_exists(MAIN_HOME_DIR . 'public_html/images/' . $dirTree[$i]->id . '.png')) {
-					$imageLocation = '/images/' . $dirTree[$i]->id . '.png';
-					break;
-				} elseif (file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $dirTree[$i]->id . '.png')) {
-					$imageLocation = '/site/images/headers/' . $dirTree[$i]->id . '.png';
-					break;
+		if (isset($dirTree)) {
+			for ($i = (count($dirTree) - 1); $i >= 0; $i--) {
+				if (isset($dirTree[$i]) && is_object($dirTree[$i])) {
+					if (file_exists(MAIN_HOME_DIR . 'public_html/images/' . $dirTree[$i]->id . '.png')) {
+						$imageLocation = '/images/' . $dirTree[$i]->id . '.png';
+						break;
+					} elseif (file_exists(MAIN_HOME_DIR . 'public_html/site/images/headers/' . $dirTree[$i]->id . '.png')) {
+						$imageLocation = '/site/images/headers/' . $dirTree[$i]->id . '.png';
+						break;
+					}
 				}
 			}
 		}

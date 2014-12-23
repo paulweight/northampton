@@ -24,7 +24,7 @@
 			include(HOME . 'site/includes/calendar.php');
 		}
 		
-		$pageTotal = count($allPages);
+		$pageTotal = isset($allPages)?count($allPages):0;
 		if ($pageTotal > 1) {
 			$pageNumberPrev = $pageNumber - 1;
 			$pageNumberNext = $pageNumber + 1;

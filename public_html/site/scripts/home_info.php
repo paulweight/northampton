@@ -19,8 +19,12 @@
 
 	// Preview homepage widgets
 	include_once('utilities/JaduAdministrators.php');
-	$preview = validateAdminPreviewHash(getAdministrator($_GET['adminID']), $_GET['preview'], $_GET['expire']);
-
+	if (isset($_GET['adminID']) && isset($_GET['preview']) && isset($_GET['expire'])) {
+		$preview = validateAdminPreviewHash(getAdministrator($_GET['adminID']), $_GET['preview'], $_GET['expire']);
+	}
+	else {
+		$preview = false;
+	}
 	$homepage = getHomepage($_GET['homepageID'], !$preview);
 	
 	if ($homepage == null || $homepage->id < 0) {
