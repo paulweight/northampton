@@ -37,7 +37,7 @@
 <?php
 			}
 ?>
-			<li>Page <?php print $pageNumber; ?> of <?php print $pageTotal; ?></li>
+			<li>Page <?php print encodeHtml($pageNumber); ?> of <?php print $pageTotal; ?></li>
 <?php 
 			if ($pageNumberNext <= $pageTotal) {
 ?>
