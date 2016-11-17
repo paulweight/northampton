@@ -46,10 +46,10 @@
 
 	$script = basename($_SERVER['SCRIPT_NAME']);
 ?>
-<!--[if lt IE 7]><body class="ie6<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
-<!--[if IE 7]><body class="ie7<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
-<!--[if IE 8]><body class="ie8<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
-<!--[if IE 9]><body class="ie9<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
+<!--[if lt IE 7]><body class="ie6<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && (!isset($pageStructure) || $pageStructure->id != '2'))) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
+<!--[if IE 7]><body class="ie7<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && (!isset($pageStructure) || $pageStructure->id != '2'))) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
+<!--[if IE 8]><body class="ie8<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && (!isset($pageStructure) || $pageStructure->id != '2'))) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
+<!--[if IE 9]><body class="ie9<?php if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && (!isset($pageStructure) || $pageStructure->id != '2'))) { print ' threeCol'; } else { print ' twoCol'; } ?>"><![endif]-->
 <!--[if !IE]>--><body><!--<![endif]-->
 <script type="text/javascript">document.body.className += ' jsLoaded';</script>
 <div id="wrapper">
