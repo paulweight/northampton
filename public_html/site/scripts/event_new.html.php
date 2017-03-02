@@ -12,16 +12,16 @@
 
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
-	
+
 	<script type="text/javascript">
 	<!--
 		function preSubmit()
 		{
 			document.getElementById('auth').value = '<?php print md5(DOMAIN . date('Y')); ?>';
 		}
-	
+
 	function toggleUntilInput(value) {
-	
+
 		if (value == "1day") {
 			document.getElementById('untilInput').style.display = 'none';
 		} 
@@ -31,9 +31,9 @@
 		}
 	}
 	-->
-	
+
 	</script>
-	
+
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
@@ -53,7 +53,7 @@
 ?>
 	<form class="basic_form xform" enctype="multipart/form-data" action="<?php print getSiteRootURL() . buildNonReadableNewEventURL(); ?>" method="post" onsubmit="preSubmit(); return true;" >
 		<fieldset>
-			<input type="hidden" name="auth" id="auth" value="fail" />	
+			<input type="hidden" name="auth" id="auth" value="fail" />
 			<ol>
 			<li>
 				<label for="title"><?php if (isset($error_array['title'])) { ?><strong>! <?php } ?>Event Title<?php if (isset($error_array['title'])) { ?></strong><?php } ?> <em>(required)</em></label>
@@ -80,7 +80,7 @@
 			</li>
 			<li>
 				<label for="start"><?php if (isset($error_array['startTime'])) { ?><strong>! <?php } ?>Event start time<?php if (isset($error_array['startTime'])) { ?></strong><?php } ?> <?php print encodeHtml(FORMAT_TIME_INPUT_EXAMPLE); ?></label>
-				<input id="start" type="text" name="startTime" value="<?php (!empty($startTime))? print encodeHtml($startTime): print ''; ?>" size="5" />				
+				<input id="start" type="text" name="startTime" value="<?php (!empty($startTime))? print encodeHtml($startTime): print ''; ?>" size="5" />
 			</li>
 			<li>
 				<label for="finish"><?php if (isset($error_array['endTime'])) { ?><strong>! <?php } ?>Event end time<?php if (isset($error_array['endTime'])) { ?></strong><?php } ?> <?php print encodeHtml(FORMAT_TIME_INPUT_EXAMPLE); ?></label>
@@ -106,7 +106,7 @@
 			<li class="image">
 				<label for="image"><?php if (isset($error_array['image'])) { ?><strong>! <?php } ?>Supporting Image<?php if (isset($error_array['image'])) { ?></strong><?php } ?> JPEG, GIF, PNG only</label>
 				<input type="file" name="image" id="imageUpload" />
-			</li>	
+			</li>
 			<li class="centre">
 				<input type="submit" value="Submit your event" name="submit" class="genericButton grey" />
 			</li>
@@ -116,6 +116,6 @@
 
 	<h2>Data Protection</h2>
 	<p>The details you provide on this page will not be used to send unsolicited e-mail, and will not be sold to a 3rd party. <a href="<?php print getSiteRootURL() . buildTermsURL(); ?>">Privacy statement</a>.</p>
-			
+
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>
