@@ -7,6 +7,6 @@
     ],
     "require": {
         "php": ">=5.6",
-        "jadu/cms-dependencies": "~16.2.0",
+        "jadu/cms-dependencies": "~16.2.0"
     }
 }
