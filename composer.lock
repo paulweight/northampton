@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "70112715fbcf75d1bb529e42490e4620",
-    "content-hash": "6e0387f75409ef5e86a6102b71f7260f",
+    "hash": "f1ccfffc77198b45d535646ceb956348",
+    "content-hash": "453c136033a967c0bd83954be79a36f2",
     "packages": [
         {
             "name": "ddeboer/data-import",
@@ -795,16 +795,16 @@
         },
         {
             "name": "jadu/cms-dependencies",
-            "version": "16.2.0",
+            "version": "16.3.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.hq.jadu.net/cmp/cmp-dependencies.git",
-                "reference": "08984938a9c457f7178f05bfab465b89ef7737f7"
+                "reference": "71e507a3d01a7b0bd316c08906823837b8808b5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/cms-dependencies/16.2.0.0/08984938a9c457f7178f05bfab465b89ef7737f7.zip",
-                "reference": "08984938a9c457f7178f05bfab465b89ef7737f7",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/cms-dependencies/16.3.0.0/71e507a3d01a7b0bd316c08906823837b8808b5c.zip",
+                "reference": "71e507a3d01a7b0bd316c08906823837b8808b5c",
                 "shasum": null,
                 "mirrors": [
                     {
@@ -870,7 +870,7 @@
                 }
             ],
             "description": "Continuum CMS dependencies",
-            "time": "2017-02-03 15:45:38"
+            "time": "2017-02-17 15:45:11"
         },
         {
             "name": "jadu/jaduframework",
