@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f1ccfffc77198b45d535646ceb956348",
-    "content-hash": "453c136033a967c0bd83954be79a36f2",
+    "hash": "a1342bc603441b9e7b33cae0ecb7eabf",
+    "content-hash": "e237863e35b607efdeda66251ce83167",
     "packages": [
         {
             "name": "ddeboer/data-import",
@@ -873,6 +873,51 @@
             "time": "2017-02-17 15:45:11"
         },
         {
+            "name": "jadu/composer-installer",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.hq.jadu.net/spacecraft/composer-installer.git",
+                "reference": "3c647c0a8618331c23e80d0eabc7bb0c74dd60d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/composer-installer/3.0.1.0/3c647c0a8618331c23e80d0eabc7bb0c74dd60d1.zip",
+                "reference": "3c647c0a8618331c23e80d0eabc7bb0c74dd60d1",
+                "shasum": null,
+                "mirrors": [
+                    {
+                        "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.1",
+                "jadu/php-style": "^1.0",
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Jadu\\Composer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jadu\\Composer\\": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Handles the installation of modules, widgets, etc for Jadu CMS implementations",
+            "time": "2017-02-16 14:42:17"
+        },
+        {
             "name": "jadu/jaduframework",
             "version": "2.2.0",
             "source": {
@@ -1699,6 +1744,104 @@
                 "vCard"
             ],
             "time": "2015-01-21 20:57:59"
+        },
+        {
+            "name": "spacecraft/backups",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.hq.jadu.net/spacecraft/backups.git",
+                "reference": "3f319034814eaa0f6d831e7880e7080d069c8fff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/spacecraft/backups/1.1.3.0/3f319034814eaa0f6d831e7880e7080d069c8fff.zip",
+                "reference": "3f319034814eaa0f6d831e7880e7080d069c8fff",
+                "shasum": null,
+                "mirrors": [
+                    {
+                        "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "jadu/composer-installer": "^3.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "jadu-module",
+            "extra": {
+                "jadu-install": {
+                    "autoload-package": true
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spacecraft\\Backups\\": "src/",
+                    "Tests\\Spacecraft\\Backups\\": "tests/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "James Kirby",
+                    "email": "james.kirby@jadu.co.uk"
+                }
+            ],
+            "time": "2017-02-06 08:04:11"
+        },
+        {
+            "name": "spacecraft/migrations",
+            "version": "4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.hq.jadu.net/spacecraft/migrations.git",
+                "reference": "c0ebb5874e970a86ebe39feff17e5e797d070e58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/spacecraft/migrations/4.0.2.0/c0ebb5874e970a86ebe39feff17e5e797d070e58.zip",
+                "reference": "c0ebb5874e970a86ebe39feff17e5e797d070e58",
+                "shasum": null,
+                "mirrors": [
+                    {
+                        "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "doctrine/migrations": "~1.0.0",
+                "jadu/composer-installer": "^3.0",
+                "php": ">=5.3",
+                "spacecraft/backups": "^1.1"
+            },
+            "type": "jadu-module",
+            "extra": {
+                "jadu-install": {
+                    "autoload-package": true,
+                    "copy": {
+                        "helpers/autoloader.php": {
+                            "destination": "upgrades/migrations/helpers/autoloader.php"
+                        }
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spacecraft\\Migrations\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "James Kirby",
+                    "email": "james.kirby@jadu.net"
+                }
+            ],
+            "description": "A package with reusable migration classes within to be used in Doctrines migrations.",
+            "time": "2017-02-08 11:11:08"
         },
         {
             "name": "swiftmailer/swiftmailer",

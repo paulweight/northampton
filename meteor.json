@@ -6,6 +6,7 @@
             "/config/permissions/custom",
             "/jadu/**",
             "/public_html/**",
+            "/upgrades/migrations/helpers/autoloader.php",
             "/vendor/**",
             "!/public_html/site/styles/widget/**",
             "!/vendor/jadu/meteor-ant/**",
@@ -25,5 +26,11 @@
     },
     "extensions": [
         "Meteor\\Package\\Provider\\GoogleDrive\\ServiceContainer\\GoogleDrivePackageProviderExtension"
-    ]
+    ],
+    "autoload": {
+        "composer": [
+            "spacecraft/backups",
+            "spacecraft/migrations"
+        ]
+    }
 }
