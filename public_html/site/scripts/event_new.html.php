@@ -87,8 +87,22 @@
 				<input id="finish" type="text" name="endTime" value="<?php (!empty($endTime))? print encodeHtml($endTime): print ''; ?>" size="5" />
 			</li>
 			<li>
-				<label for="location"><?php if (isset($error_array['location'])) { ?><strong>! <?php } ?>Location<?php if (isset($error_array['location'])) { ?></strong><?php } ?> <em>(required)</em></label>
-				<input id="location" type="text" name="location" value="<?php print encodeHtml($location); ?>" />
+				<label for="location_id"><?php if (isset($error_array['location'])) { ?><strong>! <?php } ?>Location<?php if (isset($error_array['location'])) { ?></strong><?php } ?> <em>(required)</em></label>
+				<select name="location_id" id="location_id">
+					<option value="">Choose an existing location</option>
+<?php
+	foreach ((array) getLocations() as $locationobj) {
+?>
+					<option value="<?php print $locationobj->getId(); ?>"><?php print encodeHtml($locationobj->getTitle()); ?><?php print is_null($locationobj->getAddress()) ? '' : ', ' . $locationobj->getFormattedAddress(); ?></option>
+<?php
+	}
+?>
+				</select>
+				<span class="clear"></span>
+			</li>
+			<li>
+				<label for="location"><?php if (isset($error_array['location'])) { ?><strong>! <?php } ?>Or create a new Location<?php if (isset($error_array['location'])) { ?></strong><?php } ?> <em>(required)</em></label>
+				<input id="location" type="text" name="location" value="<?php (isset($location)) ? print encodeHtml($location) : print ''; ?>" />
 				<span class="clear"></span>
 			</li>
 			<li>

@@ -37,6 +37,14 @@
 			$event->endDate = $event->startDate;
 		}
 
+		$eventLocationMapper = new Jadu_Page_Event_DataMapper_Location(
+			Jadu_Service_Container::getInstance()->getSiteDB(),
+			Jadu_Service_Container::getInstance()->getCacheManage()
+		);
+		if($location = $eventLocationMapper->getById(intval($_POST['location_id']))) {
+			$event->location = $location;
+		}
+
 		$error_array = validateEventDetails($event->title, $event->startDate, $event->endDate,
 			$event->startTime, $event->endTime,$event->location, $event->cost, $event->summary,
 			$event->description, true, true);
