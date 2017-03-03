@@ -97,7 +97,7 @@
 				}
 				else {
 ?>
-				<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($event->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($event->imageURL, 'altText')); ?> "" />
+				<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($event->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($event->imageURL, 'altText')); ?> " />
 <?php 
 				}
 			}
