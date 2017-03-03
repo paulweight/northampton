@@ -86,6 +86,8 @@
 
 <!-- #################################### -->
 <?php
+	require_once HOME . '/site/includes/closing_javascript.php';
+
 	if (isset($indexPage) && $indexPage) {
 ?>
 <script type="text/javascript">
