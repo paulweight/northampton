@@ -1,24 +1,13 @@
 {
     "repositories": [
         {
-		"type": "git",
-		"url": "https://gitlab.hq.jadu.net/engineering/migrations.git"
-        },
-        {
-		"type": "git",
-                "url": "https://gitlab.hq.jadu.net/engineering/meteor.git"
-        },
-        {
-            "type": "git",
-            "url": "https://gitlab.hq.jadu.net/spacecraft/hydrazine-cmp.git"
+            "type": "composer",
+            "url": "https://toran-proxy.hq.jadu.net/repo/private"
         }
     ],
     "require": {
-        "php": ">=5.3.2",
-        "doctrine/migrations": "~1.0",
-        "jadu/meteor": "~1.0"
-    },
-    "require-dev": {
-        "jadu/cmp": "1.12.0.*"
+        "php": ">=5.6",
+        "jadu/cms-dependencies": "~16.3.0",
+        "spacecraft/migrations": "^4.0"
     }
 }

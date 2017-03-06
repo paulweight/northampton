@@ -103,6 +103,9 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		if (document.getElementById("tool_buttons")) {
+			return;
+		}
 		$("#main-nav-dropdown").hide();
 		$(".show_hide").show();
 		$(".show_hide").click(function(event){
