@@ -118,7 +118,8 @@ if ($script == 'documents_info.php' && isset($previewAllowed) && $previewAllowed
 		PreviewEdit.init(<?php echo '$(\'editable\'), "documents", "' . $page->id . '", "' . Jadu_Service_Container::getInstance()->getInput()->get('preview') . '", "' . Jadu_Service_Container::getInstance()->getInput()->get('expire') . '"'; ?>);
 </script>
 <?php
-
 }
+
+echo \Jadu\Service\Container::getInstance()->getSiteSearch()->getSearchScript();
 ?>
 <script src="<?php echo getStaticContentRootURL(); ?>/site/javascript/site.js"></script>

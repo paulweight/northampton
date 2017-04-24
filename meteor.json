@@ -15,7 +15,7 @@
         "version": "CLIENT_VERSION",
         "provider": "gdrive",
         "combine": {
-            "jadu/cms": "16.3.0"
+            "jadu/cms": "16.7.0"
         }
     },
     "migrations": {

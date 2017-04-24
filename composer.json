@@ -7,7 +7,7 @@
     ],
     "require": {
         "php": ">=5.6",
-        "jadu/cms-dependencies": "~16.3.0",
+        "jadu/cms-dependencies": "~16.7.0",
         "jadu/meteor-ant": "^3.0",
         "spacecraft/migrations": "^4.0"
     },
