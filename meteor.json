@@ -6,6 +6,7 @@
             "/config/permissions/custom",
             "/jadu/**",
             "/public_html/**",
+            "/src/**",
             "/upgrades/migrations/helpers/autoloader.php",
             "/var/**",
             "/vendor/**",
