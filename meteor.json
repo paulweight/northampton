@@ -1,5 +1,5 @@
 {
-    "name": "Northampton",
+    "name": "northampton/website",
     "package": {
         "files": [
             "/CLIENT_VERSION",
@@ -7,10 +7,10 @@
             "/jadu/**",
             "/public_html/**",
             "/upgrades/migrations/helpers/autoloader.php",
+            "/var/**",
             "/vendor/**",
             "!/public_html/site/styles/widget/**",
-            "!/vendor/jadu/meteor-ant/**",
-            "!/vendor/jadu/meteor/**"
+            "!/vendor/jadu/meteor-ant/**"
         ],
         "version": "CLIENT_VERSION",
         "provider": "gdrive",

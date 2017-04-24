@@ -1,1 +1,13 @@
+vendor/
+composer.phar
+meteor.phar
+selenium.jar
+*.old
+*.private
+.php_cs.cache
+.DS_Store
+/build/
+/output/
+
+### The below are added by composer installer
 upgrades/migrations/helpers/autoloader.php
