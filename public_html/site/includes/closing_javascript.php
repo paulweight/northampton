@@ -1,3 +1,5 @@
+<?php echo \Jadu\Service\Container::getInstance()->getSiteSearch()->getSearchScript(); ?>
+
 <script src="<?php echo getStaticContentRootURL(); ?>/site/javascript/almond.min.js"></script>
 <script src="<?php echo getStaticContentRootURL(); ?>/site/javascript/util.min.js"></script>
 <?php
@@ -119,7 +121,5 @@ if ($script == 'documents_info.php' && isset($previewAllowed) && $previewAllowed
 </script>
 <?php
 }
-
-echo \Jadu\Service\Container::getInstance()->getSiteSearch()->getSearchScript();
 ?>
 <script src="<?php echo getStaticContentRootURL(); ?>/site/javascript/site.js"></script>
