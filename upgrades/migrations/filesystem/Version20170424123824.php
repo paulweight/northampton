@@ -52,7 +52,7 @@ XML;
         }
     }
 
-    private function addBundle(SimpleXMLElement $xml, $app, $bundleClass, $env = null)
+    private function addBundle(\SimpleXMLElement $xml, $app, $bundleClass, $env = null)
     {
         $appElement = $xml->{$app};
 
