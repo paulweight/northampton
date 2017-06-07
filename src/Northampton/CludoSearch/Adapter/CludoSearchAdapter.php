@@ -37,6 +37,11 @@ class CludoSearchAdapter extends AbstractAdapter implements AdapterInterface
      */
     public function getSearchBox()
     {
+        return $this->templating->render('SpacecraftFrontendBundle:CludoSearch:searchbox.html.twig');
+    }
+
+    public function getSearchStyleSheet()
+    {
         $api = new IntegrationApi();
         $customerId = $api->getIntegrationValue('spacecraft-cludosearch-customer-id');
         $engineId = $api->getIntegrationValue('spacecraft-cludosearch-engine-id');
@@ -46,7 +51,7 @@ class CludoSearchAdapter extends AbstractAdapter implements AdapterInterface
             'engineId' => $engineId,
         ];
 
-        return $this->templating->render('SpacecraftFrontendBundle:CludoSearch:searchbox.html.twig', $params);
+        return $this->templating->render('SpacecraftFrontendBundle:CludoSearch:searchstyle.html.twig', $params);
     }
 
     /**
