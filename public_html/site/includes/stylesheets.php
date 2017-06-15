@@ -5,6 +5,7 @@
 	$stylesRoot = getStaticContentRootURL() . '/site/styles/';
 ?>
 <link rel="stylesheet" type="text/css" href="<?php print $stylesRoot . encodeHtml($STYLESHEET);?>" />
+<?php echo \Jadu\Service\Container::getInstance()->getSiteSearch()->getAdapter()->getSearchStyleSheet(); ?>
 <?php
 	if (isset($_COOKIE['userColourscheme']) && !empty($_COOKIE['userColourscheme'])) {
 		$url = '';
