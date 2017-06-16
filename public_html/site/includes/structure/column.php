@@ -93,7 +93,7 @@
 			$homepage = getHomepage($_GET['homepageID']);
 		}
 		else {
-			$allIndependantHomepages = getAllHomepagesIndependant();
+			$allIndependantHomepages = getAllHomepagesIndependant(-1, false, 1, 0);
 			if (count($allIndependantHomepages) > 0) {
 				$homepage = getHomepage($allIndependantHomepages[0]->id);
 			}

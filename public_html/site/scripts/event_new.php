@@ -41,8 +41,15 @@
 			Jadu_Service_Container::getInstance()->getSiteDB(),
 			Jadu_Service_Container::getInstance()->getCacheManage()
 		);
-		if($location = $eventLocationMapper->getById(intval($_POST['location_id']))) {
-			$event->location = $location;
+		
+		if (empty($_POST['location_id'])) {
+            if ($existingLocation = $eventLocationMapper->getByTitle(trim($_POST['location']))) {
+                $event->location = $existingLocation;
+            }
+        } else {
+            if ($location = $eventLocationMapper->getById(intval($_POST['location_id']))) {
+                $event->location = $location;
+            } 
 		}
 
 		$error_array = validateEventDetails($event->title, $event->startDate, $event->endDate,
