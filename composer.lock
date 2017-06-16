@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e26d9be805c9c2cd0c3a1185f6d7d10c",
+    "content-hash": "6ec3c88883e519ed5632d11bcd2b8a3e",
     "packages": [
         {
             "name": "ddeboer/data-import",
@@ -794,16 +794,16 @@
         },
         {
             "name": "jadu/cms-dependencies",
-            "version": "16.7.1",
+            "version": "16.7.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.hq.jadu.net/cmp/cmp-dependencies.git",
-                "reference": "c3df6594aeb707b9d6c128609b39ca1d75042ca1"
+                "reference": "0c53dcae3e3dd6f3900e6f465467abd76d5e41cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/cms-dependencies/16.7.1.0/c3df6594aeb707b9d6c128609b39ca1d75042ca1.zip",
-                "reference": "c3df6594aeb707b9d6c128609b39ca1d75042ca1",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/cms-dependencies/16.7.4.0/0c53dcae3e3dd6f3900e6f465467abd76d5e41cd.zip",
+                "reference": "0c53dcae3e3dd6f3900e6f465467abd76d5e41cd",
                 "shasum": null,
                 "mirrors": [
                     {
@@ -820,7 +820,7 @@
                 "jadu/office365-client": "^1.0",
                 "jadu/pulsar": "6.16.3",
                 "jadu/pulsar-fonts": "~0.0.3",
-                "jadu/quantum-service-api-client": "~1.75.3",
+                "jadu/quantum-service-api-client": "~1.76.0",
                 "jadu/symfony-bridge": "^3.0",
                 "jasig/phpcas": "~1.3.0",
                 "klein/klein": "~2.1.0",
@@ -871,7 +871,7 @@
                 }
             ],
             "description": "Continuum CMS dependencies",
-            "time": "2017-04-21T11:52:02+00:00"
+            "time": "2017-05-12T15:35:32+00:00"
         },
         {
             "name": "jadu/composer-installer",
@@ -1121,16 +1121,16 @@
         },
         {
             "name": "jadu/quantum-service-api-client",
-            "version": "1.75.3",
+            "version": "1.76.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.hq.jadu.net/quantum/service-api-client.git",
-                "reference": "e14223ab93e3a7b318b39e10eee1a1e6f5e6e13d"
+                "reference": "ab75ded3ee2f2dc0a5647ab3932ca2a409c1b11f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/quantum-service-api-client/1.75.3.0/e14223ab93e3a7b318b39e10eee1a1e6f5e6e13d.zip",
-                "reference": "e14223ab93e3a7b318b39e10eee1a1e6f5e6e13d",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/jadu/quantum-service-api-client/1.76.0.0/ab75ded3ee2f2dc0a5647ab3932ca2a409c1b11f.zip",
+                "reference": "ab75ded3ee2f2dc0a5647ab3932ca2a409c1b11f",
                 "shasum": null,
                 "mirrors": [
                     {
@@ -1161,7 +1161,7 @@
                     "": "src"
                 }
             },
-            "time": "2017-04-21T11:26:20+00:00"
+            "time": "2017-04-27T09:21:44+00:00"
         },
         {
             "name": "jadu/symfony-bridge",
@@ -1659,16 +1659,16 @@
         },
         {
             "name": "rdlowrey/auryn",
-            "version": "v1.4.1",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rdlowrey/auryn.git",
-                "reference": "c6c92ec081c707f7e9e0a69185665147b30d66de"
+                "reference": "8c4dc07943599ba84f4f89eab8cf43efeef80395"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/c6c92ec081c707f7e9e0a69185665147b30d66de",
-                "reference": "c6c92ec081c707f7e9e0a69185665147b30d66de",
+                "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/8c4dc07943599ba84f4f89eab8cf43efeef80395",
+                "reference": "8c4dc07943599ba84f4f89eab8cf43efeef80395",
                 "shasum": ""
             },
             "require": {
@@ -1716,20 +1716,20 @@
                 "dic",
                 "ioc"
             ],
-            "time": "2017-04-07T16:12:28+00:00"
+            "time": "2017-05-15T06:26:46+00:00"
         },
         {
             "name": "rlanvin/php-rrule",
-            "version": "v1.4.2",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rlanvin/php-rrule.git",
-                "reference": "4ca0c62e0a8c372d8641a1548505bc51783d59ad"
+                "reference": "fa48bc4fa2fc7ce03254878f927697cc498fa152"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/4ca0c62e0a8c372d8641a1548505bc51783d59ad",
-                "reference": "4ca0c62e0a8c372d8641a1548505bc51783d59ad",
+                "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/fa48bc4fa2fc7ce03254878f927697cc498fa152",
+                "reference": "fa48bc4fa2fc7ce03254878f927697cc498fa152",
                 "shasum": ""
             },
             "require": {
@@ -1760,7 +1760,7 @@
                 "recurring",
                 "rrule"
             ],
-            "time": "2017-03-29T14:06:47+00:00"
+            "time": "2017-05-15T09:14:37+00:00"
         },
         {
             "name": "sabre/dav",
@@ -1934,16 +1934,16 @@
         },
         {
             "name": "spacecraft/migrations",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.hq.jadu.net/spacecraft/migrations.git",
-                "reference": "aea70572884a84d7ef7514630833bb33641ec1df"
+                "reference": "de03066aaecbbf23c13fca0d3e3dd8106eff70da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/spacecraft/migrations/4.0.4.0/aea70572884a84d7ef7514630833bb33641ec1df.zip",
-                "reference": "aea70572884a84d7ef7514630833bb33641ec1df",
+                "url": "https://toran-proxy.hq.jadu.net/repo/private/dists/spacecraft/migrations/4.0.5.0/de03066aaecbbf23c13fca0d3e3dd8106eff70da.zip",
+                "reference": "de03066aaecbbf23c13fca0d3e3dd8106eff70da",
                 "shasum": null,
                 "mirrors": [
                     {
@@ -1985,7 +1985,7 @@
                 }
             ],
             "description": "A package with reusable migration classes within to be used in Doctrines migrations.",
-            "time": "2017-04-10T12:48:20+00:00"
+            "time": "2017-06-07T08:25:11+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2042,16 +2042,16 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-apcu.git",
-                "reference": "5d4474f447403c3348e37b70acc2b95475b7befa"
+                "reference": "2e7965b8cdfbba50d0092d3f6dca97dddec409e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/5d4474f447403c3348e37b70acc2b95475b7befa",
-                "reference": "5d4474f447403c3348e37b70acc2b95475b7befa",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/2e7965b8cdfbba50d0092d3f6dca97dddec409e2",
+                "reference": "2e7965b8cdfbba50d0092d3f6dca97dddec409e2",
                 "shasum": ""
             },
             "require": {
@@ -2060,7 +2060,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2091,25 +2091,25 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "2d6e2b20d457603eefb6e614286c22efca30fdb4"
+                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/2d6e2b20d457603eefb6e614286c22efca30fdb4",
-                "reference": "2d6e2b20d457603eefb6e614286c22efca30fdb4",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/3191cbe0ce64987bd382daf6724af31c53daae01",
+                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/intl": "~2.3|~3.0"
+                "symfony/intl": "~2.3|~3.0|~4.0"
             },
             "suggest": {
                 "ext-intl": "For best performance"
@@ -2117,7 +2117,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2149,20 +2149,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
-                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
+                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
                 "shasum": ""
             },
             "require": {
@@ -2174,7 +2174,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2208,20 +2208,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T14:24:12+00:00"
         },
         {
             "name": "symfony/polyfill-php54",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php54.git",
-                "reference": "90e085822963fdcc9d1c5b73deb3d2e5783b16a0"
+                "reference": "7dd1a8b9f0442273fdfeb1c4f5eaff6890a82789"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/90e085822963fdcc9d1c5b73deb3d2e5783b16a0",
-                "reference": "90e085822963fdcc9d1c5b73deb3d2e5783b16a0",
+                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/7dd1a8b9f0442273fdfeb1c4f5eaff6890a82789",
+                "reference": "7dd1a8b9f0442273fdfeb1c4f5eaff6890a82789",
                 "shasum": ""
             },
             "require": {
@@ -2230,7 +2230,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2266,20 +2266,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-php55",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php55.git",
-                "reference": "03e3f0350bca2220e3623a0e340eef194405fc67"
+                "reference": "94566239a7720cde0820f15f0cc348ddb51ba51d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/03e3f0350bca2220e3623a0e340eef194405fc67",
-                "reference": "03e3f0350bca2220e3623a0e340eef194405fc67",
+                "url": "https://api.github.com/repos/symfony/polyfill-php55/zipball/94566239a7720cde0820f15f0cc348ddb51ba51d",
+                "reference": "94566239a7720cde0820f15f0cc348ddb51ba51d",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2322,20 +2322,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c"
+                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/1dd42b9b89556f18092f3d1ada22cb05ac85383c",
-                "reference": "1dd42b9b89556f18092f3d1ada22cb05ac85383c",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/bc0b7d6cb36b10cfabb170a3e359944a95174929",
+                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929",
                 "shasum": ""
             },
             "require": {
@@ -2345,7 +2345,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2378,20 +2378,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "13ce343935f0f91ca89605a2f6ca6f5c2f3faac2"
+                "reference": "032fd647d5c11a9ceab8ee8747e13b5448e93874"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/13ce343935f0f91ca89605a2f6ca6f5c2f3faac2",
-                "reference": "13ce343935f0f91ca89605a2f6ca6f5c2f3faac2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/032fd647d5c11a9ceab8ee8747e13b5448e93874",
+                "reference": "032fd647d5c11a9ceab8ee8747e13b5448e93874",
                 "shasum": ""
             },
             "require": {
@@ -2401,7 +2401,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2437,20 +2437,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T14:24:12+00:00"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb"
+                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/746bce0fca664ac0a575e465f65c6643faddf7fb",
-                "reference": "746bce0fca664ac0a575e465f65c6643faddf7fb",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
+                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
                 "shasum": ""
             },
             "require": {
@@ -2459,7 +2459,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -2489,7 +2489,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2016-11-14T01:06:16+00:00"
+            "time": "2017-06-09T08:25:21+00:00"
         },
         {
             "name": "symfony/security-acl",
