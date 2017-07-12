@@ -24,7 +24,7 @@
 			include(HOME . 'site/includes/calendar.php');
 		}
 		
-		$pageTotal = isset($allPages) ? count($allPages) : 0;
+		$pageTotal = count($allPages);
 		if ($pageTotal > 1) {
 			$pageNumberPrev = $pageNumber - 1;
 			$pageNumberNext = $pageNumber + 1;
@@ -37,7 +37,7 @@
 <?php
 			}
 ?>
-			<li>Page <?php print encodeHtml($pageNumber); ?> of <?php print $pageTotal; ?></li>
+			<li>Page <?php print $pageNumber; ?> of <?php print $pageTotal; ?></li>
 <?php 
 			if ($pageNumberNext <= $pageTotal) {
 ?>
@@ -76,7 +76,7 @@
 	* To show/hide this column, edit site/includes/lib.php
 */
 	$hideColumn = (boolean) hideColumn();
-	if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && (!isset($pageStructure) || $pageStructure->id != '2'))) {
+	if (($script != "documents_info.php" && $hideColumn == false ) || ($script == "documents_info.php" && $pageStructure->id != '2')) {
 		include(HOME . "/site/includes/structure/column.php");
 	}
 ?>
@@ -86,8 +86,6 @@
 
 <!-- #################################### -->
 <?php
-	require_once HOME . '/site/includes/closing_javascript.php';
-
 	if (isset($indexPage) && $indexPage) {
 ?>
 <script type="text/javascript">

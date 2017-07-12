@@ -28,7 +28,7 @@
 	
 	$breadcrumb = '404';
 	
-	include HOME . '/site/includes/doctype.php';
+	include("./site/includes/doctype.php");
 ?>
 <head>
 	<title><?php print encodeHtml(METADATA_GENERIC_NAME);?> - Page not found</title>

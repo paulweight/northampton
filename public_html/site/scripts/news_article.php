@@ -8,9 +8,9 @@
 	include_once("utilities/JaduMostPopular.php");
 
 	// Validate inputs
-	if (!is_numeric($jadu->getInput()->get('newsID'))) {
+	if (!is_numeric($_GET['newsID'])) {
 		header('Location: ' . buildNewsURL());
-		exit;
+		exit();
 	}
 	
 	// Default to approved/live
@@ -18,9 +18,9 @@
 	$liveOnly = true;
 	
 	// Check whether an administrator is previewing the page
-	$allowPreview =  (isset($isPreviewLink) && $isPreviewLink && isset($allowPreview) && $allowPreview);
-	if($allowPreview) {
-		$approvedOnly = $liveOnly = false;
+	if (isset($_GET['adminID']) && isset($_GET['preview']) && isset($_GET['expire'])) {
+		include_once('utilities/JaduAdministrators.php');
+		$approvedOnly = $liveOnly = !validateAdminPreviewHash(getAdministrator($_GET['adminID']), $_GET['preview'], $_GET['expire']);
 	}
 
 	if (isset($_GET['newsID'])) {
@@ -35,9 +35,9 @@
 
 	//if the news item doesnt exist, re-direct to index
 	if ($news->id < 1) {
-		header('HTTP/1.0 404 Not Found');
+	    header('HTTP/1.0 404 Not Found');
 		header('Location: ' . buildNewsURL());
-		exit;
+		exit();
 	}
 
 	// Breadcrumb, H1 and Title

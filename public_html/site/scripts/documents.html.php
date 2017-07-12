@@ -8,11 +8,11 @@
 	include_once("../includes/stylesheets.php");
 	include_once("../includes/metadata.php");
 	
-	$metadata = getMetadataForItem (HOMEPAGES_METADATA_TABLE, !empty($homepage) ? $homepage->id : null);
+	$metadata = getMetadataForItem (HOMEPAGES_METADATA_TABLE, $homepage->id);
 	if ($metadata->subject == '') {
 		$metadata->subject = METADATA_GENERIC_KEYWORDS;
 	}
-	if ($metadata->description == '' && !empty($homepage)) {
+	if ($metadata->description == '') {
 		$metadata->description = $homepage->title . ' - ' . $homepage->description;
 	}
 ?>

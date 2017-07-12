@@ -17,7 +17,7 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
-
+		
 <?php
 	if (isset($_GET['userID']) && is_numeric($_GET['userID']) && isset($_GET['email']) ) {
 		$user = Jadu_Service_User::getInstance()->getUser($_GET['userID']);
@@ -37,15 +37,14 @@
 			$message = "<h2 class=\"warning\">Sorry, you have not been unsubscribed. The given details do not appear to be correct</h2>";
 			$showForm = true;
 		}
-
+		
 		print $message;
 	}
 	else if (isset($_POST['unsubscribeEmail']) && isset($_POST['unsubscribePassword'])) {
-
+		
 		$user = Jadu_Service_User::getInstance()->getUserByIdentity($_POST['unsubscribeEmail']);
-
-		$hasher = new Jadu_Security_Password($user->password);
-		if ($hasher->verify(Jadu_Service_Container::getInstance()->getInput()->post('unsubscribePassword')) && mb_strlen($user->email) > 3) {
+		
+		if ($user->password == getPasswordHash($_POST['unsubscribePassword']) && mb_strlen($user->email) > 3) {
 			if ($user->dataProtection == "1") {
 				unsubscribeUserFromBeingContacted($user->id);
 				$message = "<h2>Thank you</h2>" .
@@ -61,7 +60,7 @@
 			$message = "<h2 class=\"warning\">Sorry, you have not been unsubscribed. The given details do not appear to be correct</h2>";
 			$showForm = true;
 		}
-
+		
 		print $message;
 	}
 	else {
@@ -86,10 +85,10 @@
 			</li>
 		</ol>
 	</form>
-
+	
 <?php
 	}
 ?>
-
+		
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

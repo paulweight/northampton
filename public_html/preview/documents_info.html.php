@@ -20,12 +20,7 @@
 	<meta name="Keywords" content="<?php print encodeHtml($metadata->subject); ?>" />
 	<meta name="Description" content="<?php print encodeHtml($metadata->description); ?>" />
 	
-<?php
-	if ($document->id > 0 && isset($header)) {
-		printMetadata(DOCUMENTS_METADATA_TABLE, DOCUMENTS_CATEGORIES_TABLE, $document->id, $header->title, "http://".$DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
-		print outputJavascriptConstants();
-	}
-?>	
+	<?php if ($document->id > 0 && isset($header)) printMetadata(DOCUMENTS_METADATA_TABLE, DOCUMENTS_CATEGORIES_TABLE, $document->id, $header->title, "http://".$DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>	
 
 	<link rel="canonical" href="<?php print getSiteRootURL() . buildDocumentsURL($document->id, $categoryID, $pageNumber); ?>" />
 </head>
@@ -113,5 +108,4 @@
 
 
 <!-- ################ MAIN STRUCTURE ############ -->
-<?php
-	include(HOME . "site/includes/closing.php"); 
+<?php include(HOME . "site/includes/closing.php"); ?>
