@@ -1,0 +1,24 @@
+<!--[if lte IE 9]>
+<script src="https://api.cludo.com/scripts/xdomain.js" slave="https://api.cludo.com/proxy.html"></script>
+<![endif]-->
+<!--[if lte IE 8]>
+<script type="text/javascript" src="https://api.cludo.com/scripts/event.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://customer.cludo.com/scripts/bundles/search-script.min.js"></script>
+<script>
+    var CludoSearch;
+    (function () {
+        var cludoSettings = {
+            customerId: {{ customerId }},
+            engineId: {{ engineId }},
+            type: 'standardOverlay',
+            initSearchBoxText: 'Search',
+            theme: { {{ theme|raw }} },
+            language: 'en'
+        };
+
+        CludoSearch = new Cludo(cludoSettings);
+        CludoSearch.init();
+    })();
+</script>

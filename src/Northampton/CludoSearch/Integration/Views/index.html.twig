@@ -1,0 +1,78 @@
+{% extends '@assets/utilities/integrations/base.html.twig' %}
+
+{% import '@pulsarBundle/views/pulsar/v2/helpers/html.html.twig' as html %}
+{% import '@pulsarBundle/views/pulsar/v2/helpers/form.html.twig' as form %}
+{% import '@pulsarBundle/views/pulsar/v2/helpers/elem.html.twig' as elem %}
+{% import '@pulsarBundle/views/pulsar/v2/helpers/flash.html.twig' as flash %}
+{% import '@pulsarBundle/views/pulsar/v2/helpers/datagrid.html.twig' as datagrid %}
+
+{% set active_integration = 'cludosearch' %}
+
+{% block integration_content %}
+    <p>
+        Cludo Search lets you include a search engine on your website to help
+        your visitors find the information they're looking for.
+    </p>
+
+    {{
+        form.create({
+            'class': 'form piano__form',
+            'method': 'POST',
+            'action': constant('SECURE_JADU_PATH') ~ '/integrations/spacecraft/cludosearch',
+            'nonce': nonce
+        })
+    }}
+    {{
+        form.text({
+            'label': 'Customer Id',
+            'id': 'spacecraft-cludosearch-customer-id',
+            'name': 'spacecraft-cludosearch-customer-id',
+            'class' : attribute(errors, 'spacecraft-cludosearch-customer-id') ? 'has-error' : '',
+            'value' : attribute(values, 'spacecraft-cludosearch-customer-id'),
+            'required': true
+        })
+    }}
+    {{
+        form.text({
+            'label': 'Engine Id',
+            'id': 'spacecraft-cludosearch-engine-id',
+            'name': 'spacecraft-cludosearch-engine-id',
+            'class' : attribute(errors, 'spacecraft-cludosearch-engine-id') ? 'has-error' : '',
+            'value' : attribute(values, 'spacecraft-cludosearch-engine-id'),
+            'required': true
+        })
+    }}
+    {{
+        form.textarea({
+            'label': 'Theme',
+            'id': 'spacecraft-cludosearch-theme',
+            'name': 'spacecraft-cludosearch-theme',
+            'class' : attribute(errors, 'spacecraft-cludosearch-theme') ? 'has-error' : '',
+            'value' : attribute(values, 'spacecraft-cludosearch-theme'),
+            'required': false,
+            'rows': 10
+        })
+    }}
+    {% if pageAccess.updateContent %}
+        {{
+            form.hidden({
+                'name': '__token',
+                'value': csrfToken
+            })
+        }}
+
+        {{
+            form.end({
+                'class': 'form__actions--flush',
+                'actions': [
+                    form.submit({
+                        'label': 'Save',
+                        'class': 'btn btn--primary'
+                    })
+                ]
+            })
+        }}
+    {% else %}
+        {{ form.end() }}
+    {% endif %}
+{% endblock %}
