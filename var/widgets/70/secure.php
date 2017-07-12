@@ -1,3 +1,9 @@
+<?php
+include_once 'JaduConstants.php';
+
+// initialise document editor
+$editor = $jadu->getEditor();
+?>
 <table class="form_table" id="lb_widget_content">
 <tbody>
 	<tr>
@@ -13,7 +19,7 @@
 	</tr>
 	<tr>
 		<td class="data_cell" colspan="2">
-			<textarea id="content" rows="30" cols="43" rel="document_editor"></textarea>
+            <?php echo $editor->getEditorMarkup('content', '', 'content', false); ?>
 		</td>
 	</tr>
 </tbody>

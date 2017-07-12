@@ -1,8 +1,37 @@
 {
+    "name": "northampton/website",
+    "package": {
+        "files": [
+            "/CLIENT_VERSION",
+            "/config/permissions/custom",
+            "/jadu/**",
+            "/public_html/**",
+            "/src/**",
+            "/upgrades/migrations/helpers/autoloader.php",
+            "/var/**",
+            "/vendor/**",
+            "!/public_html/site/styles/widget/**",
+            "!/vendor/jadu/meteor-ant/**"
+        ],
+        "version": "CLIENT_VERSION",
+        "provider": "gdrive",
+        "combine": {
+            "jadu/cms": "16.7.4"
+        }
+    },
     "migrations": {
         "name": "Northampton Migrations",
         "table": "JaduMigrationsCustom",
         "namespace": "DoctrineMigrations",
         "directory": "upgrades/migrations"
+    },
+    "extensions": [
+        "Meteor\\Package\\Provider\\GoogleDrive\\ServiceContainer\\GoogleDrivePackageProviderExtension"
+    ],
+    "autoload": {
+        "composer": [
+            "spacecraft/backups",
+            "spacecraft/migrations"
+        ]
     }
 }

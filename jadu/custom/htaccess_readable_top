@@ -10,3 +10,6 @@ RewriteRule ^/?councillors/?$ your_councillors [QSA,NC,L]
 
 # FB 28702 - Allow a custom Jobs target
 RewriteRule ^/?jobs/?$ jobs_northamptonshire [QSA,NC,L]
+
+# SUP-3763
+RewriteRule ^/?events/?$ /info/200241/events [R=301,NC,L]

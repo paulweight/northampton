@@ -22,19 +22,9 @@
 		<li><a href="<?php print getSiteRootURL() . encodeHtml($_SERVER['REQUEST_URI']); ?>#content" rel="nofollow">Skip to content</a></li>
 		<li><a href="<?php print getSiteRootURL() . encodeHtml($_SERVER['REQUEST_URI']); ?>#column_nav" rel="nofollow">Skip to main navigation</a></li>
 	</ul>
-	
-	<form action="<?php print getSiteRootURL() . '/improve_search'; ?>" method="get" id="search">
-		<p><label for="search-site-query">Search for it...</label></p>
-		<div>
-			<input type="hidden" name="pckid" value="1610317951" />
-			<input type="hidden" name="aid" value="471434" />
-		</div>
-		<div id="search-site">
-			<input id="search-site-query" type="text" size="18" maxlength="255" name="sw" class="field" value="<?php print isset($htmlSafeQuery) ? encodeHtml($htmlSafeQuery) : ''; ?>" />
-			<input id="search-site-submit" type="submit" class="button" value=" " />
-		</div>
-	</form>
-	
+
+	<?php echo \Jadu\Service\Container::getInstance()->getSiteSearch()->getSearchBox(); ?>
+
 	<div class="clear"></div>
 	
 </div>
