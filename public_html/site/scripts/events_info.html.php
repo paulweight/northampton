@@ -3,7 +3,7 @@
 	<title><?php print encodeHtml($MAST_HEADING); ?> | <?php print encodeHtml(METADATA_GENERIC_NAME); ?></title>
 <?php 
 		include_once("../includes/stylesheets.php");
-		if (isset($_GET['eventID']) && $_GET['eventID'] > 0) {
+		if (isset($_GET['eventID']) && $_GET['eventID'] > 0) { 
 			printMetadata(EVENTS_METADATA_TABLE, EVENTS_CATEGORIES_TABLE, $event->id, $event->title, 
 				"http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
 		}
@@ -22,7 +22,7 @@
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
 <!-- ########################## -->
-
+	
 	<!-- All that days events listed -->
 	<h2>
 <?php
@@ -42,7 +42,7 @@
 	}
 ?>
 	</h2>
-
+			
 <?php
 	if (sizeof($events) < 1) {
 ?>
@@ -80,7 +80,7 @@
 		<li class="long">Cost: <?php print encodeHtml($event->cost); ?></li>
 	</ul>
 	<p><strong><?php print encodeHtml($event->summary); ?></strong></p>
-
+	
 <?php
 		if (!empty($event->description)) {
 ?>
@@ -97,7 +97,7 @@
 				}
 				else {
 ?>
-				<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($event->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($event->imageURL, 'altText')); ?> " />
+				<img src="<?php print getStaticContentRootURL() . '/images/' . encodeHtml($event->imageURL); ?>" alt="<?php print encodeHtml(getImageProperty($event->imageURL, 'altText')); ?> "" />
 <?php 
 				}
 			}
@@ -106,24 +106,27 @@
 	</div>
 <?php
 		}
+?>
+
+<?php
 	}
 
 	// Display pagination if required
 	if ($offset > 0) {
 ?>
-		<p><a href="<?php print getSiteRootURL() . encodeHtml(modifyRequestParameters('offset=' . ((int) $offset - $numToDisplay) . (isset($_REQUEST['location']) ? '&location=' . urlencode($_REQUEST['location']) : ''))); ?>">&laquo; Previous page</a></p>
+		<p><a href="<?php print getSiteRootURL() . encodeHtml(modifyRequestParameters('offset=' . ((int) $offset - $numToDisplay) . (isset($_REQUEST['location']) ? '&location=' . encodeHTML($_REQUEST['location']) : ''))); ?>">&laquo; Previous Page</a></p>
 <?php
 	}
 	if (($offset + $numEvents) < $totalEvents) {
 ?>
-		<p><a href="<?php print getSiteRootURL() . encodeHtml(modifyRequestParameters('offset=' . ((int) $offset + $numEvents) . (isset($_REQUEST['location']) ? '&location=' . urlencode($_REQUEST['location']) : ''))); ?>">&raquo; Next Page</a></p>
+		<p><a href="<?php print getSiteRootURL() . encodeHtml(modifyRequestParameters('offset=' . ((int) $offset + $numEvents) . (isset($_REQUEST['location']) ? '&location=' . encodeHTML($_REQUEST['location']) : ''))); ?>">&raquo; Next Page</a></p>
 <?php
-	}
+	} 
 ?>
 
 	<p><a class="rss" href="<?php print getSiteRootURL() . buildRSSURL('events');?>">Events RSS feed</a></p>
-
+	
 	<?php include('../includes/event_selection.php'); ?>
-
+			
 <!-- ################ MAIN STRUCTURE ############ -->
 <?php include("../includes/closing.php"); ?>

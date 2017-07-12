@@ -62,7 +62,7 @@
 <?php 
 		if ($form->progressBar == 1) { 
 ?>			
-			<p>Form progress: <strong><?php print (int) $progressPercentage;?>%</strong> - Page <strong><?php print encodeHtml($pageNumber+1);?></strong> of <strong><?php print $form->numberOfPages+2;?></strong></p>
+			<p>Form progress: <strong><?php print (int) $progressPercentage;?>%</strong> - Page <strong><?php print $pageNumber+1;?></strong> of <strong><?php print $form->numberOfPages+2;?></strong></p>
 			<div id="progressbar">
 				<img src="<?php print getStaticContentRootURL(); ?>/site/images/poll_bar.png" alt="progress <?php print (int) $progressPercentage;?>%" width="<?php print (int) $progressPercentage;?>%" />
 			</div>
@@ -70,7 +70,7 @@
 		}
 		else {
 ?>
-			<p>Page <strong><?php print encodeHtml($pageNumber+1);?></strong> of <strong><?php print $form->numberOfPages+2;?></strong></p>
+			<p>Page <strong><?php print $pageNumber+1;?></strong> of <strong><?php print $form->numberOfPages+2;?></strong></p>
 <?php
 		}
 ?>
@@ -94,7 +94,7 @@
 		
 		if ($pageNumber > 0 && $pageNumber <= $form->numberOfPages) {
 ?>
-			<h3>Page <?php print encodeHtml($pageNumber+1);?> - <?php print encodeHtml($page->title); ?></h3>
+			<h3>Page <?php print $pageNumber+1;?> - <?php print encodeHtml($page->title); ?></h3>
 			<p><?php print nl2br($page->instructions); ?></p>
 <?php
 			$totalQuestions = sizeof($allQuestions);
