@@ -159,7 +159,7 @@
 			$bookmarkTitle = $parent->name;
 		}
 		
-		if ($currentScript == 'documents_info.php') {
+		if ($currentScript == 'documents_info.php' && !empty($header)) {
 			$bookmarkTitle = $header->title;
 		}
 

@@ -17,7 +17,7 @@
 	include_once("websections/JaduHomepageWidgets.php");		
 	include_once("websections/JaduHomepageWidgetSettings.php");
 
-	$allIndependantHomepages = getAllHomepagesIndependant(HOMEPAGE_VISIBLE, true);
+	$allIndependantHomepages = getAllHomepagesIndependant(HOMEPAGE_VISIBLE, true, 1, 0);
 	if (count($allIndependantHomepages) > 0) {
 		$homepage = getHomepage($allIndependantHomepages[0]->id, true);
 		if ($homepage->id != -1) {

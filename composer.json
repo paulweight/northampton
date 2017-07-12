@@ -1,13 +1,24 @@
 {
     "repositories": [
         {
-            "type": "git",
-            "url": "git@gitlab.hq.jadu.net:engineering/meteor.git"
+            "type": "composer",
+            "url": "https://toran-proxy.hq.jadu.net/repo/private"
         }
     ],
     "require": {
-        "php": ">=5.3.2",
-        "doctrine/migrations": "1.0.*@dev",
-        "jadu/meteor": "1.0.*@dev"
+        "php": ">=5.6",
+        "jadu/cms-dependencies": "~16.7.4",
+        "jadu/meteor-ant": "^3.0",
+        "spacecraft/migrations": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spacecraft\\": "src"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6.0"
+        }
     }
 }
