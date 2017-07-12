@@ -40,7 +40,7 @@
 						if ($councillor->id != "" && $councillor->id != "-1") {
 							print '<li class="lead">';
 							if (!empty($councillor->imageURL)) {
-								print '<a href = "http://'. DOMAIN . buildCouncillorsIndividualURL($councillor->id) .'" ><img src="http://'. DOMAIN . '/images/' . encodeHtml($councillor->imageURL) . '" alt="' . encodeHtml(getImageProperty($councillor->imageURL, 'altText')) . '" /></a>';
+								print '<a href="'. getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'"><img src="' . getStaticContentRootURL() . '/images/' . encodeHtml($councillor->imageURL) . '" alt="' . encodeHtml(getImageProperty($councillor->imageURL, 'altText')) . '" /></a>';
 							}	
 							print '<h3><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'. encodeHtml($councillor->forename) . ' ' . encodeHtml($councillor->surname) . '</a> - ' . encodeHtml($position) . '</h3>';
 							$ward = getWard($councillor->wardID);
@@ -60,7 +60,7 @@
 						if ($councillor->id != "" && $councillor->id != "-1") {
 							print '<li>';
 							if (!empty($councillor->imageURL)) {							
-								print '<a href = "http://'. DOMAIN . buildCouncillorsIndividualURL($councillor->id) .'"><img src="http://'.$DOMAIN.'/images/'.$councillor->imageURL.'" alt="'.encodeHtml(getImageProperty($councillor->imageURL, 'altText')).' " /></a>';
+								print '<a href="'. getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'"><img src="'.getSiteRootURL().'/images/'.$councillor->imageURL.'" alt="'.encodeHtml(getImageProperty($councillor->imageURL, 'altText')).' " /></a>';
 							}								
 							print '<h3><a href="' . getSiteRootURL() . buildCouncillorsIndividualURL($councillor->id) .'">'.encodeHtml($councillor->forename).' '.encodeHtml($councillor->surname).'</a> - '.$position.'</h3>';
 							$ward = getWard($councillor->wardID);

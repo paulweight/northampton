@@ -28,7 +28,7 @@
 
 	//	Validate the numerics
 	if (!mb_ereg("^[0-9]{2}$", $_GET['month']) || !mb_ereg("^[0-9]{4}$", $_GET['year']) || $_GET['year'] > date("Y")) {
-		header("Location: http://" . $DOMAIN . buildPressURL());
+		header("Location: " . getSiteRootURL() . buildPressURL());
 		exit();
 	}
 

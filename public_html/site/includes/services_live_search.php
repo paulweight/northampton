@@ -21,6 +21,6 @@
 	</form>
 	<!-- End live search -->
 	<script type="text/javascript" src="<?php print getSiteRootURL(); ?>/site/javascript/livesearch.js"></script>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>" type="text/javascript"></script>
-	<script src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>" type="text/javascript"></script>
+	<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>" type="text/javascript"></script>
+	<script src="https://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>" type="text/javascript"></script>
 	<script type="text/javascript" src="<?php print getSiteRootURL(); ?>/site/javascript/services.js"></script>

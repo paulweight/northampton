@@ -8,7 +8,7 @@
 	<meta name="Keywords" content="news, <?php print encodeHtml(METADATA_GENERIC_KEYWORDS); ?>" />	
 	<meta name="Description" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> Multimedia Galleries - <?php print encodeHtml($gallery->title); ?> - <?php print encodeHtml($item->title);?>" />
 
-	<?php printMetadata(MULTIMEDIA_GALLERY_METADATA_TABLE, MULTIMEDIA_GALLERY_CATEGORIES_TABLE, $gallery->id, $gallery->title, "http://".$DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?> 
+	<?php printMetadata(MULTIMEDIA_GALLERY_METADATA_TABLE, MULTIMEDIA_GALLERY_CATEGORIES_TABLE, $gallery->id, $gallery->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?> 
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
@@ -92,10 +92,10 @@ else {
 			<img src="<?php print getStaticContentRootURL() . (!$previousItem->isAudio() ? $previousItem->getThumbnail(300) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($previousItem->title); ?>" /></li>
  <?php
 			if ($previousItem->isAudio()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/listen.gif" alt="listen" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/listen.gif" alt="listen" />';
 			}
 			if ($previousItem->isVideo()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/watch.gif" alt="watch" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/watch.gif" alt="watch" />';
 			}
 ?>
 			</a>
@@ -116,10 +116,10 @@ else {
 						<img src="<?php print getStaticContentRootURL() . (!$nextItem->isAudio() ? $nextItem->getThumbnail(200) : '/site/styles/css_img/audio_75.jpg'); ?>" alt="<?php print encodeHtml($nextItem->title); ?>" />
 <?php
 			if ($nextItem->isAudio()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/listen.gif" alt="listen" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/listen.gif" alt="listen" />';
 			}
 			if ($nextItem->isVideo()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/watch.gif" alt="watch" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/watch.gif" alt="watch" />';
 			}
 ?>
 					</a></li>

@@ -45,7 +45,7 @@
 <?php 
 			foreach ($downloads as $download) {
 ?>
-	<p><a href="<?php print 'http://' . DOMAIN . '/recruit_downloads/' . encodeHtml($download->filename); ?>"><?php print encodeHtml($download->title); ?></a></p>
+	<p><a href="<?php print getSiteRootURL() . '/recruit_downloads/' . encodeHtml($download->filename); ?>"><?php print encodeHtml($download->title); ?></a></p>
 <?php
 			}
 		}

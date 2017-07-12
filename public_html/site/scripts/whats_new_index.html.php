@@ -50,7 +50,7 @@
 <?php
 			foreach ($sections as $section) {
 ?>
-				<li><a href="http://<?php print DOMAIN . buildWhatsNewURL(); ?>#<?php print encodeHtml(str_replace(' ', '', $section)); ?>"><?php print encodeHtml($section); ?></a></li>
+				<li><a href="<?php print getSiteRootURL() . buildWhatsNewURL(); ?>#<?php print encodeHtml(str_replace(' ', '', $section)); ?>"><?php print encodeHtml($section); ?></a></li>
 <?php
 			}
 ?>

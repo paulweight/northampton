@@ -18,7 +18,7 @@
 	<meta name="Keywords" content="<?php print encodeHtml($metadata->subject); ?>" />
 	<meta name="Description" content="<?php print encodeHtml($metadata->description); ?>" />
 
-	<?php printMetadata(HOMEPAGES_METADATA_TABLE, HOMEPAGE_CATEGORIES_TABLE, $homepage->id, $homepage->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
+	<?php printMetadata(HOMEPAGES_METADATA_TABLE, HOMEPAGE_CATEGORIES_TABLE, $homepage->id, $homepage->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

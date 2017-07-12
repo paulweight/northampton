@@ -3,7 +3,7 @@
 	include_once("JaduStyles.php");
 
 	if (isset($_GET['link'])) {
-		$link = 'http://' . DOMAIN . base64_decode($_GET['link']);
+		$link = getSiteRootURL() . base64_decode($_GET['link']);
 	}
 	else {
 		$link = $_POST['link'];

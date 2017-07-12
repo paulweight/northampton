@@ -22,12 +22,12 @@
 <?php
 	if (($year == date('Y') && str_pad($month, 2, '0', STR_PAD_LEFT) < date('m')) || $year < date('Y')) {
 ?>
-		<a href='http://<?php print DOMAIN . buildStatisticsURL($nextYear, $nextMonth); ?>' class="float_right">Next Month</a>
+		<a href='<?php print getSiteRootURL() . buildStatisticsURL($nextYear, $nextMonth); ?>' class="float_right">Next Month</a>
 <?php
 	}
 	if (($year == $firstYear && str_pad($month, 2, '0', STR_PAD_LEFT) > $firstMonth) || $year > $firstYear) {
 ?>
-		<a href='http://<?php print DOMAIN . buildStatisticsURL($previousYear, $previousMonth); ?>' class="float_left">Previous Month</a> 
+		<a href='<?php print getSiteRootURL() . buildStatisticsURL($previousYear, $previousMonth); ?>' class="float_left">Previous Month</a> 
 <?php
 	}
 ?>

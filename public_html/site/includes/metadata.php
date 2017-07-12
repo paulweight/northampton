@@ -4,7 +4,7 @@
 
 	<!-- general metadata -->
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="generator" content="http://www.jadu.net" />
+	<meta name="generator" content="https://www.jadu.net" />
 	<meta name="robots" content="index,follow" />
 	<meta name="revisit-after" content="2 days" />
 	<meta name="Author-Template" content="Jadu CSS design" />

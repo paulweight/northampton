@@ -25,10 +25,10 @@
 <?php 
 	$categories = getAllCategoriesOfType(DIRECTORY_ENTRY_CATEGORIES_TABLE, $record->id);
 	if (count($categories) > 0) {
-		printMetadata(DIRECTORY_ENTRY_METADATA_TABLE, DIRECTORY_ENTRY_CATEGORIES_TABLE, $record->id, $record->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+		printMetadata(DIRECTORY_ENTRY_METADATA_TABLE, DIRECTORY_ENTRY_CATEGORIES_TABLE, $record->id, $record->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
 	}
 	else {
-		printMetadata(DIRECTORY_ENTRY_METADATA_TABLE, null, $record->id, $record->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+		printMetadata(DIRECTORY_ENTRY_METADATA_TABLE, null, $record->id, $record->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
 		printCategoryMetadata(DIRECTORY_CATEGORIES_TABLE, $directory->id);
 	}
 ?>
@@ -36,7 +36,7 @@
 <?php
 	if ($includeGoogleMapsJavascript) {
 ?>
-		<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
+		<script type="text/javascript" src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
 		<script type="text/javascript" src="<?php print getStaticContentRootURL(); ?>/site/javascript/directory_record.js"></script>
 <?php
 	}
@@ -98,13 +98,13 @@
 					print '	<div class="byEditor article">'. processEditorContent($recordValues[$field->id]->value).'</div>';
 					break;
 				case 'Image':
-					printf('<img alt="Record Image" src="http://%s/images/%s" />', DOMAIN, $directoryFieldValue);
+					printf('<img alt="Record Image" src="%s/images/%s" />', getStaticContentRootURL(), $directoryFieldValue);
 					break;
 				case 'Google Map':
 					// marker image
-					$markerImage = sprintf('http://%s/site/images/map_markers/red.png', DOMAIN);
+					$markerImage = sprintf('%s/site/images/map_markers/red.png', getStaticContentRootURL());
 					if (!empty($fieldSettings['MapMarker']->value)) {
-						$markerImage = sprintf('http://%s/site/images/map_markers/%s', DOMAIN, encodeHtml($fieldSettings['MapMarker']->value));
+						$markerImage = sprintf('%s/site/images/map_markers/%s', getStaticContentRootURL(), encodeHtml($fieldSettings['MapMarker']->value));
 					}
 
 					// marker location
@@ -128,7 +128,7 @@
 								include_once('JaduImages.php');
 								list($width, $height) = getimagesize(HOME_DIR . 'public_html/images/' . basename($recordValues[$fieldID]->value));
 								list($scaledWidth, $scaledHeight) = scaleImg($width, $height, 100);
-								$markerInfo .= sprintf('<img src="http://%s/images/%s" width="%s" height="%s" /><br />', DOMAIN, $recordValues[$fieldID]->value, $scaledWidth, $scaledHeight);
+								$markerInfo .= sprintf('<img src="%s/images/%s" width="%s" height="%s" /><br />', getStaticContentRootURL(), $recordValues[$fieldID]->value, $scaledWidth, $scaledHeight);
 							}
 							else if (in_array($fieldID, $linkFields)) {
 								$recordValues[$fieldID]->value = strip_tags($recordValues[$fieldID]->value, '<a>');

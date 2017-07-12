@@ -17,7 +17,7 @@
 <?php
     if ($includeGoogleMapsJavascript) {
 ?>
-        <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
+        <script type="text/javascript" src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
         <script type="text/javascript" src="<?php print getStaticContentRootURL(); ?>/site/javascript/directory_submit.js"></script>
 <?php
     }

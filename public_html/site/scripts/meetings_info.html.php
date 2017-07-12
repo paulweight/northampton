@@ -13,7 +13,7 @@ exit;
 	<meta name="Keywords" content="committee, meetings, minutes, agendas, <?php print encodeHtml(METADATA_GENERIC_KEYWORDS); ?>" />
 	<meta name="Description" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?>&#39;s directory of Agendas, Reports and Minutes" />
 
-	<?php printMetadata(MEETING_MINUTES_METADATA_TABLE, MEETING_MINUTES_CATEGORIES_TABLE, $meeting->id, $header->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
+	<?php printMetadata(MEETING_MINUTES_METADATA_TABLE, MEETING_MINUTES_CATEGORIES_TABLE, $meeting->id, $header->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

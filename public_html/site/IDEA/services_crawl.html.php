@@ -31,7 +31,7 @@
 <?php
 	if (isset($_GET['set']) && ($_GET['set'] == 'pid' || $_GET['set'] == 'nonpid')) {
 ?>
-		<form name="expform" method="post" enctype="multipart/form-data" action="http://<?php print DOMAIN; ?>/site/IDEA/services_crawl.php?set=<?php print encodeHtml($_GET['set']); ?>" class="basic_form">
+		<form name="expform" method="post" enctype="multipart/form-data" action="<?php print getCurrentProtocolSiteRootURL(); ?>/site/IDEA/services_crawl.php?set=<?php print encodeHtml($_GET['set']); ?>" class="basic_form">
 			<p>Click the export spreadsheet button to download a CSV file of all the selected type of services.</p>
 			<p class="centre"><input type="submit" name="submit" value="Export spreadsheet" class="genericButton grey" /></p>
 		</form>

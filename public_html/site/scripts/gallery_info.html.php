@@ -22,7 +22,7 @@
 	<meta name="Keywords" content="<?php print encodeHtml($metadata->subject); ?>" />	
 	<meta name="Description" content="<?php print encodeHtml($gallery->title); ?> Multimedia Gallery - <?php print encodeHtml($metadata->description); ?>" />
 
-	<?php printMetadata(MULTIMEDIA_GALLERY_METADATA_TABLE, MULTIMEDIA_GALLERY_CATEGORIES_TABLE, $gallery->id, $gallery->title, "http://".$DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?> 
+	<?php printMetadata(MULTIMEDIA_GALLERY_METADATA_TABLE, MULTIMEDIA_GALLERY_CATEGORIES_TABLE, $gallery->id, $gallery->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?> 
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>
@@ -72,10 +72,10 @@ else {
 			}
 
 			if ($item->isAudio()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/listen.gif" alt="listen" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/listen.gif" alt="listen" />';
 			}
 			if ($item->isVideo()) { 
-				print '<img class="typeIcon" src="http://'.DOMAIN.'/site/images/watch.gif" alt="watch" />';
+				print '<img class="typeIcon" src="' . getStaticContentRootURL().'/site/images/watch.gif" alt="watch" />';
 			}
 ?>
 			</a>

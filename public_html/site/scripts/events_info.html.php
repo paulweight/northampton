@@ -5,7 +5,7 @@
 		include_once("../includes/stylesheets.php");
 		if (isset($_GET['eventID']) && $_GET['eventID'] > 0) {
 			printMetadata(EVENTS_METADATA_TABLE, EVENTS_CATEGORIES_TABLE, $event->id, $event->title, 
-				"http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+				getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
 		}
 		include_once("../includes/metadata.php");
 ?>

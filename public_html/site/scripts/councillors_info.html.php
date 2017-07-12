@@ -9,7 +9,7 @@
 	<meta name="Description" content="Details of Councillor <?php print encodeHtml($councillor->forename . ' ' . $councillor->surname);?> of <?php if ($ward->id != -1) print encodeHtml($ward->name); else print "Unknown Ward"; ?> Ward - <?php if ($party->id != -1) print encodeHtml($party->name); else print "Unknown"; ?> Party" />
 
 	<meta name="DC.title" lang="en" content="Councillor <?php print encodeHtml($councillor->forename . ' ' . $councillor->surname);?> - <?php if ($ward->id != -1) print encodeHtml($ward->name); else print "Unknown Ward"; ?> Ward - <?php if ($party->id != -1) print encodeHtml($party->name); else print "Unknown"; ?> Party - <?php print encodeHtml(METADATA_GENERIC_NAME); ?>" />
-	<meta name="DC.identifier" content="http://<?php print DOMAIN . encodeHtml($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']); ?>" />
+	<meta name="DC.identifier" content="<?php print getSiteRootURL() . encodeHtml($_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']); ?>" />
 
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />

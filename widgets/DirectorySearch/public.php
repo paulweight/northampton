@@ -42,7 +42,7 @@
 	}
 ?>
 		
-		<form method="get" action="http://<?php print DOMAIN; ?>/site/scripts/directory_search.php">
+		<form method="get" action="<?php print getCurrentProtocolSiteRootURL(); ?>/site/scripts/directory_search.php">
 			<input type="hidden" value="<?php print $directoryID; ?>" name="directoryID" />
 			<input type="hidden" value="Search" name="search" />
 			
@@ -50,7 +50,7 @@
 			<input type="submit" class="button SorFbutt" name="submit" value="Search" />
 		</form>
 
-		<form method="get" action="http://<?php print DOMAIN; ?>/site/scripts/directory_search.php">
+		<form method="get" action="<?php print getCurrentProtocolSiteRootURL(); ?>/site/scripts/directory_search.php">
 			<input type="hidden" value="<?php print $directoryID; ?>" name="directoryID" />
 			<input type="hidden" value="Search" name="search" />
 			
@@ -58,5 +58,5 @@
 			<input type="submit" class="button SorFbutt" name="submit" value="Find" />
 		</form>
 
-		<a href="http://<?php print DOMAIN; ?>/site/scripts/directory_search.php?directoryID=<?php print $directoryID; ?>">Advanced Search</a>
+		<a href="<?php print getSiteRootURL(); ?>/site/scripts/directory_search.php?directoryID=<?php print $directoryID; ?>">Advanced Search</a>
 	</div>

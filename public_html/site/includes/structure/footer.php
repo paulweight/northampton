@@ -3,16 +3,16 @@
 	<div id="footer" class="box-shadow">
 		<ul id="smallprint">
 			<li>&copy; <?php print date("Y") . ' ' . encodeHtml(METADATA_GENERIC_NAME); ?> </li>
-			<li>Powered by Jadu <a href="http://www.jadu.net" title="Jadu Content Management">Content Management.</a></li>
+			<li>Powered by Jadu <a href="https://www.jadu.net" title="Jadu Content Management">Content Management.</a></li>
 		</ul>
 		<div id="social">
 			<h4>Follow us on&hellip;</h4>
 			<ul id="networks">
 				<li><a href="<?php print getSiteRootURL(); ?>/app"><img src="<?php print getSiteRootURL(); ?>/site/images/app_store.png" alt="Available on the App Store" title="iPhone App" /> </a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/facebook"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-facebook.png" alt="Facebook" title="Facebook" /> <span>Facebook</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/twitter"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-twitter.png" alt="Twitter" title="Twitter" /> <span>Twitter</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/youtube"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-youtube.png" alt="YouTube" title="YouTube" /> <span>YouTube</span></a></li>
-				<li><a href="<?php print getSiteRootURL(); ?>/rss"><img height="32" width="32" src="<?php print getSiteRootURL(); ?>/site/styles/css_img/social-rss.png" alt="RSS" title="RSS" /> <span>RSS</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/facebook"><img height="32" width="32" src="<?php print getStaticContentRootURL(); ?>/site/styles/css_img/social-facebook.png" alt="Facebook" title="Facebook" /> <span>Facebook</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/twitter"><img height="32" width="32" src="<?php print getStaticContentRootURL(); ?>/site/styles/css_img/social-twitter.png" alt="Twitter" title="Twitter" /> <span>Twitter</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/youtube"><img height="32" width="32" src="<?php print getStaticContentRootURL(); ?>/site/styles/css_img/social-youtube.png" alt="YouTube" title="YouTube" /> <span>YouTube</span></a></li>
+				<li><a href="<?php print getSiteRootURL(); ?>/rss"><img height="32" width="32" src="<?php print getStaticContentRootURL(); ?>/site/styles/css_img/social-rss.png" alt="RSS" title="RSS" /> <span>RSS</span></a></li>
 			</ul>
 		</div>
 		<ul class="hidden">

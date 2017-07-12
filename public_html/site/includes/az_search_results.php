@@ -46,7 +46,7 @@
 				
 ?>
 				<li>
-					<a href="<?php print 'http://' . DOMAIN . buildAZServiceURL($service->id); ?>"><?php print encodeHtml($service->title); ?></a>
+					<a href="<?php print getSiteRootURL() . buildAZServiceURL($service->id); ?>"><?php print encodeHtml($service->title); ?></a>
 <?php
 			$serviceContacts = $service->getContacts();
 			if (sizeof($serviceContacts) > 0 || sizeof($forms) > 0) {

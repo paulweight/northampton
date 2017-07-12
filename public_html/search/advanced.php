@@ -7,7 +7,7 @@
 
 	$liveAppliances = getRupaAppliances('live', true, '=');
 	if (empty($liveAppliances)) {
-		header('Location: http://'.DOMAIN.'/search/offline.php');
+		header('Location: '.getSiteRootURL().'/search/offline.php');
 		exit;
 	}
 	
@@ -24,7 +24,7 @@
 <head>
 	<title><?php print RUPA_INSTALLATION_NAME; ?> - Advanced Search</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel="search" type="application/opensearchdescription+xml" href="http://<?php print DOMAIN; ?>/search/opensearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>" />
+	<link rel="search" type="application/opensearchdescription+xml" href="<?php print getStaticContentRootURL(); ?>/search/opensearch.php" title="<?php print RUPA_INSTALLATION_NAME; ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php print RUPA_HOME_URL; ?>styles/<?php print encodeHtml(RUPA_STYLESHEET); ?>" media="screen" />
 	<link rel="Shortcut Icon" type="image/x-icon" href="<?php print RUPA_HOME_URL; ?>favicon.ico" />
 	

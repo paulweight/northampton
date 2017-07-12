@@ -18,7 +18,7 @@ var r = Math.floor(Math.random() * (typeof(socitm_ratio) != "undefined" ? socitm
 if ((document.location.search.indexOf("SocitmForcePop") > -1)||(r == 0) || (getCookie("socitm_include_me") == "true")) {
     document.write('<script type="text/javascript" src="/site/javascript/socitm_popups.js"><\/script>');
     document.write('<link rel="stylesheet" type="text/css" href="'+ socitm_protocol +'//socitm.govmetric.com/css/socitm.css" />');
-    document.write('<style type="text/css">#socitm_info_box { background: #fff url(http://socitm.govmetric.com/images/socitm.gif) no-repeat 1.5em 10px; }</style>');
+    document.write('<style type="text/css">#socitm_info_box { background: #fff url(//socitm.govmetric.com/images/socitm.gif) no-repeat 1.5em 10px; }</style>');
     if ((document.location.search.indexOf("SocitmForcePop") > -1) || ((getCookie("socitm_exclude_me") != "true") && (getCookie("socitm_include_me") != "true")) && !suppresspop) {
         document.write('<script type="text/javascript" src="http://socitm.govmetric.com/popcounter.aspx?code=' + socitm_custcode + '&lang_code=' + socitm_language_opt +'"><\/script>');
     }

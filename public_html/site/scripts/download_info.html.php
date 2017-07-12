@@ -39,7 +39,7 @@
 		<li>Extension: <?php print encodeHtml($extension); ?> <img src="<?php print getStaticContentRootURL() . $fileItem->getFileIcon(); ?>" alt=" " /></li>
 	</ul>
 		
-	<form enctype="multipart/form-data" action="http://<?php print DOMAIN . buildRetailBasketURL(); ?>" method="post" name="basketform">
+	<form enctype="multipart/form-data" action="<?php print getCurrentProtocolSiteRootURL() . buildRetailBasketURL(); ?>" method="post" name="basketform">
 		<input type="submit" name="add_to_basket" value="Add to basket" />
 		<input type="hidden" name="action_basket" value="ADD" />
 		<input type="hidden" name="id" value="<?php print $product->id; ?>" />
@@ -72,7 +72,7 @@
 		if (isset($fileItem) && $fileItem->id > 0) {
 			if ($fileItem->url == '') {
 				$extension = $fileItem->getFilenameExtension();
-				$filename = 'http://' . $DOMAIN . buildDownloadsURL(-1, $fileItem->id, $download->id, true);
+				$filename = getSiteRootURL() . buildDownloadsURL(-1, $fileItem->id, $download->id, true);
 			}
 			else {
 				$filename = encodeHtml($fileItem->url);
@@ -105,7 +105,7 @@
 			foreach ($allFiles as $fileItem) {
 				if ($fileItem->url == '') {
 					$extension = $fileItem->getFilenameExtension();
-					$path = 'http://'. DOMAIN . buildDownloadsURL(-1, $fileItem->id, $download->id);
+					$path = getSiteRootURL() . buildDownloadsURL(-1, $fileItem->id, $download->id);
 				}
 				else {
 					$extension = $fileItem->getURLExtension();

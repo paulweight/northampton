@@ -22,7 +22,7 @@
 	<meta name="Keywords" content="<?php print encodeHtml($metadata->subject); ?>,podcast" />	
 	<meta name="Description" content="<?php print encodeHtml($metadata->description); ?>" />
 
-	<?php printMetadata(MULTIMEDIA_PODCAST_METADATA_TABLE, MULTIMEDIA_PODCAST_CATEGORIES_TABLE, $podcast->id, $podcast->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>	
+	<?php printMetadata(MULTIMEDIA_PODCAST_METADATA_TABLE, MULTIMEDIA_PODCAST_CATEGORIES_TABLE, $podcast->id, $podcast->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>	
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

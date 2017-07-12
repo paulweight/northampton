@@ -21,7 +21,7 @@
 	<meta name="Keywords" content="news, <?php print encodeHtml($metadata->subject); ?>" />	
 	<meta name="Description" content="<?php print encodeHtml($news->title);?> - <?php print encodeHtml($metadata->description);?>" />
 
-	<?php printMetadata(NEWS_METADATA_TABLE, NEWS_CATEGORIES_TABLE, $news->id, $news->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
+	<?php printMetadata(NEWS_METADATA_TABLE, NEWS_CATEGORIES_TABLE, $news->id, $news->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

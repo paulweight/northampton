@@ -9,7 +9,7 @@
 	
 	// Re-direct a period submit by post to a readable get
 	if (isset($_POST['period'])) {
-		header('Location: http://'. DOMAIN . buildEventsURL(-1,$_POST['period']));
+		header('Location: '. getSiteRootURL() . buildEventsURL(-1,$_POST['period']));
 		exit;
 	}
 

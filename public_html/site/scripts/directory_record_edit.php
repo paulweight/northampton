@@ -23,18 +23,18 @@
         	$approved = true;
         }
 	else {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         	exit();
     	}
 
 	if (!isset($directoryEntry) || $directoryEntry->id == -1 || $directoryEntry->userID != Jadu_Service_User::getInstance()->getSessionUserID()) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
 		exit();
 	}
 
 	$directory = getDirectory($directoryEntry->directoryID, true);
 	if ($directory->id == -1) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         exit();
 	}
 	$directoryFields = getAllDirectoryFields($directory->id);
