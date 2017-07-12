@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="build" basedir=".">
+
     <!-- First try to load a local (not checked-in) file of properties that will override all others -->
     <property file="${basedir}/build.properties.private" />
 
@@ -8,25 +9,28 @@
     <property name="package-prefix" value="Northampton-" />
     <property name="package-suffix" value="" />
 
-    <include file="vendor/jadu/meteor-ant/include-all.xml" as="" prefixSeparator="" />
+    <!-- File sets are collection of files. These are used for packaging -->
+  <!--  <fileset id="fileset.files" dir="${basedir}">
+        <include name="jadu/**" />
+        <include name="public_html/**" />
+        <include name="var/**" />
+        <include name="CLIENT_VERSION" /> 
+	<exclude name="public_html/site/styles/widget/**" />
+    </fileset>	-->
+		
+    <!-- include all the other jadu task files within meteor-->
+    <include file="vendor/jadu/meteor/res/build/ant/include-all.xml" as="" prefixSeparator="" />
 
-    <target name="package" depends="package.load-version-number, package.download-meteor-phar, build" description="Create a package">
-        <exec dir="${basedir}" executable="php" failonerror="true">
-            <arg line="meteor.phar package -o ${output-dir} -f ${package-prefix}${version}${package-suffix}" />
-        </exec>
+    <!-- Example tasks - packaging will need to be called by first setting the fileset and filename -->
+    <target name="package" depends="package.load-version-number" description="Create a php package for the client repo">
+        <property name="package-name" value="${package-prefix}${version}${package-suffix}-patch.zip" />
+        <property name="package-fileset" value="fileset.default-client" />
+        <antcall target="package.package" />
     </target>
 
-    <target name="deploy" depends="package" description="Create and deploy a package">
-        <property name="patch-file-path" value="${output-dir}/${package-prefix}${version}${package-suffix}.zip" />
+    <target name="deploy" depends="package" description="Create and deploy a php front end package">
+        <property name="patch-file-path" value="${output-dir}/${package-name}" />
         <antcall target="patch.apply" />
     </target>
 
-    <target name="build" depends="composer-install" />
-
-    <target name="composer-install" description="Install Composer dependencies">
-        <exec dir="${basedir}" executable="composer" failonerror="true">
-            <env key="COMPOSER_PROCESS_TIMEOUT" value="2400" />
-            <arg line="install --no-interaction --optimize-autoloader --no-dev" />
-        </exec>
-    </target>
 </project>

@@ -19,8 +19,8 @@
 	}
 	
 	if (!isset($_GET['documentID']) || $_GET['documentID'] < 1) {
-		header('Location: documents_index.php');
-		exit;
+		header("Location: documents_index.php");
+		exit();
 	}
 	
 	// Get the live document
@@ -100,8 +100,6 @@
 
 	if ($showDocument && $document->id == -1) {
 		header("HTTP/1.0 404 Not Found");
-		include '../../404.php';
-		exit;
 	}
 
 	// Breadcrumb, H1 and Title
@@ -115,3 +113,4 @@
 	
 	include_once("JaduStyles.php");
 	include("documents_info.html.php");
+?>

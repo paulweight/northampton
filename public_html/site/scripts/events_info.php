@@ -19,9 +19,9 @@
 		$liveOnly = true;
 
 		// Check whether an administrator is previewing the page
-		$allowPreview = (isset($isPreviewLink) && $isPreviewLink && isset($allowPreview) && $allowPreview);
-		if($allowPreview) {
-			$approvedOnly = $liveOnly = false;
+		if (isset($_GET['adminID']) && isset($_GET['preview']) && isset($_GET['expire'])) {
+			include_once('utilities/JaduAdministrators.php');
+			$approvedOnly = $liveOnly = !validateAdminPreviewHash(getAdministrator($_GET['adminID']), $_GET['preview'], $_GET['expire']);
 		}
 		
 		// Get an individual event
