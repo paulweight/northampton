@@ -16,7 +16,7 @@
 
 	$liveAppliances = getRupaAppliances('live', true, '=');
 	if (empty($liveAppliances)) {
-		header('Location: http://'.DOMAIN.'/search/offline.php');
+		header('Location: '.getSiteRootURL().'/search/offline.php');
 	}
 	
 	$allRupaRenameResultURLs = getAllRupaRenameResultURLs();
@@ -309,7 +309,7 @@
 					
 					
 					if (mb_eregi('/download', $resultItem->url) && trim($title) == '') {
-						$filename = str_replace('http://'.DOMAIN.'/', '', $resultItem->url);
+						$filename = str_replace(getSiteRootURL().'/', '', $resultItem->url);
 						$filename = mb_eregi_replace('downloads/', '', $filename);
 						$filename = mb_eregi_replace('file\/([0-9]+)/', '', $filename);
 						$filename = mb_eregi_replace('download\/([0-9]+)/', '', $filename);

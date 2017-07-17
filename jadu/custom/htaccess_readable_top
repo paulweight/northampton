@@ -1,5 +1,14 @@
 RewriteEngine On
 
+#If traffic comes over encrypted port apache will set internal HTTPS variable. So let's set our variable HTTPS if this is the case.
+RewriteCond %{HTTPS} ^on$
+RewriteRule .* - [E=HTTPS:on]
+
+# Ensure we're serving over SSL
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{ENV:HTTPS} !^on$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}$1 [R=301]
+
 RewriteRule ^/?search/index.%EXTENSION%$ /site/scripts/search_index.%EXTENSION% [QSA,NC,L]
 
 # FB 28701 - Allow a custom Contact Us target

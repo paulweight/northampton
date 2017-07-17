@@ -10,7 +10,7 @@
 
 	if (!isset($_REQUEST['directoryCategoryID']) && !isset($_REQUEST['categoryID']) 
 		&& !isset($_REQUEST['categoryInfoID'])) {
-	    header('Location: http://' . DOMAIN);
+	    header('Location: ' . getSiteRootURL());
         exit();
 	}
 
@@ -30,7 +30,7 @@
 			$categoryInfo = getDirectoryCategoryInformationForCategory($category->id);
 
 			if ($categoryInfo->id != '-1' && !empty($categoryInfo->bulletImageFilename)) {
-				$liStyle = sprintf(' style="background-image: url(http://%s/images/%s)"', DOMAIN, encodeHtml($categoryInfo->bulletImageFilename));
+				$liStyle = sprintf(' style="background-image: url(%s/images/%s)"', getStaticContentRootURL(), encodeHtml($categoryInfo->bulletImageFilename));
 			}
 		}
 	}
@@ -43,7 +43,7 @@
 	}
 	
 	if ($directory->id == -1) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         exit();
 	}
 
@@ -51,7 +51,7 @@
 		$categoryInfo = getDirectoryCategoryInformation($_REQUEST['categoryInfoID']);
 
 		if ($categoryInfo->id != '-1' && !empty($categoryInfo->bulletImageFilename)) {
-			$liStyle = sprintf(' style="background-image: url(http://%s/images/%s)"', DOMAIN, encodeHtml($categoryInfo->bulletImageFilename));
+			$liStyle = sprintf(' style="background-image: url(%s/images/%s)"', getStaticContentRootURL(), encodeHtml($categoryInfo->bulletImageFilename));
 		}
 	}
 

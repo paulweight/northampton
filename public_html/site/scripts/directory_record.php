@@ -14,7 +14,7 @@
 	include_once("../includes/lib.php");
 
 	if (!isset($_REQUEST['recordID']) || !is_numeric($_REQUEST['recordID'])) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
 		exit();
 	}
 

@@ -6,8 +6,8 @@ if (typeof(scriptFileExtension) == "undefined") {
 }
 
 var icon = new GIcon();
-icon.image = "http://www.google.com/mapfiles/marker.png";
-icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
+icon.image = "https://www.google.com/mapfiles/marker.png";
+icon.shadow = "https://www.google.com/mapfiles/shadow50.png";
 icon.iconSize = new GSize(20, 34);
 icon.shadowSize = new GSize(37, 34);
 icon.iconAnchor = new GPoint(10, 34);

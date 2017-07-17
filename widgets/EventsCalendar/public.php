@@ -99,7 +99,7 @@
 					("$nextDay-$currentMonth-$currentYear" == date("d-m-Y")) ? 	print '<td class="today">' : print '<td>';
 					if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
 						$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
-						print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.php?startDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
+						print "<a href=\"" . getSiteRootURL() ."/site/scripts/events_info.php?startDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
 					}
 					else {
 						print $nextDay;
@@ -118,7 +118,7 @@
 						$nextDay = "0" . $nextDay;
 					if (sizeof(getEventsForDate("$nextDay-$currentMonth-$currentYear")) > 0) {
 						$thisDate = $nextDay . "-" . $currentMonth . "-" . $currentYear;
-						print "<a href=\"http://". $DOMAIN ."/site/scripts/events_info.phpstartDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
+						print "<a href=\"" . getSiteRootURL() ."/site/scripts/events_info.phpstartDate=$thisDate&amp;endDate=$thisDate$dateRequest\">" . $nextDay . "</a>";
 					}
 					else
 						print $nextDay;

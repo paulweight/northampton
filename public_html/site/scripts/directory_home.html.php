@@ -22,7 +22,7 @@
 	<meta name="Keywords" content="<?php print encodeHtml($metadata->subject); ?>,directory" />
 	<meta name="Description" content="<?php print encodeHtml($metadata->description); ?>" />
 
-	<?php printMetadata(DIRECTORY_METADATA_TABLE, DIRECTORY_CATEGORIES_TABLE, $directory->id, $directory->name, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
+	<?php printMetadata(DIRECTORY_METADATA_TABLE, DIRECTORY_CATEGORIES_TABLE, $directory->id, $directory->name, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

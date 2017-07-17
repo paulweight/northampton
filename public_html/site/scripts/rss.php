@@ -17,8 +17,8 @@
 		
 	    $rssChannel->title = DOMAIN . " Latest Events";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest events");
-		$rssChannel->link = 'http://' . DOMAIN . buildEventsURL();
-		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('events');
+		$rssChannel->link = getSiteRootURL() . buildEventsURL();
+		$rssChannel->href = getSiteRootURL() . buildRSSURL('events');
 		
     	foreach ($events as $event) {
     	    $rssItem = new RSSItem();
@@ -41,13 +41,13 @@
 	    $forms = getXMostRecentlyCreatedXFormsForms($MAX_ITEMS);
 	    $rssChannel->title = DOMAIN . " Latest Forms";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest forms");
-		$rssChannel->link = 'http://' . DOMAIN . buildXFormsURL();
-		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('forms');
+		$rssChannel->link = getSiteRootURL() . buildXFormsURL();
+		$rssChannel->href = getSiteRootURL() . buildRSSURL('forms');
 
     	foreach ($forms as $form) {
     	    $rssItem = new RSSItem();
 			$rssItem->title = encodeXML($form->title);
-			$rssItem->link = 'http://' . DOMAIN . buildXFormsURL($form->id);
+			$rssItem->link = getSiteRootURL() . buildXFormsURL($form->id);
 			$rssItem->description = '';
 			$rssItem->pubDate = date("r", $form->enterDate);
 
@@ -59,13 +59,13 @@
 	    $downloads = getXMostRecentlyCreatedDownloadFiles($MAX_ITEMS);
 	    $rssChannel->title = DOMAIN . " Latest Downloads";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest downloads");
-		$rssChannel->link = 'http://' . DOMAIN . buildDownloadsURL();
-		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('downloads');
+		$rssChannel->link = getSiteRootURL() . buildDownloadsURL();
+		$rssChannel->href = getSiteRootURL() . buildRSSURL('downloads');
 
     	foreach ($downloads as $download) {
     	    $rssItem = new RSSItem();
 			$rssItem->title = encodeXML($download->title);
-			$rssItem->link = 'http://' . DOMAIN . buildDownloadsURL(-1, $download->id);
+			$rssItem->link = getSiteRootURL() . buildDownloadsURL(-1, $download->id);
 			$rssItem->description = '';
 			$rssItem->pubDate = date("r", $download->creationDate);
 
@@ -77,12 +77,12 @@
 	    $jobs = getLatestLiveJobs ($MAX_ITEMS, true);
 	    $rssChannel->title = DOMAIN . " Latest Jobs";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest jobs");
-		$rssChannel->link = 'http://' . DOMAIN . '/site/scripts/recruit_jobs.php';
+		$rssChannel->link = getSiteRootURL() . '/site/scripts/recruit_jobs.php';
 
     	foreach ($jobs as $job) {
     	    $rssItem = new RSSItem();
 			$rssItem->title = encodeXML($job->title);
-			$rssItem->link = 'http://' . DOMAIN . '/site/scripts/recruit_details.php?id=' . $job->id;
+			$rssItem->link = getSiteRootURL() . '/site/scripts/recruit_details.php?id=' . $job->id;
 			$rssItem->description = encodeXML($job->description);
 			$rssItem->pubDate = date("r", $job->creationDate);
 
@@ -104,13 +104,13 @@
     	    
     	    $rssChannel->title = DOMAIN . " Latest Podcasts";
     		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest Podcasts");
-    		$rssChannel->link = 'http://' . DOMAIN . buildMultimediaPodcastsURL();
-    		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('podcasts');
+    		$rssChannel->link = getSiteRootURL() . buildMultimediaPodcastsURL();
+    		$rssChannel->href = getSiteRootURL() . buildRSSURL('podcasts');
     	    
     	    foreach ($podcasts as $podcast) {
         	    $rssItem = new RSSItem();
     			$rssItem->title = $podcast->title;
-    			$rssItem->link = 'http://' . DOMAIN . buildMultimediaPodcastsURL(-1, $podcast->id);
+    			$rssItem->link = getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id);
     			$rssItem->description = encodeXML($podcast->description);
     			$rssItem->pubDate = date("r", $podcast->dateCreated);
                 
@@ -135,15 +135,15 @@
 
         	$rssChannel = new MultimediaRSSChannel(false);
         	$rssChannel->title = $podcast->title;
-        	$rssChannel->link = 'http://' . DOMAIN . buildMultimediaPodcastsURL(-1, $podcast->id);
-        	$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('podcasts', $podcast->id);
+        	$rssChannel->link = getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id);
+        	$rssChannel->href = getSiteRootURL() . buildRSSURL('podcasts', $podcast->id);
         	$rssChannel->description = $podcast->summary;
         	$rssChannel->pubDate = $podcast->dateCreated;
         	if (!empty($podcast->imageURL)) {
         	    $rssChannel->image = array(
             	    'url' => $imageDirectory . $podcast->imageURL,
             	    'title' => $podcast->title,
-            	    'link' => 'http://' . DOMAIN . buildMultimediaPodcastsURL(-1, $podcast->id)
+            	    'link' => getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id)
             	);
         	}
         	$rssChannel->itunes = array(
@@ -167,10 +167,10 @@
 
         			$rssItem = new MultimediaRSSItem();
         			$rssItem->title = $episode->title;
-        			$rssItem->link = 'http://' . DOMAIN . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id);
+        			$rssItem->link = getSiteRootURL() . buildMultimediaPodcastsURL(-1, $podcast->id, $episode->id);
         			$rssItem->description = $episode->summary;
         			$rssItem->enclosure = array(
-                        'url' => 'http://' . DOMAIN . $item->getDownloadFilename(),
+                        'url' => getSiteRootURL() . $item->getDownloadFilename(),
             			'length' => $item->filesize,
             			'type' => ($item->isVideo() ? 'video/mp4' : 'audio/mpeg3')
         			);
@@ -204,13 +204,13 @@
     	    
     	    $rssChannel->title = DOMAIN . " Latest Gallery";
     		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest Gallery");
-    		$rssChannel->link = 'http://' . DOMAIN . buildMultimediaGalleriesURL();
-    		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('galleries');
+    		$rssChannel->link = getSiteRootURL() . buildMultimediaGalleriesURL();
+    		$rssChannel->href = getSiteRootURL() . buildRSSURL('galleries');
     	    
     	    foreach ($galleries as $gallery) {
         	    $rssItem = new RSSItem();
     			$rssItem->title = $gallery->title;
-    			$rssItem->link = 'http://' . DOMAIN . buildMultimediaGalleriesURL(-1, $gallery->id);
+    			$rssItem->link = getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id);
     			$rssItem->description = encodeXML($gallery->description);
     			$rssItem->pubDate = date("r", $gallery->dateCreated);
                 
@@ -229,8 +229,8 @@
 
         	$rssChannel = new RSSChannel(false);
         	$rssChannel->title = $gallery->title;
-        	$rssChannel->link = 'http://' . DOMAIN . buildMultimediaGalleriesURL(-1, $gallery->id);
-        	$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('galleries', $gallery->id);
+        	$rssChannel->link = getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id);
+        	$rssChannel->href = getSiteRootURL() . buildRSSURL('galleries', $gallery->id);
         	$rssChannel->description = $gallery->summary;
         	$rssChannel->pubDate = $gallery->dateCreated;
 
@@ -240,7 +240,7 @@
     				if ($image = getImage($item->imageID)) {
     	    			$rssItem = new RSSItem();
     	    			$rssItem->title = $item->title;
-    	    			$rssItem->link = 'http://' . DOMAIN . buildMultimediaGalleriesURL(-1, $gallery->id, $item->id);
+    	    			$rssItem->link = getSiteRootURL() . buildMultimediaGalleriesURL(-1, $gallery->id, $item->id);
     	    			$rssItem->guid = $item->id;
     	    			$rssChannel->addItem($rssItem);
     				}
@@ -252,15 +252,15 @@
 	    include_once("websections/JaduPressReleases.php");
 		$rssChannel->title = DOMAIN . " Latest Press Releases";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest press releases");
-		$rssChannel->link = 'http://' . DOMAIN . buildPressURL();
-		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('press');
+		$rssChannel->link = getSiteRootURL() . buildPressURL();
+		$rssChannel->href = getSiteRootURL() . buildRSSURL('press');
 
     	$pressList = getAllPressReleasesByDateLimited($MAX_ITEMS, true, true);
 
     	foreach ($pressList as $pressRelease) {
     	    $rssItem = new RSSItem();
 			$rssItem->title = encodeXML($pressRelease->title);
-			$rssItem->link = 'http://' . DOMAIN . buildPressArticleURL($pressRelease->id);
+			$rssItem->link = getSiteRootURL() . buildPressArticleURL($pressRelease->id);
 			$rssItem->description = encodeXML($pressRelease->summary);
 			$rssItem->pubDate = date('r', $pressRelease->pressDate);
 
@@ -271,15 +271,15 @@
 	    include_once("websections/JaduNews.php");
 		$rssChannel->title = DOMAIN . " Latest News";
 		$rssChannel->description = encodeXML(METADATA_GENERIC_NAME . " Latest news");
-		$rssChannel->link = 'http://' . DOMAIN . buildNewsURL();
-		$rssChannel->href = 'http://' . DOMAIN . buildRSSURL('news');
+		$rssChannel->link = getSiteRootURL() . buildNewsURL();
+		$rssChannel->href = getSiteRootURL() . buildRSSURL('news');
 
     	$newsList = getAllNewsByDateLimited($MAX_ITEMS, true, true);
 
     	foreach ($newsList as $news) {
     	    $rssItem = new RSSItem();
 			$rssItem->title = encodeXML($news->title);
-			$rssItem->link = 'http://' . DOMAIN . buildNewsArticleURL($news->id);
+			$rssItem->link = getSiteRootURL() . buildNewsArticleURL($news->id);
 			$rssItem->description = encodeXML($news->summary);
 			$rssItem->pubDate = date('r', $news->newsDate);
 

@@ -56,7 +56,7 @@
 		unset($user);
 		
 		if (defined('PHPBB_INTEGRATION') && PHPBB_INTEGRATION == true) {
-		    header('Location: http://' . DOMAIN . '/site/scripts/phpbb_login.php?logout=true');
+		    header('Location: ' . getSiteRootURL() . '/site/scripts/phpbb_login.php?logout=true');
 		    exit();
 	    }
 

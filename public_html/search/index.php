@@ -10,7 +10,7 @@
 	
 	$liveAppliances = getRupaAppliances('live', true, '=');
 	if (empty($liveAppliances)) {
-		header('Location: http://'.DOMAIN.'/search/offline.php');
+		header('Location: '.getSiteRootURL().'/search/offline.php');
 	}
 
 ?>

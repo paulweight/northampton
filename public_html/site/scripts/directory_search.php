@@ -10,7 +10,7 @@
 	include_once('utilities/JaduGoogleMaps.php');
 
 	if (!isset($_REQUEST['directoryID']) || !is_numeric($_REQUEST['directoryID'])) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         exit();
 	}
 

@@ -12,14 +12,14 @@
     include_once('JaduUpload.php');
 
 	if (!isset($_REQUEST['directoryID']) || !is_numeric($_REQUEST['directoryID'])) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         exit();
 	}
 
     $directory = getDirectory($_REQUEST['directoryID'], true);
 
 	if ($directory->id == -1) {
-		header('Location: http://' . DOMAIN);
+		header('Location: ' . getSiteRootURL());
         exit();
 	}
 

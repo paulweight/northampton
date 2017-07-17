@@ -3,7 +3,7 @@
 	include_once("JaduConstants.php");
 	
 /*	if (isset($TestCookie)) {
-		$string = "http://".$DOMAIN."/site/index.php";
+		$string = getSiteRootURL()."/site/index.php";
     	header("Location: $string");
     	exit;
     } else {

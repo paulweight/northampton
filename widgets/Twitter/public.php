@@ -39,7 +39,7 @@
 	}
 ?>
 	<div class="twitterFeed">
-		<h3><a href="http://twitter.com/<?php print $TWITTER_USERNAME; ?>"><?php print $TWITTER_USERNAME; ?><br /> on Twitter</a></h3>
+		<h3><a href="https://twitter.com/<?php print $TWITTER_USERNAME; ?>"><?php print $TWITTER_USERNAME; ?><br /> on Twitter</a></h3>
 			<?php
 			// Check Twitter is UP!
 			if ($TWITTER_USERNAME != '' && !strpos($TWITTER_USERNAME, 'TWITTER_USERNAME' )) {
@@ -117,7 +117,7 @@
 								$buffer = '';
 								foreach ($xml->status as $status) {
 									$text = $status->text;
-									$url = 'http://twitter.com/' . $TWITTER_USERNAME . '/status/' . $status->id;
+									$url = 'https://twitter.com/' . $TWITTER_USERNAME . '/status/' . $status->id;
 									$dateString = getRelativeTime($status->created_at);
 									
 									// make links clickable

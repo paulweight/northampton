@@ -17,7 +17,7 @@
 <?php
     if ($showMap) {
 ?>
-	<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
+	<script type="text/javascript" src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=<?php print encodeHtml(GOOGLE_MAPS_API_KEY); ?>"></script>
 	<script type="text/javascript" src="<?php print getStaticContentRootURL(); ?>/site/javascript/directory_search.js"></script>
 <?php
     }
@@ -119,9 +119,9 @@
 			foreach ($mapFieldIDs as $fieldID) {
 				$fieldSettings = getDirectorySettingsForField ($fieldID);
 
-				$markerImage = sprintf('http://%s/site/images/map_markers/red.png', DOMAIN);
+				$markerImage = sprintf('%s/site/images/map_markers/red.png', getStaticContentRootURL());
 				if (!empty($fieldSettings['MapMarker']->value)) {
-					$markerImage = sprintf('http://%s/site/images/map_markers/%s', DOMAIN, encodeHtml($fieldSettings['MapMarker']->value));
+					$markerImage = sprintf('%s/site/images/map_markers/%s', getStaticContentRootURL(), encodeHtml($fieldSettings['MapMarker']->value));
 				}
 
 				// marker location

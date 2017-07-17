@@ -17,15 +17,15 @@ flashvars = {
 		}
 		$height += 20;
 ?>
-	file: "http://<?php print DOMAIN . '/multimedia/' . $this->id . '/' . $this->id . '.flv'; ?>",
-	image: "http://<?php print DOMAIN . $this->getThumbnail(max($width, $height)); ?>",
+	file: "<?php print getSiteRootURL() . '/multimedia/' . $this->id . '/' . $this->id . '.flv'; ?>",
+	image: "<?php print getSiteRootURL() . $this->getThumbnail(max($width, $height)); ?>",
 <?php
 	}
 	else {
 		$width = $size;
 		$height = 20;
 ?>
-	file: "http://<?php print DOMAIN . '/multimedia/' . $this->id . '/' . $this->id . '.mp3'; ?>",
+	file: "<?php print getSiteRootURL() . '/multimedia/' . $this->id . '/' . $this->id . '.mp3'; ?>",
 <?php
 	}
 ?>

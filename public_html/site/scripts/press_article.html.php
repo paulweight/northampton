@@ -21,7 +21,7 @@
 	<meta name="Keywords" content="press releases, news, <?php print encodeHtml($metadata->subject); ?>" />	
 	<meta name="Description" content="<?php print encodeHtml($metadata->description); ?>" />
 
-	<?php printMetadata(PRESS_RELEASES_METADATA_TABLE, PRESS_RELEASES_CATEGORIES_TABLE, $pressRelease->id, $pressRelease->title, "http://".DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>	
+	<?php printMetadata(PRESS_RELEASES_METADATA_TABLE, PRESS_RELEASES_CATEGORIES_TABLE, $pressRelease->id, $pressRelease->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']); ?>	
 </head>
 <!-- ########## MAIN STRUCTURE ######### -->
 <?php include("../includes/opening.php"); ?>

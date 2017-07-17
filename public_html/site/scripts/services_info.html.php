@@ -12,7 +12,7 @@
 	$meta = new JaduMetadata();
 
 	if ($gclString != '' && $lgclString != '' && $meta != $metadata) {
-		printMetadata(SERVICES_METADATA_TABLE, SERVICES_CATEGORIES_TABLE, $_GET['serviceID'], $service->title, "http://".$DOMAIN.$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+		printMetadata(SERVICES_METADATA_TABLE, SERVICES_CATEGORIES_TABLE, $_GET['serviceID'], $service->title, getSiteRootURL().$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
 	}
 	else {
 ?>

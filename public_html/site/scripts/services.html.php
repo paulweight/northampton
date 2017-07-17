@@ -26,7 +26,7 @@
 <?php
 		foreach ($allRelatatedServices as $service) {
 ?>
-		<li><a href="<?php print 'http://' . DOMAIN . buildAZServiceURL($service->id); ?>"><?php print encodeHtml($service->title); ?></a></li>
+		<li><a href="<?php print getSiteRootURL() . buildAZServiceURL($service->id); ?>"><?php print encodeHtml($service->title); ?></a></li>
 <?php
 		}
 ?>

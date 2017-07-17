@@ -6,7 +6,7 @@
 	include_once("directoryBuilder/JaduDirectoryCategoryInformation.php");
 	
 	if (!isset($_REQUEST['directoryID']) || !is_numeric($_REQUEST['directoryID'])) {
-	    header('Location: http://' . DOMAIN);
+	    header('Location: ' . getSiteRootURL());
         exit();
     }
 

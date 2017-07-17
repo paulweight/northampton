@@ -9,7 +9,7 @@
 	<meta name="Description" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> Full A to Z listing alphabetically details of all services in your area" />
 
 	<meta name="DC.title" lang="en" content="<?php print encodeHtml(METADATA_GENERIC_NAME); ?> Glossary" />
-	<meta name="DC.identifier" content="http://<?php print DOMAIN . encodeHtml($_SERVER['PHP_SELF']); ?>" />
+	<meta name="DC.identifier" content="<?php print getSiteRootURL() . encodeHtml($_SERVER['PHP_SELF']); ?>" />
 
 	<meta name="DC.subject" lang="en" scheme="eGMS.IPSV" content="Local government;Government, politics and public administration" />
 	<meta name="DC.subject" lang="en" content="Council, government and democracy" />
